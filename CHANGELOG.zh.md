@@ -1,5 +1,9 @@
 # 更新日志
 
+## 未发布
+
+- 将 `html-slides`、`html-slides-cn`、`claude-md` 与 `claude-md-cn` 迁移至同级 `myoffice-skills` 仓库。
+
 ## 1.1.0 - 2026-09-15
 
 - 英文版使用基础技能名，每项能力新增 `-cn` 简体中文版本。

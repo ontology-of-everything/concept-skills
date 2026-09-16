@@ -1,42 +1,6 @@
 # Machine-readable skill index. Keep in sync with skills/ and qa/.
 version: 1
 skills:
-- id: claude-md
-  path: skills/en/claude-md
-  qa: qa/en/claude-md
-  display_name: CLAUDE.md
-  display_name_zh: CLAUDE.md 生成与精简
-  domain: meta
-  subdomains: &id001
-  - agent-instructions
-  - repository-guidance
-  summary: Explicit-invocation-only generation and pruning of CLAUDE.md from repository evidence.
-  summary_zh: 仅显式调用，按仓库事实生成或精简 CLAUDE.md，只保留能避免具体错误的规则。
-  version: 0.1.0
-  agents: &id002
-  - cursor
-  - claude-code
-  - codex
-  - openclaw
-  compatibility: Requires repository file read/write access.
-  distribution: direct-skill
-  language: en
-  translation_of: claude-md-cn
-- id: claude-md-cn
-  path: skills/cn/claude-md-cn
-  qa: qa/cn/claude-md-cn
-  display_name: CLAUDE.md 生成与精简（中文）
-  display_name_zh: CLAUDE.md 生成与精简
-  domain: meta
-  subdomains: *id001
-  summary: Chinese edition. 仅显式调用，按仓库事实生成或精简 CLAUDE.md，只保留能避免具体错误的规则。
-  summary_zh: 仅显式调用，按仓库事实生成或精简 CLAUDE.md，只保留能避免具体错误的规则。
-  version: 0.1.0
-  agents: *id002
-  compatibility: Requires repository file read/write access.
-  distribution: direct-skill
-  language: zh-CN
-  translation_of: claude-md
 - id: semantic-km-creator
   path: skills/en/semantic-km-creator
   qa: qa/en/semantic-km-creator
@@ -350,50 +314,3 @@ skills:
   upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/concept-guardrails/LICENSE.upstream)
   language: zh-CN
   translation_of: concept-guardrails
-- id: html-slides
-  path: skills/en/html-slides
-  qa: qa/en/html-slides
-  display_name: HTML Slides — Styled Single-File Decks (Huawei / Apple / Generic)
-  display_name_zh: HTML 胶片 · 华为 / Apple / 通用风格单文件 HTML 演示
-  domain: content
-  subdomains: &id024
-  - presentation
-  - slides
-  - huawei-style
-  - html-deck
-  summary: Explicit-invocation-only deck builder—settles scene, audience, duration and style, confirms an outline then a per-page table, and writes a plain single-file 1920×1080 HTML (inlined vars + base.css + runtime.js, one section per page, data-URI images, ?debug overflow check) in a pluggable style (generic, huawei official light/dark with bundled assets, apple); optional screenshot PPTX via tools/export_pptx.py or python-pptx rebuild
-  summary_zh: 仅显式调用的胶片生成器 · 先定场景 / 对象 / 时长 / 风格，确认大纲再确认逐页表，然后写一份明文单文件 1920×1080 HTML（内联变量块 + base.css + runtime.js，每页一个 section，图片 data URI，?debug 查溢出）；风格插拔：generic、huawei 官方浅 / 深色（随包素材）、apple；可选截图版 PPTX 或 python-pptx 重建
-  version: 0.1.1
-  agents: &id025
-  - cursor
-  - claude-code
-  - codex
-  - openclaw
-  compatibility: Writing the deck needs only file read/write; optional tools/export_pptx.py needs Python 3, playwright (Chromium) and python-pptx, never auto-installed
-  marketplaces: &id026
-  - skills-sh
-  - skillsmp
-  - clawhub
-  distribution: direct-skill
-  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
-  notes: Huawei assets under assets/huawei are Huawei trademarks bundled for Huawei-style decks only
-  language: en
-  translation_of: html-slides-cn
-- id: html-slides-cn
-  path: skills/cn/html-slides-cn
-  qa: qa/cn/html-slides-cn
-  display_name: HTML 胶片 · 华为 / Apple / 通用风格单文件 HTML 演示（中文）
-  display_name_zh: HTML 胶片 · 华为 / Apple / 通用风格单文件 HTML 演示
-  domain: content
-  subdomains: *id024
-  summary: Chinese edition. 仅显式调用的胶片生成器 · 先定场景 / 对象 / 时长 / 风格，确认大纲再确认逐页表，然后写一份明文单文件 1920×1080 HTML（内联变量块 + base.css + runtime.js，每页一个 section，图片 data URI，?debug 查溢出）；风格插拔：generic、huawei 官方浅 / 深色（随包素材）、apple；可选截图版 PPTX 或 python-pptx 重建
-  summary_zh: 仅显式调用的胶片生成器 · 先定场景 / 对象 / 时长 / 风格，确认大纲再确认逐页表，然后写一份明文单文件 1920×1080 HTML（内联变量块 + base.css + runtime.js，每页一个 section，图片 data URI，?debug 查溢出）；风格插拔：generic、huawei 官方浅 / 深色（随包素材）、apple；可选截图版 PPTX 或 python-pptx 重建
-  version: 0.1.1
-  agents: *id025
-  compatibility: Writing the deck needs only file read/write; optional tools/export_pptx.py needs Python 3, playwright (Chromium) and python-pptx, never auto-installed
-  marketplaces: *id026
-  distribution: direct-skill
-  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
-  notes: Huawei assets under assets/huawei are Huawei trademarks bundled for Huawei-style decks only
-  language: zh-CN
-  translation_of: html-slides

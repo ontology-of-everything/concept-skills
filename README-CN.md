@@ -5,12 +5,14 @@
 > 先说清含义，再写代码、跑命令、起草规格。
 
 [concept-skills](https://github.com/ontology-of-everything/concept-skills)
-提供 9 项能力、18 个中英文
-[Agent Skills](https://agentskills.io/)，覆盖本体与语义层、概念设计、仓库说明和演示文稿制作。英文使用基础名，简体中文统一增加
+提供 7 项能力、14 个中英文
+[Agent Skills](https://agentskills.io/)，覆盖本体与语义层和概念设计。英文使用基础名，简体中文统一增加
 `-cn`。
 
 华为云操作类技能现已迁移到
 [`concept-git/cloud-concept-skills`](https://github.com/concept-git/cloud-concept-skills)，本仓库不再分发。
+
+办公类技能现已迁移到同级 `myoffice-skills` 仓库，本仓库不再分发。
 
 概念设计几个技能改编自 Daniel Jackson 的 concepts 与 synchronizations 模型 ——
 [The Essence of Software](https://essenceofsoftware.com/)（2021），sync 采用 _Beyond
@@ -52,13 +54,6 @@ English: [README.md](README.md)。
 | ---------------------------------------------------------------------- | ----- | ------------------------------- |
 | [`semantic-km-creator-cn`](docs/skills/cn/semantic-km-creator-cn.md)   | 0.6.0 | 从接口建立证据化 Kimball 语义层 |
 | [`semantic-pkm-creator-cn`](docs/skills/cn/semantic-pkm-creator-cn.md) | 0.3.0 | 从原文萃取场景、概念和实体      |
-
-### 胶片
-
-| 技能                                                 | 版本  | 做什么                                    |
-| ---------------------------------------------------- | ----- | ----------------------------------------- |
-| [`html-slides-cn`](docs/skills/cn/html-slides-cn.md) | 0.1.1 | 生成多风格单文件 HTML 演示，可选导出 PPTX |
-| [`claude-md-cn`](docs/skills/cn/claude-md-cn.md)     | 0.1.0 | 根据仓库事实生成或精简 CLAUDE.md          |
 
 英文技能说明位于 `docs/skills/en/`，中文说明位于 `docs/skills/cn/`。机器可读索引见
 [docs/catalog.yml](docs/catalog.yml)，本地化规范见 [docs/localization.md](docs/localization.md)。
@@ -115,7 +110,6 @@ $concept-design-cn 把这个需求建成概念模型
 $concept-prd-cn 模型定了，出一份 PRD 规格
 $concept-guardrails-cn 给 src/orders 写概念规格，然后查漂移
 把这套接口做成语义层                        → semantic-km-creator-cn
-做一份 15 分钟产品介绍网页胶片               → $html-slides-cn
 ```
 
 要指名某个技能：Cursor 里用 `/skill-name`，Codex 里用 `$skill-name`。

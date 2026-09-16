@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Moved `html-slides`, `html-slides-cn`, `claude-md`, and `claude-md-cn` to the sibling `myoffice-skills` repository.
+
 ## 1.1.0 - 2026-09-15
 
 - Make English the default skill name and add a `-cn` Simplified-Chinese companion for every capability.

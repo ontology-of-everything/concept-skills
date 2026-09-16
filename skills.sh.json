@@ -27,14 +27,6 @@
         "semantic-pkm-creator",
         "semantic-pkm-creator-cn"
       ]
-    },
-    {
-      "title": "Presentation",
-      "description": "Explicit-invocation HTML decks in pluggable visual styles.",
-      "skills": [
-        "html-slides",
-        "html-slides-cn"
-      ]
     }
   ]
 }

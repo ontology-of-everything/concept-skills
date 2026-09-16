@@ -4,14 +4,17 @@
 
 > Name the meaning first — then write code, run a CLI, or draft a spec.
 
-[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides nine
-capabilities as 18 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
-concept design, repository guidance, and presentation authoring. English uses the base name;
+[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides seven
+capabilities as 14 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
+and concept design. English uses the base name;
 Simplified Chinese adds `-cn`.
 
 Huawei Cloud operational skills now live in
 [`concept-git/cloud-concept-skills`](https://github.com/concept-git/cloud-concept-skills) and are no
 longer distributed from this repository.
+
+Office-focused skills now live in the sibling `myoffice-skills` repository and are no longer
+distributed from this repository.
 
 The concept-design skills adapt Daniel Jackson's concepts-and-synchronizations model —
 [The Essence of Software](https://essenceofsoftware.com/) (2021), with the current when/where/then
@@ -56,13 +59,6 @@ text (`semantic-pkm-creator`).
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [`semantic-km-creator`](docs/skills/en/semantic-km-creator.md)   | [`semantic-km-creator-cn`](docs/skills/cn/semantic-km-creator-cn.md)   | Builds evidence-only Kimball semantic layers from interfaces. |
 | [`semantic-pkm-creator`](docs/skills/en/semantic-pkm-creator.md) | [`semantic-pkm-creator-cn`](docs/skills/cn/semantic-pkm-creator-cn.md) | Extracts scenes, concepts, and entities from source text.     |
-
-### Presentation
-
-| English                                        | 中文                                                 | What it does                                             |
-| ---------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------------- |
-| [`html-slides`](docs/skills/en/html-slides.md) | [`html-slides-cn`](docs/skills/cn/html-slides-cn.md) | Builds single-file styled HTML decks with optional PPTX. |
-| [`claude-md`](docs/skills/en/claude-md.md)     | [`claude-md-cn`](docs/skills/cn/claude-md-cn.md)     | Creates or prunes CLAUDE.md from repository evidence.    |
 
 Per-skill details: `docs/skills/en/` and `docs/skills/cn/`. Machine-readable index:
 [docs/catalog.yml](docs/catalog.yml). Localization contract:
@@ -120,7 +116,6 @@ $concept-design model this requirement as independent concepts
 $concept-prd transcribe the confirmed model into a PRD
 $concept-guardrails audit specification drift in src/orders
 Turn this API into a semantic layer                 → semantic-km-creator
-Build a 15-minute product presentation              → $html-slides
 ```
 
 To pin a skill explicitly: `/skill-name` in Cursor, `$skill-name` in Codex.

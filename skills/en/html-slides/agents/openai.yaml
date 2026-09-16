@@ -1,4 +1,0 @@
-interface:
-  display_name: "HTML Slides"
-  short_description: "Build a single-file styled HTML deck with optional PPTX"
-  default_prompt: "Use $html-slides to plan the outline and per-page table, then build the deck as a single-file HTML in the chosen style."
