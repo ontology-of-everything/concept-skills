@@ -9,7 +9,7 @@ capabilities as 14 localized [Agent Skills](https://agentskills.io/) for ontolog
 and concept design. English uses the base name;
 Simplified Chinese adds `-cn`.
 
-Huawei Cloud operational skills now live in
+Cloud operational skills now live in
 [`concept-git/cloud-concept-skills`](https://github.com/concept-git/cloud-concept-skills) and are no
 longer distributed from this repository.
 

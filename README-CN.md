@@ -9,7 +9,7 @@
 [Agent Skills](https://agentskills.io/)，覆盖本体与语义层和概念设计。英文使用基础名，简体中文统一增加
 `-cn`。
 
-华为云操作类技能现已迁移到
+Cloud 操作类技能现已迁移到
 [`concept-git/cloud-concept-skills`](https://github.com/concept-git/cloud-concept-skills)，本仓库不再分发。
 
 办公类技能现已迁移到同级 `myoffice-skills` 仓库，本仓库不再分发。
