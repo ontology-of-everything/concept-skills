@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 - 2026-09-22
+
+### Features
+
+- Add a restaurant reserve comparison: one scenario across concept design, naive DDD, split packages, and modular DDD, with the measured complexity counts (by @AgenticWeb4).
+
 ## 1.2.0 - 2026-09-22
 
 ### Features

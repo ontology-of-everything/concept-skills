@@ -1,5 +1,9 @@
 # 更新日志
 
+## 1.3.0 - 2026-09-22
+
+- 增加餐厅预约对照：同一场景在概念设计、朴素 DDD、分包和模块化 DDD 下的差别，以及核对过的复杂性计数（by @AgenticWeb4）。
+
 ## 未发布
 
 - 将 `html-slides`、`html-slides-cn`、`claude-md` 与 `claude-md-cn` 迁移至同级 `myoffice-skills` 仓库。

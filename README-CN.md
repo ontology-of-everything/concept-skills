@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **1.2.0**。`concept-*` 全家仅显式调用；`concept-guardrails` 只消费 Jackson 记法。
+当前版本为 **1.3.0**。`concept-*` 全家仅显式调用；`concept-guardrails` 只消费 Jackson 记法。
 
 ## 目录
 

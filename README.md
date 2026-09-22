@@ -23,7 +23,7 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **1.2.0**. The `concept-*` family is explicit-only; `concept-guardrails` modes
+Current release is **1.3.0**. The `concept-*` family is explicit-only; `concept-guardrails` modes
 consume Jackson notation only.
 
 ## Table of Contents
