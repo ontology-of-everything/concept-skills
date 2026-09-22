@@ -45,6 +45,9 @@ boundary and hands off: `design` → `prd` / `implementation` → `audit`.
 Shared principle: synchronization may restrict behavior, never extend a concept contract. Check
 contract conformance and purpose fulfillment separately.
 
+Worked comparison: [Restaurant reserve](docs/examples/restaurant/en/README.md). One scenario, four
+structures, and the complexity counts.
+
 | English                                                              | 中文                                                                       | What it does                                                                |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | [`concept-design`](docs/skills/en/concept-design.md)                 | [`concept-design-cn`](docs/skills/cn/concept-design-cn.md)                 | Designs independent concepts and synchronizations.                          |

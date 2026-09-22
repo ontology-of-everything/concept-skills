@@ -40,6 +40,8 @@ English: [README.md](README.md)。
 
 共同原则：同步可收窄行为，不可扩展概念契约；组合合法性与目的兑现分别检验。
 
+对照实例：[餐厅预约](docs/examples/restaurant/cn/README.md)。同一场景、四套结构，以及复杂性计数。英文在 [Restaurant reserve](docs/examples/restaurant/en/README.md)。
+
 | 技能                                                                       | 版本   | 做什么                             |
 | -------------------------------------------------------------------------- | ------ | ---------------------------------- |
 | [`concept-design-cn`](docs/skills/cn/concept-design-cn.md)                 | 0.8.2 | 设计独立概念与同步组合             |
