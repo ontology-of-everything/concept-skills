@@ -1,5 +1,10 @@
 # concept-audit Changelog
 
+## 0.7.1 - 2026-09-19
+
+- Make synchronization restriction explicit: each composed concept trace must satisfy its own contract; distinguish restriction from purpose failure.
+- Condense repeated entrypoint definitions and checks; keep shared contracts and locales aligned.
+
 ## 0.7.0 - 2026-09-14
 
 - 审计共享规格契约，补查空输出误判成功、对象错配、状态基数与分支漂移。

@@ -23,9 +23,10 @@ protocols nor other concepts. The synchronization layer coordinates public actio
 cross-concept policy; the composition root wires implementations, while interface adapters translate
 DTOs and protocols into composition entry points.
 
-Cross-concept coordination belongs in synchronizations, not the composition root. Concept actions
-atomically preserve their own invariants. A composition query cannot replace an action. Conformance
-tests do not establish model fitness.
+**Synchronization may restrict behavior, never extend the contract**: composition invokes allowed
+behavior; concept actions enforce preconditions, invariants, effects, and result cases. Queries
+cannot replace atomic checks. OPs test concept purposes, end-to-end scenarios application purpose;
+conformance alone does not establish fitness. Route evidenced purpose failures back to the model.
 
 ## Constraints
 
@@ -56,7 +57,8 @@ tests do not establish model fitness.
    package; migrate staged files and update the overall PRD index.
 5. **Verify behavior and seams** — Read only the applicable language reference and add architectural
    guardrails to CI. Tie OP tests to concept purposes and end-to-end tests to application purpose
-   and synchronizations, including their assumptions. Read `references/scaling.md` only when
+   and synchronizations, including assumptions. Verify each concept's composed behavior sequences
+   against its contract. Read `references/scaling.md` only when
    grouping or package splitting solves observed pain.
 
 Completion requires no concept-module references, all cross-concept business policy in

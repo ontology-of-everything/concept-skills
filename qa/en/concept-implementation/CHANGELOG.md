@@ -1,5 +1,10 @@
 # concept-implementation Changelog
 
+## 0.8.1 - 2026-09-19
+
+- Make synchronization restriction explicit: each composed concept trace must satisfy its own contract; distinguish restriction from purpose failure.
+- Condense repeated entrypoint definitions and checks; keep shared contracts and locales aligned.
+
 ## 0.8.0 - 2026-09-14
 
 - 实现契约明确抽象状态读取、case 判别、同 flow 对象关联及旧接口映射。

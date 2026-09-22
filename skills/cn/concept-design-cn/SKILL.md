@@ -1,6 +1,9 @@
 ---
 name: concept-design-cn
-description: Generates Daniel Jackson concept models (purpose, OP, state, actions, syncs) only when the user explicitly invokes $concept-design-cn. / 仅在用户显式调用 $concept-design-cn 时做概念建模。
+description: >-
+  Use when the user explicitly invokes $concept-design-cn. Completes a Daniel Jackson concept design
+  with the user. Confirm the alignment, then write the design record. / 仅在显式调用
+  $concept-design-cn 时，和用户一起完成概念设计：先确认对齐，再写设计记录。
 metadata:
   language: zh-CN
   translation_of: concept-design
@@ -10,70 +13,46 @@ metadata:
 
 # 概念设计
 
-焦点问题：应用要满足什么需要，哪些独立概念及同步组合能兑现它？仅在显式调用 `$concept-design-cn` 时运行；交付模型，按已有授权继续 PRD/实现。伴生技能缺失时交付模型与缺口。
+和用户一起完成概念设计：先确认对齐三节，再写设计记录。仅在显式调用 `$concept-design-cn` 时运行。已有授权才继续 PRD 或实现。没有 `concept-prd-cn` 或 `concept-implementation-cn` 时，交付模型并标明缺哪一环。
 
-## 概念与关系
+## 设计原则
 
-**Concept** 是为一个目的设计的连贯行为单元；页面、实体、代码模块只是候选线索。
+- **熟悉优先**。能用熟悉概念或它的变体时，用那个概念。
+- **专一**。每个概念只服务一个 purpose。同一个 purpose 不另立第二个概念。
+- **完整性**。同步可以排除概念的部分行为，不能让它做出自身规格不允许的行为。
+- **两层论证**。契约 → OP → 概念目的；概念选择与 sync → 应用场景 → 应用目的。局部成立不推出整体成立。单一目的用于概念，不机械套用应用。
+- **证据**。事实附来源，推断与未决另标。未找到反例不等于证明正确。页面、实体、代码模块只是候选线索。
 
-| 概念 | 定义及关系 |
+## 设计流程
+
+和用户逐段确认。尚未确认的内容标为待确认，不写成已确认事实。
+
+1. **核对事实**：和用户明确受益者、应用目的、现状、期望结果与约束。既有系统沿实际入口读调用、状态归属、失败路径及测试；分别记录现状与期望。目的未说清则标未决。
+2. **提出清单**：按 [产物规范](references/artifacts.md) 写出概念清单，请用户确认纳入哪些。确认后按 [规格契约](references/spec-format.md) 写 state 与 actions。外部身份用类型参数，不假设它有字段。
+3. **审查边界**：读 [资格标准](references/criteria.md)。每个候选给出八项结论。有分歧的交给用户定。
+4. **确认范围并组合**：先按 [组合标准](references/sync-notation.md) 请用户确认依赖与子集。再按规格契约写 sync，并检查欠同步、过同步、同步图和 MVP。
+5. **写入记录**：已证实的 misfit 按资格标准修正。已确认的对齐写入设计记录。待确认项留在排除与未决，只挡住依赖它的部分。
+
+## 设计产物
+
+字段见 [产物规范](references/artifacts.md)。
+
+对齐（和用户确认）：概念清单、应用目的与场景、依赖与子集。
+
+设计记录（确认后写入）：Concepts、Synchronizations、同步图、排除与未决。
+
+## 标准
+
+| 标准 | 用于 |
 | --- | --- |
-| 概念目的（purpose） | 一个可评价的需要，说明单个 concept 为什么存在 |
-| 应用目的 | 特定产品希望为使用者达成的结果，由概念选择及同步组合实现；不等于各概念目的的简单相加 |
-| OP（principle / operational principle） | 演示 concept 如何兑现 purpose 的典型且有区分力的场景；可用 after/then 表达 |
-| state / actions | 行为契约：状态、不变量、动作前置条件、效果及输出 case；共同界定允许行为 |
-| 场景 / 命题 | 场景描述条件下的具体行为；命题用明确关系连接概念，表达可检验的判断；OP 是场景，技能执行原则是取舍依据 |
-| sync | 将概念动作的完成关联为后续调用的应用规则，承载跨概念行为 |
-| misfit | 设计行为与实际需要不匹配；负面场景可揭示目的落空 |
+| [资格](references/criteria.md) | 概念是否成立 |
+| [规格契约](references/spec-format.md) | purpose、state、actions、OP 与 sync 怎么写 |
+| [组合](references/sync-notation.md) | 同步规则、同步图、依赖、MVP |
 
-关键命题：**概念契约支持 OP，OP 兑现概念目的；概念选择与 sync 支持应用场景，场景结果兑现应用目的**。组合必须保持各概念允许行为，局部论证成立不推出整体目的达成。OP 不覆盖全部行为；事实须有需求/模型/实现来源，推断与待决项另标。
+## 完成标准
 
-## 两条原则
+- 对齐每项都有确认栏。待确认项只出现在排除与未决，并写明挡住哪一部分。
+- 概念目的和应用目的各有兑现依据，或标成未决。
+- 需响应的入口写明成功与拒绝。同步图、依赖和 MVP 满足组合标准。规格满足规格契约。
 
-1. **论证目的兑现**：分别检查概念与应用两层的条件、行为、结果和目的关系；应用论证还核对概念选择与 sync，单一目的判据用于概念，不机械套用整个应用。
-2. **用事实与反例检验**：从真实约束寻找目的落空的场景，区分模型缺陷、实现偏离和证据不足；反例推动修订，未找到反例不等于证明正确。
-
-## 设计循环
-
-1. **理解事实**：明确应用受益者、目的、现状、期望结果与约束。既有系统沿实际入口读调用、状态归属、失败路径及测试；分别记录现状与期望。
-2. **定义候选**：先读 [规格契约与模板](references/spec-format.md)，澄清关键术语，写 purpose、OP、最小 state 和完整 actions；用具体场景检验含义，再将外部身份抽象为类型参数。
-3. **审查论证与边界**：读 [criteria.md](references/criteria.md)，核对概念论证、反例及专一/完整/独立/熟悉；逐候选给边界结论与理由。
-4. **组合检验**：读 [sync-notation.md](references/sync-notation.md)，以应用目的和端到端场景选择/实例化 concepts，定义 sync 的入口、绑定、响应、并发与失败；检查欠/过同步及是否扭曲概念目的，再派生两种图，验证 MVP。
-5. **修订并交付**：按判据中的调整动作修正已证实的 misfits；保留未决前提、证据与影响，仅阻塞依赖部分。
-
-## 规格与输出
-
-类型参数可零个或多个，是不假定字段的身份；四节不依赖其他概念定义，同名局部参数合法。应用背景进 notes，协调归 sync，协议/表布局留在实现层。
-
-````markdown
-## 应用目的与场景
-<用户、应用目的、现状、结果、约束；来源/推断/未决>
-<成功/拒绝等端到端场景：条件 → 概念动作与 sync → 可观察结果 → 应用目的；misfits>
-
-## Concepts
-<按 spec-format.md 填写每个概念的 purpose、state、actions、operational principle；可选 queries/notes>
-
-论证：<契约支持 OP、结果满足目的的依据；反例或未决>
-边界：<专一/完整/独立/熟悉的结论及理由>
-
-## Synchronizations
-<app / include / sync；按入口或规则职责归组，关联应用场景及目的>
-
-## 同步图与产品子集
-<when → 规则节点 → then；where 另标读取>
-<独立的产品依赖图：A → B 表示纳入 A 需要 B；MVP>
-
-## 排除与未决
-<候选/动作/前提、结论、来源及影响>
-````
-
-签名、结果分支与状态关系是同步接口；OP 是代表性场景。按共享契约区分论文格式、本地 query 扩展及旧方言，不能仅换标题或符号。
-
-## 完成条件
-
-- 概念定义/OP/边界及应用场景/组合分别有目的兑现依据；未知前提可见，示例不掩盖缺口。
-- include、动作/query、参数、输出和绑定可解析；迁移保留触发、效果及失败语义。
-- 各入口可达结果、排除动作和循环有明确策略；需响应时覆盖成功与拒绝，后台事件可无响应。
-- 同步图保留多源合取、多目标与查询边；MVP 除依赖闭包外还满足入口、剩余规则与外部资源需要。
-
-首次应用四节/组合读 [订位例](references/example-reserving.md)；核对 Jackson 定义及本仓约定读 [sources.md](references/sources.md)。
+首次一起做完读 [订位例](references/example-reserving.md)；核对定义及本仓约定读 [sources.md](references/sources.md)。

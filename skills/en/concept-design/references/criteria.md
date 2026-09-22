@@ -1,40 +1,29 @@
-# Argument and Seam Criteria
+# Qualification Criteria
 
-Focus: does candidate behavior fulfill one need, and is the seam well placed? These groups
-synthesize Jackson's material; they are not the author's prescribed sequence.
+A concept is both a mental construct required to use an app effectively and a coherent unit of
+functionality, and they are the same thing. Dynamic behavior defines it. The three parts are the
+name, the purpose, and the operational principle: say what it is for and how to use it. A restaurant
+reservation's purpose is to ensure a table will be available; the operational principle is to
+contact the restaurant, pick a time in advance, and turn up then.
 
-## Argument Before Seam
+Every concept satisfies the eight criteria below. The second table separates other constructs.
 
-Under stated assumptions, trace how actions and state support the OP and why the observable result
-fulfills the purpose. Test hidden conditions, skipped steps, and counterexamples from real
-scenarios. Keep weak evidence open; a better-written purpose cannot repair missing behavior.
+## Decision basis
 
-“Delete moves an item to Trash” explains storage change. If the purpose is recovery from accidental
-deletion, both OP and contract must include recovery. Implementing the move perfectly still does not
-establish the purpose.
+| Criterion | Decision basis |
+| --- | --- |
+| User facing | Make a concept from behavior the user experiences. A hidden structure stays implementation support. When designing an API, the programmer is the user. |
+| Semantic | A concept is abstract, semantic structure, both static and dynamic. Widgets, color schemes, and UI skins are not concepts. |
+| Independent | It can be understood and used without another concept. A comment: pick an artifact, write the thoughts, and they appear with it. The artifact may be a post, a reply, or another comment, and the definition includes none of them. If use requires another concept, it is not independent. |
+| Behavioral | Behavior is usually simple. Leave more complex behavior in the interaction among concepts. Upvoting: people upvote items, and the most upvoted rise to the top. A classification such as pond (small, still, a body of water) is not a concept. |
+| Purposive | The purpose must be intelligible and bring real value by itself. A role inside a larger concept is not its own concept. A social security number exists so the government can associate pensions with individuals. Obtaining the number is only a role in that concept. |
+| End-to-end | Functionality must reach the behavior that fulfills the purpose. User authentication that registers an account must also authenticate. If the OP only says "this action updates state this way," add the fulfilling behavior. |
+| Familiar | Users should be able to start without a manual. New concepts are allowed; novelty comes even more from a new combination or a small adjustment of old concepts. Post, friend/follow, upvote, reply, comment, and hashtag are nearly the same across social apps. Better image support and a post-length limit are variants. |
+| Reusable | Check purposive, end-to-end, and independent first. Existing reuse does not replace those three, and lack of reuse does not refute them. A meeting identifier lets parties join without each participant being called. Zoom introduced it; Google Meet and Microsoft Teams copied it. |
 
-## Qualification
-
-| Criterion             | Decision basis                                                                       |
-| --------------------- | ------------------------------------------------------------------------------------ |
-| User-perceivable      | a user, including an API programmer, experiences value                               |
-| Semantic/behavioral   | meaningful dynamic capability rather than a control, category, or property           |
-| Purposeful/end-to-end | independently creates an evaluable result that fulfills a need                       |
-| Specific              | one indivisible purpose; conflation suggests splitting                               |
-| Complete              | enough behavior to fulfill the purpose; fragmentation suggests merging or completing |
-| Independent           | definition needs no other concept; shared identity uses field-free type parameters   |
-| Familiar              | prefer known concepts and conventions unless a new one provides unavailable value    |
-
-Test reusability after composition. It is often a result of a sound seam, never sufficient evidence
-by itself. A concept keeps its name, purpose, and behavioral meaning across applications.
-
-Entities are usually state types; tables, classes, and microservices are implementation
-organization; verbs such as register are usually actions; stories and workflows are scenario slices;
-cross-concept triggers are synchronizations. Names are clues, not proof.
-
-Use split/merge to adjust control and simplicity, unify/specialize to adjust generality and fit, and
-tighten/loosen to adjust automation and user control. Tie the latter to a concrete under- or
-over-synchronization scenario.
-
-For every candidate record one outcome with evidence: keep, split, merge, parameterize, demote to
-type/action/implementation, move to synchronization, or leave open.
+| Construct | Decision basis |
+| --- | --- |
+| Class | Usually not user-facing, and rarely independent. Do not make one a concept. |
+| Feature | "Accounts can be made private" is an optional approval on the follower concept. Do not make it a separate concept. |
+| User story | "Record which students are present today" brings no value by itself. The concept is attendance: daily entry, end-of-term summaries, and perhaps repeated-absence warnings. One story is not an implementation increment. |
+| Microservice | A service boundary is not a concept boundary. |

@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **1.1.0**。`concept-*` 全家仅显式调用；`concept-guardrails` 只消费 Jackson 记法。
+当前版本为 **1.2.0**。`concept-*` 全家仅显式调用；`concept-guardrails` 只消费 Jackson 记法。
 
 ## 目录
 
@@ -38,13 +38,15 @@ English: [README.md](README.md)。
 从需求到模块，以概念模型为契约。每个技能停在自己的边界上交棒：`design` → `prd` / `implementation` →
 `audit`。
 
+共同原则：同步可收窄行为，不可扩展概念契约；组合合法性与目的兑现分别检验。
+
 | 技能                                                                       | 版本   | 做什么                             |
 | -------------------------------------------------------------------------- | ------ | ---------------------------------- |
-| [`concept-design-cn`](docs/skills/cn/concept-design-cn.md)                 | 0.7.0  | 设计独立概念与同步组合             |
-| [`concept-prd-cn`](docs/skills/cn/concept-prd-cn.md)                       | 0.6.0  | 转录确认模型并保留验收追溯         |
-| [`concept-implementation-cn`](docs/skills/cn/concept-implementation-cn.md) | 0.7.0  | 实现独立概念模块与同步组合         |
-| [`concept-audit-cn`](docs/skills/cn/concept-audit-cn.md)                   | 0.6.0  | 只读审查设计论证、漂移和实现符合性 |
-| [`concept-guardrails-cn`](docs/skills/cn/concept-guardrails-cn.md)         | 0.31.0 | 创建、审查和映射共存规格           |
+| [`concept-design-cn`](docs/skills/cn/concept-design-cn.md)                 | 0.8.2 | 设计独立概念与同步组合             |
+| [`concept-prd-cn`](docs/skills/cn/concept-prd-cn.md)                       | 0.7.1 | 转录确认模型并保留验收追溯         |
+| [`concept-implementation-cn`](docs/skills/cn/concept-implementation-cn.md) | 0.8.1 | 实现独立概念模块与同步组合         |
+| [`concept-audit-cn`](docs/skills/cn/concept-audit-cn.md)                   | 0.7.1 | 只读审查设计论证、漂移和实现符合性 |
+| [`concept-guardrails-cn`](docs/skills/cn/concept-guardrails-cn.md)         | 0.32.1 | 创建、审查和映射共存规格           |
 
 ### 本体与语义
 

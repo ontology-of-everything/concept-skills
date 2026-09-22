@@ -4,7 +4,7 @@
 
 > 本文是给人看的中文说明，**不是** `npx skills add` 安装包内容。Agent 加载 [`skills/concept-prd-cn/SKILL.md`](../../../skills/cn/concept-prd-cn/SKILL.md)。
 
-**Version:** 0.7.0 · Changelog:
+**Version:** 0.7.1 · Changelog:
 [qa/concept-prd-cn/CHANGELOG.md](../../../qa/cn/concept-prd-cn/CHANGELOG.md)
 
 ## 一句话
@@ -78,3 +78,7 @@ npx skills add ./skills/concept-prd-cn \
 按共享格式转录概念和 sync；文件编排与语法分离，订位例保留分支、绑定及未决。
 
 [统一规格与模板](../../../skills/cn/concept-prd-cn/references/spec-format.md) 以 WYSIWID v1 §4–6 为基线，区分论文语义、本地扩展与旧格式兼容。
+
+## 2026-09-19 修订
+
+同步可收窄行为，不可扩展概念契约；逐概念核对组合中的动作、状态变化与输出序列，并另查目的是否落空。精简重复定义与指导。

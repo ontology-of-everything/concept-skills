@@ -4,7 +4,7 @@
 
 | 类别 | 需要的证据 | 默认严重度 | 路由 |
 | --- | --- | --- | --- |
-| 行为保持违规 | 调用不在概念允许行为内，绕过前置条件或私有状态边界 | High | implementation；模型缺契约则 design |
+| 行为保持违规 | 组合执行中某概念的动作/状态/输出序列违反自身契约；仅减少允许行为不算违约 | High | implementation；模型缺契约则 design |
 | 隐式组合 | 概念 A 内直接调用 B，包含公开 API 互调 | High | implementation |
 | 错误/响应缺口 | 可达结果无处理策略，或需要响应的请求会悬挂/串请求 | High | design / implementation |
 | 绑定错误 | then 使用未绑定或未来输出；零/多 query 结果处理不符契约 | High | design / implementation |

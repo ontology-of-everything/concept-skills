@@ -1,9 +1,8 @@
 ---
 name: concept-design
-description:
-  Designs Daniel Jackson concepts, purposes, operational principles, state, actions, and
-  synchronizations only when the user explicitly invokes $concept-design. Use to turn verified needs
-  into an independent concept model and tested application composition.
+description: >-
+  Use when the user explicitly invokes $concept-design. Completes a Daniel Jackson concept design
+  with the user. Confirm the alignment, then write the design record.
 metadata:
   language: en
   translation_of: concept-design-cn
@@ -13,82 +12,70 @@ metadata:
 
 # Concept Design
 
-Focus: what need must the application satisfy, and which independent concepts and synchronizations
-can fulfill it? Run only on explicit `$concept-design` invocation. Deliver the model, then continue
-into PRD or implementation only when already authorized.
+Complete the concept design with the user: confirm the three alignment sections, then write the
+design record. Run only on explicit `$concept-design` invocation. Continue into PRD or
+implementation only when already authorized. If `concept-prd` or `concept-implementation` is
+missing, deliver the model and name the missing step.
 
-## Model
+## Design principles
 
-A **concept** is a coherent behavioral unit designed for one purpose; pages, entities, and code
-modules are only candidate clues.
+- **Familiarity.** Use a familiar concept, or a variant of one, when it meets the need.
+- **Specificity.** Each concept serves one purpose. Do not add a second concept for the same purpose.
+- **Integrity.** Synchronization may exclude some of a concept's behavior. It may not make the
+  concept do something its own specification disallows.
+- **Two arguments.** Contract → OP → concept purpose; concept selection and synchronizations →
+  application scenarios → application purpose. Local validity does not prove overall fitness. The
+  single-purpose criterion applies to concepts, not mechanically to applications.
+- **Evidence.** Source facts, and label inferences and open decisions. Absence of a counterexample
+  is not proof. Pages, entities, and code modules are only candidate clues.
 
-- A **concept purpose** is an evaluable need explaining why one concept exists.
-- The **application purpose** is the outcome a product should create through concept selection and
-  composition; it is not the sum of concept purposes.
-- An **operational principle (OP)** is a representative, discriminating scenario showing how
-  behavior fulfills the concept purpose.
-- **State and actions** define allowed behavior through invariants, preconditions, effects, and
-  result cases.
-- A **synchronization** connects completed concept actions to subsequent calls as an application
-  rule.
-- A **misfit** is a mismatch between designed behavior and the actual need.
+## Design process
 
-The required argument is: contract supports OP; OP fulfills concept purpose; selected concepts and
-synchronizations support application scenarios; scenario outcomes fulfill application purpose.
-Composition must preserve each concept's allowed behavior. Facts require sources; label inferences
-and unresolved decisions.
+Confirm each part with the user. Mark anything not yet confirmed as pending, and do not record it
+as a confirmed fact.
 
-## Design Loop
+1. **Check facts** — With the user, identify beneficiaries, application purpose, current state,
+   desired outcome, and constraints. In an existing system, trace actual entry points, state
+   ownership, failure paths, and tests. Separate current from desired behavior. If the purpose is
+   not yet stated, mark it open.
+2. **Propose the inventory** — Write the concept inventory from `references/artifacts.md` and ask
+   which concepts to include. After confirmation, write state and actions from
+   `references/spec-format.md`. External identity is a type parameter with no assumed fields.
+3. **Review seams** — Read `references/criteria.md`. Give all eight conclusions for each candidate.
+   Leave disputes for the user to decide.
+4. **Confirm scope, then compose** — Ask the user to confirm dependencies and subsets using
+   `references/sync-notation.md`. Then write syncs from the specification contract, and check
+   under-synchronization, over-synchronization, the synchronization diagram, and the MVP.
+5. **Write the record** — Correct an evidenced misfit using the qualification standard. Write
+   confirmed alignment into the design record. Keep pending items in exclusions and open decisions,
+   and block only the portion that depends on them.
 
-1. **Establish facts** — Identify beneficiaries, application purpose, current state, desired
-   outcome, and constraints. In an existing system, trace actual entry points, state ownership,
-   failure paths, and tests. Separate current from desired behavior.
-2. **Define candidates** — Read `references/spec-format.md`. Clarify terms and write the purpose,
-   OP, minimum state, and complete actions. Test meaning with concrete scenarios; represent external
-   identity through type parameters.
-3. **Review arguments and seams** — Read `references/criteria.md`. Test the contract/OP argument and
-   counterexamples, then specificity, completeness, independence, and familiarity. Record a reasoned
-   seam decision for every candidate.
-4. **Test composition** — Read `references/sync-notation.md`. Starting from application purpose and
-   end-to-end scenarios, select and instantiate concepts; define entry, binding, response,
-   concurrency, and failure behavior. Check under- and over-synchronization and derive both
-   synchronization and product-dependency diagrams.
-5. **Revise and deliver** — Correct evidenced misfits using the adjustment moves in the criteria.
-   Preserve unresolved assumptions with evidence and impact; block only the dependent portion.
+## Design artifacts
 
-## Output
+Field rules are in `references/artifacts.md`.
 
-```markdown
-## Application Purpose and Scenarios
+Alignment, confirmed with the user: concept inventory, application purpose and scenarios,
+dependencies and subsets.
 
-<users, purpose, current state, outcome, constraints; sources/inferences/open decisions> <end-to-end
-scenarios: condition → actions and syncs → observable result → purpose; misfits>
+Design record, written after confirmation: Concepts, Synchronizations, synchronization diagram,
+exclusions and open decisions.
 
-## Concepts
+## Standards
 
-<purpose, state, actions, OP, optional queries/notes per references/spec-format.md> Argument: <why
-contract supports OP and result fulfills purpose; counterexamples/open points> Seam:
-<specificity/completeness/independence/familiarity conclusion and reasons>
+| Standard | Use |
+| --- | --- |
+| [Qualification](references/criteria.md) | whether a concept qualifies |
+| [Specification contract](references/spec-format.md) | how to write purpose, state, actions, OP, and synchronizations |
+| [Composition](references/sync-notation.md) | synchronization rules, the synchronization diagram, dependencies, and the MVP |
 
-## Synchronizations
+## Completion
 
-<app/include/sync grouped by entry point or rule responsibility>
+- Every alignment item has a confirmation mark. Pending items appear only under exclusions and open
+  decisions, with the portion they block.
+- The concept purpose and the application purpose each have evidence of fulfillment, or are marked
+  open.
+- An entry that requires a response states success and refusal. The synchronization diagram,
+  dependencies, and MVP meet the composition standard. The specification meets the contract.
 
-## Synchronization Diagram and Product Subsets
-
-<when → rule → then; where reads marked separately> <A → B means including A requires B; MVP>
-
-## Exclusions and Open Decisions
-
-<candidate/action/assumption, conclusion, source, impact>
-```
-
-Concept sections remain independent of other concept definitions. Put application context in notes
-and coordination in synchronizations. Signatures, result cases, and state relations form the
-synchronization interface; an OP is representative rather than exhaustive.
-
-Completion requires evidence for both concept and application purposes, parseable
-includes/actions/queries/parameters/outputs/bindings, explicit success and refusal behavior where
-responses are required, loop and exclusion policies, faithful multi-source/multi-target/query edges,
-and an MVP closed over entry points, remaining rules, dependencies, and resources. For a first full
-example read `references/example-reserving.md`; for source definitions read `references/sources.md`.
+For a first pass together, read `references/example-reserving.md`. For definitions and local
+conventions, read `references/sources.md`.

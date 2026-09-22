@@ -4,7 +4,7 @@
 
 > 本文是给人看的中文说明，**不是** `npx skills add` 安装包内容。Agent 加载 [`skills/concept-audit-cn/SKILL.md`](../../../skills/cn/concept-audit-cn/SKILL.md)。
 
-**Version:** 0.7.0 · Changelog:
+**Version:** 0.7.1 · Changelog:
 [qa/concept-audit-cn/CHANGELOG.md](../../../qa/cn/concept-audit-cn/CHANGELOG.md)
 
 ## 一句话
@@ -79,3 +79,7 @@ npx skills add ./skills/concept-audit-cn \
 审计共享规格契约，补查空输出误判成功、对象错配、状态基数与分支漂移。
 
 [统一规格与模板](../../../skills/cn/concept-audit-cn/references/spec-format.md) 以 WYSIWID v1 §4–6 为基线，区分论文语义、本地扩展与旧格式兼容。
+
+## 2026-09-19 修订
+
+同步可收窄行为，不可扩展概念契约；逐概念核对组合中的动作、状态变化与输出序列，并另查目的是否落空。精简重复定义与指导。

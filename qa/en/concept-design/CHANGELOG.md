@@ -1,5 +1,18 @@
 # concept-design Changelog
 
+## 0.8.2 - 2026-09-22
+
+- Complete the concept design with the user: confirm the alignment, then write the design record.
+- State the concept definition and the decision basis for each of the eight criteria, including
+  distinctions for classes, features, user stories, and microservices.
+- Condense repeated wording, and name intrinsic/extrinsic dependencies, tighten/loosen, and the
+  three design-move pairs.
+
+## 0.8.1 - 2026-09-19
+
+- Make synchronization restriction explicit: each composed concept trace must satisfy its own contract; distinguish restriction from purpose failure.
+- Condense repeated entrypoint definitions and checks; keep shared contracts and locales aligned.
+
 ## 0.8.0 - 2026-09-14
 
 - 统一概念与 sync 规格契约，明确具名签名、状态关系、输出分支与旧方言迁移；精简入口和重复模板。

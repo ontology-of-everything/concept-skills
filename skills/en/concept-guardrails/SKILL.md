@@ -11,7 +11,7 @@ metadata:
   language: en
   translation_of: concept-guardrails-cn
   author: ontology-of-everything
-  version: "0.32.0"
+  version: "0.32.1"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills/tree/main/skills/en/concept-guardrails
 ---
@@ -36,8 +36,9 @@ this repository's Jackson dialect while runtime scripts retain upstream behavior
 - Backfill reconstructs evidenced contracts from implementation; drift compares implementation with
   contract. Neither proves fitness for purpose.
 
-Specification coverage does not prove design correctness, and an accurate map does not prove code
-conformance. Label inferred purposes; never use an ideal OP to justify an observed defect.
+**Synchronization may restrict behavior, never extend the contract**: flag violating coordination
+during backfill rather than legitimizing it. Coverage does not prove design correctness; accurate
+maps do not prove code conformance. Label inferred purposes; an ideal OP cannot justify a defect.
 
 ## Modes
 
@@ -68,9 +69,7 @@ fitness/independence/composition review to `concept-audit`.
   in the composition layer, and one SYNCS per synchronization package grouped by flow. Rebuild
   derived maps after specification changes when authorized.
 - Before creating or reading CONCEPT/SYNCS or checking pipeline interfaces, read
-  `references/spec-format.md`. Use independent sections, named inputs/outputs, result-case matching,
-  and query bindings. Write `operational principle`; read legacy `principle` and signatures
-  compatibly.
+  `references/spec-format.md` for behavior, interfaces, and dialect compatibility.
 - Mark legacy wyx interactions, dependencies, known coupling, dispatching, coordination graphs, and
   `sync:` sections for migration rather than mixing dialects. When authorized, rewrite
   CONCEPT/SYNCS/PIPELINE together while preserving triggers, bindings, effects, and failure

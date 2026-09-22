@@ -3,6 +3,21 @@
 Read this before creating, transcribing, implementing, or checking CONCEPT and SYNCS files. The
 format adapts WYSIWID v1 sections 4–6; it is repository notation, not executable engine syntax.
 
+## Synchronization Principle
+
+**Synchronization may restrict behavior, never extend the contract** (after *The Essence of
+Software*): composition may exclude some original behaviors, but each concept's actual behavior
+must still satisfy its own specification.
+
+For each concept, retain only its actions, state changes, and outputs from a composed execution;
+the resulting sequence must be allowed by its specification. Check sequences, not just action
+names. Keep synchronization restrictions in SYNCS; preconditions, invariants, effects, and result
+cases remain governed by the concept contract. Revise and confirm that contract before requiring
+behavior beyond it.
+
+Restriction alone is not a violation. Separately check whether the remaining scenarios fulfill
+the purpose: a legal composition can still frustrate the need.
+
 ## CONCEPT: Independent Behavioral Interface
 
 Write purpose → state → actions → operational principle. Put the concept name and optional type
@@ -32,15 +47,14 @@ after <condition and declared action input => output> then
 <later action or observation and how the result fulfills purpose>
 ```
 
-- External identities use zero or more field-free type parameters. Define local types, enums, and
-  outputs. Instantiate application types only in SYNCS.
-- Purpose states one need, not a feature list. The OP explains how behavior fulfills it.
-- State names abstract sets and relations with required cardinality, initial state, and invariants.
-  `A -> B` alone declares only related types, never totality or uniqueness.
-- Actions use named inputs and outputs. Write `[]` for no parameters and `=> []` for no returned
-  fields. Every case states condition, effect, and output without exposing algorithms.
-- An OP is a representative, discriminating scenario using real action, field, and result names. It
-  supports representative tests rather than enumerating all behavior.
+- External identity is a field-free type parameter. Define local types. Instantiate concrete types
+  only in SYNCS.
+- Purpose states one need, not a feature list.
+- State states cardinality, initial state, and invariants. `A -> B` states only that the types are
+  related, not that the relation is total or unique.
+- Actions name inputs and outputs. Write `[]` for no parameters and `=> []` for no result. Each case
+  states the condition, effect, and output.
+- The OP uses real action names to show how the purpose is fulfilled. It does not enumerate behavior.
 
 One action may have multiple cases. Field names are part of the matching contract. Distinguish
 success and refusal conditions; if overlapping cases have different effects, define selection or
@@ -75,7 +89,8 @@ turn an empty set into an undeclared error.
 `app`, `include`, type instantiation, and `// flow:` are repository organization. `sync`, `when`,
 `where`, and `then` use the paper's record patterns. Every include resolves to a concept
 specification or an explicit external-entry contract. Define aliases and concrete types. Web is only
-an example entry; timers and messages also declare root events.
+an example entry. An existing Requesting concept may keep its name if the signature is stated.
+Timers and messages declare their own root events.
 
 ```text
 # app AppName

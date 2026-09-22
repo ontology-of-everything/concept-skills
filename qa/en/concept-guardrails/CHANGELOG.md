@@ -1,5 +1,10 @@
 # concept-guardrails Changelog
 
+## 0.32.1 - 2026-09-19
+
+- Make synchronization restriction explicit: each composed concept trace must satisfy its own contract; distinguish restriction from purpose failure.
+- Condense repeated entrypoint definitions and checks; keep shared contracts and locales aligned.
+
 ## 0.32.0 - 2026-09-14
 
 - 概念、同步、漂移、管道与地图使用共享契约，消除模式间模板与状态读取边界分歧。

@@ -1,6 +1,6 @@
 interface:
   display_name: "Concept Design"
-  short_description: "Design concepts and test their application composition"
-  default_prompt: "Use $concept-design to model application purposes, independent concepts and synchronizations; review concept and application arguments with evidence and counterexamples."
+  short_description: "Complete a concept design with the user"
+  default_prompt: "Use $concept-design to complete the concept design with the user: confirm the alignment, then write the design record."
 policy:
   allow_implicit_invocation: false

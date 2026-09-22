@@ -1,6 +1,6 @@
 # 订位例：多类型参数与组合边界
 
-受 *Beyond Objects* §13 启发的教学片段，区分承诺与可用性；以下按 [统一规格](spec-format.md) 改写，非论文转录或完整餐厅产品。保留未决，不能据此生成完整实现。
+教学片段，按 [规格契约](spec-format.md) 改写，不是论文原文，也不是完整餐厅产品。未决留着，不能据此生成实现。
 
 ## 两个概念
 
@@ -34,7 +34,7 @@ after reserve [user: u; slot: s] => [reservation: r]
 then 在预约未取消、满足到场条件时 grant [reservation: r] => []，兑现承诺。
 ```
 
-论证缺口：grant 的到场输入/时间契约尚未定义；cancel/grant 在前置不满足时的调用处理未确定，不能补造错误输出。专一：承诺；独立：只用身份；熟悉：预约。只有细化前提并检验兑现行为后才可判断完整性。
+论证缺口：grant 的到场输入/时间契约尚未定义；cancel/grant 在前置不满足时的调用处理未确定，不能补造错误输出。目的性：届时兑现预订承诺。独立：只用身份。熟悉：预约。端到端要等到场前提写明并检验兑现行为后才能判断。
 
 ```text
 # concept Availability [V]
@@ -61,11 +61,11 @@ _find [venue: V] => [slot: Slot]
   returns 该 venue 下全部 offered 时段，每项一行；无结果为空集合
 ```
 
-`_find` 是本例选择的 query API 映射，无完成事件；也可用公开 venue/offered 关系实现查询。是否隐藏已预约时段由应用决定，Availability 不读取 Reserving。不存在的 Slot 如何处理仍属本片段未决。
+`_find` 是可选的 query 映射，不产生完成事件；也可以直接读 venue 与 offered。Availability 不读取 Reserving。不存在的 Slot 如何处理仍未决。
 
 ## 应用目的与预约片段
 
-应用目的：对用户选定时段给出预约承诺或明确冲突结果；完整产品还需到场兑现等场景。应用边界提供不透明 UserId/VenueId；选择时段后的请求映射为以下外部契约（无需另建 CONCEPT）：
+应用目的：用户选定时段后，得到预约承诺或明确的冲突。到场兑现不在本片段。UserId 与 VenueId 由应用边界提供，不另建概念。入口契约：
 
 ```text
 Requesting/reserve: [user: UserId; slot: Availability.Slot] => [request: RequestId]
@@ -73,7 +73,7 @@ Requesting/respond: [request: RequestId; reservation: Reserving.Reservation] => 
 Requesting/respond: [request: RequestId; error: Conflict] => []
 ```
 
-RequestId 标识请求；Conflict 映射 Reserving 的同名结果。每个请求只选一个 slot，根 completion 创建新 flow，后续调用继承它。
+RequestId 标识这一次请求。Conflict 就是 Reserving 的 Conflict。每个请求只选一个 slot。这次请求的完成开启一个 flow，后面的调用沿用它。
 
 ```text
 # app Reservations
@@ -109,12 +109,12 @@ then {
 }
 ```
 
-accepted/rejected 以输出字段区别结果，并共同匹配同一 flow 下的用户/时段；本例不等待 Availability 的 query 完成。`_find` 空集不是 error，多候选也不能直接展开成多次预约。查询 offered 不保证写入时仍可用，撤下/预约竞态必须另定策略。
+accepted 与 rejected 用输出字段区分结果，并且必须同时匹配同一次请求里的用户和时段。本例不等待 `_find`。空集不是 error，多个时段也不能展开成多次预约。查询到的 offered 在写入时可能已变，撤下与预约的竞态另定。
 
 ## 图、子集与未决
 
-同步图：Requesting/reserve → reserve → Reserving/reserve；accepted/rejected 各有两个合取输入，输出 Requesting/respond；查询另标读取边。
+同步图：Requesting/reserve → reserve → Reserving/reserve。accepted 与 rejected 各有两个必须同时成立的 when，然后调用 Requesting/respond。查询标成读取，不是完成。
 
-只预约已知时段的产品可以单用 Reserving；要求发现时段才可预约时，产品可声明 Reserving → Availability。类型实例化不是产品依赖的充分证据。
+已知时段可以直接预约时，产品只需 Reserving。必须先发现时段时，写 Reserving → Availability。include 里的类型参数不是这条依赖的证据。
 
-未决：身份认证、时段/场所归属、撤下/预约竞态、预约显示、到场条件、取消/兑现入口及运行时故障策略。三条规则只覆盖选定时段的成功/冲突片段，不能宣称完整产品已通过验证。
+未决：认证、时段属于哪个场所、撤下与预约的竞态、预约如何显示、到场条件、取消和兑现的入口、故障后怎么处理。这三条规则只覆盖选定一个时段后的成功或冲突。

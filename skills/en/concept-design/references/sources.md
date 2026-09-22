@@ -1,20 +1,22 @@
-# Sources and Scope
+# Sources
 
-Read this to verify terminology or provenance. The workflow and fixed Markdown format are repository
-adaptations.
+Read this to check where a term comes from. The workflow, alignment artifacts, and fixed Markdown
+are repository adaptations.
 
-| Primary source                                                                                                                                                                                                                                       | Adopted knowledge                                                                               |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [Concept Purposes and Synchronization](https://essenceofsoftware.com/posts/distillation/)                                                                                                                                                            | applications may have several purposes; each concept has its own; synchronization composes them |
-| [Jackson 2015, abstract and sections 8–9](https://groups.csail.mit.edu/sdg/pubs/2015/concept-essay.pdf)                                                                                                                                              | purpose plus OP forms a reviewable argument; OP is a prototype scenario; a misfit can refute it |
-| [Beyond Objects](https://arxiv.org/abs/2606.27258) and [WYSIWID](https://arxiv.org/abs/2508.14511)                                                                                                                                                   | current concept sections, queries, and causal synchronization semantics                         |
-| [Qualification](https://essenceofsoftware.com/tutorials/concept-basics/criteria/), [composition](https://essenceofsoftware.com/tutorials/concept-basics/sync/), and [dependency](https://essenceofsoftware.com/tutorials/concept-basics/dependency/) | qualification, under/over-synchronization, intrinsic/extrinsic dependencies, product subsets    |
-| [Design moves](https://essenceofsoftware.com/posts/design-moves/) and [course rubric](https://61040-fa25.github.io/resources/concept-rubric)                                                                                                         | three adjustment pairs and application-context notes                                            |
+| Source | Adopted |
+| --- | --- |
+| [Concept Purposes / Synchronization](https://essenceofsoftware.com/posts/distillation/) | An application may have several purposes. Each concept still has its own. Synchronization makes concepts cooperate. |
+| [Jackson 2015, abstract, §8–9](https://groups.csail.mit.edu/sdg/pubs/2015/concept-essay.pdf) | Purpose and OP form a reviewable argument. The OP is a prototype scenario. A misfit can refute fulfillment of the purpose. |
+| [Beyond Objects §13](https://arxiv.org/abs/2606.27258) / [WYSIWID §4](https://arxiv.org/abs/2508.14511) | Concept sections and causal sync. Do not mix in the book's older transactional sync. |
+| [Qualification](https://essenceofsoftware.com/tutorials/concept-basics/criteria/) / [composition](https://essenceofsoftware.com/tutorials/concept-basics/sync/) / [dependency](https://essenceofsoftware.com/tutorials/concept-basics/dependency/) | Eight criteria, under- and over-synchronization, intrinsic/extrinsic dependency, product subsets. |
+| [Design moves](https://essenceofsoftware.com/posts/design-moves/) / [course rubric](https://61040-fa25.github.io/resources/concept-rubric) | Three move pairs. Notes record only application context. |
 
-The two-level argument check, optional query-interface wrapper, and rule-node diagram are repository
-conventions. Papers permit reading exposed abstract state. An OP is not a complete specification,
-and a sound argument is not a formal proof of all behavior.
+A concept specification is the name, purpose, state, actions, and OP. Queries and Requesting are
+labeled extensions, not required sections of WYSIWID v1. The wording is in `spec-format.md`.
 
-The format baseline is WYSIWID v1 sections 4–6, verified 2026-09-14. Named records, result cases,
-state reads, and synchronization semantics are consolidated in `spec-format.md`. Treat legacy
-queries and Requesting as labeled extensions rather than v1 requirements.
+The two arguments, the rule-node synchronization diagram, and the three alignment sections are
+repository conventions. An OP is not a complete specification. A sound argument is not a proof of
+every behavior.
+
+The three pairs are split/merge, unify/specialize, and tighten/loosen. Tighten matches
+under-synchronization. Loosen matches over-synchronization.

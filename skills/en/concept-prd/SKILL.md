@@ -19,11 +19,16 @@ traceability? Run only on explicit `$concept-prd` invocation. Input includes con
 synchronizations, dependencies, exclusions, and open decisions. Route model gaps to `concept-design`
 and code realization to `concept-implementation`.
 
-A confirmed model is the authorized set of purposes, behaviors, and choices. Its authoritative
-specifications are the single persisted home: CONCEPT for concepts, SYNCS for coordination, and the
-overall PRD for global relations. Preserve both design arguments—contract → OP → concept purpose,
-and selection/sync → application scenario → application purpose—and their assumptions. Acceptance
-scenarios derive from OPs or behavioral contracts and never invent requirements.
+## Transcription Principles
+
+CONCEPT owns the confirmed concept contract, SYNCS the coordination, and the overall PRD global
+relations. Keep one authoritative location per element. Preserve both arguments and assumptions:
+contract → OP → concept purpose; selection/sync → application scenario → application purpose.
+Derive acceptance with provenance; complete files cannot repair model gaps.
+
+**Synchronization may restrict behavior, never extend the contract**: record application restrictions
+in SYNCS/the overall PRD while preserving the concept's allowed behavior. Flag contract-violating
+coordination as a model gap for design revision.
 
 ## Transcribe
 

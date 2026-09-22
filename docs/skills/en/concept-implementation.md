@@ -9,3 +9,9 @@ composition layer, with colocated specifications and behavioral and dependency t
 ```bash
 npx skills add ontology-of-everything/concept-skills --skill concept-implementation
 ```
+
+## 2026-09-19 Revision
+
+Synchronization may restrict behavior, never extend a concept contract. Check each concept’s actions,
+state changes, and outputs in composed executions; assess purpose failure separately. Condensed
+repeated definitions and guidance.

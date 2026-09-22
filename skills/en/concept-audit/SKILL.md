@@ -31,8 +31,8 @@ Review five dimensions:
 - **Fitness:** behavior meets the real need under stated assumptions.
 - **Independence:** concept definitions do not depend on other concepts; this repository also
   requires concept modules not to reference one another.
-- **Composition:** synchronizations coordinate public actions without expanding or corrupting
-  allowed concept behavior.
+- **Composition:** **synchronization may restrict behavior, never extend the contract**. Restriction
+  alone is not a violation; remaining scenarios must still meet the need.
 - **Drift:** implementation differs from a confirmed behavioral contract; distinguish omissions from
   contradictions.
 - **Product subsets:** each subset preserves its purpose, entry points, required synchronizations,
@@ -56,8 +56,8 @@ is not evidence of absence.
    state, private access, and DTO/protocol leakage. Same-named local type parameters are not
    semantic dependencies.
 4. **Composition** — Use `references/composition-checklist.md` to trace each action and
-   synchronization from the application purpose. Check completion events, bindings, isolation,
-   failure, replay, loops, under-synchronization, and over-synchronization.
+   synchronization from the application purpose. Check each concept's composed behavior sequences,
+   then completions, bindings, isolation, failure, replay, loops, and under-/over-synchronization.
 5. **Dependencies and subsets** — Check product inclusion dependencies separately from code
    restrictions. A product graph need not mirror a code graph.
 6. **Aggregate** — Cross-check includes, actions and queries, parameters, outputs, bindings, and

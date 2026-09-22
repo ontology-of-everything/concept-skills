@@ -1,5 +1,10 @@
 # concept-prd Changelog
 
+## 0.7.1 - 2026-09-19
+
+- Make synchronization restriction explicit: each composed concept trace must satisfy its own contract; distinguish restriction from purpose failure.
+- Condense repeated entrypoint definitions and checks; keep shared contracts and locales aligned.
+
 ## 0.7.0 - 2026-09-14
 
 - 按共享格式转录概念和 sync；文件编排与语法分离，订位例保留分支、绑定及未决。

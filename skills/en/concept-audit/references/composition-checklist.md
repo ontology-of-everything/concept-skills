@@ -8,7 +8,7 @@ or declared queries while physical storage stays private; see `spec-format.md`.
 
 | Category                      | Required evidence                                                                | Default | Route                                        |
 | ----------------------------- | -------------------------------------------------------------------------------- | ------- | -------------------------------------------- |
-| Behavior violation            | call is outside allowed concept behavior or bypasses preconditions/private state | High    | implementation; design if contract is absent |
+| Behavior violation            | composed action/state/output sequence violates its concept contract              | High    | implementation; design if contract is absent |
 | Implicit composition          | one concept directly calls another, including public interfaces                  | High    | implementation                               |
 | Error/response gap            | reachable result has no strategy, or a request hangs/crosses requests            | High    | design/implementation                        |
 | Binding error                 | `then` uses an unbound/future output, or query cardinality is mishandled         | High    | design/implementation                        |

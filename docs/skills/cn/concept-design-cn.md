@@ -4,12 +4,12 @@
 
 > 本文是给人看的中文说明，**不是** `npx skills add` 安装包内容。Agent 加载 [`skills/concept-design-cn/SKILL.md`](../../../skills/cn/concept-design-cn/SKILL.md)。
 
-**Version:** 0.8.0 · Changelog:
+**Version:** 0.8.2 · Changelog:
 [qa/concept-design-cn/CHANGELOG.md](../../../qa/cn/concept-design-cn/CHANGELOG.md)
 
 ## 一句话
 
-仅显式调用 · 设计独立概念与同步组合；用 OP 检验概念目的，用端到端场景检验应用目的，以事实和反例审查论证
+仅显式调用 · 和用户一起完成概念设计；先确认对齐，再写设计记录
 
 ## 启用方式
 
@@ -27,17 +27,18 @@
 2. 定义各概念的 purpose、OP、state/actions，区分概念目的与整体应用目的。
 3. 审查契约是否支持 OP、OP 是否兑现概念目的；用事实和反例修正边界。
 4. 选择并同步概念，以端到端场景检查应用目的；组合保持概念行为，分别画同步图与产品依赖图。
-5. 保留必要前提、排除与未决，按用户授权交付模型或继续文档/实现。
+5. 和用户确认对齐三节后写入设计记录；待确认项留在排除与未决，按授权继续文档或实现。
 
 ## 安装载荷
 
 ```text
 skills/concept-design-cn/
-├── SKILL.md                       # 焦点 / 定义与关系 / 执行 / 完成条件 / 参考
+├── SKILL.md                       # 原则 / 流程 / 产物索引 / 标准索引 / 完成标准
 ├── agents/openai.yaml
 └── references/
+    ├── artifacts.md               # 对齐三节与设计记录的字段
     ├── spec-format.md             # 共享规格契约与模板（独立安装副本）
-    ├── criteria.md                # 论证、资格与边界判断
+    ├── criteria.md                # 概念定义与八项资格的决策依据
     ├── sync-notation.md           # 应用场景、sync 语义、图与产品依赖
     ├── example-reserving.md       # 填好的 Beyond Objects 餐厅订位例
     └── sources.md                 # 作者原文与取用原则
@@ -80,3 +81,7 @@ npx skills add ./skills/concept-design-cn \
 统一概念与 sync 规格契约，明确具名签名、状态关系、输出分支与旧方言迁移；精简入口和重复模板。
 
 [统一规格与模板](../../../skills/cn/concept-design-cn/references/spec-format.md) 以 WYSIWID v1 §4–6 为基线，区分论文语义、本地扩展与旧格式兼容。
+
+## 2026-09-19 修订
+
+同步可收窄行为，不可扩展概念契约；逐概念核对组合中的动作、状态变化与输出序列，并另查目的是否落空。精简重复定义与指导。

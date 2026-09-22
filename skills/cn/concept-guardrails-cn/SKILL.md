@@ -6,7 +6,7 @@ metadata:
   language: zh-CN
   translation_of: concept-guardrails
   author: ontology-of-everything
-  version: "0.32.0"
+  version: "0.32.1"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills/tree/main/skills/cn/concept-guardrails-cn
 ---
@@ -15,19 +15,15 @@ metadata:
 
 焦点问题：现有规格是否清楚表达模块契约，并与事实及派生地图对应？仅在显式调用 `$concept-guardrails-cn` 时运行。流程改编自 [wyx v0.26.0](https://github.com/jlifyio/wyx)（MIT，见 `LICENSE.upstream`）；规格用本仓 Jackson 方言，runtime 保留上游脚本。
 
-## 概念与关系
+## 规格权威
 
-**Concept** 是为单一目的设计的行为单元；规格声明契约，事实支撑判断，地图呈现派生关系。
+- **CONCEPT.md**：purpose/state/actions/OP 定义单一目的的行为单元；notes 记录应用背景。
+- **SYNCS.md**：app/include/sync 记录应用协调，when/where/then 定义规则，`// flow:` 分组。
+- **PIPELINE.md**：记录来源、阶段、输出、不变量、触发与 data boundary；不替代 sync。
+- **ARCHITECTURE.md**：从规格派生导航；产品依赖来自总体 PRD，不从同步边推导。
+- **回填/漂移**：前者从实现重建可证实契约，后者对比契约与实现；都不证明目的适切性。
 
-| 对象 | 契约与权威关系 |
-| --- | --- |
-| CONCEPT.md | purpose/state/actions/operational principle 定义概念；OP 解释目的兑现，行为契约支持 OP；可选 notes 记录应用背景 |
-| SYNCS.md | app/include/sync 记录跨概念协调，服务总体 PRD 的应用目的与场景；when/where/then 定义规则，`// flow:` 组织它们 |
-| PIPELINE.md | 来源、阶段、输出、不变量、触发与 data boundary 记录数据质量；属本仓补充，不替代 sync |
-| ARCHITECTURE.md | 从规格派生导航地图；产品依赖来自总体 PRD，不从同步边推导 |
-| 回填 / 漂移 | 回填从实现重建可证实的契约；漂移对比契约与实现，二者都不能证明目的适切性 |
-
-核心命题：规格覆盖不推出设计正确；地图准确不推出代码符合规格。推定目的须标为推断，不能用理想 OP 合理化当前缺陷。
+**同步可收窄行为，不可扩展契约**：回填须标出违约协调，不能把它转录为合法规则。规格覆盖不证明设计正确，地图准确不证明实现符合规格；推定目的标为推断，不能用理想 OP 合理化缺陷。
 
 ## 模式与场景
 
@@ -49,7 +45,7 @@ metadata:
 - 先读规格、实现和项目约定。回填标出现状缺陷；已确认的新行为先改规格再改实现。
 - 写入前呈现草案/diff；已有创建/修复授权直接完成，只有未决模型取舍或超出授权才确认。发现模式只列候选；只读审计不写历史或修复。
 - 每概念一份权威规格；所属 PIPELINE 同目录，跨概念管道放组合层；每个 sync 包一份 SYNCS，按 flow 归组。规格变化时提示已有地图需重建，已授权则完成。
-- 生成/读取 CONCEPT、SYNCS 或核对管道接口前，读 [规格契约](references/spec-format.md)：四节独立、具名输入/输出、case 匹配及查询绑定统一按此核对。新写用 operational principle，读取兼容 principle 与旧签名。
+- 生成/读取 CONCEPT、SYNCS 或核对管道接口前，读 [规格契约](references/spec-format.md)，统一核对行为、接口与方言兼容。
 - wyx 旧 interactions/dependencies/known coupling/dispatching/coordination graph/sync: 段标待迁移，不混读；授权迁移时一起重写 CONCEPT/SYNCS/PIPELINE，保留触发、绑定、效果与失败语义。
 
 ## 完成条件
