@@ -4,7 +4,7 @@
 
 > 本文是给人看的中文说明，**不是** `npx skills add` 安装包内容。Agent 加载 [`skills/concept-implementation-cn/SKILL.md`](../../../skills/cn/concept-implementation-cn/SKILL.md)。
 
-**Version:** 0.8.1 · Changelog:
+**Version:** 0.9.0 · Changelog:
 [qa/concept-implementation-cn/CHANGELOG.md](../../../qa/cn/concept-implementation-cn/CHANGELOG.md)
 
 ## 一句话
@@ -18,13 +18,13 @@
 ## 适用场景
 
 - 概念模型已确认，需要代码结构而不是再讨论边界。
-- 目标是模块单体 + 端口-适配器，而不是按页面或表结构拆服务。
+- 目标是模块单体，按动作与状态关系划分概念；端口-适配器按需采用。
 - 语言细节按需加载：Rust、Java/Spring Modulith、TypeScript。
 
 ## 方法
 
 1. 读模型、概念/应用目的与项目事实；模型缺陷回 design，转录错误回 prd，代码违约在本技能修复。
-2. 概念模块互不引用；syncs 承担业务协调，组合根装配具体实现，接口适配器执行已确认入口策略。
+2. 概念模块互不引用；syncs 以具名规则承担业务协调；Requesting 或边缘适配器实现已确认入口策略。
 3. mediator 或规则引擎保持因果、绑定及失败契约；需要响应时明确结果和请求关联。
 4. 规格与代码共存；概念 OP、应用端到端场景及不变量分别验证，架构看护进入 CI。
 5. 仅有工程痛点时分组/拆包；验证产品子集的目的、入口、剩余规则与构建支持。
@@ -33,11 +33,10 @@
 
 ```text
 skills/concept-implementation-cn/
-├── SKILL.md                     # 焦点 / 定义与关系 / 执行 / 完成条件 / 参考
+├── SKILL.md                     # 概念 / 约束 / 实现
 ├── agents/openai.yaml
 └── references/
     ├── spec-format.md             # 共享规格契约与模板（独立安装副本）
-    ├── composition-layer.md     # sync 落地路线、时机与错误隔离、接口层、失败路径、规格共存
     ├── scaling.md               # 概念分组与 syncs 拆包（十余个概念起）
     ├── rust.md
     ├── java-spring.md
@@ -66,6 +65,10 @@ npx skills add ./skills/concept-implementation-cn \
 - [skills.sh](https://skills.sh/ontology-of-everything/concept-skills/concept-implementation-cn)
 - [SkillsMP](https://skillsmp.com/) — repo topics `claude-skills`, `claude-code-skill`
 - [ClawHub](https://clawhub.ai/agenticweb4/concept-implementation-cn)
+
+## 2026-09-25 修订
+
+同步规则自身保持模块化；组合层指导合入 SKILL.md。按 Jackson 2026 年论文区分动作、查询与请求，明确工程实现选择。
 
 ## 2026-09-07 修订
 

@@ -1,5 +1,7 @@
 # Java / Spring Modulith
 
+以下为按需采用的工程映射；独立包、port/adapter、分层与协议位置不是概念理论的硬性要求。Requesting 可在自身实现中封装协议。
+
 一个概念对应一个 application module；默认主包的直接子包被识别为模块。推荐 `concept/actions/ports/adapters` 的内部组织，`syncs` 组合、`api` 处理协议。类型参数用泛型/不透明 ID，避免引用其他概念实体。
 
 ## 显式验证独立性
@@ -10,7 +12,7 @@
 
 ## 组合与测试
 
-mediator 放 syncs。使用 `@Transactional` 前遵守组合参考中的提交/完成事件契约；单库并不保证外部副作用可回滚。
+mediator 放 syncs，以具名函数/规则对象保留可独立验证的规则边界，按[技能正文](../SKILL.md)衔接规则。使用 `@Transactional` 前遵守[技能正文](../SKILL.md)中的提交/完成事件契约；单库并不保证外部副作用可回滚。
 
 事件监听只实现它实际支持的规则；概念发布自己的完成事件，syncs 消费并调用目标动作。`@ApplicationModuleListener` 与事件发布记录可辅助异步可靠性，但多事件合取、flow 关联、查询绑定和业务幂等需明确实现，不能把“事件即 sync”当完整语义。
 

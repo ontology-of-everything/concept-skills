@@ -1,7 +1,7 @@
 # Concept Implementation
 
-`concept-implementation` maps a confirmed concept model to independent modules and a synchronization
-composition layer, with colocated specifications and behavioral and dependency tests.
+`concept-implementation` maps a confirmed concept model to independent modules and named, granular
+synchronization rules, with colocated specifications and behavioral and dependency tests.
 
 - Skill: [SKILL.md](../../../skills/en/concept-implementation/SKILL.md)
 - Chinese: [`concept-implementation-cn`](concept-implementation-cn.md)
@@ -9,6 +9,12 @@ composition layer, with colocated specifications and behavioral and dependency t
 ```bash
 npx skills add ontology-of-everything/concept-skills --skill concept-implementation
 ```
+
+## 2026-09-25 Revision
+
+Synchronization rules remain independently identifiable and verifiable. Composition guidance now
+lives in SKILL.md, with action/query/request distinctions and engineering choices checked against
+Jackson’s 2026 papers.
 
 ## 2026-09-19 Revision
 

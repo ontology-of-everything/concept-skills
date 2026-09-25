@@ -1,5 +1,7 @@
 # TypeScript 落地
 
+以下为按需采用的工程映射；独立包、port/adapter、分层与协议位置不是概念理论的硬性要求。Requesting 可在自身实现中封装协议。
+
 ## 工程骨架
 
 pnpm workspace（monorepo），一个 concept 一个包：
@@ -9,7 +11,7 @@ packages/
   concepts/
     user/            # 独立包：src/domain.ts, actions.ts, ports.ts, adapters/
     password/
-  syncs/             # 组合层：每个 flow 一个模块
+  syncs/             # 组合层：具名规则，可按 flow 分组
   app/               # 装配、DTO/协议适配；路由 → syncs
   shared-kernel/     # 仅基础类型
 ```
@@ -20,7 +22,7 @@ packages/
 
 ## Sync 两种落地
 
-- **过程式**：syncs 包中每 flow 一个模块，async mediator 保留因果依赖及允许并发，不将无序规则任意串行化。
+- **过程式**：syncs 包中以具名函数/规则对象保留规则边界，可按 flow 分组；async mediator 按[技能正文](../SKILL.md)衔接规则，保留因果依赖及允许并发。
 - **声明式**：候选引擎包括社区 [LegibleSync](https://github.com/mastepanoski/legiblesync)。采用前核验实际版本与接口，验证完成事件匹配、多 when、where 绑定、flow 隔离与持久化，不依赖未经核对的 API 示例。
 
 ## 架构看护

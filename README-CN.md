@@ -46,7 +46,7 @@ English: [README.md](README.md)。
 | -------------------------------------------------------------------------- | ------ | ---------------------------------- |
 | [`concept-design-cn`](docs/skills/cn/concept-design-cn.md)                 | 0.8.2 | 设计独立概念与同步组合             |
 | [`concept-prd-cn`](docs/skills/cn/concept-prd-cn.md)                       | 0.7.1 | 转录确认模型并保留验收追溯         |
-| [`concept-implementation-cn`](docs/skills/cn/concept-implementation-cn.md) | 0.8.1 | 实现独立概念模块与同步组合         |
+| [`concept-implementation-cn`](docs/skills/cn/concept-implementation-cn.md) | 0.9.0 | 实现独立概念模块与具名同步规则         |
 | [`concept-audit-cn`](docs/skills/cn/concept-audit-cn.md)                   | 0.7.1 | 只读审查设计论证、漂移和实现符合性 |
 | [`concept-refine-cn`](docs/skills/cn/concept-refine-cn.md) | 0.1.0 | 以证据和最小必要改动精炼概念与同步 |
 | [`concept-guardrails-cn`](docs/skills/cn/concept-guardrails-cn.md)         | 0.32.1 | 创建、审查和映射共存规格           |

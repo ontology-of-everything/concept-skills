@@ -1,5 +1,10 @@
 # concept-implementation Changelog
 
+## 0.9.0 - 2026-09-25
+
+- Keep synchronization rules independently identifiable and verifiable; distinguish actions, queries, requests, and completions using the latest Jackson papers.
+- Consolidate composition guidance into the skill entrypoint and clarify which module layout and reliability mechanisms are repository choices.
+
 ## 0.8.1 - 2026-09-19
 
 - Make synchronization restriction explicit: each composed concept trace must satisfy its own contract; distinguish restriction from purpose failure.

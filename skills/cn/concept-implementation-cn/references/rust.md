@@ -1,12 +1,14 @@
 # Rust 落地
 
+以下为按需采用的工程映射；独立包、port/adapter、分层与协议位置不是概念理论的硬性要求。Requesting 可在自身实现中封装协议。
+
 ## 工程骨架
 
 cargo workspace，一个 concept 一个 crate：
 
 ```text
 app/                # 组合根：唯一命名具体 adapter 的地方，装配后接路由
-syncs/              # 组合层：每个 flow 一个模块
+syncs/              # 组合层：具名规则，可按 flow 分组
 concepts/
   user/             # 一个 concept 一个 crate
   password/
@@ -32,11 +34,11 @@ port 即 trait、adapter 实现 trait、依赖只指向 domain；用泛型做零
 
 ## 错误与身份
 
-`Password<U>` 的 U 是泛型身份，不引用 User 概念类型。公开方法可用 `Result` 表达已声明输出，但 mediator 中 `users.register(...)?; passwords.set(...)?` 可能留下只注册用户的部分状态：必须按已确认契约补偿/重试或采用适用事务，不能用 `?` 当作完整注册流程。
+`Password<U>` 的 U 是泛型身份，不引用 User 概念类型。公开方法可用 `Result` 表达已声明输出，但 mediator 中 `users.register(...)?; passwords.set(...)?` 可能留下只注册用户的部分状态：须按已确认契约处理部分完成（响应、重试、补偿或有意保留），或采用适用事务，不能用 `?` 当作完整注册流程。
 
 ## 接口层落点
 
-app 内 `api` 模块（或独立 interfaces crate）：axum/tonic 路由只调 syncs 函数；serde DTO、OpenAPI/proto 契约只存在于此层，概念 crate 不依赖任何协议库。
+采用边缘适配器时，app 内 `api` 模块（或独立 interfaces crate）：axum/tonic 路由只调 syncs 函数；serde DTO、OpenAPI/proto 契约只存在于此层，概念 crate 不依赖任何协议库。
 
 ## 架构看护
 
