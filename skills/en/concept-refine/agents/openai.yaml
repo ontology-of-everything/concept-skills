@@ -1,0 +1,4 @@
+interface:
+  display_name: "Concept Refinement"
+  short_description: "Evidence-led concept refinement with minimal changes"
+  default_prompt: "Use $concept-refine to refine this concept design with evidence, minimal necessary changes, and scenario verification."

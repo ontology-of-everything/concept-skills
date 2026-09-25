@@ -1,0 +1,34 @@
+{
+  "skill_name": "concept-refine",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use $concept-refine. Mute controls privacy and speaking permission. Users want privacy while retaining a granted turn. Review only.",
+      "expected_output": "Separate privacy from permission using behavioral evidence.; Compare split with synchronization changes; retain no-change alternative.; Do not modify files.",
+      "assertions": [
+        "Separate privacy from permission using behavioral evidence.",
+        "Compare split with synchronization changes; retain no-change alternative.",
+        "Do not modify files."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Use $concept-refine. CardPayment supports only cards. This checkout intentionally accepts only cards; all required cases pass. Should we generalize?",
+      "expected_output": "Do not label specialization a defect without an unmet need.; Recommend no change unless new evidence warrants it.",
+      "assertions": [
+        "Do not label specialization a defect without an unmet need.",
+        "Recommend no change unless new evidence warrants it."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Use $concept-refine. A completed refund leaves loyalty points intact. Existing deductPoints action preserves balance invariants. Fix is authorized.",
+      "expected_output": "Investigate missing synchronization and failure/replay behavior.; Do not expand concept contracts through synchronization.; Verify the end-to-end refund outcome; do not seek settled permission again.",
+      "assertions": [
+        "Investigate missing synchronization and failure/replay behavior.",
+        "Do not expand concept contracts through synchronization.",
+        "Verify the end-to-end refund outcome; do not seek settled permission again."
+      ]
+    }
+  ]
+}

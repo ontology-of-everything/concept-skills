@@ -1,0 +1,4 @@
+interface:
+  display_name: "概念精炼"
+  short_description: "用证据定位概念与同步问题，以最小必要改动兑现目的并验证整体行为"
+  default_prompt: "使用 $concept-refine-cn，以证据和最小必要改动精炼当前概念设计，并验证局部与端到端场景。"

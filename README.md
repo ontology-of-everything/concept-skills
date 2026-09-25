@@ -4,8 +4,8 @@
 
 > Name the meaning first — then write code, run a CLI, or draft a spec.
 
-[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides seven
-capabilities as 14 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
+[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides eight
+capabilities as 16 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
 and concept design. English uses the base name;
 Simplified Chinese adds `-cn`.
 
@@ -23,7 +23,7 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **1.3.0**. The `concept-*` family is explicit-only; `concept-guardrails` modes
+Current release is **1.3.0**. Existing `concept-*` skills are explicit-only; `concept-refine` also supports automatic discovery; `concept-guardrails` modes
 consume Jackson notation only.
 
 ## Table of Contents
@@ -54,6 +54,7 @@ structures, and the complexity counts.
 | [`concept-prd`](docs/skills/en/concept-prd.md)                       | [`concept-prd-cn`](docs/skills/cn/concept-prd-cn.md)                       | Transcribes confirmed models into traceable PRDs and specifications.        |
 | [`concept-implementation`](docs/skills/en/concept-implementation.md) | [`concept-implementation-cn`](docs/skills/cn/concept-implementation-cn.md) | Implements independent modules and synchronization composition.             |
 | [`concept-audit`](docs/skills/en/concept-audit.md)                   | [`concept-audit-cn`](docs/skills/cn/concept-audit-cn.md)                   | Audits design arguments, drift, composition, and optional code conformance. |
+| [`concept-refine`](docs/skills/en/concept-refine.md) | [`concept-refine-cn`](docs/skills/cn/concept-refine-cn.md) | Evidence-led refinement with minimal necessary changes |
 | [`concept-guardrails`](docs/skills/en/concept-guardrails.md)         | [`concept-guardrails-cn`](docs/skills/cn/concept-guardrails-cn.md)         | Creates, audits, compares, and maps colocated specifications.               |
 
 ### Ontology and semantics

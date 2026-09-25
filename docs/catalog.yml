@@ -314,3 +314,29 @@ skills:
   upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/concept-guardrails/LICENSE.upstream)
   language: zh-CN
   translation_of: concept-guardrails
+- id: concept-refine
+  path: skills/en/concept-refine
+  qa: qa/en/concept-refine
+  display_name: Concept Refinement
+  display_name_zh: 概念精炼
+  domain: concept-design
+  summary: Evidence-led concept refinement with minimal necessary changes.
+  summary_zh: 以证据和最小必要改动精炼概念与同步。
+  version: 0.1.0
+  agents: [cursor, claude-code, codex, openclaw]
+  distribution: direct-skill
+  language: en
+  translation_of: concept-refine-cn
+- id: concept-refine-cn
+  path: skills/cn/concept-refine-cn
+  qa: qa/cn/concept-refine-cn
+  display_name: 概念精炼
+  display_name_zh: 概念精炼
+  domain: concept-design
+  summary: Evidence-led concept refinement with minimal necessary changes.
+  summary_zh: 以证据和最小必要改动精炼概念与同步。
+  version: 0.1.0
+  agents: [cursor, claude-code, codex, openclaw]
+  distribution: direct-skill
+  language: zh-CN
+  translation_of: concept-refine
