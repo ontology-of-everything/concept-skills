@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.4
+
+- Keep the controlled-experiment case and add the user's sales example, contrasting concept placement with copying a “three key pitfalls” outline.
+
 ## 0.2.3
 
 - State the skill's purpose and use a controlled-experiment example. Include verifiable positive and negative cases in output when sources provide them; mark missing cases rather than inventing them.

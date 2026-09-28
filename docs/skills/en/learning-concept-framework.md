@@ -43,7 +43,7 @@ against the goal and correctness against evidence and counterexamples. Prefer
 classic positive and negative cases with verifiable sources and comparable goals
 and conditions; explain material differences before drawing a comparison.
 
-## Classic case: controlled experiment
+## Classic framework example: controlled experiment
 
 “Learn plant growth” names a topic; “test whether a fertilizer increases
 seedling growth” is a testable goal. This is a causal question, so a
@@ -65,6 +65,30 @@ Goal: test whether a fertilizer affects seedling growth
    └─ Relation: compare outcomes to test the fertilizer's effect [needs data]
 ```
 
+## User example: sales
+
+The user's source idea contrasts a model tree with copying an author's “three
+key pitfalls” as headings. If the goal is to explain why customers buy or
+decline, value, trust, and competition can be **candidate** concepts. Their
+coverage and relationships still need evidence and counterexamples.
+
+```text
+Goal: explain buying or declining and choose a next action
+└─ Qualification / key framework: value, trust, and competition affect choice
+   [candidate]
+   ├─ Value: what the customer gains and gives up
+   │  └─ Place a source pitfall here if it concerns value [source, reason]
+   ├─ Trust: judgments about promises
+   │  └─ Place a source pitfall here if it concerns trust [source, reason]
+   ├─ Competition: considered alternatives
+   │  └─ Place a source pitfall here if it concerns alternatives [source, reason]
+   └─ Relations: compare value with alternatives; trust affects acceptance
+      of promises [needs verification]
+```
+
+The three actual pitfalls were not supplied; these leaves show placement
+rules, not fabricated source claims.
+
 ## Positive and negative judgments
 
 This table contrasts methods for building the tree; it is not evidence that
@@ -75,3 +99,7 @@ the fertilizer works.
 | Where the trunk comes from | Derive treatment, control, controlled conditions, and outcome from the causal goal. | Use planting steps as top-level branches without a way to test the fertilizer. |
 | Whether a model fits | Explain why each factor enables comparison and check supplied material for support. | Apply a familiar model without comparable groups or an outcome measure. |
 | Handling new knowledge | Place advice and measurements by role; revise the design or conclusion when light differs between groups. | Claim an effect without data or ignore counterexamples. |
+
+The sales example adds a second check: placing sourced pitfalls under value,
+trust, or competition is positive; using “three key pitfalls” as the trunk
+repeats the source outline.

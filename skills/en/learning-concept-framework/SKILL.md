@@ -7,7 +7,7 @@ description: >-
 metadata:
   language: en
   translation_of: learning-concept-framework-cn
-  version: "0.2.3"
+  version: "0.2.4"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills/tree/main/skills/en/learning-concept-framework
 ---
@@ -31,6 +31,9 @@ question. Compare treated and control plants under matching light and water;
 measure growth. Without data, leave the result open.
 **Bad**: use planting steps as the trunk, claim an effect without a control and
 outcome measure, or force unplaced knowledge into existing branches.
+**Sales example**: if the goal is to explain purchasing, value, trust, and
+competition are candidate concepts. Place an author's “three key pitfalls” by
+their role. Using the three pitfalls as the trunk only repeats the source outline.
 
 Write `learning-framework-<topic>.md` as **goal → qualification/key framework →
 concepts and relations → sourced knowledge**. Every branch must contribute to
