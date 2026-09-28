@@ -7,12 +7,15 @@ description: >-
 metadata:
   language: en
   translation_of: learning-concept-framework-cn
-  version: "0.2.2"
+  version: "0.2.3"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills/tree/main/skills/en/learning-concept-framework
 ---
 
 # Learning with Conceptual Frameworks
+
+**Purpose**: turn a learning goal into a testable key framework so new material
+can be placed, challenged, and reused in a model tree.
 
 1. **Goal**: state the learner's problem and success criterion. If only sources
    are supplied, infer a provisional goal and label it.
@@ -23,11 +26,15 @@ metadata:
 3. **Absorb**: place methods, pitfalls, and cases under concepts by their role;
    cite sources and placement reasons. Counterevidence revises the framework.
 
-**Good**: to explain a purchase decision, treat value, trust, and competition
-as candidate factors; test each role before placing source pitfalls beneath it.
-**Bad**: use an author's “three pitfalls” as the trunk, apply a familiar model
-without explaining its fit, or force unplaced knowledge into existing branches.
+**Good**: to test whether fertilizer increases growth, treat it as a causal
+question. Compare treated and control plants under matching light and water;
+measure growth. Without data, leave the result open.
+**Bad**: use planting steps as the trunk, claim an effect without a control and
+outcome measure, or force unplaced knowledge into existing branches.
 
 Write `learning-framework-<topic>.md` as **goal → qualification/key framework →
 concepts and relations → sourced knowledge**. Every branch must contribute to
-the goal; label unsupported judgments as inferences or gaps.
+the goal; label unsupported judgments as inferences or gaps. When sources offer
+verifiable classic positive and negative cases, place them under relevant concepts
+with outcomes, mechanisms, sources, and limits; otherwise mark cases to find,
+without inventing them.

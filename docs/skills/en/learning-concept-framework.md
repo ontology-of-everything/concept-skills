@@ -1,12 +1,12 @@
 # Learning with Conceptual Frameworks
 
-Build a model tree around the learner's goal. Qualifying the goal establishes the
-key framework: the factors and relationships needed to achieve it. Place methods,
-pitfalls, and cases from sources beneath that framework. Supports automatic discovery
+Purpose: turn the learner's goal into a testable key framework so new material
+can be placed by concept, challenge the model, and build a reusable knowledge tree.
+Goal qualification establishes that framework. Supports automatic discovery
 and explicit invocation.
 
 ```text
-$learning-concept-framework Help me learn sales through an established framework and integrate these notes.
+$learning-concept-framework I want to test whether a fertilizer improves seedling growth; organize these materials as a model tree.
 ```
 
 [SKILL.md](../../../skills/en/learning-concept-framework/SKILL.md) · [QA](../../../qa/en/learning-concept-framework/README.md)
@@ -26,7 +26,7 @@ Select by the requested outcome, not the word “concept”:
 
 ## Deliverable
 
-Deliver `learning-framework-<topic>.md` with four traceable levels:
+Deliver `learning-framework-<topic>.md` with four traceable levels and cases when sources allow:
 
 | Part | Required answers |
 | --- | --- |
@@ -34,46 +34,44 @@ Deliver `learning-framework-<topic>.md` with four traceable levels:
 | Goal qualification / key framework | Which factors and relationships achieve the goal? Why this framework? How do supplied sources support or challenge it, and does it cover the goal? |
 | Concepts and relations | What role does each concept play, and how do they affect each other? Cite source support or mark inference. |
 | Sourced knowledge | Which concept receives each method, pitfall, or case, why, and from which source? |
+| Classic positive and negative cases, when available | Which case succeeded or failed, through which mechanism, under which concept and limits? Cite sources; list missing cases to find. |
 
 Reuse a source framework when it fits the goal, explaining how it helps. Source
 headings do not automatically become branches. Check each framework branch against
 the supplied material; mark support, counterevidence, or gaps. Judge completeness
-against the goal and correctness against evidence and counterexamples.
+against the goal and correctness against evidence and counterexamples. Prefer
+classic positive and negative cases with verifiable sources and comparable goals
+and conditions; explain material differences before drawing a comparison.
 
-## Goal qualification example
+## Classic case: controlled experiment
 
-“Learn sales” names a topic. For a goal such as “explain why customers buy or decline
-and choose a next action,” evaluate value, trust, and competition as a candidate
-framework. Its fit still depends on the actual goal and material.
+“Learn plant growth” names a topic; “test whether a fertilizer increases
+seedling growth” is a testable goal. This is a causal question, so a
+**controlled experiment** is a candidate framework: compare treated and
+control plants while keeping other conditions as similar as possible and
+measuring the same outcome. This illustrates model choice; without results,
+it makes no claim that the fertilizer works.
 
 ```text
-Goal: explain buying or declining; choose a next action
-└─ Qualification / key framework: buying is a multifactor choice; value,
-   trust, and competition explain it [candidate; check against sources]
-   ├─ Concept: value — what the customer gains and gives up
-   │  └─ Relevant methods or pitfalls [source, placement reason]
-   ├─ Concept: trust — judgments about promise fulfillment
-   │  └─ Relevant methods or pitfalls [source, placement reason]
-   ├─ Concept: competition — considered alternatives
-   │  └─ Relevant methods or pitfalls [source, placement reason]
-   └─ Relations: compare value with alternatives; trust affects acceptance
-      of promised value [check against sources]
+Goal: test whether a fertilizer affects seedling growth
+└─ Qualification / key framework: causal question; compare treated and
+   control plants [controlled experiment]
+   ├─ Concept: treatment — apply the fertilizer or not
+   │  └─ Application advice from sources [source, placement reason]
+   ├─ Concept: controlled conditions — similar light, water, and soil
+   │  └─ Environment advice from sources [source, placement reason]
+   ├─ Concept: outcome — growth over a fixed interval
+   │  └─ Actual measurements [source, measurement method]
+   └─ Relation: compare outcomes to test the fertilizer's effect [needs data]
 ```
-
-“Three pitfalls” is an author's presentation structure, not automatically a branch
-of the knowledge tree. Reading sources through one's own questions organizes learning;
-counterevidence may still change the framework, and source meaning must remain intact.
 
 ## Positive and negative judgments
 
+This table contrasts methods for building the tree; it is not evidence that
+the fertilizer works.
+
 | Check | Positive | Negative |
 | --- | --- | --- |
-| Where the trunk comes from | Ask which factors explain purchasing, then test value, trust, and competition. | Turn a source heading, “three pitfalls,” into three top-level branches. |
-| Whether a model fits | Explain how each factor serves the goal and what supplied material supports, challenges, or leaves open. | Apply a familiar model solely because it is familiar, without explaining its role or checking sources. |
-| Handling new knowledge | Place methods and pitfalls by role; revise concepts, links, or scope for counterexamples. | Force unplaced knowledge into a branch or omit counterevidence to preserve the model. |
-
-[Narrative cartography](https://csgpc.org/detail/26055.html) offers another check:
-for a goal of explaining how maps tell stories, evaluate whether its map form,
-language, and discourse dimensions cover the carrier, expression, and practice
-of storytelling. Copying the paper's section headings or inventing a generic
-frame without source support would leave goal qualification undone.
+| Where the trunk comes from | Derive treatment, control, controlled conditions, and outcome from the causal goal. | Use planting steps as top-level branches without a way to test the fertilizer. |
+| Whether a model fits | Explain why each factor enables comparison and check supplied material for support. | Apply a familiar model without comparable groups or an outcome measure. |
+| Handling new knowledge | Place advice and measurements by role; revise the design or conclusion when light differs between groups. | Claim an effect without data or ignore counterexamples. |

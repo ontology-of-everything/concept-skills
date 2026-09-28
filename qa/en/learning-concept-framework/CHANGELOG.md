@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3
+
+- State the skill's purpose and use a controlled-experiment example. Include verifiable positive and negative cases in output when sources provide them; mark missing cases rather than inventing them.
+
 ## 0.2.2
 
 - Add positive and negative sales-tree judgments: test factors against the goal and sources, avoid source headings as branches, and revisit the frame for unplaced knowledge.
