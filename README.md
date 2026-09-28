@@ -71,7 +71,7 @@ text (`semantic-pkm-creator`).
 
 | English | 中文 | What it does |
 | --- | --- | --- |
-| [`learning-concept-framework`](docs/skills/en/learning-concept-framework.md) | [`learning-concept-framework-cn`](docs/skills/cn/learning-concept-framework-cn.md) | Qualifies a learning goal, builds its key framework, and absorbs sourced knowledge into a concept tree. |
+| [`learning-concept-framework`](docs/skills/en/learning-concept-framework.md) | [`learning-concept-framework-cn`](docs/skills/cn/learning-concept-framework-cn.md) | Turns a learning goal into a key framework and absorbs sourced knowledge by concept. |
 
 Per-skill details: `docs/skills/en/` and `docs/skills/cn/`. Machine-readable index:
 [docs/catalog.yml](docs/catalog.yml). Localization contract:

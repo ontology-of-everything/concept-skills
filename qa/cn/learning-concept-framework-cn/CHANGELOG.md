@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- 将目标定性与立关键框架合为同一判断；用给定资料检验框架各部分，并按目标→关键框架→概念关系→知识构树。
+
 ## 0.2.0
 
 - 更名为 Learning with Conceptual Frameworks（`learning-concept-framework`）；区分学习、摘要、抽取与软件设计，明确学习框架文档及验证要求，正文较初始版本保持精简超过 50%。

@@ -7,32 +7,22 @@ description: >-
 metadata:
   language: en
   translation_of: learning-concept-framework-cn
-  version: "0.2.0"
+  version: "0.2.1"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills/tree/main/skills/en/learning-concept-framework
 ---
 
 # Learning with Conceptual Frameworks
 
-Build a goal-directed, reusable knowledge system.
+1. **Goal**: state the learner's problem and success criterion. If only sources
+   are supplied, infer a provisional goal and label it.
+2. **Goal qualification = key framework**: ask which decisive factors and
+   relationships achieve the goal. Prefer a fitting familiar/established model.
+   Read supplied sources: support or challenge each factor, explain its
+   contribution, and check completeness, correctness, and limits.
+3. **Absorb**: place methods, pitfalls, and cases under concepts by their role;
+   cite sources and placement reasons. Counterevidence revises the framework.
 
-## Framework
-
-1. **Qualify**: goal, success criteria, problem type, decisive concepts/relationships.
-2. **Frame**: reuse fitting familiar/classical models; justify adaptations.
-   Check goal coverage (completeness) and evidence/counterexamples (correctness);
-   mark gaps/limits.
-3. **Absorb**: group claims by conceptual role, not source headings.
-   Merge duplicates, link overlaps; revise for counterevidence.
-
-## Output
-
-Write `learning-framework-<topic>.md`:
-
-- Goal and qualification.
-- Framework: definitions, relationships, origins, validation.
-- Knowledge tree: goal → concepts → claims with sources, placement reasons,
-  and evidence/inference labels.
-- Gaps and learning questions.
-
-Without material, deliver a provisional tree with empty branches.
+Write `learning-framework-<topic>.md` as **goal → qualification/key framework →
+concepts and relations → sourced knowledge**. Every branch must contribute to
+the goal; label unsupported judgments as inferences or gaps.

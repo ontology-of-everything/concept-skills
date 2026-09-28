@@ -1,8 +1,9 @@
 # Learning with Conceptual Frameworks
 
-Build a reusable knowledge system around the learner's goal. Qualify the problem,
-establish its key framework, then absorb methods, pitfalls, and examples from
-different sources under concepts. Supports automatic discovery and explicit invocation.
+Build a model tree around the learner's goal. Qualifying the goal establishes the
+key framework: the factors and relationships needed to achieve it. Place methods,
+pitfalls, and cases from sources beneath that framework. Supports automatic discovery
+and explicit invocation.
 
 ```text
 $learning-concept-framework Help me learn sales through an established framework and integrate these notes.
@@ -25,18 +26,19 @@ Select by the requested outcome, not the word “concept”:
 
 ## Deliverable
 
-Deliver `learning-framework-<topic>.md` with four parts:
+Deliver `learning-framework-<topic>.md` with four traceable levels:
 
 | Part | Required answers |
 | --- | --- |
-| Goal and qualification | What problem will learning solve? What counts as success? What kind of problem is it, and which concepts and relationships determine the outcome? |
-| Key framework | What do concepts mean and how do they connect to the goal? Which framework was reused or adapted, and why? Is goal coverage complete and supported by evidence? |
-| Knowledge tree | Goal as root, core concepts as branches, knowledge as leaves; attach sources and placement reasons, distinguishing evidence from inference. |
-| Gaps | Which relationships or claims need validation? What must be learned next? |
+| Goal | What problem must be solved, and what counts as success? |
+| Goal qualification / key framework | Which factors and relationships achieve the goal? Why this framework? How do supplied sources support or challenge it, and does it cover the goal? |
+| Concepts and relations | What role does each concept play, and how do they affect each other? Cite source support or mark inference. |
+| Sourced knowledge | Which concept receives each method, pitfall, or case, why, and from which source? |
 
-Without material, deliver a provisional framework with empty branches; with material,
-populate it with sourced knowledge. Completeness is relative to the goal, not the
-entire domain; correctness remains subject to evidence and counterexamples.
+Reuse a source framework when it fits the goal, explaining how it helps. Source
+headings do not automatically become branches. Check each framework branch against
+the supplied material; mark support, counterevidence, or gaps. Judge completeness
+against the goal and correctness against evidence and counterexamples.
 
 ## Goal qualification example
 
@@ -45,13 +47,17 @@ and choose a next action,” evaluate value, trust, and competition as a candida
 framework. Its fit still depends on the actual goal and material.
 
 ```text
-Explain buying or declining; choose a next action
-├─ Value: what the customer gains and gives up
-│  └─ Source methods or pitfalls about needs and benefits [source, placement reason]
-├─ Trust: judgments about promises and fulfillment
-│  └─ Source methods or pitfalls about promises and evidence [source, placement reason]
-└─ Competition: alternatives the customer considers
-   └─ Source methods or pitfalls about alternatives [source, placement reason]
+Goal: explain buying or declining; choose a next action
+└─ Qualification / key framework: buying is a multifactor choice; value,
+   trust, and competition explain it [candidate; check against sources]
+   ├─ Concept: value — what the customer gains and gives up
+   │  └─ Relevant methods or pitfalls [source, placement reason]
+   ├─ Concept: trust — judgments about promise fulfillment
+   │  └─ Relevant methods or pitfalls [source, placement reason]
+   ├─ Concept: competition — considered alternatives
+   │  └─ Relevant methods or pitfalls [source, placement reason]
+   └─ Relations: compare value with alternatives; trust affects acceptance
+      of promised value [check against sources]
 ```
 
 “Three pitfalls” is an author's presentation structure, not automatically a branch

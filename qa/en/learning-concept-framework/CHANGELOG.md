@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- Treat goal qualification as establishing the key framework; validate its factors against supplied sources and build the goal → framework → concepts/relations → knowledge tree.
+
 ## 0.2.0
 
 - Rename to Learning with Conceptual Frameworks (`learning-concept-framework`); distinguish learning from summarization, extraction, and software design; specify the learning framework document and its validation. Keep instruction prose over 50% shorter than the initial version.

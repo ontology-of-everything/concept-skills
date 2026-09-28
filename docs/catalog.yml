@@ -346,9 +346,9 @@ skills:
   display_name: Learning with Conceptual Frameworks
   display_name_zh: 概念框架学习
   domain: knowledge-modeling
-  summary: Qualify a learning goal, validate its key framework, and build a sourced knowledge tree.
-  summary_zh: 对学习目标定性，验证关键框架，构建有出处的知识树。
-  version: 0.2.0
+  summary: Turn a learning goal into a key framework and organize sourced knowledge by its concepts.
+  summary_zh: 通过目标定性立关键框架，按概念组织有出处的知识。
+  version: 0.2.1
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
@@ -361,9 +361,9 @@ skills:
   display_name: 概念框架学习
   display_name_zh: 概念框架学习
   domain: knowledge-modeling
-  summary: Qualify a learning goal, validate its key framework, and build a sourced knowledge tree.
-  summary_zh: 对学习目标定性，验证关键框架，构建有出处的知识树。
-  version: 0.2.0
+  summary: Turn a learning goal into a key framework and organize sourced knowledge by its concepts.
+  summary_zh: 通过目标定性立关键框架，按概念组织有出处的知识。
+  version: 0.2.1
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp]
   distribution: direct-skill

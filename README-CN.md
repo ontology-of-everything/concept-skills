@@ -67,7 +67,7 @@ English: [README.md](README.md)。
 
 | English | 中文 | 能力 |
 | --- | --- | --- |
-| [`learning-concept-framework`](docs/skills/en/learning-concept-framework.md) | [`learning-concept-framework-cn`](docs/skills/cn/learning-concept-framework-cn.md) | 目标定性、建立关键框架、按概念吸收知识，产出有出处的知识树；支持自动匹配。 |
+| [`learning-concept-framework`](docs/skills/en/learning-concept-framework.md) | [`learning-concept-framework-cn`](docs/skills/cn/learning-concept-framework-cn.md) | 通过目标定性立关键框架，按概念吸收有出处的知识；支持自动匹配。 |
 
 ## 安装
 
