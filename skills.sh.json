@@ -29,6 +29,14 @@
         "semantic-pkm-creator",
         "semantic-pkm-creator-cn"
       ]
+    },
+    {
+      "title": "Conceptual frameworks",
+      "description": "Goal-directed framing, framework validation, and knowledge synthesis.",
+      "skills": [
+        "learning-concept-framework",
+        "learning-concept-framework-cn"
+      ]
     }
   ]
 }

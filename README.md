@@ -4,8 +4,8 @@
 
 > Name the meaning first — then write code, run a CLI, or draft a spec.
 
-[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides eight
-capabilities as 16 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
+[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides nine
+capabilities as 18 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
 and concept design. English uses the base name;
 Simplified Chinese adds `-cn`.
 
@@ -23,7 +23,7 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **1.3.0**. Existing `concept-*` skills are explicit-only; `concept-refine` also supports automatic discovery; `concept-guardrails` modes
+Current release is **1.3.0**. Existing `concept-*` skills are explicit-only; `concept-refine` and `learning-concept-framework` support automatic discovery; `concept-guardrails` modes
 consume Jackson notation only.
 
 ## Table of Contents
@@ -66,6 +66,12 @@ text (`semantic-pkm-creator`).
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [`semantic-km-creator`](docs/skills/en/semantic-km-creator.md)   | [`semantic-km-creator-cn`](docs/skills/cn/semantic-km-creator-cn.md)   | Builds evidence-only Kimball semantic layers from interfaces. |
 | [`semantic-pkm-creator`](docs/skills/en/semantic-pkm-creator.md) | [`semantic-pkm-creator-cn`](docs/skills/cn/semantic-pkm-creator-cn.md) | Extracts scenes, concepts, and entities from source text.     |
+
+### Learning with Conceptual Frameworks
+
+| English | 中文 | What it does |
+| --- | --- | --- |
+| [`learning-concept-framework`](docs/skills/en/learning-concept-framework.md) | [`learning-concept-framework-cn`](docs/skills/cn/learning-concept-framework-cn.md) | Qualifies a learning goal, builds its key framework, and absorbs sourced knowledge into a concept tree. |
 
 Per-skill details: `docs/skills/en/` and `docs/skills/cn/`. Machine-readable index:
 [docs/catalog.yml](docs/catalog.yml). Localization contract:
@@ -115,8 +121,9 @@ Read a skill before using it — skills run with your agent's permissions.
 
 ## Usage
 
-Skills normally activate from their description, so plain requests are enough. The `concept-*`
-family is explicit-only and must be named (`/concept-design` in Cursor, `$concept-design` in Codex):
+Skills normally activate from their description, so plain requests are enough. The
+concept design workflow is explicit-only and must be named (`/concept-design` in Cursor,
+`$concept-design` in Codex):
 
 ```text
 $concept-design model this requirement as independent concepts

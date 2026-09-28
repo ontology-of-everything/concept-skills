@@ -5,7 +5,7 @@
 > 先说清含义，再写代码、跑命令、起草规格。
 
 [concept-skills](https://github.com/ontology-of-everything/concept-skills)
-提供 8 项能力、16 个中英文
+提供 9 项能力、18 个中英文
 [Agent Skills](https://agentskills.io/)，覆盖本体与语义层和概念设计。英文使用基础名，简体中文统一增加
 `-cn`。
 
@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **1.3.0**。原有 `concept-*` 技能仅显式调用；新增 `concept-refine` 支持自动匹配；`concept-guardrails` 只消费 Jackson 记法。
+当前版本为 **1.3.0**。原有 `concept-*` 技能仅显式调用；`concept-refine` 与 `learning-concept-framework` 支持自动匹配；`concept-guardrails` 只消费 Jackson 记法。
 
 ## 目录
 
@@ -62,6 +62,12 @@ English: [README.md](README.md)。
 
 英文技能说明位于 `docs/skills/en/`，中文说明位于 `docs/skills/cn/`。机器可读索引见
 [docs/catalog.yml](docs/catalog.yml)，本地化规范见 [docs/localization.md](docs/localization.md)。
+
+## 概念框架学习
+
+| English | 中文 | 能力 |
+| --- | --- | --- |
+| [`learning-concept-framework`](docs/skills/en/learning-concept-framework.md) | [`learning-concept-framework-cn`](docs/skills/cn/learning-concept-framework-cn.md) | 目标定性、建立关键框架、按概念吸收知识，产出有出处的知识树；支持自动匹配。 |
 
 ## 安装
 
@@ -107,7 +113,7 @@ npx skills add ./skills/<skill-name> --skill <skill-name> --agent cursor --copy 
 
 ## 用法
 
-技能通常按 description 自动触发，正常说话就够。`concept-*` 全家默认不启动，必须显式指名（Cursor
+技能通常按 description 自动触发，正常说话就够。概念设计工作流默认不启动，必须显式指名（Cursor
 `/concept-design`，Codex `$concept-design`）：
 
 ```text
