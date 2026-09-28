@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.5
+
+- Condense the experiment and sales examples into four parallel positive and negative judgments.
+
 ## 0.2.4
 
 - Keep the controlled-experiment case and add the user's sales example, contrasting concept placement with copying a “three key pitfalls” outline.

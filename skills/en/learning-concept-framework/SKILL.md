@@ -7,7 +7,7 @@ description: >-
 metadata:
   language: en
   translation_of: learning-concept-framework-cn
-  version: "0.2.4"
+  version: "0.2.5"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills/tree/main/skills/en/learning-concept-framework
 ---
@@ -26,14 +26,13 @@ can be placed, challenged, and reused in a model tree.
 3. **Absorb**: place methods, pitfalls, and cases under concepts by their role;
    cite sources and placement reasons. Counterevidence revises the framework.
 
-**Good**: to test whether fertilizer increases growth, treat it as a causal
-question. Compare treated and control plants under matching light and water;
-measure growth. Without data, leave the result open.
-**Bad**: use planting steps as the trunk, claim an effect without a control and
-outcome measure, or force unplaced knowledge into existing branches.
-**Sales example**: if the goal is to explain purchasing, value, trust, and
-competition are candidate concepts. Place an author's “three key pitfalls” by
-their role. Using the three pitfalls as the trunk only repeats the source outline.
+**Experiment · good**: to test fertilizer effects, frame treatment, control,
+and growth; match light and water, and draw no conclusion without data.
+**Experiment · bad**: use planting steps as the trunk and claim an effect
+without a control or measurements.
+**Sales · good**: to explain purchases, treat value, trust, and competition as
+candidate concepts; place an author's “three key pitfalls” by role.
+**Sales · bad**: use those pitfalls as the trunk without explaining purchases.
 
 Write `learning-framework-<topic>.md` as **goal → qualification/key framework →
 concepts and relations → sourced knowledge**. Every branch must contribute to

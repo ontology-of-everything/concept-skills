@@ -348,7 +348,7 @@ skills:
   domain: knowledge-modeling
   summary: Turn a learning goal into a key framework and organize sourced knowledge by its concepts.
   summary_zh: 通过目标定性立关键框架，按概念组织有出处的知识。
-  version: 0.2.4
+  version: 0.2.5
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
@@ -363,7 +363,7 @@ skills:
   domain: knowledge-modeling
   summary: Turn a learning goal into a key framework and organize sourced knowledge by its concepts.
   summary_zh: 通过目标定性立关键框架，按概念组织有出处的知识。
-  version: 0.2.4
+  version: 0.2.5
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp]
   distribution: direct-skill
