@@ -63,3 +63,17 @@ Goal: explain buying or declining; choose a next action
 “Three pitfalls” is an author's presentation structure, not automatically a branch
 of the knowledge tree. Reading sources through one's own questions organizes learning;
 counterevidence may still change the framework, and source meaning must remain intact.
+
+## Positive and negative judgments
+
+| Check | Positive | Negative |
+| --- | --- | --- |
+| Where the trunk comes from | Ask which factors explain purchasing, then test value, trust, and competition. | Turn a source heading, “three pitfalls,” into three top-level branches. |
+| Whether a model fits | Explain how each factor serves the goal and what supplied material supports, challenges, or leaves open. | Apply a familiar model solely because it is familiar, without explaining its role or checking sources. |
+| Handling new knowledge | Place methods and pitfalls by role; revise concepts, links, or scope for counterexamples. | Force unplaced knowledge into a branch or omit counterevidence to preserve the model. |
+
+[Narrative cartography](https://csgpc.org/detail/26055.html) offers another check:
+for a goal of explaining how maps tell stories, evaluate whether its map form,
+language, and discourse dimensions cover the carrier, expression, and practice
+of storytelling. Copying the paper's section headings or inventing a generic
+frame without source support would leave goal qualification undone.

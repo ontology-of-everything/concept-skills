@@ -7,7 +7,7 @@ description: >-
 metadata:
   language: en
   translation_of: learning-concept-framework-cn
-  version: "0.2.1"
+  version: "0.2.2"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills/tree/main/skills/en/learning-concept-framework
 ---
@@ -22,6 +22,11 @@ metadata:
    contribution, and check completeness, correctness, and limits.
 3. **Absorb**: place methods, pitfalls, and cases under concepts by their role;
    cite sources and placement reasons. Counterevidence revises the framework.
+
+**Good**: to explain a purchase decision, treat value, trust, and competition
+as candidate factors; test each role before placing source pitfalls beneath it.
+**Bad**: use an author's “three pitfalls” as the trunk, apply a familiar model
+without explaining its fit, or force unplaced knowledge into existing branches.
 
 Write `learning-framework-<topic>.md` as **goal → qualification/key framework →
 concepts and relations → sourced knowledge**. Every branch must contribute to

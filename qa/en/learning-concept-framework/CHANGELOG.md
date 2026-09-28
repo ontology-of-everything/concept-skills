@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- Add positive and negative sales-tree judgments: test factors against the goal and sources, avoid source headings as branches, and revisit the frame for unplaced knowledge.
+
 ## 0.2.1
 
 - Treat goal qualification as establishing the key framework; validate its factors against supplied sources and build the goal → framework → concepts/relations → knowledge tree.
