@@ -19,3 +19,7 @@ organize what you learn around your own goal and key framework, so new knowledge
 becomes pieces of that framework and gradually forms a genuine knowledge system.
 
 [SKILL.md](../../../skills/en/read-it-reframe-it-own-it/SKILL.md) · [QA](../../../qa/en/read-it-reframe-it-own-it/README.md)
+
+ClawHub (English edition): [Read It. Reframe It. Own It. — Build a Knowledge Tree Around Your Goal](https://clawhub.ai/agenticweb4/skills/learning-read-it-reframe-it-own-it).
+The ClawHub URL uses `learning-read-it-reframe-it-own-it`; the GitHub and local installation name
+remains `read-it-reframe-it-own-it`.

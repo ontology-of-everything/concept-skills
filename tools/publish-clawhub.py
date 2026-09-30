@@ -89,7 +89,8 @@ def main():
         parser.error(metadata.get("reason", "Publication deferred in catalog"))
     folder = ROOT / entry["path"]
     files = bundle_files(folder)
-    payload = {"slug": entry["id"], "displayName": entry.get("display_title", entry["display_name"]), "ownerHandle": OWNER, "version": entry["version"], "categories": metadata["categories"], "topics": metadata["topics"], "tags": ["latest"]}
+    slug = metadata.get("slug", entry["id"])
+    payload = {"slug": slug, "displayName": entry.get("display_title", entry["display_name"]), "ownerHandle": OWNER, "version": entry["version"], "categories": metadata["categories"], "topics": metadata["topics"], "tags": ["latest"]}
     if not args.publish:
         print(json.dumps({"status": "plan", **payload, "files": files}, ensure_ascii=False, indent=2))
         return
@@ -99,8 +100,8 @@ def main():
     subprocess.run([str(ROOT / entry["qa"] / "validate.sh")], check=True, cwd=ROOT)
     token = subprocess.check_output(["clawhub", "token"], text=True).strip()
     query = urllib.parse.urlencode({"ownerHandle": OWNER})
-    remote = request(f"/api/v1/skills/{entry['id']}?{query}", token)
-    check_remote_identity(remote, entry["id"], entry["version"])
+    remote = request(f"/api/v1/skills/{slug}?{query}", token)
+    check_remote_identity(remote, slug, entry["version"])
     uploaded = []
     for file in files:
         data = (folder / file["path"]).read_bytes()

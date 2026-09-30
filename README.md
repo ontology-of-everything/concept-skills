@@ -79,7 +79,7 @@ Build and revise understanding around a learning goal and a key framework.
 
 | Skill | Version | ClawHub category |
 | --- | --- | --- |
-| [Read It. Reframe It. Own It.](docs/skills/en/read-it-reframe-it-own-it.md) | 0.2.0 | knowledge (publication deferred) |
+| [Read It. Reframe It. Own It.](docs/skills/en/read-it-reframe-it-own-it.md) | 0.2.0 | knowledge |
 
 <!-- skill-catalog:end -->
 
@@ -173,7 +173,9 @@ or select the requested source material, and replace example paths with real pro
 | Practical | Build a book knowledge tree | `$read-it-reframe-it-own-it` Using my supplied material from The Essence of Software, establish a framework for designing software with clear responsibilities and composable concepts. Organize the ideas, methods, and examples into a knowledge tree; distinguish source evidence from my inferences. |
 | Intermediate | Turn the tree into a study sketchnote | `$read-it-reframe-it-own-it` Turn the confirmed The Essence of Software knowledge tree into a Chinese study sketchnote. Keep the central question, key branches, one application example, and review questions. Settle the image text first, then draw it with an available image-generation tool. |
 
-The third example combines this knowledge-reframing skill with a separate image-generation capability. Use the repository edition; its ClawHub publication is currently deferred.
+The third example combines this knowledge-reframing skill with a separate image-generation
+capability. [The English skill is on ClawHub](https://clawhub.ai/agenticweb4/skills/learning-read-it-reframe-it-own-it);
+its marketplace URL uses a different slug from the repository installation name.
 
 ### Personal Knowledge Architect
 

@@ -7,3 +7,5 @@
 这借鉴了陆九渊“六经注我”的思想：以自己的目标和关键框架组织所学，让新知识成为框架的拼图，逐步形成真正的知识体系。
 
 [SKILL.md](../../../skills/cn/read-it-reframe-it-own-it-cn/SKILL.md) · [QA](../../../qa/cn/read-it-reframe-it-own-it-cn/README.md)
+
+[ClawHub 英文版](https://clawhub.ai/agenticweb4/skills/learning-read-it-reframe-it-own-it)。ClawHub 地址使用 `learning-read-it-reframe-it-own-it`；本仓库的中文安装名仍为 `read-it-reframe-it-own-it-cn`。

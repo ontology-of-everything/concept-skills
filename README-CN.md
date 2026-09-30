@@ -73,7 +73,7 @@ English: [README.md](README.md)。
 
 | 技能 | 版本 | ClawHub 分类 |
 | --- | --- | --- |
-| [读它，重构它，化为己有](docs/skills/cn/read-it-reframe-it-own-it-cn.md) | 0.2.0 | knowledge（暂缓发布） |
+| [读它，重构它，化为己有](docs/skills/cn/read-it-reframe-it-own-it-cn.md) | 0.2.0 | knowledge |
 
 <!-- skill-catalog:end -->
 
@@ -163,7 +163,7 @@ $software-concept-architect-guardrails-cn drift src/orders
 | 实用 | 生成一本书的知识树 | `$read-it-reframe-it-own-it-cn` 基于我提供的《软件设计的要素》材料，围绕“如何设计职责清晰、可组合的软件”确定关键框架，再把书中的观点、方法和案例融入知识树；区分原文依据与我的推论。 |
 | 中等 | 把知识树画成学霸笔记图 | `$read-it-reframe-it-own-it-cn` 把刚才确认的《软件设计的要素》知识树整理成一张中文学霸笔记图。保留中心问题、关键分支、一个应用例子和复习问题；先确定图中文字，再调用可用的图片生成工具绘制。 |
 
-第 3 条需搭配图片生成能力：本技能负责知识重构，绘图工具负责图片。可使用本仓库版本；该技能在 ClawHub 上暂缓发布。
+第 3 条需搭配图片生成能力：本技能负责知识重构，绘图工具负责图片。[ClawHub 英文版](https://clawhub.ai/agenticweb4/skills/learning-read-it-reframe-it-own-it)使用独立地址；本仓库的技能安装名不变。
 
 ### 个人知识架构师
 

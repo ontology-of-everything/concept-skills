@@ -2,6 +2,7 @@
 
 ## 0.2.0 - 2026-09-30
 
+- Publish the English skill on ClawHub under `learning-read-it-reframe-it-own-it`, preserving the GitHub installation name.
 - Define learning goals in qualitative terms and choose framework dimensions around those goals.
 - Clarify the sales example and revise the framework when new knowledge reveals gaps or contradictions.
 - Attribute “the Six Classics annotate me” to Lu Jiuyuan and synchronize the English and Chinese editions.

@@ -34,6 +34,9 @@ def load_catalog():
                 raise ValueError(f"{slug}: Chinese editions must not publish to ClawHub")
             continue
         meta = skill["clawhub"]
+        slug = meta.get("slug", skill["id"])
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
+            raise ValueError(f"{skill['id']}: invalid ClawHub slug {slug!r}")
         categories, topics = meta["categories"], meta["topics"]
         if not 1 <= len(categories) <= 3 or not set(categories) <= CATEGORIES:
             raise ValueError(f"{slug}: invalid ClawHub categories")

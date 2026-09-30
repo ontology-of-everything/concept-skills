@@ -425,20 +425,20 @@ skills:
   path: skills/en/read-it-reframe-it-own-it
   qa: qa/en/read-it-reframe-it-own-it
   display_name: Read It. Reframe It. Own It.
+  display_title: Read It. Reframe It. Own It. — Build a Knowledge Tree Around Your Goal
   display_name_zh: 读它，重构它，化为己有
   domain: learning-methods
   summary: Read, reframe, and own a topic by building a knowledge tree that absorbs ideas from different sources under your own key framework.
   summary_zh: 阅读、重构并掌握一个主题：围绕自己的学习目标建立关键框架，吸收不同来源的知识，生成知识树。
   version: 0.2.0
   agents: [cursor, claude-code, codex, openclaw]
-  marketplaces: [skills-sh, skillsmp]
+  marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: en
   translation_of: read-it-reframe-it-own-it-cn
   clawhub:
-    enabled: false
-    reason: Publication deferred by the owner; the requested ClawHub slug redirects to software-concept-architect-refine.
+    slug: learning-read-it-reframe-it-own-it
     categories: [knowledge]
     topics: [learning, knowledge-synthesis, mental-models]
 - id: read-it-reframe-it-own-it-cn

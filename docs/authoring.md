@@ -85,6 +85,7 @@ Keep frontmatter concise; put long guidance in `references/`.
   maps to ClawHub's controlled browse categories; `clawhub.topics` holds up to five specific topics.
 - Chinese editions share their English counterpart's domain and are not published to ClawHub.
 - `clawhub.enabled: false` defers a listing; its reason explains the blocker.
+- `clawhub.slug` records an approved marketplace URL slug when it differs from the local skill name.
 
 Run `python3 tools/skill-catalog.py --write` after catalog edits to regenerate the README skill
 sections and `skills.sh.json`. `tools/validate-all.sh` detects stale generated views, invalid
@@ -111,7 +112,9 @@ numbers and unexpected slug redirects stop publishing instead of overwriting ano
 
 ## Codex UI metadata (`agents/openai.yaml`)
 
-Optional per-skill file read by the harness, not the agent ([Codex skills docs](https://developers.openai.com/codex/skills)). Present in the `software-concept-architect-*` and `software-concept-architect-guardrails` bundles:
+Optional per-skill file read by the harness, not the agent
+([Codex skills docs](https://developers.openai.com/codex/skills)). Present in the
+`software-concept-architect-*` and `software-concept-architect-guardrails` bundles:
 
 ```yaml
 interface:
@@ -120,7 +123,9 @@ interface:
   default_prompt: "Use $software-concept-architect-design to ..."   # must name the skill as $name
 ```
 
-Add `policy.allow_implicit_invocation: false` only when a skill should stay out of automatic selection and be invoked as `$name`. Keep values consistent with `SKILL.md`; regenerate when the description changes.
+Add `policy.allow_implicit_invocation: false` only when a skill should stay out of automatic
+selection and be invoked as `$name`. Keep values consistent with `SKILL.md`; regenerate when the
+description changes.
 
 ## Interaction discipline (all skills)
 
