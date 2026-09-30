@@ -1,4 +1,4 @@
-# learning-concept-framework QA
+# read-it-reframe-it-own-it-cn QA
 
 Per-skill quality gate. Run `validate.sh` locally and in CI via
 `tools/validate-all.sh`.
@@ -6,7 +6,7 @@ Per-skill quality gate. Run `validate.sh` locally and in CI via
 ## Layout
 
 ```text
-qa/en/learning-concept-framework/
+qa/cn/read-it-reframe-it-own-it-cn/
 ├── validate.sh              # entry point (required)
 ├── README.md
 ├── evals/evals.json         # Skill Creator eval cases
@@ -21,5 +21,5 @@ Add `fixtures/` and `bin/` when a skill needs cross-layer checks beyond
 ## Commands
 
 ```bash
-./qa/en/learning-concept-framework/validate.sh
+./qa/cn/read-it-reframe-it-own-it-cn/validate.sh
 ```

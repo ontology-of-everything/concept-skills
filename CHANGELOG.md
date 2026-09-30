@@ -1,5 +1,12 @@
 # Changelog
 
+## Read It. Reframe It. Own It. 0.2.0 - 2026-09-30
+
+- Define learning goals in qualitative terms and choose framework dimensions around those goals.
+- Clarify the sales example and revise the framework when new knowledge reveals gaps or contradictions.
+- Attribute “the Six Classics annotate me” to Lu Jiuyuan and synchronize the English and Chinese editions.
+- Publish the renamed knowledge-tree skill and its localized documentation.
+
 ## 1.3.0 - 2026-09-22
 
 ### Features

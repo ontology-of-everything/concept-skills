@@ -23,7 +23,7 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **1.3.0**. Existing `concept-*` skills are explicit-only; `concept-refine` and `learning-concept-framework` support automatic discovery; `concept-guardrails` modes
+Current release is **1.3.0**. Existing `concept-*` skills are explicit-only; `concept-refine` and `read-it-reframe-it-own-it` support automatic discovery; `concept-guardrails` modes
 consume Jackson notation only.
 
 ## Table of Contents
@@ -67,11 +67,11 @@ text (`semantic-pkm-creator`).
 | [`semantic-km-creator`](docs/skills/en/semantic-km-creator.md)   | [`semantic-km-creator-cn`](docs/skills/cn/semantic-km-creator-cn.md)   | Builds evidence-only Kimball semantic layers from interfaces. |
 | [`semantic-pkm-creator`](docs/skills/en/semantic-pkm-creator.md) | [`semantic-pkm-creator-cn`](docs/skills/cn/semantic-pkm-creator-cn.md) | Extracts scenes, concepts, and entities from source text.     |
 
-### Learning with Conceptual Frameworks
+### Read It. Reframe It. Own It.
 
 | English | 中文 | What it does |
 | --- | --- | --- |
-| [`learning-concept-framework`](docs/skills/en/learning-concept-framework.md) | [`learning-concept-framework-cn`](docs/skills/cn/learning-concept-framework-cn.md) | Turns a learning goal into a key framework and absorbs sourced knowledge by concept. |
+| [`read-it-reframe-it-own-it`](docs/skills/en/read-it-reframe-it-own-it.md) | [`read-it-reframe-it-own-it-cn`](docs/skills/cn/read-it-reframe-it-own-it-cn.md) | Builds a knowledge tree from different sources under your own key framework. |
 
 Per-skill details: `docs/skills/en/` and `docs/skills/cn/`. Machine-readable index:
 [docs/catalog.yml](docs/catalog.yml). Localization contract:

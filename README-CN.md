@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **1.3.0**。原有 `concept-*` 技能仅显式调用；`concept-refine` 与 `learning-concept-framework` 支持自动匹配；`concept-guardrails` 只消费 Jackson 记法。
+当前版本为 **1.3.0**。原有 `concept-*` 技能仅显式调用；`concept-refine` 与 `read-it-reframe-it-own-it` 支持自动匹配；`concept-guardrails` 只消费 Jackson 记法。
 
 ## 目录
 
@@ -63,11 +63,11 @@ English: [README.md](README.md)。
 英文技能说明位于 `docs/skills/en/`，中文说明位于 `docs/skills/cn/`。机器可读索引见
 [docs/catalog.yml](docs/catalog.yml)，本地化规范见 [docs/localization.md](docs/localization.md)。
 
-## 概念框架学习
+## 读它，重构它，化为己有
 
 | English | 中文 | 能力 |
 | --- | --- | --- |
-| [`learning-concept-framework`](docs/skills/en/learning-concept-framework.md) | [`learning-concept-framework-cn`](docs/skills/cn/learning-concept-framework-cn.md) | 通过目标定性立关键框架，按概念吸收有出处的知识；支持自动匹配。 |
+| [`read-it-reframe-it-own-it`](docs/skills/en/read-it-reframe-it-own-it.md) | [`read-it-reframe-it-own-it-cn`](docs/skills/cn/read-it-reframe-it-own-it-cn.md) | 以自己的关键框架吸收多源知识，生成知识树；支持自动匹配。 |
 
 ## 安装
 
