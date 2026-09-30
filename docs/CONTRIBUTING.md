@@ -24,7 +24,7 @@ See [authoring.md](authoring.md) for conventions. Per-skill version lives in `qa
 Use conventional commits:
 
 ```text
-feat(concept-design): add a composition scenario
+feat(software-concept-architect-design): add a composition scenario
 fix(project): correct catalog path for new skill
 docs(authoring): clarify frontmatter token budget
 test(skill-name): add eval for export reconciliation

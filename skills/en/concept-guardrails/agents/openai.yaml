@@ -1,6 +1,0 @@
-interface:
-  display_name: "Concept Guardrails"
-  short_description: "Create concept specs and detect implementation drift"
-  default_prompt: "Use $concept-guardrails <audit|concept|drift|pipeline|sync|map> to declare this module's boundaries as a concept spec, or to check specs against code for drift."
-policy:
-  allow_implicit_invocation: false

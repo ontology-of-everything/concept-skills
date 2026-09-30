@@ -1,0 +1,6 @@
+interface:
+  display_name: "Software Concept Architect · Review"
+  short_description: "Find Design Gaps and Code Drift"
+  default_prompt: "Use $software-concept-architect-review to review concept and application purposes, design arguments, independence and composition; check implementation conformance when code is available. Read-only, with evidence and fix routing."
+policy:
+  allow_implicit_invocation: false

@@ -1,6 +1,0 @@
-interface:
-  display_name: "Concept Implementation"
-  short_description: "实现独立概念与同步，分别验证概念行为和应用目的"
-  default_prompt: "Use $concept-implementation-cn to implement the confirmed model as a modular monolith, preserving concept boundaries and synchronization contracts, with tests for concept and application purposes."
-policy:
-  allow_implicit_invocation: false

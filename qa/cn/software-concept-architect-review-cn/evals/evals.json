@@ -1,0 +1,66 @@
+{
+  "skill_name": "software-concept-architect-review-cn",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "$software-concept-architect-review-cn 请对照现有概念模型和代码做一次 Jackson 概念审计。仓库里有 docs/prd/ 和 src/。不要改任何文件。",
+      "expected_output": "A read-only five-dimension audit of purpose fitness, independence, composition, drift and product subsets, with evidence and root-cause routing.",
+      "assertions": [
+        "The response does not create, edit, or delete any files.",
+        "All five dimensions are executed or explicitly skipped with a reason.",
+        "Each finding includes location, evidence, severity, and a single routing target.",
+        "Repair order follows the actual root cause; dependent model, documentation and implementation fixes are sequenced explicitly."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "$software-concept-architect-review-cn 请只读审计：动作类型图 A.done -> B.tick -> A.done；每次剩余计数递减至0终止；引擎持久化 flow 日志；多 when 同 token 合取；规则分在不同目录；无 depth limit。规格允许这些行为，仅给上述材料。",
+      "expected_output": "A source-grounded result satisfying the behavioral assertions, with unresolved information explicitly identified.",
+      "assertions": [
+        "不单凭类型环、日志、分目录或无上限报缺陷。",
+        "区分所给事实与未读取实现的未核实项。",
+        "检查真实终止/流关联，不把因果DAG当终止证明。"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "$software-concept-architect-review-cn 纯设计审查，无代码。需求：清空前恢复误删正文。A Trash删除时只保留id/标题并永久删正文，没有restore动作，却用“移入回收站后可恢复”作OP。B TemporaryTrash删除时原子保存完整正文，restore反向原子移动，empty清空；用户接受清空后不可恢复。",
+      "expected_output": "Definitions, purpose arguments and conclusions remain traceable to the supplied facts; unresolved assumptions stay explicit.",
+      "assertions": [
+        "A的契约不支持OP：正文丢失与缺恢复行为共同构成设计根因。",
+        "B在明确前提下成立，清空后不可恢复不误报；无实现不报OP测试缺失。",
+        "全程只读，区分规格推演与运行时证据。"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "$software-concept-architect-review-cn 无代码。预约purpose=防止同一时段被两人预约；OP=预约后有确认且可查；records集合按不同id保存user/slot；reserve无前置，每次原子新增记录并确认；_find按user返回记录。需求要求先到先得且拒绝冲突。",
+      "expected_output": "Definitions, purpose arguments and conclusions remain traceable to the supplied facts; unresolved assumptions stay explicit.",
+      "assertions": [
+        "指出契约支持OP但OP不推出目的，顺序的两人同slot预约即可反驳。",
+        "不把原子新增或不同记录id误认为时段唯一性。",
+        "缺设备标识视语境可为未决，不无据报缺陷。"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "$software-concept-architect-review-cn 纯设计。应用目的=付款成功才确认预约，拒付不得留下占用。Reservation.reserve创建booked，cancel释放；Payment.charge返回paid或Declined，均正确记录且拒付不扣款。两个概念OP各自成立。sync在reserve成功后同时调用respond(confirmed:true)和charge，没有付款完成后的其他规则。",
+      "expected_output": "Definitions, purpose arguments and conclusions remain traceable to the supplied facts; unresolved assumptions stay explicit.",
+      "assertions": [
+        "局部概念成立不推出应用目的成立；确认没有等待paid，拒付未释放。",
+        "问题路由组合模型设计而非虚构实现漂移。",
+        "修正须保留因果与请求关联；补偿后保证不冒充瞬时原子保证。"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "$software-concept-architect-review-cn 无代码，请只审sync：C.check输入item，输出[item,label]或[error]；D.apply输入item,text。一个flow里有多个item。规则when { C/check:[item:?i]=>[] C/check:[]=>[label:?t] } then { D/apply:[item:?i;text:?t] }。应用要求每件对象只用自己的label。",
+      "expected_output": "Preserve the declared behavior under the shared specification contract; distinguish confirmed facts from missing contracts.",
+      "assertions": [
+        "指出同flow内交叉配对及空模式匹配错误的可达场景。",
+        "修复指向同一完成记录中的具名item/label或足够的对象关联。",
+        "不因没有代码而报告实现违约；结论有规格位置/模式证据。"
+      ]
+    }
+  ]
+}

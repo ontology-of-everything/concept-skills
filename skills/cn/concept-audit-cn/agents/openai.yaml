@@ -1,6 +1,0 @@
-interface:
-  display_name: "Concept Audit"
-  short_description: "只读审查概念与应用设计；有代码时核对实现符合性"
-  default_prompt: "Use $concept-audit-cn to review concept and application purposes, design arguments, independence and composition; check implementation conformance when code is available. Read-only, with evidence and fix routing."
-policy:
-  allow_implicit_invocation: false

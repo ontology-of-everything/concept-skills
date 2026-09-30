@@ -69,18 +69,55 @@ metadata:
   [`skills.sh.json`](../skills.sh.json) (display-only; does not change the CLI).
 - **ClawHub**: publish from `skills/<name>/` with `clawhub skill publish`.
   Declare `metadata.openclaw` so scans match runtime behavior.
+  Publish with the catalog `display_title` as `--name`; use `display_name` for the Agent UI.
+  The current CLI skips dot directories, including the Guardrails runtime plugin manifest.
+  For that bundle, include `runtime/.claude-plugin/plugin.json` through the official upload/publish
+  API and verify the complete remote file list and hashes before withdrawing old versions.
 
 Keep frontmatter concise; put long guidance in `references/`.
 
+## Classification and ClawHub publishing
+
+`docs/catalog.yml` is the source of truth for discovery metadata:
+
+- `domains` defines the repository taxonomy; each localized skill has one `domain`.
+- `subdomains` describes internal specializations. Each English entry's `clawhub.categories`
+  maps to ClawHub's controlled browse categories; `clawhub.topics` holds up to five specific topics.
+- Chinese editions share their English counterpart's domain and are not published to ClawHub.
+- `clawhub.enabled: false` defers a listing; its reason explains the blocker.
+
+Run `python3 tools/skill-catalog.py --write` after catalog edits to regenerate the README skill
+sections and `skills.sh.json`. `tools/validate-all.sh` detects stale generated views, invalid
+categories/topics, mismatched localized domains, and accidental Chinese publication targets.
+
+For an existing listing, use **ClawHub Settings → Catalog metadata** to change only categories
+and topics without creating a new version. Record the same values in the catalog first.
+
+For a new content release, update the paired QA/catalog versions and changelogs, then preview:
+
+```bash
+python3 tools/publish-clawhub.py data-knowledge-architect
+```
+
+Add `--publish --notes-file /absolute/path/release-notes.txt` to submit the reviewed release.
+The publisher reads the catalog title, version, categories, and topics, verifies the remote skill
+identity, runs QA, and uploads the complete bundle through ClawHub's official API. It includes
+hidden runtime manifests such as Guardrails' `runtime/.claude-plugin/plugin.json`, which the
+current CLI skips. Credentials stay in the existing ClawHub CLI login.
+
+A pending submission is not a completed publication. Verify the public version, title,
+categories/topics, and complete file hashes before announcing completion. Existing version
+numbers and unexpected slug redirects stop publishing instead of overwriting another skill.
+
 ## Codex UI metadata (`agents/openai.yaml`)
 
-Optional per-skill file read by the harness, not the agent ([Codex skills docs](https://developers.openai.com/codex/skills)). Present in the `concept-*` and `concept-guardrails` bundles:
+Optional per-skill file read by the harness, not the agent ([Codex skills docs](https://developers.openai.com/codex/skills)). Present in the `software-concept-architect-*` and `software-concept-architect-guardrails` bundles:
 
 ```yaml
 interface:
-  display_name: "Concept Design"   # required when the file exists
+  display_name: "Software Concept Architect · Design"   # required when the file exists
   short_description: "..."                 # required, 25–64 chars
-  default_prompt: "Use $concept-design to ..."   # must name the skill as $name
+  default_prompt: "Use $software-concept-architect-design to ..."   # must name the skill as $name
 ```
 
 Add `policy.allow_implicit_invocation: false` only when a skill should stay out of automatic selection and be invoked as `$name`. Keep values consistent with `SKILL.md`; regenerate when the description changes.

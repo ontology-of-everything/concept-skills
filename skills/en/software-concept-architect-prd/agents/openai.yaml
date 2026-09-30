@@ -1,0 +1,6 @@
+interface:
+  display_name: "Software Concept Architect · PRD"
+  short_description: "Turn Models into Traceable Specs"
+  default_prompt: "Use $software-concept-architect-prd to transcribe the confirmed model into an overall PRD, concept specifications and synchronizations, preserving concept and application purposes, assumptions and acceptance traceability."
+policy:
+  allow_implicit_invocation: false

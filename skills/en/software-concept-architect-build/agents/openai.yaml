@@ -1,0 +1,6 @@
+interface:
+  display_name: "Software Concept Architect · Build"
+  short_description: "Turn Models into Independent Modules"
+  default_prompt: "Use $software-concept-architect-build to implement the confirmed model as a modular monolith, preserving concept boundaries and synchronization contracts, with tests for concept and application purposes."
+policy:
+  allow_implicit_invocation: false

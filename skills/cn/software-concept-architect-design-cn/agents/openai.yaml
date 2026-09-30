@@ -1,0 +1,6 @@
+interface:
+  display_name: "软件概念架构师 · 设计"
+  short_description: "从需求出发，理清软件概念的目的、职责、边界与协作规则"
+  default_prompt: "Use $software-concept-architect-design-cn to complete the concept design with the user: confirm the alignment, then write the design record."
+policy:
+  allow_implicit_invocation: false

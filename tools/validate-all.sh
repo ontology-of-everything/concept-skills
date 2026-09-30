@@ -6,6 +6,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 status=0
 
 python3 "$ROOT/tools/validate-localization.py"
+python3 "$ROOT/tools/skill-catalog.py"
 
 while IFS= read -r validate; do
   name=$(basename "$(dirname "$validate")")

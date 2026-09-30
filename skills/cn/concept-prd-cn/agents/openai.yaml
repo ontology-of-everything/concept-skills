@@ -1,6 +1,0 @@
-interface:
-  display_name: "Concept PRD"
-  short_description: "转录确认模型，保留概念与应用目的、前提及验收追溯"
-  default_prompt: "Use $concept-prd-cn to transcribe the confirmed model into an overall PRD, concept specifications and synchronizations, preserving concept and application purposes, assumptions and acceptance traceability."
-policy:
-  allow_implicit_invocation: false

@@ -1,6 +1,0 @@
-interface:
-  display_name: "Concept Audit"
-  short_description: "Read-only concept and application design audit"
-  default_prompt: "Use $concept-audit to review concept and application purposes, design arguments, independence and composition; check implementation conformance when code is available. Read-only, with evidence and fix routing."
-policy:
-  allow_implicit_invocation: false

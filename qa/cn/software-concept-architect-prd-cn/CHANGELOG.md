@@ -1,0 +1,102 @@
+# concept-prd-cn Changelog
+
+## 1.0.0 - 2026-09-30
+
+- 将 `concept-prd-cn`（0.7.1）更名为 `software-concept-architect-prd-cn`，统一软件概念架构师品牌。
+- 增加统一展示名与收益标题，更新调用名称和包路径。
+- 保留当前本地技能的流程、参考资料、运行时与调用策略。
+
+## 0.7.1 - 2026-09-19
+
+- 明确同步可收窄行为、不可扩展契约；以逐概念行为序列核对组合，区分合法限制与目的落空。
+- 精简技能入口的重复定义与检查说明，保持共享规格和中英文一致。
+
+## 0.7.0 - 2026-09-14
+
+- 按共享格式转录概念和 sync；文件编排与语法分离，订位例保留分支、绑定及未决。
+- 共享规格按单一源分发，各独立安装包由校验门禁检查副本一致性。
+
+## 0.6.0 - 2026-09-13
+
+- 保留概念与应用两层目的、论证前提和验收追溯；未决内容不由模板补造。
+- 统一概念族术语与职责，精简重复指导；同步文档和行为评估。
+
+## 0.5.0 - 2026-09-10
+
+### Changed
+
+- Default off: run only on explicit `$concept-prd-cn` / `/concept-prd-cn`. Codex
+  `allow_implicit_invocation: false`.
+- Downstream reference renamed: `wyx:concept drift` / `wyx:map` → `concept-guardrails`
+  `drift` / `map` modes (guardrails 0.30.0 dropped the `wyx:` prefix).
+
+## 0.4.0 - 2026-09-07
+
+- 明确权威规格与增量编辑；修复验收追溯、错误查询和文件格式；压缩重复示例。
+- 核验最新相关论文，更新行为评估及文档。
+
+Skill-only history. Repository tooling changes: [../../CHANGELOG.md](../../CHANGELOG.md).
+
+## 0.3.2 - 2026-09-07
+
+### Added
+
+- `references/example-reserving.md`: the same restaurant example as
+  transcribed CONCEPT.md / SYNCS.md files
+
+## 0.3.1 - 2026-09-07
+
+### Changed
+
+- Expand `references/templates.md` to the CONCEPT.md spec format and SYNCS.md
+  format used by `concept-guardrails` (`###` actions, after/then `=>` OP,
+  `[Concept] --(action)--> (SyncName) --> [Concept]` graph, `## sync:`
+  entries); keep zero-naming and when / where / then bodies
+
+## 0.3.0 - 2026-09-07
+
+### Changed
+
+- Rename the installable skill from `jackson-concept-prd-cn` to `concept-prd-cn`
+  (concept-* family prefix); companion references updated
+- Restructure SKILL.md into the six-section skeleton (目标 / 原则 / 流程 /
+  命题 / 记法与模板 / 参考) and cut it to ~59% of its size (5.1 KB → 3.0 KB);
+  placement table becomes flow step 1, completion conditions become
+  checkable propositions, CONCEPT.md / SYNCS.md templates move to
+  `references/templates.md`, sources to `references/sources.md`
+- `SYNCS.md` coordination graph is a direct transcription of the model's
+  同步图 produced by `concept-design`
+
+## 0.2.1 - 2026-08-28
+
+### Changed
+
+- Clarify the SYNCS.md lifecycle: single file with a full coordination graph
+  at transcription time; when the syncs layer is later split into per-group
+  packages, jackson-concept-implementation splits the file by flow groups
+  (flows stay intact, coordination graphs localize per package)
+
+## 0.2.0 - 2026-08-28
+
+### Changed
+
+- Dual-track placement: per-concept CONCEPT.md colocates with module code
+  when the directory exists (central docs/prd/ only as staging), syncs live
+  in a single SYNCS.md with a coordination graph, grouped by flow
+- Output is wyx-compatible (file names and section headers consumable by
+  wyx:concept drift and wyx:map) but deliberately emits no
+  interactions/dependencies sections; cross-concept edges live only in
+  SYNCS.md and the overall PRD dependency graph
+- Per-concept spec adopts the structured format from jackson-concept-design
+  0.3.0 (relational state, error cases, queries, after/then OP, notes)
+
+## 0.1.0 - 2026-08-28
+
+### Added
+
+- Initial Jackson concept-prd-cn skill: transcribe a confirmed concept model into
+  a PRD document family without inventing content
+- Document set: overall PRD, one sub-PRD per concept (no cross-concept
+  naming), and syncs grouped by flow
+- Acceptance scenarios are derived mechanically from operational principles;
+  model gaps route back to `jackson-concept-design`

@@ -1,0 +1,43 @@
+Use case: infographic-diagram
+Asset type: a Chinese book study sketchnote image embedded in a GitHub README.
+Create ONE beautiful, legible, portrait study-note poster, approximately 3:4 aspect ratio, high resolution. The subject is Daniel Jackson's The Essence of Software, labeled with the user-supplied Chinese title 《软件设计的要素》. This is an original learner-centered synthesis based on the author's public overview and tutorials, not a book cover or a reproduction of a published page.
+
+Visual direction: elegant top-student handwritten notes on warm ivory lightly dotted paper; neat dark ink Chinese lettering with teal, terracotta and muted mustard marker accents. Precise hand-drawn branches, small meaningful sketches and generous margins. Rich but disciplined, like a carefully composed study notebook. All text crisp and readable. No camera perspective, no desk objects, no random decorative gibberish.
+
+Composition: title band at top; a clearly connected knowledge tree taking most of the page, organized by FOUR learner questions rather than book chapters. A central trunk/question node connects to four spacious branches. A lower strip contains a small worked example and a reflective check. Make the hierarchy visible; use small numbered circles 01–04 and thin connector lines. Use only the exact Chinese text below, with a few English labels specified; do not invent more wording.
+
+Top title: "《软件设计的要素》"
+Subtitle: "Daniel Jackson · The Essence of Software"
+Small eyebrow: "把知识读进自己的框架"
+Central question: "怎样设计清晰、可复用的软件概念？"
+
+Branch 01 header: "为什么需要它？"
+Text: "先说用户收益，再说功能"
+Text: "一个概念，服务一个明确目的"
+
+Branch 02 header: "它怎样工作？"
+Text: "目的 · 状态 · 动作 · 操作原理"
+Text: "用典型场景解释：怎样实现目的"
+
+Branch 03 header: "边界在哪里？"
+Text: "能够独立理解"
+Text: "熟悉的概念优先，支持跨场景复用"
+
+Branch 04 header: "怎样一起工作？"
+Text: "用同步协调概念的动作"
+Text: "组合后仍尊重各自的行为约定"
+
+Lower example heading: "拿餐厅预约来练习"
+Text: "预约：保证未来有席位"
+Text: "候补：满额时记录等待顺序"
+Small connected example flow: "取消预约 → 出现空位 → 按规则通知候补"
+Label for this flow: "学习者自拟示例"
+
+Bottom reflective note heading: "读完再问"
+Text: "用户究竟获得了什么？"
+Text: "同步是否过紧，减少了必要的选择？"
+
+Tiny footer: "自主重构示例 · 依据作者公开概述与教程"
+Small source footer: "essenceofsoftware.com"
+
+Use large enough text; preserve every Chinese word verbatim. Avoid claiming this is a complete summary of the whole book. No real book cover, no logos, no unlisted text. Opaque paper background.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Software Concept Architect · Guardrails"
+  short_description: "Keep Specs and Code Aligned"
+  default_prompt: "Use $software-concept-architect-guardrails <audit|concept|drift|pipeline|sync|map> to declare this module's boundaries as a concept spec, or to check specs against code for drift."
+policy:
+  allow_implicit_invocation: false

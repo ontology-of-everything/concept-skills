@@ -1,6 +1,6 @@
 # concept-skills
 
-Ontology, semantic-layer, and concept-design skills monorepo.
+Ontology, semantic-layer, and Software Concept Architect skills monorepo.
 
 ## Do not get wrong
 

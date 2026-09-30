@@ -1,0 +1,6 @@
+interface:
+  display_name: "软件概念架构师 · 实现"
+  short_description: "按已确认模型实现独立模块，让代码与概念边界和同步契约一致"
+  default_prompt: "Use $software-concept-architect-build-cn to implement the confirmed model as a modular monolith, preserving concept boundaries and synchronization contracts, with tests for concept and application purposes."
+policy:
+  allow_implicit_invocation: false

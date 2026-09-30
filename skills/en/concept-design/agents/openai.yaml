@@ -1,6 +1,0 @@
-interface:
-  display_name: "Concept Design"
-  short_description: "Complete a concept design with the user"
-  default_prompt: "Use $concept-design to complete the concept design with the user: confirm the alignment, then write the design record."
-policy:
-  allow_implicit_invocation: false

@@ -1,6 +1,0 @@
-interface:
-  display_name: "Concept PRD"
-  short_description: "Transcribe a confirmed model with acceptance traceability"
-  default_prompt: "Use $concept-prd to transcribe the confirmed model into an overall PRD, concept specifications and synchronizations, preserving concept and application purposes, assumptions and acceptance traceability."
-policy:
-  allow_implicit_invocation: false

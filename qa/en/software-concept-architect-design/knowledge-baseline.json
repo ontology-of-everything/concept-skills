@@ -1,0 +1,202 @@
+{
+  "baseline": "2026-09-13 task-start",
+  "commit": "f0e798f43b770796a8c05572157336176309f4ff",
+  "metric": "Unicode characters including Markdown syntax and whitespace; entrypoints and references; no runtime, metadata, QA or research notes",
+  "files": [
+    {
+      "path": "skills/software-concept-architect-review/SKILL.md",
+      "sha256": "701dfec022599be6267edb64e06e734cbf0428b91de017365684116d21264d86",
+      "characters": 1582
+    },
+    {
+      "path": "skills/software-concept-architect-review/agents/openai.yaml",
+      "sha256": "e919e171f499c11557bd78fe1fcbce9d4c1b3045cb99b54149e32d68bae2df23",
+      "characters": 367
+    },
+    {
+      "path": "skills/software-concept-architect-review/references/composition-checklist.md",
+      "sha256": "11146d8298b3911a3a93c0331b3e84d1d76029738a823ad5f71a2abac7b15815",
+      "characters": 1490
+    },
+    {
+      "path": "skills/software-concept-architect-review/references/drift-checklist.md",
+      "sha256": "ecade31d6689f3db8a6bddfe7697a7aa4a3f0116e575c430b4d900e57c5cbf89",
+      "characters": 1718
+    },
+    {
+      "path": "skills/software-concept-architect-review/references/sources.md",
+      "sha256": "6d3306b93f5b61533a03ae0f1df534d0dfb7d17b88b043ce413e0c4eb7a39923",
+      "characters": 1416
+    },
+    {
+      "path": "skills/software-concept-architect-design/SKILL.md",
+      "sha256": "096507385c695e08acf960b35e1c95613b52cdb13098f4e49e1cc0b3440a5dc7",
+      "characters": 2699
+    },
+    {
+      "path": "skills/software-concept-architect-design/agents/openai.yaml",
+      "sha256": "a5c8fa4e9ae21a13ec0ec188e81881a0d27dc7bc1505e06e8dbb19d2cca7b027",
+      "characters": 321
+    },
+    {
+      "path": "skills/software-concept-architect-design/references/criteria.md",
+      "sha256": "ff10a5a7a52b7d79420d88575a17684e8826c3ee29e1db189d5ba418e6328e69",
+      "characters": 1398
+    },
+    {
+      "path": "skills/software-concept-architect-design/references/example-reserving.md",
+      "sha256": "d237ff524174a1c1c872eb1daf8813651a97c2bb9d394c76576fcbc06456786a",
+      "characters": 2510
+    },
+    {
+      "path": "skills/software-concept-architect-design/references/sources.md",
+      "sha256": "8dc8220d673823d0c382b6b882f530bf02a8a5a7e9b26379d584dc55981f45cb",
+      "characters": 1585
+    },
+    {
+      "path": "skills/software-concept-architect-design/references/sync-notation.md",
+      "sha256": "11ffcedcbf81d30ee634469dc1b2ea20c56e4e0171653ea2193d3387193555d9",
+      "characters": 2383
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/LICENSE.upstream",
+      "sha256": "f3dc64274c9c965e12ea27326560e058e91eff22c66c7f479ce2fa5aff081011",
+      "characters": 1064
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/SKILL.md",
+      "sha256": "c2a4403713227bf580df2bdfdf3afb519002d9f3c797c4d049bb19567fb30fa1",
+      "characters": 2685
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/agents/openai.yaml",
+      "sha256": "140c622cbfe8190b3d043e5ad9d13c0aabf0835bb288465318817735aef2a5e9",
+      "characters": 342
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/references/audit.md",
+      "sha256": "5f14eae3612465c9d4f6134e29ba7cf13045dc50e4f8637dffe94b8bf15296d7",
+      "characters": 1360
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/references/concept.md",
+      "sha256": "afc8aa9ca6335eecadc3de652246c12b77259b51b30a690e020990ffa933bdf8",
+      "characters": 3496
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/references/drift-detection.md",
+      "sha256": "03490c37e51e24724a22f1bf85802bbd2e07494b1d37af3e025d3a8f55ea5847",
+      "characters": 3418
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/references/hooks-runtime.md",
+      "sha256": "264aba12b6e73a6938ae567cadea26b299a39def1e085805bdd7551476283158",
+      "characters": 1614
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/references/map.md",
+      "sha256": "8539cbb6f31b0506057bcc9506aa6cbf83fd0b3e31015ae984e5cb6d2ad54e9f",
+      "characters": 1874
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/references/pipeline.md",
+      "sha256": "2c906f711b1628d82489dcdbd195f64dede9797d9a3910966fcedfdcf624593b",
+      "characters": 1969
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/references/sync.md",
+      "sha256": "3302ef468f25c97e13d4e85e287412017be078af398dd23f356174f10e4f8865",
+      "characters": 2924
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/runtime/.claude-plugin/plugin.json",
+      "sha256": "4a65e06c2fc946d930977612811efe87c8db54105e6b7098115978a90e8e6a26",
+      "characters": 469
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/runtime/hooks/hooks.json",
+      "sha256": "749495275f5cb500eb8066fb8deee73e561d0f433bc91f31960bd44590916115",
+      "characters": 970
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/runtime/scripts/drift-context.sh",
+      "sha256": "f0a6c256ece09f04d069900571e50fec646eb8195368074d4465fbbc1c4734b2",
+      "characters": 10216
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/runtime/scripts/post-check.sh",
+      "sha256": "c9021d0d6af6e13ea5bed949b4db2db43215e3fb6317e6467e8759ea996269e1",
+      "characters": 4471
+    },
+    {
+      "path": "skills/software-concept-architect-guardrails/runtime/scripts/session-start.sh",
+      "sha256": "c5e81bff1db562495b998de5b12b2e8304b2b30a56e0933ba65f384b9b0216fe",
+      "characters": 14357
+    },
+    {
+      "path": "skills/software-concept-architect-build/SKILL.md",
+      "sha256": "8b9ff5df5e86c70d17041aaa0a92640613c6d9871b2322093dc4f12d9881c783",
+      "characters": 2599
+    },
+    {
+      "path": "skills/software-concept-architect-build/agents/openai.yaml",
+      "sha256": "88935644f25c2538c6039afc2a22cd74129e1e2e869b6bf48a6cd126c30ebf47",
+      "characters": 366
+    },
+    {
+      "path": "skills/software-concept-architect-build/references/composition-layer.md",
+      "sha256": "b1c182a5c4e3f20777ef1326639492fc0ef73f52ba69fac22ebcc25c83a17cbe",
+      "characters": 1229
+    },
+    {
+      "path": "skills/software-concept-architect-build/references/java-spring.md",
+      "sha256": "e62c7c62bdca48c6b687e5b06412094ef8c4769cf99e3b33eeebbfea92ab5ac5",
+      "characters": 996
+    },
+    {
+      "path": "skills/software-concept-architect-build/references/rust.md",
+      "sha256": "9211121666b83da6bb329beb945878b7f38da738da88ae4454dedce82b534ae4",
+      "characters": 1636
+    },
+    {
+      "path": "skills/software-concept-architect-build/references/scaling.md",
+      "sha256": "e159aab44c9a0a1469b29c23e1b0e895fd49d50d497fa268d667df8858c95917",
+      "characters": 732
+    },
+    {
+      "path": "skills/software-concept-architect-build/references/sources.md",
+      "sha256": "aee79f22b87ff5a50ddb56c9530cb0bb8130f62d3b84ca28bc6fdd75caeeaa9a",
+      "characters": 1170
+    },
+    {
+      "path": "skills/software-concept-architect-build/references/typescript.md",
+      "sha256": "bfbb70ae787425f1ae1f76eaa8aae08ccc0b2b287bc8893af7229e23ca61cfee",
+      "characters": 1075
+    },
+    {
+      "path": "skills/software-concept-architect-prd/SKILL.md",
+      "sha256": "366e72cdaea79447f57ccfecbdca5821a262565d8761b0a1a4f36123aee84a3f",
+      "characters": 2092
+    },
+    {
+      "path": "skills/software-concept-architect-prd/agents/openai.yaml",
+      "sha256": "12e150f006cacfc20465811c5ec09e2c436a526e7673bebcaf803df8367c908f",
+      "characters": 312
+    },
+    {
+      "path": "skills/software-concept-architect-prd/references/example-reserving.md",
+      "sha256": "b7f6b88a18b66624a22baebf148e1bbbb83049fb5fd0506fe198dd9b2a65171d",
+      "characters": 1617
+    },
+    {
+      "path": "skills/software-concept-architect-prd/references/sources.md",
+      "sha256": "519baefb8f3305ca5b980d4672cc857c31823b67a7c63f01cd7d5af93e2ac362",
+      "characters": 827
+    },
+    {
+      "path": "skills/software-concept-architect-prd/references/templates.md",
+      "sha256": "68c65a88a2bc177d53794c48ca3dcb32a3c377e3eeb65f551fb37477c7a8f184",
+      "characters": 2155
+    }
+  ]
+}
