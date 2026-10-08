@@ -1,6 +1,8 @@
 ---
 name: software-concept-architect-build-cn
-description: Generates a modular-monolith mapping from a confirmed concept model only when the user explicitly invokes $software-concept-architect-build-cn. / 仅在用户显式调用 $software-concept-architect-build-cn 时做模块单体映射。
+description: >-
+  Generates confirmed concept implementations only on explicit $software-concept-architect-build-cn
+  invocation. / 默认模块单体、独立构建、整洁架构。
 metadata:
   language: zh-CN
   translation_of: software-concept-architect-build
@@ -20,18 +22,20 @@ metadata:
 
 ## 约束
 
+- **工程基线**：默认模块单体，同进程运行；每个 concept、syncs、gateway、shared 是独立构建与测试单元，由 server 统一装配。模块通过公开内部接口协作，内部采用整洁架构，依赖指向领域与应用契约；按职责设置层次，不生成空层或纯转发层。已有工程先核对已确认约定，架构迁移须在任务范围内。
+- **模块边界**：业务调用为 gateway → syncs → concept；概念之间零直接依赖，各层仅按需依赖 shared 被动类型。server 可使用各模块公开装配入口；gateway 持有 syncs 接口，不穿透概念。业务状态归概念，syncs 只保留必要执行记录。
 - **契约与可读性**：组合只产生各概念契约允许的行为。规格、代码、日志使用一致的概念/动作/参数含义，改名保留映射。动作负责前置条件、不变量、效果和输出 case；前置条件不成立不自动等于某个 error 输出，拒绝结果按规格定义。where 查询不能替代写入时的原子检查。
 - **规则执行**：采用 WYSIWID 完成事件 → 绑定 → 调用语义。when 合取匹配具名输入/输出，未列字段是通配，空模式不表示成功。where 查询、过滤或计算出零/多组绑定；零组不触发，多组各调用 then。then 仅使用常量或已绑定值，同批调用无隐含顺序；依赖后续输出须匹配新的完成事件。仅状态变化不自动触发规则。
-- **关联与边界**：WYSIWID 的同一 when 只匹配同一运行时 flow，后续调用继承关联；批量动作还需对象绑定。文档 flow 分组不是运行时身份。跨概念策略只在 syncs，公开动作/查询遵守已确认权限；组合无自有业务状态，但可保存执行记录。本仓要求规则经概念动作衔接，不用 sync 直接互调隐藏因果。
+- **关联与权限**：WYSIWID 的同一 when 只匹配同一运行时 flow，后续调用继承关联；批量动作还需对象绑定。文档 flow 分组不是运行时身份。公开动作/查询遵守已确认权限；规则经概念动作衔接，不用 sync 直接互调隐藏因果。
 - **失败与恢复**：按入口契约处理无匹配、拒绝和故障，需响应时避免遗漏、串请求或重复响应。错误、否定结果按各自 case 匹配；明确响应、重试、补偿或有意忽略及状态后果。已完成动作不因后续失败消失，补偿不保证复原。需恢复时持久记录规则、完成事件、绑定/调用及因果关系，并按匹配实例去重；外部副作用另需幂等保障。
 - **原子性与进展**：实现须兑现单动作的抽象原子语义，不能仅凭数据库事务宣称外部效果原子。跨概念事务是可选工程手段，仅在契约允许、存储可共同参与且外部效果已隔离时使用；提交后发布完成事件或采用一致的 outbox，失败仍须表达结果。可达循环须有终止条件、重试预算或持续运行控制，超限结果可观察。
 
 ## 实现
 
 1. **核实规格**：读 [规格契约](references/spec-format.md)、应用目的、概念模型、两层论证前提和项目约定；已有代码沿入口核实动作、持久化、失败与测试。模型缺陷回 design，转录错误回 prd，代码违约在此修复；已确认新行为先改规格再改实现。
-2. **映射边界**：每个 concept 一个可验证模块；包、类、存储形式按项目选择。query 保留关系与零/多绑定语义，避免为组合堆积 getter。协议可封装在 Requesting 或边缘适配器中；port/adapter、组合根按需要采用，不给每个概念强加分层。
+2. **映射边界**：确定工程结构时读 [架构实例与反例](references/architecture.md)，再只读目标语言参考。声明构建单元、公开接口、状态所有者与装配入口；query 保留关系与零/多绑定语义，避免为组合堆积 getter。Requesting 的协议适配落在 gateway，概念签名保持协议无关。
 3. **实现规则**：以具名函数/规则对象保留策略边界与跨入口复用。简单组合可用 mediator；联合匹配、独立规则演进或追踪使手写调度复杂时考虑引擎。两者均须保持上述语义，普通监听器不自动提供合取、历史关联或恢复。流程索引与因果记录支持整条链路理解。
-4. **落位与验证**：CONCEPT 随概念模块，SYNCS 随组合包，迁移暂存规格并更新 PRD 索引。概念内验证 OP/不变量，规则验证匹配/绑定/分支，跨规则场景覆盖应用目的、并发隔离及适用的失败恢复；CI 检查概念独立与读写边界。符合规格不证明目的适切，反例须回查模型。交付须规格代码一致、执行可追溯、排除动作未调用/暴露、未决前提未被猜测填补；产品子集另核对依赖闭包、入口、剩余规则、资源与构建开关。
+4. **落位与验证**：每概念模块一份 CONCEPT，每 syncs 模块一份 SYNCS、内部按 flow 分组；迁移暂存规格并更新 PRD 索引。逐模块构建与测试，另验证整体装配。概念内验证 OP/不变量，规则验证匹配/绑定/分支，跨规则场景覆盖应用目的、并发隔离及适用的失败恢复；CI 检查依赖图、公开面、层次及读写边界。符合规格不证明目的适切，反例须回查模型。交付须规格代码一致、执行可追溯、排除动作未调用/暴露、未决前提未被猜测填补；产品子集另核对依赖闭包、入口、剩余规则、资源与构建开关。
 
-语言实现按需读 [Rust](references/rust.md)、[Spring Modulith](references/java-spring.md) 或 [TypeScript](references/typescript.md)；仅有导航、构建或协作痛点时读 [分组与扩展](references/scaling.md)。
-上述模块单体、规则代码组织和可靠性落地包含本仓工程选择；最新核验版本及适用边界见 [实现依据](references/sources.md)。
+语言实现只选 [Rust / Axum](references/rust.md)、[Java / Spring](references/java-spring.md) 或 [TypeScript](references/typescript.md)；仅有导航、构建或协作痛点时读 [分组与扩展](references/scaling.md)。
+工程基线是本仓选择；核对理论与工程约定的区别时读 [实现依据](references/sources.md)。

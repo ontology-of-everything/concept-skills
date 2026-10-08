@@ -5,6 +5,11 @@
 `software-concept-architect-build` maps a confirmed concept model to independent modules and named, granular
 synchronization rules, with colocated specifications and behavioral and dependency tests.
 
+Default to a modular monolith: independent build/test units, Clean Architecture internally, a syncs
+module, and one gateway, assembled in one process. Read the
+[architecture example](../../../skills/en/software-concept-architect-build/references/architecture.md)
+when defining structure, then only the selected Rust/Axum, Java/Spring, or TypeScript reference.
+
 - Skill: [SKILL.md](../../../skills/en/software-concept-architect-build/SKILL.md)
 - Chinese: [`software-concept-architect-build-cn`](../cn/software-concept-architect-build-cn.md)
 

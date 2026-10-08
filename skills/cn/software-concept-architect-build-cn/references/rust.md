@@ -1,49 +1,81 @@
-# Rust 落地
+# Rust / Axum
 
-以下为按需采用的工程映射；独立包、port/adapter、分层与协议位置不是概念理论的硬性要求。Requesting 可在自身实现中封装协议。
+目标为 Rust 时读取。模块关系与案例见 [工程架构](architecture.md)；以下是该基线的 Cargo 映射。
 
-## 工程骨架
-
-cargo workspace，一个 concept 一个 crate：
+## Workspace
 
 ```text
-app/                # 组合根：唯一命名具体 adapter 的地方，装配后接路由
-syncs/              # 组合层：具名规则，可按 flow 分组
-concepts/
-  user/             # 一个 concept 一个 crate
-  password/
-  session/
-shared-kernel/      # 仅通用基础类型（Id、时间），无业务
+Cargo.toml
+Cargo.lock
+apps/server/                         # Cargo.toml + src/main.rs，唯一 binary
+modules/
+  concepts/reservation/               # Cargo.toml + CONCEPT.md + src/lib.rs
+  concepts/payment/                   # 同上，各自一个 library crate
+  syncs/                              # Cargo.toml + SYNCS.md + src/lib.rs
+  gateway/                            # Cargo.toml + src/lib.rs，Axum
+  shared/                             # Cargo.toml + src/lib.rs
 ```
 
-声明依赖为 `app → syncs → concepts/*`，app 另装配具体 adapters；概念 crate 互不声明依赖。
+根清单示例（edition/MSRV 按项目选择，resolver 与其兼容）：
 
-分组目录如 `concepts/billing/invoice/`，members glob 随层次更新，crate 名及依赖规则保持；syncs 可每组一个 crate。成员只能属于一个 workspace，多层目录不等于嵌套 workspace。
+```toml
+[workspace]
+members = ["apps/server", "modules/concepts/*", "modules/syncs", "modules/gateway", "modules/shared"]
+resolver = "3" # Rust 2024 工程
+```
 
-## 概念 crate 内部
+每个成员有自己的 `[package]`。例如 `concept-reservation` 只按需声明 shared 和技术依赖；syncs 声明各概念依赖，gateway 声明 syncs、shared、axum，server 声明公开装配所需模块。`[workspace.dependencies]` 只集中管理版本，成员仍须声明所用依赖。增加组目录时更新 members glob。
+
+独立构建以 package 为选择单位，构建其依赖；各业务模块默认只有 library target，server 链接它们并启动一个进程。
+
+## 公开接口与内部分层
 
 ```text
-concepts/password/src/
-  domain.rs      # 不变量与纯逻辑，不依赖其他概念/协议
-  actions.rs     # 概念 actions，依赖 port trait
-  ports.rs       # 如 trait PasswordStore
-  adapters/      # sqlx / 内存实现，供组合根选用
+src/
+  lib.rs                    # 有限 re-export 与装配入口
+  api.rs                    # 动作/query trait、输入输出 case、必要事件
+  domain/                   # 模型、不变量、内层端口 trait
+  application/              # 实现 API，依赖 domain 与端口
+  adapter/                  # sqlx/内存/外部设施实现
 ```
 
-port 即 trait、adapter 实现 trait、依赖只指向 domain；用泛型做零开销静态分发，需要运行期换实现时用 `Arc<dyn Trait>`。
+`lib.rs` 的可见性骨架：
 
-## 错误与身份
+```rust
+mod api;
+mod domain;
+mod application;
+mod adapter;
 
-`Password<U>` 的 U 是泛型身份，不引用 User 概念类型。公开方法可用 `Result` 表达已声明输出，但 mediator 中 `users.register(...)?; passwords.set(...)?` 可能留下只注册用户的部分状态：须按已确认契约处理部分完成（响应、重试、补偿或有意保留），或采用适用事务，不能用 `?` 当作完整注册流程。
+pub use api::{ReservationApi, HoldResult, ReservationId};
+// 需要 server 装配时，只公开受限工厂/配置，返回 API 实现。
+```
 
-## 接口层落点
+内部层默认私有或 `pub(crate)`，不 `pub mod adapter` 来方便业务调用。工厂签名只暴露必要配置和公开契约。外部身份用泛型或不透明 ID，概念 API 不引用另一概念的类型。syncs 公开自己的应用请求/结果类型，gateway 不因类型泄漏而依赖概念。
 
-采用边缘适配器时，app 内 `api` 模块（或独立 interfaces crate）：axum/tonic 路由只调 syncs 函数；serde DTO、OpenAPI/proto 契约只存在于此层，概念 crate 不依赖任何协议库。
+端口 trait 由内层定义，adapter 实现；用泛型做静态分发，需要共享运行期实现时才用 `Arc<dyn Trait>`。
+异步 trait 若要作 `dyn`，必须使用对象安全的 boxed-future 签名或已核验的转换方案；不能假定原生 `async fn` trait 可直接作 trait object。跨 Axum/Tokio 任务的接口和 future 按实际调用满足 `Send`/`Sync` 要求。
 
-## 架构看护
+## 装配与 HTTP
 
-- Cargo 只允许引用显式依赖的 crate；新增依赖仍须由 CI 检查其合法性。
-- **cargo-deny** 检查包级依赖政策，不能区分同一 crate 内 domain 与 adapter；层级约束需拆 crate 或源码边界检查。
-- CI 用 `cargo metadata` 的解析图断言概念间无依赖（包含项目支持的 features）；`cargo tree -i` 仅供人工诊断，不是自动断言。
+server 构造概念实现 → 注入 syncs → 将 syncs 接口注入 gateway state → 启动 Axum。gateway 仅装配路由、中间件和 DTO 映射，不装配概念存储。
+其公开路由入口可返回已注入状态的 `Router<()>`；仍缺状态时才返回 `Router<AppState>`，由 server 调用 `with_state`。
 
-依据：[Cargo workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html)、[cargo-deny bans](https://embarkstudios.github.io/cargo-deny/checks/bans/cfg.html)。
+Axum、HTTP 请求/响应及外部 JSON DTO 留在 gateway。概念动作通过进程内 API 调用。async mediator 或规则引擎均须兑现正文中的完成事件、关联和失败契约；`?` 传播错误不能代替跨动作恢复策略。
+
+## 验证
+
+```bash
+cargo build -p concept-reservation
+cargo test -p concept-reservation
+cargo test -p syncs
+cargo check --workspace
+cargo test --workspace
+```
+
+包名以清单为准。CI 从 `cargo metadata` 的解析图检查受支持 features 下的模块依赖，再检查源码层次与公开面；可编译不等于架构合法。Cargo 与 cargo-deny 都不能检查同一 crate 内的 domain/adapter 分层。验证 server 启动和应用场景，不以 library 构建成功代替整体装配。
+
+依据：[Cargo workspace](https://doc.rust-lang.org/cargo/reference/workspaces.html)、
+[构建选择](https://doc.rust-lang.org/cargo/commands/cargo-build.html)、
+[trait object 兼容性](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility)、
+[Axum Router 状态](https://docs.rs/axum/latest/axum/struct.Router.html#method.with_state)。

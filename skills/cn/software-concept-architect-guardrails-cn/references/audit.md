@@ -2,6 +2,8 @@
 
 焦点：哪些实际行为边界已有有效规格，哪些需要补齐？**覆盖** 是规格对已识别模块的描述范围，不表示模型适切或实现正确。本模式只读，限定路径则外部引用单列。
 
+构建模块与概念资格分别核实：读取 Cargo/Gradle/Maven/package 清单确认物理边界；syncs、gateway、shared、server 的独立构建身份不使它们自动成为概念。syncs 由 SYNCS 覆盖，技术装配/协议代码不因缺 CONCEPT 被误报；其中确有独立业务状态时再审其概念归属。
+
 ## 识别与分类
 
 1. 查 CONCEPT/PIPELINE/SYNCS 及 PRD 暂存索引，记录名称、路径和实际管辖范围。分别检查四节、data boundary、app/include/sync；旧 wyx 格式标待迁移，不算有效覆盖。

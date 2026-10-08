@@ -4,6 +4,11 @@ Use `audit` for read-only discovery before creating or changing specifications. 
 instructions, the overall PRD, CONCEPT/SYNCS/PIPELINE files, implementation modules, entry points,
 tests, schemas, migrations, build boundaries, and generated maps.
 
+Check build modules separately from concept qualification: read Cargo/Gradle/Maven/package manifests
+for physical boundaries. Independent syncs, gateway, shared, and server builds do not make them
+concepts. SYNCS covers syncs; technical wiring/protocol code does not need a synthetic CONCEPT.
+If such code owns independent business state, examine its concept ownership.
+
 ## Classify
 
 For every module or flow, record one state:

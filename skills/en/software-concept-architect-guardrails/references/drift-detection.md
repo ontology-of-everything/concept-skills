@@ -9,6 +9,12 @@ Trace public entry points, actions and queries, state ownership, persistence, er
 synchronizations, pipeline stages, and dependency rules. Search results are leads; open the defining
 code before concluding. Mark unscanned or generated paths unverified.
 
+Check manifests and source dependencies against confirmed engineering conventions. For the modular
+monolith baseline, verify independent build units, public APIs, gateway → syncs → concepts, zero
+concept dependencies, and Clean Architecture layers. Allow public assembly entries for server.
+Report architectural deviations separately; defaults do not establish legacy-project violations,
+and folders or acyclicity are not sufficient boundary evidence.
+
 For CONCEPT, check missing/removed actions, changed signatures or cases, observable undeclared
 state, broken invariants, OP test gaps, and cross-concept access. For PIPELINE, check sources, stage
 order, schemas, outputs, triggers, invariants, and data boundaries. For SYNCS, check includes,

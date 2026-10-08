@@ -8,6 +8,13 @@ queries emit no completion.
 Separate a missing OP test (verification gap) from a counterexample to contract → OP → purpose.
 Without code, skip implementation and test-coverage conclusions.
 
+Check build manifests and public APIs against confirmed project conventions. For the repository's
+default modular monolith, verify independent module builds/tests, one-process assembly,
+gateway → syncs → concepts, zero concept dependencies, and inner layers independent of protocol/storage
+implementations. Server may assemble multiple modules through public entries. Folders or acyclicity
+alone do not prove all boundaries. Report engineering deviations separately from concept-semantic
+drift; do not retroactively impose an unconfirmed default skeleton on existing projects.
+
 | Object/category         | Decision rule                                                         | Default     |
 | ----------------------- | --------------------------------------------------------------------- | ----------- |
 | Missing action          | public action is undeclared                                           | Medium      |

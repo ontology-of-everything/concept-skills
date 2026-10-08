@@ -4,9 +4,9 @@
     {
       "id": 1,
       "prompt": "$software-concept-architect-build 概念模型已经确认。请按 Jackson 映射把它落地成模块单体，目标语言是 TypeScript。不要重开概念讨论。",
-      "expected_output": "A modular-monolith mapping: one package per concept, syncs as mediators in the composition layer, TypeScript notes loaded, concept modules mutually unreferenced.",
+      "expected_output": "Independent TypeScript build/test packages for concepts, syncs, gateway, and shared, assembled by one server; Clean Architecture boundaries and only target-language guidance loaded.",
       "assertions": [
-        "Each concept has a verifiable module boundary; separate compilation units are selected when appropriate, and concepts do not depend on one another.",
+        "Each module has an independent build/test unit and public interface; builds include declared dependencies, while runtime remains one process and concepts do not depend on each other.",
         "Syncs are placed in the composition layer as mediators or a rule engine, not inside concept modules.",
         "The TypeScript reference is used; Rust and Java notes are not loaded as the working language.",
         "Concept-boundary questions are sent back to software-concept-architect-design instead of being redesigned here."
@@ -42,6 +42,31 @@
         "允许公开抽象状态读取，不强制制造getter或报告私有越界。",
         "保留输出case和item关联，不只用flow隔离或空模式判成功。",
         "说明发生身份、规则溯源及持久去重与外部副作用幂等的区别。"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "$software-concept-architect-build 已确认 Reservation/Payment 模型，使用 Rust Axum，默认模块单体。请给可独立编译模块的骨架：我准备在一个 crate 下用 mod 分目录，把所有 adapter 设为 pub，gateway 直接持有两个概念，并让 async fn trait 直接装进 Arc<dyn Trait>。指出需要改的地方并给最小方案。",
+      "expected_output": "A Cargo workspace with concept/syncs/gateway/shared library packages and a single server binary, restricted APIs and wiring, plus a valid async dispatch choice.",
+      "assertions": [
+        "One package/library crate per module; a mod directory alone is not a separate build unit.",
+        "Gateway depends on syncs application APIs; server alone wires concepts through restricted public factories.",
+        "Independent cargo package builds include their declared dependencies and do not require separate processes.",
+        "Keep internal layers private and check source boundaries in addition to Cargo metadata.",
+        "Do not use native async trait methods through dyn without an object-safe adaptation; handle Send requirements.",
+        "Load Rust guidance only; avoid per-layer crates, empty layers, and forwarding-only scaffolding."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "$software-concept-architect-build 用 Java Spring 从已确认概念模型新建模块单体，要求每个概念和 sync/gateway 独立编译。方案只有一个 Gradle project 下的多个 @ApplicationModule 包，称 verify() 已证明完整边界；每个模块还各自 bootRun。请修正工程和验证方案。",
+      "expected_output": "Separate library build projects plus one Boot server; validate build graph, discovered application modules, source layers, and integration behavior.",
+      "assertions": [
+        "Use Gradle subprojects or Maven modules for independent library builds; package annotations alone are insufficient.",
+        "Only server is the startup application; modules compose in one process.",
+        "Explicitly constrain concept dependencies and gateway access; Modulith verify alone does not forbid all concept API calls.",
+        "Ensure every leaf concept and syncs/gateway/shared is actually discovered and tested.",
+        "One CONCEPT per concept build unit and one SYNCS per syncs unit, with flows grouped inside."
       ]
     }
   ]

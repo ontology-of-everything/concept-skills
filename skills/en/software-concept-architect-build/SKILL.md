@@ -1,9 +1,8 @@
 ---
 name: software-concept-architect-build
-description:
-  Implements a confirmed concept model as a modular monolith only when the user explicitly invokes
-  $software-concept-architect-build. Use to map concepts to independent modules, implement synchronization
-  composition, colocate specifications, and verify behavioral and dependency contracts.
+description: >-
+  Generates implementations from confirmed concept models, defaulting to modular monoliths.
+  Use only on explicit $software-concept-architect-build invocation.
 metadata:
   language: en
   translation_of: software-concept-architect-build-cn
@@ -33,6 +32,15 @@ portions and route model gaps affecting implementation back to software-concept-
 
 ## Constraints
 
+- **Engineering baseline**: default to a modular monolith running in one process. Each concept,
+  syncs, gateway, and shared module is an independently buildable and testable unit, assembled by
+  server. Collaborate through public internal APIs; use Clean Architecture with dependencies toward
+  domain and application contracts. Add layers for actual responsibilities, not empty or forwarding
+  scaffolding. Honor confirmed project conventions; migration must be within the task scope.
+- **Module boundaries**: business calls follow gateway → syncs → concepts. Concepts have no direct
+  dependencies on each other; modules may use passive shared types as needed. Server may use public
+  assembly entry points. Gateway holds syncs APIs, never concept implementations. Concepts own
+  business state; syncs may retain necessary execution records.
 - **Contracts and legibility**: composition produces only behavior permitted by each concept contract.
   Keep concept/action/parameter meanings aligned across specifications, code, and logs; map renames.
   Actions enforce preconditions, invariants, effects, and result cases. A false precondition does not
@@ -43,11 +51,10 @@ portions and route model gaps affecting implementation back to software-concept-
   Where queries, filters, or computes zero/many binding sets; zero fires nothing, each set invokes then.
   Then uses constants or bound values; its calls have no implicit order. Subsequent outputs require
   new completion matches. State changes alone do not automatically trigger rules.
-- **Correlation and boundaries**: WYSIWID matches completions within one runtime flow and propagates
+- **Correlation and permissions**: WYSIWID matches completions within one runtime flow and propagates
   that correlation. Batch actions also require object bindings; documentation groups are not runtime
-  identities. Cross-concept policy belongs in syncs, public actions/queries respect confirmed permissions,
-  and composition owns no business state but may retain execution records. Repository convention:
-  connect rules through concept actions rather than hiding causality in direct sync-to-sync calls.
+  identities. Public actions/queries respect confirmed permissions. Connect rules through concept
+  actions rather than hiding causality in direct sync-to-sync calls.
 - **Failure and recovery**: handle no-match, rejection, and faults according to entry contracts; required
   responses must not be missing, crossed, or duplicated. Match errors and negative results by their
   respective cases. Define response, retry, compensation, or intentional ignoring and state consequences.
@@ -66,25 +73,26 @@ portions and route model gaps affecting implementation back to software-concept-
    purpose, concept model, both argument layers' assumptions, and project conventions. Trace actions,
    persistence, failures, and tests in existing code. Route model defects to design, transcription errors
    to PRD, and code violations here; update specifications before implementing confirmed new behavior.
-2. **Map boundaries**: give each concept a verifiable module; choose packages, classes, and storage for
-   the project. Queries preserve relations and zero/many bindings without accumulating getters for
-   composition. Encapsulate protocols in Requesting or edge adapters; use ports/adapters and composition
-   roots when needed, without imposing layers on every concept.
+2. **Map boundaries**: when defining project structure, read [architecture examples and counterexamples](references/architecture.md),
+   then only the target language reference. Declare build units, public APIs, state owners, and assembly
+   entry points. Queries preserve relations and zero/many bindings without accumulating getters.
+   Place Requesting protocol adapters in gateway; keep concept signatures protocol-independent.
 3. **Implement rules**: preserve policy boundaries and cross-entry reuse with named functions/rule
    objects. Simple compositions may use a mediator; consider an engine when conjunctive matching,
    independent rule evolution, or tracing makes handwritten scheduling complex. Both preserve the
    constraints above. Ordinary listeners do not automatically provide conjunction, historical correlation,
    or recovery. Flow indexes and causal records explain complete chains.
-4. **Colocate and verify**: place CONCEPT with its module and SYNCS with its composition package;
-   migrate staged specifications and update the PRD index. Test OPs/invariants inside concepts,
+4. **Colocate and verify**: keep one CONCEPT per concept module and one SYNCS per syncs module,
+   grouping flows inside it. Migrate staged specifications and update the PRD index. Build and test
+   modules individually, then verify full assembly. Test OPs/invariants inside concepts,
    matching/bindings/branches per rule, and application purpose, concurrency isolation, and applicable
-   failure recovery across rules. CI checks concept independence and read/write boundaries. Conformance
+   failure recovery across rules. CI checks dependency graphs, public surfaces, layers, and read/write boundaries. Conformance
    does not establish purpose fitness; route counterexamples to the model. Delivery requires matching
    specifications/code, attributable executions, excluded actions neither called nor exposed, and no
    invented unresolved assumptions. Product subsets also require dependency closure, entries, remaining
    rules, resources, and build flags to be checked.
 
-Read [Rust](references/rust.md), [Spring Modulith](references/java-spring.md), or
-[TypeScript](references/typescript.md) as needed; read [scaling](references/scaling.md) only for observed
-navigation, build, or collaboration pain. Modular-monolith scope, rule code organization, and reliability
-mechanisms include repository choices; see [sources](references/sources.md) for verified versions and limits.
+Select only [Rust / Axum](references/rust.md), [Java / Spring](references/java-spring.md), or
+[TypeScript](references/typescript.md). Read [scaling](references/scaling.md) only for observed
+navigation, build, or collaboration pain. The engineering baseline is repository policy;
+read [sources](references/sources.md) when distinguishing theory from engineering conventions.

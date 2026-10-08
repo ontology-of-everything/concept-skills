@@ -15,8 +15,11 @@ WYSIWID v1 as a repository format baseline, not a claim that theory stops at v1.
 aligns with Beyond Objects; Requesting appears in both 2026 papers and is not merely legacy material.
 Preserve confirmed dialects and signatures rather than mechanically migrating them.
 
-Repository choices include modular-monolith scope, verifiable named rule boundaries, and avoiding
-hidden causality through sync-to-sync calls. Choose packages/files, ports/adapters, mediators, or engines
-as needed. Public abstract state does not expose physical storage or bypass authorization. Transactions,
+Engineering baseline, 2026-10-08: a modular monolith by default, independent module builds, Clean
+Architecture internally, independent syncs and gateway modules, and one server process for assembly.
+Keep verifiable rule boundaries without hidden sync-to-sync causality. These are repository choices,
+not paper requirements; the papers allowing protocols inside Requesting do not contradict this
+engineering profile. Language references provide mappings and technical sources; choose mediators
+or engines for actual execution needs. Public abstract state does not expose physical storage or bypass authorization. Transactions,
 outboxes, external-effect idempotency, response handling, and cycle controls are engineering measures,
 not a mandatory Jackson technology stack. Verify recovery claims against durable firing records.

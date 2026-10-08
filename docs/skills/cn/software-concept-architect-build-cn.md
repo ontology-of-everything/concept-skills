@@ -20,13 +20,13 @@
 ## 适用场景
 
 - 概念模型已确认，需要代码结构而不是再讨论边界。
-- 目标是模块单体，按动作与状态关系划分概念；端口-适配器按需采用。
-- 语言细节按需加载：Rust、Java/Spring Modulith、TypeScript。
+- 默认模块单体，每个概念及 syncs/gateway 为独立构建单元，内部采用整洁架构，同进程装配。
+- 语言细节按需加载：Rust/Axum、Java/Spring、TypeScript；仅加载目标语言。
 
 ## 方法
 
 1. 读模型、概念/应用目的与项目事实；模型缺陷回 design，转录错误回 prd，代码违约在本技能修复。
-2. 概念模块互不引用；syncs 以具名规则承担业务协调；Requesting 或边缘适配器实现已确认入口策略。
+2. 概念模块互不引用；syncs 以具名规则承担业务协调；gateway 提供统一协议入口，只访问 syncs 公开应用接口；server 负责装配。
 3. mediator 或规则引擎保持因果、绑定及失败契约；需要响应时明确结果和请求关联。
 4. 规格与代码共存；概念 OP、应用端到端场景及不变量分别验证，架构看护进入 CI。
 5. 仅有工程痛点时分组/拆包；验证产品子集的目的、入口、剩余规则与构建支持。
@@ -38,8 +38,9 @@ skills/cn/software-concept-architect-build-cn/
 ├── SKILL.md                     # 概念 / 约束 / 实现
 ├── agents/openai.yaml
 └── references/
-    ├── spec-format.md             # 共享规格契约与模板（独立安装副本）
-    ├── scaling.md               # 概念分组与 syncs 拆包（十余个概念起）
+    ├── spec-format.md           # 共享规格契约与模板（独立安装副本）
+    ├── architecture.md          # 工程实例、分层与关键正反例
+    ├── scaling.md               # 有工程痛点时分组或拆包
     ├── rust.md
     ├── java-spring.md
     ├── typescript.md
