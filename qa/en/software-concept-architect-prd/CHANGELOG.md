@@ -1,5 +1,10 @@
 # concept-prd Changelog
 
+## 1.1.0 - 2026-10-08
+
+- Colocate one CONCEPT specification per concept build unit and one SYNCS specification per synchronization build unit.
+- Group flows inside the authoritative SYNCS file; update indexes when moving staged specifications or splitting real modules.
+
 ## 1.0.0 - 2026-09-30
 
 - Rename `concept-prd` (0.7.1) to `software-concept-architect-prd` under Software Concept Architect.

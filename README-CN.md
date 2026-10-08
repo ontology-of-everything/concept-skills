@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **2.0.0**。原有 `software-concept-architect-*` 技能仅显式调用；`software-concept-architect-refine` 与 `read-it-reframe-it-own-it` 支持自动匹配；`software-concept-architect-guardrails` 只消费 Jackson 记法。
+当前版本为 **2.1.0**。原有 `software-concept-architect-*` 技能仅显式调用；`software-concept-architect-refine` 与 `read-it-reframe-it-own-it` 支持自动匹配；`software-concept-architect-guardrails` 只消费 Jackson 记法。
 
 ## 目录
 
@@ -45,10 +45,10 @@ English: [README.md](README.md)。
 | 技能 | 版本 | ClawHub 分类 |
 | --- | --- | --- |
 | [软件概念架构师 · 设计](docs/skills/cn/software-concept-architect-design-cn.md) | 1.0.0 | development |
-| [软件概念架构师 · 需求规格](docs/skills/cn/software-concept-architect-prd-cn.md) | 1.0.0 | development |
-| [软件概念架构师 · 实现](docs/skills/cn/software-concept-architect-build-cn.md) | 1.0.0 | development |
-| [软件概念架构师 · 审查](docs/skills/cn/software-concept-architect-review-cn.md) | 1.0.0 | development |
-| [软件概念架构师 · 规格护栏](docs/skills/cn/software-concept-architect-guardrails-cn.md) | 1.0.0 | development |
+| [软件概念架构师 · 需求规格](docs/skills/cn/software-concept-architect-prd-cn.md) | 1.1.0 | development |
+| [软件概念架构师 · 实现](docs/skills/cn/software-concept-architect-build-cn.md) | 1.1.0 | development |
+| [软件概念架构师 · 审查](docs/skills/cn/software-concept-architect-review-cn.md) | 1.1.0 | development |
+| [软件概念架构师 · 规格护栏](docs/skills/cn/software-concept-architect-guardrails-cn.md) | 1.1.0 | development |
 | [软件概念架构师 · 精炼](docs/skills/cn/software-concept-architect-refine-cn.md) | 1.0.0 | development |
 
 ### 语义建模

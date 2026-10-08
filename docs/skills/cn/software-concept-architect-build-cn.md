@@ -6,12 +6,12 @@
 
 > 本文是给人看的中文说明，**不是** `npx skills add` 安装包内容。Agent 加载 [`skills/cn/software-concept-architect-build-cn/SKILL.md`](../../../skills/cn/software-concept-architect-build-cn/SKILL.md)。
 
-**Version:** 1.0.0 · Changelog:
+**Version:** 1.1.0 · Changelog:
 [qa/cn/software-concept-architect-build-cn/CHANGELOG.md](../../../qa/cn/software-concept-architect-build-cn/CHANGELOG.md)
 
 ## 一句话
 
-仅显式调用 · 将确认模型实现为模块单体，保持概念独立与因果同步，规格共存，测试分别关联概念目的与应用目的
+仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
 
 ## 启用方式
 
@@ -68,6 +68,10 @@ npx skills add ./skills/cn/software-concept-architect-build-cn \
 - [skills.sh](https://skills.sh/ontology-of-everything/concept-skills/cn/software-concept-architect-build-cn)
 - [SkillsMP](https://skillsmp.com/) — repo topics `claude-skills`, `claude-code-skill`
 - [ClawHub 英文版](https://clawhub.ai/agenticweb4/skills/software-concept-architect-build)
+
+## 2026-10-08 修订
+
+默认同进程模块单体，每个模块独立构建，内部采用整洁架构，同步模块独立、网关统一。
 
 ## 2026-09-25 修订
 

@@ -12,6 +12,10 @@ PIPELINE specifications in six explicit modes.
 npx skills add ontology-of-everything/concept-skills --skill software-concept-architect-guardrails
 ```
 
+## 1.1.0 - 2026-10-08
+
+Check build manifests and source boundaries without mistaking synchronization, gateway, shared, or startup modules for concepts.
+
 ## 2026-09-19 Revision
 
 Synchronization may restrict behavior, never extend a concept contract. Check each concept’s actions,

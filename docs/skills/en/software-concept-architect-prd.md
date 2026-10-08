@@ -12,6 +12,10 @@ specifications, synchronizations, and traceable acceptance scenarios without red
 npx skills add ontology-of-everything/concept-skills --skill software-concept-architect-prd
 ```
 
+## 1.1.0 - 2026-10-08
+
+Colocate one CONCEPT specification per concept build unit and one SYNCS specification per synchronization build unit.
+
 ## 2026-09-19 Revision
 
 Synchronization may restrict behavior, never extend a concept contract. Check each concept’s actions,

@@ -6,7 +6,7 @@
 
 > 本文是给人看的中文说明，**不是** `npx skills add` 安装包内容。Agent 加载 [`skills/cn/software-concept-architect-guardrails-cn/SKILL.md`](../../../skills/cn/software-concept-architect-guardrails-cn/SKILL.md)。
 
-**Version:** 1.0.0 · Changelog:
+**Version:** 1.1.0 · Changelog:
 [qa/cn/software-concept-architect-guardrails-cn/CHANGELOG.md](../../../qa/cn/software-concept-architect-guardrails-cn/CHANGELOG.md)
 
 ## 一句话
@@ -130,6 +130,10 @@ npx skills add ./skills/cn/software-concept-architect-guardrails-cn \
 
 - **WYSIWID** —— Eagon Meng & Daniel Jackson, "What You See Is What It Does"（MIT, Onward! 2025）。
 - **WYWIWID** —— Dr. Ernie, "What You Write Is What It Did"。
+
+## 2026-10-08 修订
+
+核对构建清单与源码边界，避免把同步、网关、共享及启动模块误认成业务概念。
 
 ## 2026-09-10 修订
 

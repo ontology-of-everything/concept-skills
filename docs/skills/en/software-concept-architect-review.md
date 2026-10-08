@@ -13,6 +13,10 @@ conformance.
 npx skills add ontology-of-everything/concept-skills --skill software-concept-architect-review
 ```
 
+## 1.1.0 - 2026-10-08
+
+Review independent build units, public APIs, gateway/synchronization/concept boundaries, and Clean Architecture layers against confirmed project conventions.
+
 ## 2026-09-19 Revision
 
 Synchronization may restrict behavior, never extend a concept contract. Check each concept’s actions,

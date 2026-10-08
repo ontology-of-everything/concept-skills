@@ -17,6 +17,10 @@ when defining structure, then only the selected Rust/Axum, Java/Spring, or TypeS
 npx skills add ontology-of-everything/concept-skills --skill software-concept-architect-build
 ```
 
+## 1.1.0 - 2026-10-08
+
+Default to independently built Clean Architecture modules in one process, with a separate synchronization module and unified gateway.
+
 ## 2026-09-25 Revision
 
 Synchronization rules remain independently identifiable and verifiable. Composition guidance now

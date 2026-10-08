@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.0 - 2026-10-08
+
+### Features
+
+- Default concept implementations to a modular monolith with independently built Clean Architecture modules, a separate synchronization module, and one gateway/server process.
+- Add progressively loaded architecture examples, counterexamples, and aligned Rust/Axum, Java/Spring, and TypeScript skeletons.
+- Release Build, Review, Guardrails, and PRD as 1.1.0 in both English and Simplified Chinese.
+
+### Fixes
+
+- Align architecture checks and specification locations across implementation, review, guardrails, and PRD without imposing unconfirmed conventions on existing projects.
+- Keep the learning skill's ClawHub listing enabled under its verified identity.
+
 ## 2.0.0 - 2026-10-01
 
 ### Breaking Changes

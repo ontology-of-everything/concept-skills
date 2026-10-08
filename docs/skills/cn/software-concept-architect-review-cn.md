@@ -6,7 +6,7 @@
 
 > 本文是给人看的中文说明，**不是** `npx skills add` 安装包内容。Agent 加载 [`skills/cn/software-concept-architect-review-cn/SKILL.md`](../../../skills/cn/software-concept-architect-review-cn/SKILL.md)。
 
-**Version:** 1.0.0 · Changelog:
+**Version:** 1.1.0 · Changelog:
 [qa/cn/software-concept-architect-review-cn/CHANGELOG.md](../../../qa/cn/software-concept-architect-review-cn/CHANGELOG.md)
 
 ## 一句话
@@ -65,6 +65,10 @@ npx skills add ./skills/cn/software-concept-architect-review-cn \
 - [skills.sh](https://skills.sh/ontology-of-everything/concept-skills/cn/software-concept-architect-review-cn)
 - [SkillsMP](https://skillsmp.com/) — repo topics `claude-skills`, `claude-code-skill`
 - [ClawHub 英文版](https://clawhub.ai/agenticweb4/skills/software-concept-architect-review)
+
+## 2026-10-08 修订
+
+按项目已确认约定核对独立构建、公开接口、网关/同步/概念边界与整洁架构层次。
 
 ## 2026-09-07 修订
 

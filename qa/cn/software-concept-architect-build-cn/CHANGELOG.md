@@ -1,5 +1,11 @@
 # concept-implementation-cn Changelog
 
+## 1.1.0 - 2026-10-08
+
+- 默认同进程模块单体，每个模块独立构建，内部采用整洁架构，同步模块独立、网关统一。
+- 按需加载工程实例与关键正反例，对齐 Rust/Axum、Java/Spring 和 TypeScript 骨架。
+- 分别核对构建依赖、公开接口、同步行为及失败恢复，避免冗余分层与目录误判。
+
 ## 1.0.0 - 2026-09-30
 
 - 将 `concept-implementation-cn`（0.9.0）更名为 `software-concept-architect-build-cn`，统一软件概念架构师品牌。

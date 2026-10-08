@@ -1,5 +1,10 @@
 # concept-prd-cn Changelog
 
+## 1.1.0 - 2026-10-08
+
+- 每个概念构建单元共置一份 CONCEPT，每个同步构建单元共置一份 SYNCS。
+- flow 在权威 SYNCS 内分组，暂存迁移或实际拆分模块时更新索引。
+
 ## 1.0.0 - 2026-09-30
 
 - 将 `concept-prd-cn`（0.7.1）更名为 `software-concept-architect-prd-cn`，统一软件概念架构师品牌。

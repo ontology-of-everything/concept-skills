@@ -1,5 +1,11 @@
 # concept-implementation Changelog
 
+## 1.1.0 - 2026-10-08
+
+- Default to independently built Clean Architecture modules in one process, with a separate synchronization module and unified gateway.
+- Add progressively loaded architecture examples and counterexamples plus aligned Rust/Axum, Java/Spring, and TypeScript skeletons.
+- Verify build graphs and public interfaces separately from behavioral synchronization and recovery contracts.
+
 ## 1.0.0 - 2026-09-30
 
 - Rename `concept-implementation` (0.9.0) to `software-concept-architect-build` under Software Concept Architect.

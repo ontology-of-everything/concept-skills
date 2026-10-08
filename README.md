@@ -23,7 +23,7 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **2.0.0**. Existing `software-concept-architect-*` skills are explicit-only;
+Current release is **2.1.0**. Existing `software-concept-architect-*` skills are explicit-only;
 `software-concept-architect-refine` and `read-it-reframe-it-own-it` support automatic discovery;
 `software-concept-architect-guardrails` modes
 consume Jackson notation only.
@@ -51,10 +51,10 @@ Design software concepts, responsibilities, specifications, and implementations.
 | Skill | Version | ClawHub category |
 | --- | --- | --- |
 | [Software Concept Architect · Design](docs/skills/en/software-concept-architect-design.md) | 1.0.0 | development |
-| [Software Concept Architect · PRD](docs/skills/en/software-concept-architect-prd.md) | 1.0.0 | development |
-| [Software Concept Architect · Build](docs/skills/en/software-concept-architect-build.md) | 1.0.0 | development |
-| [Software Concept Architect · Review](docs/skills/en/software-concept-architect-review.md) | 1.0.0 | development |
-| [Software Concept Architect · Guardrails](docs/skills/en/software-concept-architect-guardrails.md) | 1.0.0 | development |
+| [Software Concept Architect · PRD](docs/skills/en/software-concept-architect-prd.md) | 1.1.0 | development |
+| [Software Concept Architect · Build](docs/skills/en/software-concept-architect-build.md) | 1.1.0 | development |
+| [Software Concept Architect · Review](docs/skills/en/software-concept-architect-review.md) | 1.1.0 | development |
+| [Software Concept Architect · Guardrails](docs/skills/en/software-concept-architect-guardrails.md) | 1.1.0 | development |
 | [Software Concept Architect · Refine](docs/skills/en/software-concept-architect-refine.md) | 1.0.0 | development |
 
 ### Semantic Modeling

@@ -191,7 +191,7 @@ skills:
   - specifications
   summary: Explicit-invocation-only — transcribes confirmed models into an overall PRD, per-concept specifications and synchronizations, preserving concept/application purposes, assumptions, unresolved decisions and acceptance traceability.
   summary_zh: 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
-  version: 1.0.0
+  version: 1.1.0
   agents: &id013
   - cursor
   - claude-code
@@ -220,7 +220,7 @@ skills:
   subdomains: *id012
   summary: Chinese edition. 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
   summary_zh: 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
-  version: 1.0.0
+  version: 1.1.0
   agents: *id013
   compatibility: No external tools or network; writes Markdown PRD files
   marketplaces: [skills-sh, skillsmp]
@@ -240,9 +240,9 @@ skills:
   - concept-design
   - modular-monolith
   - implementation
-  summary: Explicit-invocation-only — implements confirmed concept models as modular monoliths with independent modules, causal synchronization, colocated specifications, and tests tied to concept and application purposes.
-  summary_zh: 仅显式调用 · 将确认模型实现为模块单体，保持概念独立与因果同步，规格共存，测试分别关联概念目的与应用目的
-  version: 1.0.0
+  summary: Explicit-invocation-only — defaults to a modular monolith with independently built Clean Architecture modules, causal synchronization, a unified gateway, colocated specifications, and concept/application tests.
+  summary_zh: 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
+  version: 1.1.0
   agents: &id016
   - cursor
   - claude-code
@@ -269,9 +269,9 @@ skills:
   display_title_zh: 软件概念架构师 · 实现 — 把确认的模型落成独立模块
   domain: concept-design
   subdomains: *id015
-  summary: Chinese edition. 仅显式调用 · 将确认模型实现为模块单体，保持概念独立与因果同步，规格共存，测试分别关联概念目的与应用目的
-  summary_zh: 仅显式调用 · 将确认模型实现为模块单体，保持概念独立与因果同步，规格共存，测试分别关联概念目的与应用目的
-  version: 1.0.0
+  summary: Chinese edition. 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
+  summary_zh: 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
+  version: 1.1.0
   agents: *id016
   compatibility: Mapping needs only the confirmed model; language-specific boundary tests may use cargo, Spring Modulith, or dependency-cruiser
   marketplaces: [skills-sh, skillsmp]
@@ -293,7 +293,7 @@ skills:
   - spec-drift
   summary: Explicit-invocation-only — read-only audit of concept and application design arguments, with optional implementation conformance checks; covers fitness for purpose, independence, composition, drift and product subsets, routing evidenced findings by root cause.
   summary_zh: 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
-  version: 1.0.0
+  version: 1.1.0
   agents: &id019
   - cursor
   - claude-code
@@ -322,7 +322,7 @@ skills:
   subdomains: *id018
   summary: Chinese edition. 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
   summary_zh: 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
-  version: 1.0.0
+  version: 1.1.0
   agents: *id019
   compatibility: Read-only; design review needs requirements and a concept model, implementation checks additionally need code
   marketplaces: [skills-sh, skillsmp]
@@ -345,7 +345,7 @@ skills:
   - concept-specs
   summary: Explicit-invocation-only — six modes for specification coverage, concept backfill, drift, pipelines, synchronizations and derived maps; distinguishes evidence, inferred purposes and design gaps in the local Jackson notation, with optional wyx hooks.
   summary_zh: 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
-  version: 1.0.0
+  version: 1.1.0
   agents: &id022
   - cursor
   - claude-code
@@ -375,7 +375,7 @@ skills:
   subdomains: *id021
   summary: Chinese edition. 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
   summary_zh: 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
-  version: 1.0.0
+  version: 1.1.0
   agents: *id022
   compatibility: Specs and drift checks need only file read/write plus Grep/Glob; the optional boundary-injection runtime requires Claude Code hooks and jq
   marketplaces: [skills-sh, skillsmp]

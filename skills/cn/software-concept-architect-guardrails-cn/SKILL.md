@@ -6,7 +6,7 @@ metadata:
   language: zh-CN
   translation_of: software-concept-architect-guardrails
   author: ontology-of-everything
-  version: "1.0.0"
+  version: "1.1.0"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---

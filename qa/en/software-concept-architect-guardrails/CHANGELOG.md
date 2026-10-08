@@ -1,5 +1,10 @@
 # concept-guardrails Changelog
 
+## 1.1.0 - 2026-10-08
+
+- Check build manifests and source boundaries without mistaking synchronization, gateway, shared, or startup modules for concepts.
+- Report architectural deviations against confirmed conventions and preserve valid public assembly paths.
+
 ## 1.0.0 - 2026-09-30
 
 - Rename `concept-guardrails` (0.32.1) to `software-concept-architect-guardrails` under Software Concept Architect.

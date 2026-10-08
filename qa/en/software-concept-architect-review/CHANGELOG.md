@@ -1,5 +1,10 @@
 # concept-audit Changelog
 
+## 1.1.0 - 2026-10-08
+
+- Review independent build units, public APIs, gateway/synchronization/concept boundaries, and Clean Architecture layers against confirmed project conventions.
+- Distinguish engineering deviations from behavioral drift; accept public assembly without imposing unconfirmed defaults on existing projects.
+
 ## 1.0.0 - 2026-09-30
 
 - Rename `concept-audit` (0.7.1) to `software-concept-architect-review` under Software Concept Architect.

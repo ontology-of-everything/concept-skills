@@ -1,5 +1,10 @@
 # concept-guardrails-cn Changelog
 
+## 1.1.0 - 2026-10-08
+
+- 核对构建清单与源码边界，避免把同步、网关、共享及启动模块误认成业务概念。
+- 依据已确认约定报告架构偏差，保留合法公开装配路径。
+
 ## 1.0.0 - 2026-09-30
 
 - 将 `concept-guardrails-cn`（0.32.1）更名为 `software-concept-architect-guardrails-cn`，统一软件概念架构师品牌。
