@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.0 - 2026-10-12
+
+- Add a source-checked code-comprehension research note with a question-driven 30-minute reading exercise.
+- Distinguish research observations, conceptual frameworks, and engineering recommendations; retain source and evidence limits.
+
 ## 2.1.0 - 2026-10-08
 
 ### Features
