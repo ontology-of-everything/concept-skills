@@ -1,0 +1,6 @@
+interface:
+  display_name: "软件概念架构师 · 需求规格"
+  short_description: "把已确认模型转成需求规格，保留行为边界、假设和验收追溯"
+  default_prompt: "Use $software-concept-architect-prd-cn to transcribe the confirmed model into an overall PRD, concept specifications and synchronizations, preserving concept and application purposes, assumptions and acceptance traceability."
+policy:
+  allow_implicit_invocation: false

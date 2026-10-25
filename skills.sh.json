@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Concept Design",
+      "description": "Design software concepts, responsibilities, specifications, and implementations.",
+      "skills": [
+        "software-concept-architect-design",
+        "software-concept-architect-design-cn",
+        "software-concept-architect-prd",
+        "software-concept-architect-prd-cn",
+        "software-concept-architect-build",
+        "software-concept-architect-build-cn",
+        "software-concept-architect-review",
+        "software-concept-architect-review-cn",
+        "software-concept-architect-guardrails",
+        "software-concept-architect-guardrails-cn",
+        "software-concept-architect-refine",
+        "software-concept-architect-refine-cn",
+        "see-the-concept",
+        "see-the-concept-cn"
+      ]
+    },
+    {
+      "title": "Semantic Modeling",
+      "description": "Model the business meaning of data, facts, dimensions, and relations.",
+      "skills": [
+        "data-knowledge-architect",
+        "data-knowledge-architect-cn"
+      ]
+    },
+    {
+      "title": "Knowledge Management",
+      "description": "Extract, connect, organize, and reuse knowledge from source material.",
+      "skills": [
+        "personal-knowledge-architect",
+        "personal-knowledge-architect-cn"
+      ]
+    },
+    {
+      "title": "Learning Methods",
+      "description": "Build and revise understanding around a learning goal and a key framework.",
+      "skills": [
+        "read-it-reframe-it-own-it",
+        "read-it-reframe-it-own-it-cn"
+      ]
+    }
+  ]
+}

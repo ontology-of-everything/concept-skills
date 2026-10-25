@@ -1,0 +1,4 @@
+interface:
+  display_name: "软件概念架构师 · 精炼"
+  short_description: "基于证据定位概念过载、冗余与碎片，以最小必要改动精炼设计"
+  default_prompt: "使用 $software-concept-architect-refine-cn，以证据和最小必要改动精炼当前概念设计，并验证局部与端到端场景。"

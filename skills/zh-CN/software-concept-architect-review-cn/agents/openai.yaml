@@ -1,0 +1,6 @@
+interface:
+  display_name: "软件概念架构师 · 审查"
+  short_description: "只读审查设计目的、模块独立性与组合，并核对代码实现偏差"
+  default_prompt: "Use $software-concept-architect-review-cn to review concept and application purposes, design arguments, independence and composition; check implementation conformance when code is available. Read-only, with evidence and fix routing."
+policy:
+  allow_implicit_invocation: false

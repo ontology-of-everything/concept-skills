@@ -1,0 +1,6 @@
+interface:
+  display_name: "软件概念架构师 · 规格护栏"
+  short_description: "建立与代码共存的概念规格，检查覆盖、同步规则及实现漂移"
+  default_prompt: "Use $software-concept-architect-guardrails-cn <audit|concept|drift|pipeline|sync|map> to declare this module's boundaries as a concept spec, or to check specs against code for drift."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,495 @@
+# Public skill index and per-skill versions. Keep in sync with skills/.
+version: 1
+domains:
+  concept-design:
+    name: Concept Design
+    name_zh: 概念设计
+    description: Design software concepts, responsibilities, specifications, and implementations.
+    description_zh: 设计软件概念、职责、规格与实现。
+  semantic-modeling:
+    name: Semantic Modeling
+    name_zh: 语义建模
+    description: Model the business meaning of data, facts, dimensions, and relations.
+    description_zh: 定义数据、事实、维度与关系的业务含义。
+  knowledge-management:
+    name: Knowledge Management
+    name_zh: 知识管理
+    description: Extract, connect, organize, and reuse knowledge from source material.
+    description_zh: 从原文萃取、关联、组织和复用知识。
+  learning-methods:
+    name: Learning Methods
+    name_zh: 学习方法
+    description: Build and revise understanding around a learning goal and a key framework.
+    description_zh: 围绕学习目标与关键框架建立并修正理解。
+skills:
+- id: data-knowledge-architect
+  path: skills/en/data-knowledge-architect
+  display_name: Data Knowledge Architect
+  display_title: Data Knowledge Architect — Model the Meaning Behind Your Data
+  display_name_zh: 数据知识架构师
+  display_title_zh: 数据知识架构师 — 为 API 与数据结构建立清晰的语义模型
+  domain: semantic-modeling
+  subdomains: &id003
+  - semantic-layer
+  - dimensional-modeling
+  - ontology
+  - okf
+  - enterprise-knowledge
+  summary: Builds semantic models from API, CLI, and database contracts with an HTML review and OKF/YAML export. Use when modeling enterprise knowledge, semantic layers, dimensional models, or ontology.
+  summary_zh: 把 API、CLI 与数据库契约转成有证据支撑的语义模型，通过 HTML 决策工作台审查后输出 Google OKF 或 YAML。适用于企业知识建模、语义层、维度建模与本体设计。
+  version: 1.1.0
+  agents: &id004
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: No external tools or network; pure modeling + file generation; review report is self-contained HTML (inline CSS/JS, no CDN)
+  marketplaces: &id005
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: data-knowledge-architect-cn
+  clawhub:
+    categories: [knowledge]
+    topics: [semantic-layer, ontology, dimensional-modeling, enterprise-knowledge]
+- id: data-knowledge-architect-cn
+  path: skills/zh-CN/data-knowledge-architect-cn
+  display_name: 数据知识架构师
+  display_title: 数据知识架构师 — 为 API 与数据结构建立清晰的语义模型
+  display_name_zh: 数据知识架构师
+  display_title_zh: 数据知识架构师 — 为 API 与数据结构建立清晰的语义模型
+  domain: semantic-modeling
+  subdomains: *id003
+  summary: 把 API、CLI 与数据库契约转成有证据支撑的语义模型，通过 HTML 决策工作台审查后输出 Google OKF 或 YAML。适用于企业知识建模、语义层、维度建模与本体设计。
+  summary_zh: 把 API、CLI 与数据库契约转成有证据支撑的语义模型，通过 HTML 决策工作台审查后输出 Google OKF 或 YAML。适用于企业知识建模、语义层、维度建模与本体设计。
+  version: 1.1.0
+  agents: *id004
+  compatibility: No external tools or network; pure modeling + file generation; review report is self-contained HTML (inline CSS/JS, no CDN)
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: data-knowledge-architect
+- id: personal-knowledge-architect
+  path: skills/en/personal-knowledge-architect
+  display_name: Personal Knowledge Architect
+  display_title: Personal Knowledge Architect — Build Connected, Reusable Knowledge
+  display_name_zh: 个人知识架构师
+  display_title_zh: 个人知识架构师 — 把原文组织成相互关联、可复用的知识
+  domain: knowledge-management
+  subdomains: &id006
+  - knowledge-extraction
+  - ontology
+  - sce
+  summary: "Extracts connected, reusable methods, scenarios, and entities from source texts. Use when organizing personal knowledge: confirm a deduplicated skeleton, then enrich it with source-grounded steps and relations."
+  summary_zh: 把原文组织成相互关联、可复用的个人知识。适用于知识萃取、个人知识管理与场景/概念/实体建模：先去重并确认知识骨架，再依原文补全 IPO、分解、组装与关系。
+  version: 0.4.0
+  agents: &id007
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: No external tools or network; writes three YAML files plus a round-1 progress note; relation reference loaded on demand
+  marketplaces: &id008
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: personal-knowledge-architect-cn
+  clawhub:
+    categories: [knowledge]
+    topics: [personal-knowledge, knowledge-extraction, knowledge-modeling]
+- id: personal-knowledge-architect-cn
+  path: skills/zh-CN/personal-knowledge-architect-cn
+  display_name: 个人知识架构师
+  display_title: 个人知识架构师 — 把原文组织成相互关联、可复用的知识
+  display_name_zh: 个人知识架构师
+  display_title_zh: 个人知识架构师 — 把原文组织成相互关联、可复用的知识
+  domain: knowledge-management
+  subdomains: *id006
+  summary: 把原文组织成相互关联、可复用的个人知识。适用于知识萃取、个人知识管理与场景/概念/实体建模：先去重并确认知识骨架，再依原文补全 IPO、分解、组装与关系。
+  summary_zh: 把原文组织成相互关联、可复用的个人知识。适用于知识萃取、个人知识管理与场景/概念/实体建模：先去重并确认知识骨架，再依原文补全 IPO、分解、组装与关系。
+  version: 0.4.0
+  agents: *id007
+  compatibility: No external tools or network; writes three YAML files plus a round-1 progress note; relation reference loaded on demand
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: personal-knowledge-architect
+- id: software-concept-architect-design
+  path: skills/en/software-concept-architect-design
+  display_name: Software Concept Architect · Design
+  display_title: Software Concept Architect · Design — Turn Requirements into Clear Concepts
+  display_name_zh: 软件概念架构师 · 设计
+  display_title_zh: 软件概念架构师 · 设计 — 把需求变成清晰的软件概念
+  domain: concept-design
+  subdomains: &id009
+  - concept-design
+  - requirements
+  - software-design
+  summary: Explicit-invocation-only — completes a concept design with the user; confirm the alignment, then write the design record.
+  summary_zh: 仅显式调用 · 和用户一起完成概念设计；先确认对齐，再写设计记录
+  version: 1.0.0
+  agents: &id010
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: No external tools or network; pure concept modeling
+  marketplaces: &id011
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: software-concept-architect-design-cn
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, requirements]
+- id: software-concept-architect-design-cn
+  path: skills/zh-CN/software-concept-architect-design-cn
+  display_name: 软件概念架构师 · 设计
+  display_title: 软件概念架构师 · 设计 — 把需求变成清晰的软件概念
+  display_name_zh: 软件概念架构师 · 设计
+  display_title_zh: 软件概念架构师 · 设计 — 把需求变成清晰的软件概念
+  domain: concept-design
+  subdomains: *id009
+  summary: Chinese edition. 仅显式调用 · 和用户一起完成概念设计；先确认对齐，再写设计记录
+  summary_zh: 仅显式调用 · 和用户一起完成概念设计；先确认对齐，再写设计记录
+  version: 1.0.0
+  agents: *id010
+  compatibility: No external tools or network; pure concept modeling
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: software-concept-architect-design
+- id: software-concept-architect-prd
+  path: skills/en/software-concept-architect-prd
+  display_name: Software Concept Architect · PRD
+  display_title: Software Concept Architect · PRD — Turn Models into Traceable Specs
+  display_name_zh: 软件概念架构师 · 需求规格
+  display_title_zh: 软件概念架构师 · 需求规格 — 把确认的模型变成可追溯规格
+  domain: concept-design
+  subdomains: &id012
+  - concept-design
+  - prd
+  - specifications
+  summary: Explicit-invocation-only — transcribes confirmed models into an overall PRD, per-concept specifications and synchronizations, preserving concept/application purposes, assumptions, unresolved decisions and acceptance traceability.
+  summary_zh: 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
+  version: 1.1.0
+  agents: &id013
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: No external tools or network; writes Markdown PRD files
+  marketplaces: &id014
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: software-concept-architect-prd-cn
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, prd, specifications]
+- id: software-concept-architect-prd-cn
+  path: skills/zh-CN/software-concept-architect-prd-cn
+  display_name: 软件概念架构师 · 需求规格
+  display_title: 软件概念架构师 · 需求规格 — 把确认的模型变成可追溯规格
+  display_name_zh: 软件概念架构师 · 需求规格
+  display_title_zh: 软件概念架构师 · 需求规格 — 把确认的模型变成可追溯规格
+  domain: concept-design
+  subdomains: *id012
+  summary: Chinese edition. 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
+  summary_zh: 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
+  version: 1.1.0
+  agents: *id013
+  compatibility: No external tools or network; writes Markdown PRD files
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: software-concept-architect-prd
+- id: software-concept-architect-build
+  path: skills/en/software-concept-architect-build
+  display_name: Software Concept Architect · Build
+  display_title: Software Concept Architect · Build — Turn Models into Independent Modules
+  display_name_zh: 软件概念架构师 · 实现
+  display_title_zh: 软件概念架构师 · 实现 — 把确认的模型落成独立模块
+  domain: concept-design
+  subdomains: &id015
+  - concept-design
+  - modular-monolith
+  - implementation
+  summary: Explicit-invocation-only — defaults to a modular monolith with independently built Clean Architecture modules, causal synchronization, a unified gateway, colocated specifications, and concept/application tests.
+  summary_zh: 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
+  version: 1.1.0
+  agents: &id016
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: Mapping needs only the confirmed model; language-specific boundary tests may use cargo, Spring Modulith, or dependency-cruiser
+  marketplaces: &id017
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: software-concept-architect-build-cn
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, implementation, modular-monolith]
+- id: software-concept-architect-build-cn
+  path: skills/zh-CN/software-concept-architect-build-cn
+  display_name: 软件概念架构师 · 实现
+  display_title: 软件概念架构师 · 实现 — 把确认的模型落成独立模块
+  display_name_zh: 软件概念架构师 · 实现
+  display_title_zh: 软件概念架构师 · 实现 — 把确认的模型落成独立模块
+  domain: concept-design
+  subdomains: *id015
+  summary: Chinese edition. 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
+  summary_zh: 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
+  version: 1.1.0
+  agents: *id016
+  compatibility: Mapping needs only the confirmed model; language-specific boundary tests may use cargo, Spring Modulith, or dependency-cruiser
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: software-concept-architect-build
+- id: software-concept-architect-review
+  path: skills/en/software-concept-architect-review
+  display_name: Software Concept Architect · Review
+  display_title: Software Concept Architect · Review — Find Design Gaps and Code Drift
+  display_name_zh: 软件概念架构师 · 审查
+  display_title_zh: 软件概念架构师 · 审查 — 找出设计缺口与代码偏差
+  domain: concept-design
+  subdomains: &id018
+  - concept-design
+  - architecture-audit
+  - spec-drift
+  summary: Explicit-invocation-only — read-only audit of concept and application design arguments, with optional implementation conformance checks; covers fitness for purpose, independence, composition, drift and product subsets, routing evidenced findings by root cause.
+  summary_zh: 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
+  version: 1.1.0
+  agents: &id019
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: Read-only; design review needs requirements and a concept model, implementation checks additionally need code
+  marketplaces: &id020
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: software-concept-architect-review-cn
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, code-review, design-review]
+- id: software-concept-architect-review-cn
+  path: skills/zh-CN/software-concept-architect-review-cn
+  display_name: 软件概念架构师 · 审查
+  display_title: 软件概念架构师 · 审查 — 找出设计缺口与代码偏差
+  display_name_zh: 软件概念架构师 · 审查
+  display_title_zh: 软件概念架构师 · 审查 — 找出设计缺口与代码偏差
+  domain: concept-design
+  subdomains: *id018
+  summary: Chinese edition. 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
+  summary_zh: 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
+  version: 1.1.0
+  agents: *id019
+  compatibility: Read-only; design review needs requirements and a concept model, implementation checks additionally need code
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: software-concept-architect-review
+- id: software-concept-architect-guardrails
+  path: skills/en/software-concept-architect-guardrails
+  display_name: Software Concept Architect · Guardrails
+  display_title: Software Concept Architect · Guardrails — Keep Specs and Code Aligned
+  display_name_zh: 软件概念架构师 · 规格护栏
+  display_title_zh: 软件概念架构师 · 规格护栏 — 让规格与代码保持一致
+  domain: concept-design
+  subdomains: &id021
+  - architecture
+  - module-boundaries
+  - drift-detection
+  - concept-specs
+  summary: Explicit-invocation-only — six modes for specification coverage, concept backfill, drift, pipelines, synchronizations and derived maps; distinguishes evidence, inferred purposes and design gaps in the local Jackson notation, with optional wyx hooks.
+  summary_zh: 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
+  version: 1.1.0
+  agents: &id022
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: Specs and drift checks need only file read/write plus Grep/Glob; the optional boundary-injection runtime requires Claude Code hooks and jq
+  marketplaces: &id023
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/software-concept-architect-guardrails/LICENSE.upstream)
+  language: en
+  translation_of: software-concept-architect-guardrails-cn
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, specifications, drift-detection]
+- id: software-concept-architect-guardrails-cn
+  path: skills/zh-CN/software-concept-architect-guardrails-cn
+  display_name: 软件概念架构师 · 规格护栏
+  display_title: 软件概念架构师 · 规格护栏 — 让规格与代码保持一致
+  display_name_zh: 软件概念架构师 · 规格护栏
+  display_title_zh: 软件概念架构师 · 规格护栏 — 让规格与代码保持一致
+  domain: concept-design
+  subdomains: *id021
+  summary: Chinese edition. 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
+  summary_zh: 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
+  version: 1.1.0
+  agents: *id022
+  compatibility: Specs and drift checks need only file read/write plus Grep/Glob; the optional boundary-injection runtime requires Claude Code hooks and jq
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/software-concept-architect-guardrails/LICENSE.upstream)
+  language: zh-CN
+  translation_of: software-concept-architect-guardrails
+- id: software-concept-architect-refine
+  path: skills/en/software-concept-architect-refine
+  display_name: Software Concept Architect · Refine
+  display_title: Software Concept Architect · Refine — Untangle Overloaded Concepts
+  display_name_zh: 软件概念架构师 · 精炼
+  display_title_zh: 软件概念架构师 · 精炼 — 理清过载职责，精炼概念边界
+  domain: concept-design
+  summary: Evidence-led concept refinement with minimal necessary changes.
+  summary_zh: 以证据和最小必要改动精炼概念与同步。
+  version: 1.0.0
+  agents: [cursor, claude-code, codex, openclaw]
+  marketplaces: [skills-sh, skillsmp, clawhub]
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  distribution: direct-skill
+  language: en
+  translation_of: software-concept-architect-refine-cn
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, refactoring]
+- id: software-concept-architect-refine-cn
+  path: skills/zh-CN/software-concept-architect-refine-cn
+  display_name: 软件概念架构师 · 精炼
+  display_title: 软件概念架构师 · 精炼 — 理清过载职责，精炼概念边界
+  display_name_zh: 软件概念架构师 · 精炼
+  display_title_zh: 软件概念架构师 · 精炼 — 理清过载职责，精炼概念边界
+  domain: concept-design
+  summary: Evidence-led concept refinement with minimal necessary changes.
+  summary_zh: 以证据和最小必要改动精炼概念与同步。
+  version: 1.0.0
+  agents: [cursor, claude-code, codex, openclaw]
+  marketplaces: [skills-sh, skillsmp]
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  distribution: direct-skill
+  language: zh-CN
+  translation_of: software-concept-architect-refine
+- id: read-it-reframe-it-own-it
+  path: skills/en/read-it-reframe-it-own-it
+  display_name: Read It. Reframe It. Own It.
+  display_title: Read It. Reframe It. Own It. — Build a Knowledge Tree Around Your Goal
+  display_name_zh: 读它，重构它，化为己有
+  domain: learning-methods
+  summary: Read, reframe, and own a topic by building a knowledge tree that absorbs ideas from different sources under your own key framework.
+  summary_zh: 阅读、重构并掌握一个主题：围绕自己的学习目标建立关键框架，吸收不同来源的知识，生成知识树。
+  version: 0.2.0
+  agents: [cursor, claude-code, codex, openclaw]
+  marketplaces: [skills-sh, skillsmp, clawhub]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: read-it-reframe-it-own-it-cn
+  clawhub:
+    slug: learning-read-it-reframe-it-own-it
+    categories: [knowledge]
+    topics: [learning, knowledge-synthesis, mental-models]
+- id: read-it-reframe-it-own-it-cn
+  path: skills/zh-CN/read-it-reframe-it-own-it-cn
+  display_name: 读它，重构它，化为己有
+  display_name_zh: 读它，重构它，化为己有
+  domain: learning-methods
+  summary: Read, reframe, and own a topic by building a knowledge tree that absorbs ideas from different sources under your own key framework.
+  summary_zh: 阅读、重构并掌握一个主题：围绕自己的学习目标建立关键框架，吸收不同来源的知识，生成知识树。
+  version: 0.2.0
+  agents: [cursor, claude-code, codex, openclaw]
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  language: zh-CN
+  translation_of: read-it-reframe-it-own-it
+- id: see-the-concept
+  path: skills/en/see-the-concept
+  display_name: See the Concept
+  display_title: See the Concept — Concept Design Understanding
+  display_name_zh: 概念图解
+  domain: concept-design
+  summary: "Use only when the user explicitly requests this skill. Explain and examine software concept designs using source evidence and clear visuals. Use for concept boundaries, behavior, composition, synchronization, dependencies, and UI mapping."
+  summary_zh: "仅在用户明确要求使用本技能时调用。以源码为依据，直观解释软件的概念、行为与协作关系，帮助理解和审视概念设计。适用于概念边界、组合、同步、依赖和界面映射的讲解。"
+  version: 0.1.4
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: Local source access for code-backed explanations; HTML authoring
+    and preview use available file/browser tools.
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: see-the-concept-cn
+  clawhub:
+    categories:
+    - knowledge
+    topics:
+    - concept-design
+    - visual-explanation
+    - synchronizations
+    - software-design
+    - learning
+- id: see-the-concept-cn
+  path: skills/zh-CN/see-the-concept-cn
+  display_name: 概念图解
+  display_title: 概念图解
+  display_name_zh: 概念图解
+  domain: concept-design
+  summary: "仅在用户明确要求使用本技能时调用。以源码为依据，直观解释软件的概念、行为与协作关系，帮助理解和审视概念设计。适用于概念边界、组合、同步、依赖和界面映射的讲解。"
+  summary_zh: "仅在用户明确要求使用本技能时调用。以源码为依据，直观解释软件的概念、行为与协作关系，帮助理解和审视概念设计。适用于概念边界、组合、同步、依赖和界面映射的讲解。"
+  version: 0.1.4
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  compatibility: Local source access for code-backed explanations; HTML authoring
+    and preview use available file/browser tools.
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: see-the-concept

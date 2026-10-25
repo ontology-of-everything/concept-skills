@@ -1,0 +1,58 @@
+# OS
+.DS_Store
+
+# Local agent installs (never the publishable skill source)
+.agents/
+.hermes/
+skills-lock.json
+
+# Secrets
+.credentials/
+credentials/*.csv
+credentials/*.json
+!credentials/*.example.*
+**/credentials*.csv
+!**/*.example.csv
+.env
+.env.*
+
+# Skill Creator / protocol eval output (repo root or under skills|qa)
+.workspaces/
+*-workspace/
+
+# skill-targeted-audit reports (repo root or skills/)
+skill-gate-report-*.txt
+
+# Maintainer sandboxes
+dev/
+study/.tmp-clones/
+
+# Node (skill scripts install deps locally at runtime)
+node_modules/
+package-lock.json
+
+# Python (qa/bin, tools)
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Local-only research, learning copies, scratch work and generated reports
+/references/
+/study/
+/research/
+/analysis/
+/workspace/
+/workspaces/
+/tmp/
+/temp/
+/.tmp/
+/.cache/
+/*.ses
+
+# Local documentation stays on this machine; never commit or publish it
+/docs/
+
+# Private maintainer QA; never commit or publish
+/qa/

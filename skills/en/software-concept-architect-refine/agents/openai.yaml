@@ -1,0 +1,4 @@
+interface:
+  display_name: "Software Concept Architect · Refine"
+  short_description: "Untangle Overloaded Concepts"
+  default_prompt: "Use $software-concept-architect-refine to refine this concept design with evidence, minimal necessary changes, and scenario verification."
