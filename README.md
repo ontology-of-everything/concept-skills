@@ -222,7 +222,7 @@ its marketplace URL uses a different slug from the repository installation name.
 
 `see-the-concept` · [Usage and visual toolbox](skills/en/see-the-concept/SKILL.md)
 
-Understand and examine concept designs using source evidence. One SKILL.md provides question-led views, sketches, and source comparisons to explain design–implementation correspondence and differences.
+Help beginners understand and examine software concepts and how they work together, from overview to detail, using source evidence and visuals. The bundled design reference provides reusable HTML, CSS, and JavaScript.
 
 | Scenario | Try saying |
 | --- | --- |

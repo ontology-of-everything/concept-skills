@@ -1,6 +1,6 @@
 ---
 name: see-the-concept
-description: "Use only when the user explicitly requests this skill. Explain and examine software concept designs using source evidence and clear visuals. Use for concept boundaries, behavior, composition, synchronization, dependencies, and UI mapping."
+description: "Use only when the user explicitly requests this skill. Help beginners understand and examine software concepts and their collaboration through visuals grounded in source code, from overview to detail."
 metadata:
   language: en
   translation_of: see-the-concept-cn
@@ -9,11 +9,29 @@ metadata:
 
 # See the Concept
 
-**Use source evidence to help learners understand and examine software concept designs.** Be a technically knowledgeable friend to a beginner: purpose first, then mechanism; explain new terms as they appear. Keep the preamble short and choose the smallest view that explains the point.
+**Use source evidence to help learners understand and examine software concept designs.** Be a technically knowledgeable friend to a beginner: purpose first, then mechanism. Introduce new terms through plain language and concrete examples before naming them; keep terminology consistent afterward. Keep the preamble short and choose the smallest view that explains the point.
 
 **Trace the code first.** Follow project guidance and real entrypoints through state, actions, callers, coordination, and UI queries; check tests, configuration, and error paths. Cite files, symbols, and lines for key implementation claims. Classes and files are not automatically concepts. Documents express intent; source establishes implementation. Identify conflicts, inferences, and unknowns. Without source, explain only the supplied design, without claiming implementation verification.
 
+**Default teaching route: purpose → overview → collaboration → detail → implementation → recap.** Follow one project scenario throughout. Match the contents to the recommended reading route and choose tools for the question.
+
+- **Locate first:** explain the application's purpose through a concrete task, then give a minimal overview of the involved concepts, their purposes, and composition. Keep the full concept catalog for reference.
+- **Expand next:** follow the scenario through coordinated actions; unfold synchronization, state, and relations as needed, then check implementation against project code. Locate each detail in the overview and explain its role in the scenario.
+- **Return to the overview:** explain how the parts achieve the purpose together. For local questions, add only the context needed. Teaching order does not establish execution order; label relation types and support connections with evidence.
+
 The sketches below illustrate form. **Replace names, values, and behavior with evidence from the current project.** Choose what answers the question; rarely use everything.
+
+- **Show the whole application with a concept overview and composition diagram.** State its purpose, scenario scope, and omissions. Label nodes with concept names and one-line purposes; expand state and actions as needed.
+
+```text
+Application purpose: <shared outcome>; scope: <current scenario>
+<Concept A: purpose>                 <Concept B: purpose>
+    action a - - - <sync rule S> - - - action b
+<A's type parameter> ···binds to··· <actual project type>
+Instances: <shared state and grouping>; omitted: <hidden parts>
+```
+
+Default integrated legend: solid lines without arrowheads mean state relations; solid arrows mean action effects; dashed lines mean synchronization participation; dotted lines mean type binding; named pins mean dynamic subsets. **Connect actions for synchronization and parameters to actual types for binding. Draw dependencies separately with a legend; label process diagrams as a different view.** Omit unsupported edges and identify omitted state, multiplicities, syncs, and instances. Use SVG/HTML or labels when rendering is unclear.
 
 - **Show value with purpose and an operational principle (OP).** Purpose explains why it is needed; an OP shows how typical actions achieve that purpose.
 
@@ -32,9 +50,13 @@ Action: <name, inputs, conditions>
 State item       Before       After       Reason
 <project field>  <old value>  <new value> <action effect>
 Preserved: <other state>; outputs: <results>
+
+For a few discrete states:
+<state A> ── <action [condition]> ──→ <state B>
+Concrete change: <field: old → new>; preserved: <other fields>
 ```
 
-State, action conditions, and effects form a **state-machine model**. Use transition graphs for few states and tables or specifications for complex ones. Queries may leave state unchanged. Describe ordinary CRUD and omissions from the materials.
+State, action conditions, and effects form a **state-machine model**. Transition nodes denote states or explicit state predicates; error results do not automatically become states. Use tables or specifications for complex state; queries may leave it unchanged. Describe ordinary CRUD and omissions from the materials.
 
 - **Show state associations with extended ER diagrams.** Draw sets, named relations, multiplicities, and subsets, then concrete project values.
 
@@ -62,14 +84,14 @@ Application
 - **Show action coordination with synchronization rules and parameter sources.** Synchronization is a composition mechanism, not automatically a callback or serial call chain.
 
 ```text
-Participating actions: <concepts and actions>
+Participants: <A.action> - - - [rule S] - - - <B.action>
 Conditions: <conditions or guards>
-Required values: <value> from <state, action inputs, or outputs>
-Calculation: <how arguments are derived>
-Coordinated actions: <other actions, arguments, and output destinations>
+Values: <argument> ← <state, action inputs, or outputs>
+Calculation and binding: <how each action's arguments are derived>
+Results: <output destinations>
 ```
 
-Add data flow for complex inputs and sequence diagrams only for established order. If evidence shows only calls, use a call tree. Follow target execution semantics; flag unknown ordering, failures, and transaction guarantees.
+Dashed lines show participation in one rule, not execution order or simultaneous completion. Add data flow for complex inputs and sequence diagrams only for established order. If evidence shows only calls, use a call tree. Follow target execution semantics; flag unknown ordering, failures, and transaction guarantees.
 
 - **Show required functional combinations with a dependency diagram.** These application dependencies differ from state relations inside a concept.
 
@@ -108,22 +130,13 @@ Current                    Proposed                  Evidence and effect
 
 Check mixed purposes (specificity), needless departures from familiar behavior (familiarity), and preservation of concept meanings in composition (integrity), along with sufficient behavior and independence. **Proposals are not existing facts.**
 
-- **Show the whole design or complex interaction with concept boundaries or focused HTML.** Put state and actions inside boxes; highlight one project scenario and return to the overview.
-
-```text
-<concept boundary: state + actions>    <concept boundary: state + actions>
-Connect only from evidence; placement and teaching order add no system edges.
-```
-
-For this integrated notation: solid lines without arrowheads mean state relations; solid arrows mean action effects; dashed arrows mean synchronization; dotted lines mean type binding; named pins mean dynamic subsets. Dependency diagrams need their own legend. Use SVG/HTML or labels when rendering is unclear. Mark omitted state, multiplicities, syncs, and instances.
-
 ## Presentation and delivery
 
-**Make it feel like an infographic.** Place views beside brief explanations of cause and effect. Keep everyday analogies faithful and “Aha!” moments and humor brief. The default view should stand alone. Interaction should show actions, changes, and explanations together, with stepping, comparison, and reset as needed; retain selection across views.
+**Make it feel like an infographic.** Place visuals beside brief causal explanations. Keep analogies faithful, with occasional insight and humor. Make the default view readable. In interactive views, highlight related overview concepts and connections, show actions, changes, and explanations together, and link to source. Preserve selection when returning to the overview; add stepping, comparison, and reset as useful.
 
-**Make it stunning and readable.** Use aged-paper cream, warm gray, and warm shadows, avoiding cold white, blue pages, and black shadows. Use `#1E1E2E` code panels and Catppuccin-style highlighting. Support keyboard, touch, visible focus, and text alongside highlights; essential information must not depend on hover. Make animation user-triggered, skippable, and respectful of reduced-motion settings.
+**Before creating or editing HTML, interactive explanations, or courses, read and follow the [design language](references/design-system.md).** Use its colors, typography, layout, navigation, motion, highlighting, and responsive rules; reuse shared CSS/JS.
 
-For courses, deliver a directory. **A single-file skill does not mean a single-file course.**
+For courses, deliver an offline directory.
 
 ```text
 course/

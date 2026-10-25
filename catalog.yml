@@ -443,8 +443,8 @@ skills:
   display_title: See the Concept — Concept Design Understanding
   display_name_zh: 概念图解
   domain: concept-design
-  summary: "Use only when the user explicitly requests this skill. Explain and examine software concept designs using source evidence and clear visuals. Use for concept boundaries, behavior, composition, synchronization, dependencies, and UI mapping."
-  summary_zh: "仅在用户明确要求使用本技能时调用。以源码为依据，直观解释软件的概念、行为与协作关系，帮助理解和审视概念设计。适用于概念边界、组合、同步、依赖和界面映射的讲解。"
+  summary: "Use only when the user explicitly requests this skill. Help beginners understand and examine software concepts and their collaboration through visuals grounded in source code, from overview to detail."
+  summary_zh: "仅在用户明确要求使用本技能时调用。以源码为依据，从整体到局部图解软件概念与协作，帮助零基础读者理解和审视设计。"
   version: 0.1.4
   agents:
   - cursor
@@ -476,8 +476,8 @@ skills:
   display_title: 概念图解
   display_name_zh: 概念图解
   domain: concept-design
-  summary: "仅在用户明确要求使用本技能时调用。以源码为依据，直观解释软件的概念、行为与协作关系，帮助理解和审视概念设计。适用于概念边界、组合、同步、依赖和界面映射的讲解。"
-  summary_zh: "仅在用户明确要求使用本技能时调用。以源码为依据，直观解释软件的概念、行为与协作关系，帮助理解和审视概念设计。适用于概念边界、组合、同步、依赖和界面映射的讲解。"
+  summary: "仅在用户明确要求使用本技能时调用。以源码为依据，从整体到局部图解软件概念与协作，帮助零基础读者理解和审视设计。"
+  summary_zh: "仅在用户明确要求使用本技能时调用。以源码为依据，从整体到局部图解软件概念与协作，帮助零基础读者理解和审视设计。"
   version: 0.1.4
   agents:
   - cursor

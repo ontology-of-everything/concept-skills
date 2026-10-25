@@ -212,7 +212,7 @@ $see-the-concept-cn 用一张小图解释当前概念模型
 
 `see-the-concept-cn` · [使用说明与可视化工具箱](skills/zh-CN/see-the-concept-cn/SKILL.md)
 
-以源码为依据，帮助理解和审视概念设计。单个 SKILL.md 内按问题选择画法、小样与源码对照，解释设计与实现的对应及差异。
+以源码为依据，从整体到局部图解软件概念与协作，帮助零基础读者理解和审视设计。随包设计参考提供可复用的 HTML、CSS 与 JavaScript。
 
 | 场景 | 可以这样说 |
 | --- | --- |
