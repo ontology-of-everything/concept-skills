@@ -1,0 +1,6 @@
+interface:
+  display_name: "Settle the Concept Design"
+  short_description: "Consolidate concept design decisions for confirmation"
+  default_prompt: "Use $settle-the-concept-design to consolidate our discussion into a concept design, explain decisions from overview to detail, and bring tradeoffs and unresolved issues to confirmation."
+policy:
+  allow_implicit_invocation: false

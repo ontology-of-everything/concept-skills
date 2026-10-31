@@ -1,7 +1,8 @@
 # Changelog
 
-## 2.3.0 - 2026-10-24
+## 2.4.0 - 2026-10-31
 
-- Publish See the Concept 0.1.2 in English and Chinese under concept-design.
-- Synchronize package paths, invocation examples, localization links, and discovery indexes under the new skill name.
-- Preserve visual teaching behavior and explicit invocation policy.
+- Add Settle the Concept Design 0.1.1 in English and Simplified Chinese.
+- Consolidate discussions into confirmable design decisions with progressive presentation, decision matrices, and explicit tradeoffs.
+- Ground concept responsibilities, operational principles, and external causal synchronizations in Daniel Jackson's concept design; connect business scenarios to goals and acceptance criteria.
+- Register both locale packages, explicit invocation metadata, installation commands, and usage examples.

@@ -4,8 +4,8 @@
 
 > Name the meaning first — then write code, run a CLI, or draft a spec.
 
-[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides ten
-capabilities as 20 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
+[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides eleven
+capabilities as 22 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
 concept design, and visual learning. English uses the base name;
 Simplified Chinese adds `-cn`.
 
@@ -23,7 +23,7 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **2.3.0**. The concept design workflow and `see-the-concept` are explicit-only;
+Current release is **2.4.0**. The concept design workflow, `see-the-concept`, and `settle-the-concept-design` are explicit-only;
 `software-concept-architect-refine` and `read-it-reframe-it-own-it` support automatic discovery;
 `software-concept-architect-guardrails` modes
 consume Jackson notation only.
@@ -50,6 +50,7 @@ Design software concepts, responsibilities, specifications, and implementations.
 
 | Skill | Version | ClawHub category |
 | --- | --- | --- |
+| [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.1 | development |
 | [Software Concept Architect · Design](skills/en/software-concept-architect-design/SKILL.md) | 1.0.0 | development |
 | [Software Concept Architect · PRD](skills/en/software-concept-architect-prd/SKILL.md) | 1.1.0 | development |
 | [Software Concept Architect · Build](skills/en/software-concept-architect-build/SKILL.md) | 1.1.0 | development |
@@ -106,13 +107,13 @@ Use `--agent claude-code` or `--agent cursor` for another agent; add `--global` 
 ### English editions
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect software-concept-architect-design software-concept-architect-prd software-concept-architect-build software-concept-architect-review software-concept-architect-guardrails software-concept-architect-refine read-it-reframe-it-own-it see-the-concept --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect software-concept-architect-design software-concept-architect-prd software-concept-architect-build software-concept-architect-review software-concept-architect-guardrails software-concept-architect-refine read-it-reframe-it-own-it see-the-concept settle-the-concept-design --agent codex --copy --yes
 ```
 
 ### Simplified Chinese editions
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn software-concept-architect-design-cn software-concept-architect-prd-cn software-concept-architect-build-cn software-concept-architect-review-cn software-concept-architect-guardrails-cn software-concept-architect-refine-cn read-it-reframe-it-own-it-cn see-the-concept-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn software-concept-architect-design-cn software-concept-architect-prd-cn software-concept-architect-build-cn software-concept-architect-review-cn software-concept-architect-guardrails-cn software-concept-architect-refine-cn read-it-reframe-it-own-it-cn see-the-concept-cn settle-the-concept-design-cn --agent codex --copy --yes
 ```
 
 ### Install one skill
@@ -205,6 +206,17 @@ To pin a skill explicitly: `/skill-name` in Cursor, `$skill-name` in Codex.
 
 Each skill has two examples. Install it, share the relevant material, then copy a request.
 Replace example paths with your project paths.
+
+### Settle the Concept Design
+
+`settle-the-concept-design` · [Skill](skills/en/settle-the-concept-design/SKILL.md)
+
+Based on Daniel Jackson's concept design, consolidate discussion into decisions for confirmation, from goals and concept purposes to scenarios and the specifications needed for those decisions.
+
+| Scenario | Try saying |
+| --- | --- |
+| Settle a design | `$settle-the-concept-design` Consolidate our discussion into a concept design; show the choices, rationale, and unresolved issues for confirmation. |
+| Revisit decisions | `$settle-the-concept-design` Compare this round with our confirmed design; show what changed, why, and how it affects business goals and acceptance criteria. |
 
 ### Read It. Reframe It. Own It
 

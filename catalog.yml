@@ -22,6 +22,43 @@ domains:
     description: Build and revise understanding around a learning goal and a key framework.
     description_zh: 围绕学习目标与关键框架建立并修正理解。
 skills:
+- id: settle-the-concept-design
+  path: skills/en/settle-the-concept-design
+  display_name: Settle the Concept Design
+  display_title: Settle the Concept Design — Consolidate Decisions for Confirmation
+  display_name_zh: 把概念设计定下来
+  display_title_zh: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
+  domain: concept-design
+  summary: "Use only when explicitly requested. Consolidate the full discussion into a concept design for confirmation, using progressive disclosure and decision matrices to connect business goals, concepts, composition, and acceptance criteria."
+  summary_zh: "仅显式调用。综合全部讨论，以渐进呈现和决策矩阵收敛概念设计，关联业务目标、概念、组合与验收标准，确认取舍与未决事项。"
+  version: 0.1.1
+  agents: [cursor, claude-code, codex, openclaw]
+  compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
+  marketplaces: [skills-sh, skillsmp, clawhub]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: settle-the-concept-design-cn
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-design, design-decisions, synchronizations]
+- id: settle-the-concept-design-cn
+  path: skills/zh-CN/settle-the-concept-design-cn
+  display_name: 把概念设计定下来
+  display_title: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
+  display_name_zh: 把概念设计定下来
+  display_title_zh: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
+  domain: concept-design
+  summary: "仅显式调用。综合全部讨论，以渐进呈现和决策矩阵收敛概念设计，关联业务目标、概念、组合与验收标准，确认取舍与未决事项。"
+  summary_zh: "仅显式调用。综合全部讨论，以渐进呈现和决策矩阵收敛概念设计，关联业务目标、概念、组合与验收标准，确认取舍与未决事项。"
+  version: 0.1.1
+  agents: [cursor, claude-code, codex, openclaw]
+  compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
+  marketplaces: [skills-sh, skillsmp]
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: settle-the-concept-design
 - id: data-knowledge-architect
   path: skills/en/data-knowledge-architect
   display_name: Data Knowledge Architect

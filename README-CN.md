@@ -5,7 +5,7 @@
 > 先说清含义，再写代码、跑命令、起草规格。
 
 [concept-skills](https://github.com/ontology-of-everything/concept-skills)
-提供 10 项能力、20 个中英文
+提供 11 项能力、22 个中英文
 [Agent Skills](https://agentskills.io/)，覆盖本体、语义层、概念设计与可视化学习。英文使用基础名，简体中文统一增加
 `-cn`。
 
@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **2.3.0**。概念设计工作流与 `see-the-concept` 仅显式调用；`software-concept-architect-refine` 与 `read-it-reframe-it-own-it` 支持自动匹配；`software-concept-architect-guardrails` 只消费 Jackson 记法。
+当前版本为 **2.4.0**。概念设计工作流、`see-the-concept` 与 `settle-the-concept-design` 仅显式调用；`software-concept-architect-refine` 与 `read-it-reframe-it-own-it` 支持自动匹配；`software-concept-architect-guardrails` 只消费 Jackson 记法。
 
 ## 目录
 
@@ -44,6 +44,7 @@ English: [README.md](README.md)。
 
 | 技能 | 版本 | ClawHub 分类 |
 | --- | --- | --- |
+| [把概念设计定下来](skills/zh-CN/settle-the-concept-design-cn/SKILL.md) | 0.1.1 | development |
 | [软件概念架构师 · 设计](skills/zh-CN/software-concept-architect-design-cn/SKILL.md) | 1.0.0 | development |
 | [软件概念架构师 · 需求规格](skills/zh-CN/software-concept-architect-prd-cn/SKILL.md) | 1.1.0 | development |
 | [软件概念架构师 · 实现](skills/zh-CN/software-concept-architect-build-cn/SKILL.md) | 1.1.0 | development |
@@ -98,13 +99,13 @@ English: [README.md](README.md)。
 ### 中文版
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn software-concept-architect-design-cn software-concept-architect-prd-cn software-concept-architect-build-cn software-concept-architect-review-cn software-concept-architect-guardrails-cn software-concept-architect-refine-cn read-it-reframe-it-own-it-cn see-the-concept-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn software-concept-architect-design-cn software-concept-architect-prd-cn software-concept-architect-build-cn software-concept-architect-review-cn software-concept-architect-guardrails-cn software-concept-architect-refine-cn read-it-reframe-it-own-it-cn see-the-concept-cn settle-the-concept-design-cn --agent codex --copy --yes
 ```
 
 ### 英文版
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect software-concept-architect-design software-concept-architect-prd software-concept-architect-build software-concept-architect-review software-concept-architect-guardrails software-concept-architect-refine read-it-reframe-it-own-it see-the-concept --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect software-concept-architect-design software-concept-architect-prd software-concept-architect-build software-concept-architect-review software-concept-architect-guardrails software-concept-architect-refine read-it-reframe-it-own-it see-the-concept settle-the-concept-design --agent codex --copy --yes
 ```
 
 ### 按需安装单个技能
@@ -196,6 +197,17 @@ $see-the-concept-cn 用一张小图解释当前概念模型
 ## 经典使用案例
 
 每项技能保留两个例子。先安装技能、提供相关材料，再复制一句试试。示例路径换成你自己的项目路径。
+
+### 把概念设计定下来
+
+`settle-the-concept-design-cn` · [技能正文](skills/zh-CN/settle-the-concept-design-cn/SKILL.md)
+
+基于 Daniel Jackson 的概念设计，综合讨论收敛待确认的决策，从目标与概念目的总览，逐步展开场景和决策所需规格。
+
+| 场景 | 可以这样说 |
+| --- | --- |
+| 收敛设计 | `$settle-the-concept-design-cn` 综合我们的全部讨论，整理待确认的概念设计，列明选择、理由与未决事项。 |
+| 核对变更 | `$settle-the-concept-design-cn` 对照已确认设计，说明本轮改了什么、为什么改，以及对业务目标和验收的影响。 |
 
 ### 读它，重构它，化为己有
 
