@@ -1,6 +1,6 @@
 interface:
   display_name: "把概念设计定下来"
-  short_description: "从整体到细节收敛概念设计决策，明确取舍与未决事项并确认"
-  default_prompt: "使用 $settle-the-concept-design-cn 综合我们的全部讨论，从整体到细节收敛概念设计，明确最终选择、必要取舍和未决事项，交由我确认。"
+  short_description: "从讨论中收敛概念设计，核对业务目标、同步规则、取舍与验收标准"
+  default_prompt: "使用 $settle-the-concept-design-cn 综合全部讨论，逐步核对业务目标、概念规格、同步规则、取舍、验收标准及未决事项，形成待我确认的设计。"
 policy:
   allow_implicit_invocation: false

@@ -23,7 +23,7 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **2.4.0**. The concept design workflow, `see-the-concept`, and `settle-the-concept-design` are explicit-only;
+Current release is **2.5.0**. The concept design workflow, `see-the-concept`, and `settle-the-concept-design` are explicit-only;
 `software-concept-architect-refine` and `read-it-reframe-it-own-it` support automatic discovery;
 `software-concept-architect-guardrails` modes
 consume Jackson notation only.
@@ -50,7 +50,7 @@ Design software concepts, responsibilities, specifications, and implementations.
 
 | Skill | Version | ClawHub category |
 | --- | --- | --- |
-| [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.1 | development |
+| [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.2 | development, knowledge |
 | [Software Concept Architect · Design](skills/en/software-concept-architect-design/SKILL.md) | 1.0.0 | development |
 | [Software Concept Architect · PRD](skills/en/software-concept-architect-prd/SKILL.md) | 1.1.0 | development |
 | [Software Concept Architect · Build](skills/en/software-concept-architect-build/SKILL.md) | 1.1.0 | development |

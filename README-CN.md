@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **2.4.0**。概念设计工作流、`see-the-concept` 与 `settle-the-concept-design` 仅显式调用；`software-concept-architect-refine` 与 `read-it-reframe-it-own-it` 支持自动匹配；`software-concept-architect-guardrails` 只消费 Jackson 记法。
+当前版本为 **2.5.0**。概念设计工作流、`see-the-concept` 与 `settle-the-concept-design` 仅显式调用；`software-concept-architect-refine` 与 `read-it-reframe-it-own-it` 支持自动匹配；`software-concept-architect-guardrails` 只消费 Jackson 记法。
 
 ## 目录
 
@@ -44,7 +44,7 @@ English: [README.md](README.md)。
 
 | 技能 | 版本 | ClawHub 分类 |
 | --- | --- | --- |
-| [把概念设计定下来](skills/zh-CN/settle-the-concept-design-cn/SKILL.md) | 0.1.1 | development |
+| [把概念设计定下来](skills/zh-CN/settle-the-concept-design-cn/SKILL.md) | 0.1.2 | development, knowledge |
 | [软件概念架构师 · 设计](skills/zh-CN/software-concept-architect-design-cn/SKILL.md) | 1.0.0 | development |
 | [软件概念架构师 · 需求规格](skills/zh-CN/software-concept-architect-prd-cn/SKILL.md) | 1.1.0 | development |
 | [软件概念架构师 · 实现](skills/zh-CN/software-concept-architect-build-cn/SKILL.md) | 1.1.0 | development |

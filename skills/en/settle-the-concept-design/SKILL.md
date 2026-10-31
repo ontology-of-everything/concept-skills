@@ -1,16 +1,16 @@
 ---
 name: settle-the-concept-design
 description: >-
-  Use only when the user explicitly requests this skill. Consolidate the full discussion into a concept design for user confirmation, using progressive disclosure and decision matrices to clarify business goals, concepts, composition, tradeoffs, and unresolved issues.
+  Consolidates software concept design discussions into a proposal for user confirmation using Daniel Jackson's concept design. Use only when the user explicitly invokes $settle-the-concept-design to finalize a concept design, reconcile design decisions, or review changes against an agreed design. Covers business goals, scope, concept specifications, synchronization rules, tradeoffs, acceptance criteria, assumptions, and unresolved issues, presented through an overview, scenarios, and decision matrices. Implementation and publication require separate authorization.
 metadata:
   language: en
   translation_of: settle-the-concept-design-cn
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Settle the Concept Design
 
-Based on [Daniel Jackson's concept design](https://arxiv.org/html/2606.27258v1#S12), consolidate the discussion into business goals, application scope, and design tradeoffs, producing a proposal for confirmation.
+Based on Daniel Jackson's concept design, consolidate the discussion into business goals, application scope, and design tradeoffs, producing a proposal for confirmation.
 
 Present the concept overview, key scenarios, and necessary specifications in that order, using a decision matrix to record choices, rationale, impact, and confirmation status, prioritizing design changes and details that affect decisions.
 

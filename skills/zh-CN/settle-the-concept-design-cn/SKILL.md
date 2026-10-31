@@ -1,16 +1,16 @@
 ---
 name: settle-the-concept-design-cn
 description: >-
-  仅在用户明确要求使用本技能时调用。综合全部讨论，以渐进呈现和决策矩阵收敛概念设计，明确业务目标、概念、组合、取舍与未决事项，供用户确认。
+  基于 Daniel Jackson 的概念设计，将讨论收敛为待用户确认的设计方案。仅在显式调用 $settle-the-concept-design-cn 时运行，默认不自动触发。适用于定稿概念设计、对齐设计决策，或核对已确认方案的变更；覆盖业务目标、范围、概念规格、同步规则、取舍、验收标准、假设与未决事项，通过总览、场景和决策矩阵逐步呈现。实现与发布需要另行授权。
 metadata:
   language: zh-CN
   translation_of: settle-the-concept-design
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # 把概念设计定下来
 
-基于 [Daniel Jackson 的概念设计](https://arxiv.org/html/2606.27258v1#S12)，汇总讨论并收敛业务目标、应用范围与设计取舍，形成待确认方案。
+基于 Daniel Jackson 的概念设计，汇总讨论并收敛业务目标、应用范围与设计取舍，形成待确认方案。
 
 依次呈现概念总览、关键场景与必要规格，用决策矩阵记录选择、依据、影响和确认状态，优先说明方案变更及影响决策的细节。
 

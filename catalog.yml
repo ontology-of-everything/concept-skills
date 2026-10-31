@@ -29,9 +29,9 @@ skills:
   display_name_zh: 把概念设计定下来
   display_title_zh: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
   domain: concept-design
-  summary: "Use only when explicitly requested. Consolidate the full discussion into a concept design for confirmation, using progressive disclosure and decision matrices to connect business goals, concepts, composition, and acceptance criteria."
-  summary_zh: "仅显式调用。综合全部讨论，以渐进呈现和决策矩阵收敛概念设计，关联业务目标、概念、组合与验收标准，确认取舍与未决事项。"
-  version: 0.1.1
+  summary: "Settle software concept designs using Daniel Jackson's method: clarify goals, concept specifications, synchronization rules, tradeoffs, and acceptance criteria through decision matrices and user confirmation. Explicit invocation only."
+  summary_zh: "基于 Daniel Jackson 的概念设计，通过决策矩阵与用户确认，收敛业务目标、概念规格、同步规则、取舍和验收标准；适用于方案定稿及已确认设计的变更核对，仅显式调用。"
+  version: 0.1.2
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -40,8 +40,8 @@ skills:
   language: en
   translation_of: settle-the-concept-design-cn
   clawhub:
-    categories: [development]
-    topics: [concept-design, software-design, design-decisions, synchronizations]
+    categories: [development, knowledge]
+    topics: [concept-design, software-architecture, requirements, design-decisions, synchronizations]
 - id: settle-the-concept-design-cn
   path: skills/zh-CN/settle-the-concept-design-cn
   display_name: 把概念设计定下来
@@ -49,9 +49,9 @@ skills:
   display_name_zh: 把概念设计定下来
   display_title_zh: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
   domain: concept-design
-  summary: "仅显式调用。综合全部讨论，以渐进呈现和决策矩阵收敛概念设计，关联业务目标、概念、组合与验收标准，确认取舍与未决事项。"
-  summary_zh: "仅显式调用。综合全部讨论，以渐进呈现和决策矩阵收敛概念设计，关联业务目标、概念、组合与验收标准，确认取舍与未决事项。"
-  version: 0.1.1
+  summary: "基于 Daniel Jackson 的概念设计，通过决策矩阵与用户确认，收敛业务目标、概念规格、同步规则、取舍和验收标准；适用于方案定稿及已确认设计的变更核对，仅显式调用。"
+  summary_zh: "基于 Daniel Jackson 的概念设计，通过决策矩阵与用户确认，收敛业务目标、概念规格、同步规则、取舍和验收标准；适用于方案定稿及已确认设计的变更核对，仅显式调用。"
+  version: 0.1.2
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
   marketplaces: [skills-sh, skillsmp]
