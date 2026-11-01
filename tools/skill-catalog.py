@@ -29,9 +29,7 @@ def load_catalog():
             raise ValueError(f"{slug}: localized domains differ")
         if not (ROOT / skill["path"] / "SKILL.md").is_file():
             raise ValueError(f"{slug}: missing skill")
-        if skill["language"] != "en":
-            if "clawhub" in skill.get("marketplaces", []):
-                raise ValueError(f"{slug}: Chinese editions must not publish to ClawHub")
+        if "clawhub" not in skill.get("marketplaces", []):
             continue
         meta = skill["clawhub"]
         slug = meta.get("slug", skill["id"])
@@ -63,7 +61,7 @@ def generated_views(catalog):
                 if skill["domain"] != domain or skill["language"] != lang:
                     continue
                 base = next(s for s in skills if s["id"] == skill["translation_of"]) if cn else skill
-                meta = base["clawhub"]
+                meta = skill.get("clawhub", base["clawhub"])
                 status = ", ".join(meta["categories"])
                 if meta.get("enabled", True) is False:
                     status += "（暂缓发布）" if cn else " (publication deferred)"

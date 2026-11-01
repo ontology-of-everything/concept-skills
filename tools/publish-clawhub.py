@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish one English skill using the catalog's title, version, categories, and topics.
+"""Publish one catalog skill using its title, version, categories, and topics.
 
 Defaults to a local plan. --publish performs an identity check, runs public checks, uploads
 the complete bundle (including dot-directory manifests), and submits a release.
@@ -76,14 +76,14 @@ def check_remote_identity(remote, slug, version):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("skill", help="Exact English catalog ID")
+    parser.add_argument("skill", help="Exact catalog ID, including -cn for a Chinese edition")
     parser.add_argument("--notes-file", type=Path, help="UTF-8 release notes; required with --publish")
     parser.add_argument("--publish", action="store_true", help="Upload and submit this release")
     args = parser.parse_args()
     catalog = catalog_tools.load_catalog()
     entry = next((s for s in catalog["skills"] if s["id"] == args.skill), None)
-    if not entry or entry["language"] != "en":
-        parser.error("Choose an English skill from catalog.yml")
+    if not entry or "clawhub" not in entry.get("marketplaces", []):
+        parser.error("Choose a skill enabled for ClawHub in catalog.yml")
     metadata = entry["clawhub"]
     if metadata.get("enabled", True) is False:
         parser.error(metadata.get("reason", "Publication deferred in catalog"))

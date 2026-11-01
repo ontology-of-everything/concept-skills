@@ -7,10 +7,10 @@
 - 精炼 66 份参考文件，保留来源链接与代码块，明确匹配、关联、恢复、严重度和 hooks 限制。
 - 将 See the Concept 更名为 ShowMeTheDesign，保留当前方案确认技能的行为。
 - 同步目录、包元数据、安装示例与英文 ClawHub 发布版本。
-
 - 全部概念技能在 Codex 中仅显式调用，包括图解技能。
-
 - 六项架构技能改为 concept-design、concept-prd、concept-build、concept-review、concept-guard、concept-refine，通过 ClawHub 原地改名保留原记录。
+
+- ClawHub 同步发布概念技能中英文版，中文名称保留 -cn。
 
 | 英文技能 | 版本 |
 | --- | --- |

@@ -7,10 +7,10 @@
 - Clean 66 reference files while preserving source links and code blocks. Clarify matching, correlation, recovery, review severity, and hook limits.
 - Rename See the Concept to ShowMeTheDesign and retain the current Settle the Concept Design behavior.
 - Synchronize catalog, package metadata, installation examples, and English ClawHub releases.
-
 - Make every concept skill explicit-only in Codex, including visual teaching.
-
 - Shorten the six architecture skill IDs to concept-design, concept-prd, concept-build, concept-review, concept-guard, and concept-refine. Preserve ClawHub records through owner rename.
+
+- Publish both English and Chinese concept skills on ClawHub; Chinese IDs retain -cn.
 
 | English skill | Version |
 | --- | --- |

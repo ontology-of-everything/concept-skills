@@ -54,11 +54,14 @@ skills:
   version: 0.1.4
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
-  marketplaces: [skills-sh, skillsmp]
+  marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
   translation_of: settle-the-concept-design
+  clawhub:
+    categories: [development, knowledge]
+    topics: [concept-design, software-architecture, requirements, design-decisions, synchronizations]
 - id: data-knowledge-architect
   path: skills/en/data-knowledge-architect
   display_name: Data Knowledge Architect
@@ -203,11 +206,14 @@ skills:
   version: 1.0.1
   agents: *id010
   compatibility: No external tools or network; pure concept modeling
-  marketplaces: [skills-sh, skillsmp]
+  marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
   translation_of: concept-design
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, requirements]
 - id: concept-prd
   path: skills/en/concept-prd
   display_name: Concept PRD
@@ -252,11 +258,14 @@ skills:
   version: 1.1.1
   agents: *id013
   compatibility: No external tools or network; writes Markdown PRD files
-  marketplaces: [skills-sh, skillsmp]
+  marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
   translation_of: concept-prd
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, prd, specifications]
 - id: concept-build
   path: skills/en/concept-build
   display_name: Concept build
@@ -301,11 +310,14 @@ skills:
   version: 1.1.1
   agents: *id016
   compatibility: Mapping needs only the confirmed model; language-specific boundary tests may use cargo, Spring Modulith, or dependency-cruiser
-  marketplaces: [skills-sh, skillsmp]
+  marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
   translation_of: concept-build
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, implementation, modular-monolith]
 - id: concept-review
   path: skills/en/concept-review
   display_name: Concept review
@@ -350,11 +362,14 @@ skills:
   version: 1.1.1
   agents: *id019
   compatibility: Read-only; design review needs requirements and a concept model, implementation checks additionally need code
-  marketplaces: [skills-sh, skillsmp]
+  marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
   translation_of: concept-review
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, code-review, design-review]
 - id: concept-guard
   path: skills/en/concept-guard
   display_name: Concept guard
@@ -401,12 +416,15 @@ skills:
   version: 1.1.1
   agents: *id022
   compatibility: Specs and drift checks need only file read/write plus Grep/Glob; the optional boundary-injection runtime requires Claude Code hooks and jq
-  marketplaces: [skills-sh, skillsmp]
+  marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/concept-guard/LICENSE.upstream)
   language: zh-CN
   translation_of: concept-guard
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, specifications, drift-detection]
 - id: concept-refine
   path: skills/en/concept-refine
   display_name: Concept refine
@@ -437,11 +455,14 @@ skills:
   summary_zh: 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
   version: 1.0.1
   agents: [cursor, claude-code, codex, openclaw]
-  marketplaces: [skills-sh, skillsmp]
+  marketplaces: [skills-sh, skillsmp, clawhub]
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   distribution: direct-skill
   language: zh-CN
   translation_of: concept-refine
+  clawhub:
+    categories: [development]
+    topics: [concept-design, software-architecture, refactoring]
 - id: read-it-reframe-it-own-it
   path: skills/en/read-it-reframe-it-own-it
   display_name: Read It. Reframe It. Own It.
@@ -530,3 +551,6 @@ skills:
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
   translation_of: show-me-the-design
+  clawhub:
+    categories: [knowledge]
+    topics: [concept-design, visual-explanation, synchronizations, software-design, learning]

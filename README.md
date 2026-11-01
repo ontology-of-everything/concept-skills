@@ -184,7 +184,7 @@ npx --yes skills add ontology-of-everything/concept-skills --skill show-me-the-d
 npx --yes skills add ontology-of-everything/concept-skills --list
 ```
 
-English payloads live in `skills/en/`; Simplified Chinese payloads live in `skills/zh-CN/` and keep the `-cn` skill names. ClawHub publishes English editions only.
+English payloads live in `skills/en/`; Simplified Chinese payloads live in `skills/zh-CN/` and keep the `-cn` skill names. ClawHub publishes both editions of the concept-design family; Chinese skill names retain `-cn`.
 
 ## Usage
 

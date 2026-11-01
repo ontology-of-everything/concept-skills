@@ -176,7 +176,7 @@ npx --yes skills add ontology-of-everything/concept-skills --skill show-me-the-d
 npx --yes skills add ontology-of-everything/concept-skills --list
 ```
 
-英文载荷位于 `skills/en/`，简体中文载荷位于 `skills/zh-CN/`；中文技能名仍以 `-cn` 结尾。ClawHub 仅发布英文版。
+英文载荷位于 `skills/en/`，简体中文载荷位于 `skills/zh-CN/`；中文技能名仍以 `-cn` 结尾。ClawHub 发布概念设计系列的中英文版，中文技能名保留 `-cn`。
 
 ## 用法
 

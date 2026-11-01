@@ -35,8 +35,8 @@ longer needed. Preserve runtime `skills/**/references/` and maintained fixtures/
   Run `./tools/validate-all.sh --local-qa` only for available local QA; no behavioral or live-service result is implied by public checks.
 - Set `git config core.hooksPath .githooks` once per checkout. Ignore rules and commit/push/CI hygiene checks
   keep local-only files out of Git, including files added with force.
-- Commit and publish only within user authorization. ClawHub receives English payloads only;
-  GitHub retains both languages. Verify remote contents before announcing a release.
+- Commit and publish only within user authorization. ClawHub publishes the editions enabled in
+  `catalog.yml`; Chinese skill IDs retain `-cn`. Verify remote contents before announcing a release.
 - Treat credentials, local installs and caches as local-only. Keep only the current release notes;
   rewriting Git history or deleting remote releases requires explicit user authorization.
 - Keep `qa/`, `docs/`, analysis material and generated reports local; exclude them even when force-added.
