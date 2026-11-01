@@ -24,6 +24,13 @@ catalog_tools = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(catalog_tools)
 
 
+class UploadRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if code in (307, 308) and urllib.parse.urlsplit(newurl).scheme == "https":
+            return urllib.request.Request(newurl, data=req.data, headers=dict(req.headers), method=req.get_method())
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def bundle_files(root):
     files = []
     for path in sorted(root.rglob("*")):
@@ -109,7 +116,7 @@ def main():
             raise ValueError("Bundle changed after validation")
         ticket = request("/api/v1/skills/-/upload-url", token, file)
         upload = urllib.request.Request(ticket["uploadUrl"], data=data, headers={"Content-Type": file["contentType"]})
-        with urllib.request.urlopen(upload, timeout=60) as response:
+        with urllib.request.build_opener(UploadRedirectHandler()).open(upload, timeout=60) as response:
             storage = json.load(response)
         uploaded.append({**file, "storageId": storage["storageId"], "uploadTicket": ticket["uploadTicket"]})
     result = request("/api/v1/skills", token, {**payload, "changelog": args.notes_file.read_text().strip(), "acceptLicenseTerms": True, "files": uploaded})
