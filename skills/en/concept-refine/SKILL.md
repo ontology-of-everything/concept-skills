@@ -1,13 +1,13 @@
 ---
 name: concept-refine
-description: Analyzes and refines existing software concepts. Use when concept designs need evidence-led refactoring for overload, redundancy, narrowness, fragmentation, or synchronization problems.
+description: "Use when explicitly invoked to address overloaded, redundant, or fragmented concepts. Use application scenarios to propose splits, merges, or reductions, and explain their effects and the smallest necessary scope of change."
 metadata:
   language: en
   translation_of: concept-refine-cn
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
-# Concept refine
+# Refine existing concepts
 
 ## Goal
 

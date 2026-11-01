@@ -1,6 +1,6 @@
 ---
 name: concept-prd-cn
-description: "Generates confirmed concept specifications. Use when explicitly invoked. 转录 PRD、概念、同步与验收依据。"
+description: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与验收条件，保留待确认事项。"
 metadata:
   language: zh-CN
   translation_of: concept-prd
@@ -8,7 +8,7 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# 概念需求规格
+# 编写概念规格
 
 ## 目标
 

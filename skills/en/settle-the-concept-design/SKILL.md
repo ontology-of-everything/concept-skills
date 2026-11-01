@@ -1,13 +1,13 @@
 ---
 name: settle-the-concept-design
-description: "Generates concept-design decision proposals. Use when explicitly invoked to consolidate choices, tradeoffs, acceptance, and confirmation status."
+description: "Use when explicitly invoked to consolidate a concept-design discussion. Organize goals, options, tradeoffs, and acceptance criteria, distinguishing confirmed decisions from items awaiting user confirmation."
 metadata:
   language: en
   translation_of: settle-the-concept-design-cn
-  version: "0.1.4"
+  version: "0.1.5"
 ---
 
-# Settle the concept design
+# Prepare concept proposals
 
 Use Daniel Jackson's concept design to consolidate the discussion into a design proposal for confirmation. Run
 only when the user explicitly invokes this skill. Retain confirmed decisions, distinguish proposals,

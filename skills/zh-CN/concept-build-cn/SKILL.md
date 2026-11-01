@@ -1,6 +1,6 @@
 ---
 name: concept-build-cn
-description: "Generates confirmed concept implementations. Use when explicitly invoked. 将确认模型落实为模块与同步规则。"
+description: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。实现独立概念模块与同步规则，验证契约、模块边界和完整流程。"
 metadata:
   language: zh-CN
   translation_of: concept-build
@@ -8,7 +8,7 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# 概念实现
+# 实现概念模型
 
 ## 目标
 

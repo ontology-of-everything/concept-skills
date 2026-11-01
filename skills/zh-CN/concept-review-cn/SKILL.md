@@ -1,6 +1,6 @@
 ---
 name: concept-review-cn
-description: "Analyzes concept designs and code conformance. Use when explicitly invoked for read-only review. 审查目的、独立性、组合与漂移。"
+description: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读审查目的、职责、同步组合与实现偏差，报告问题及证据。"
 metadata:
   language: zh-CN
   translation_of: concept-review
@@ -8,7 +8,7 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# 概念审查
+# 审查概念设计
 
 ## 目标
 

@@ -1,13 +1,13 @@
 ---
 name: show-me-the-design-cn
-description: "Analyzes software concepts through diagrams. Use when explicitly requested. 以源码为依据图解软件概念。"
+description: "仅在显式调用时使用。需要理解软件概念、设计或协作流程时使用。依据代码与规格生成必要图解和示例，标明事实、推断与待核实项。"
 metadata:
   language: zh-CN
   translation_of: show-me-the-design
-  version: "0.2.1"
+  version: "0.2.2"
 ---
 
-# 概念图解
+# 图解软件概念
 
 ## 目标
 

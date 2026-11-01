@@ -1,6 +1,6 @@
 ---
 name: concept-design-cn
-description: "Generates concept designs. Use when explicitly invoked. 明确概念目的、行为与同步规则。"
+description: "仅在显式调用时使用。需要将需求建模为软件概念时使用。明确独立概念的目的、状态、动作与同步规则，形成待确认设计。"
 metadata:
   language: zh-CN
   translation_of: concept-design
@@ -8,7 +8,7 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# 概念设计
+# 设计软件概念
 
 ## 目标
 

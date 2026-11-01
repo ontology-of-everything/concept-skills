@@ -1,13 +1,13 @@
 ---
 name: show-me-the-design
-description: "Analyzes software concepts through diagrams grounded in source code. Use when the user explicitly requests this skill."
+description: "Use when explicitly requested to understand software concepts, designs, or collaboration flows. Create the diagrams and examples needed from code and specifications, distinguishing facts, inferences, and unverified details."
 metadata:
   language: en
   translation_of: show-me-the-design-cn
-  version: "0.2.1"
+  version: "0.2.2"
 ---
 
-# Show me the design
+# Explain software concepts visually
 
 ## Goal
 

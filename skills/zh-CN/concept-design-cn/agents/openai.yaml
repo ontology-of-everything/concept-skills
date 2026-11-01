@@ -1,7 +1,7 @@
 interface:
-  display_name: 概念设计
-  short_description: 从需求出发，理清软件概念的目的、职责、边界与协作规则
-  default_prompt: 'Use $concept-design-cn to complete the concept design with the
-    user: confirm the alignment, then write the design record.'
+  display_name: 设计软件概念
+  short_description: 明确软件概念的目的、状态、动作与同步规则，形成待确认设计
+  default_prompt: 'Use $concept-design-cn to complete the concept design with the user: confirm the alignment,
+    then write the design record.'
 policy:
   allow_implicit_invocation: false

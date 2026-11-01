@@ -1,6 +1,6 @@
 ---
 name: concept-design
-description: "Generates concept designs from software needs. Use when explicitly invoked to define concepts, behavior, and synchronization."
+description: "Use when explicitly invoked to model software requirements as independent concepts. Define purposes, state, actions, and synchronization rules, and prepare a design for confirmation."
 metadata:
   language: en
   translation_of: concept-design-cn
@@ -8,7 +8,7 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# Concept design
+# Design software concepts
 
 ## Goal
 

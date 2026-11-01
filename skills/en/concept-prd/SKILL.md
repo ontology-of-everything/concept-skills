@@ -1,6 +1,6 @@
 ---
 name: concept-prd
-description: "Generates PRD and specification files. Use when explicitly invoked to document a confirmed concept model and its acceptance criteria."
+description: "Use when explicitly invoked to document a confirmed concept model. Write a PRD, CONCEPT and SYNCS specifications, and acceptance criteria, preserving unresolved decisions."
 metadata:
   language: en
   translation_of: concept-prd-cn
@@ -8,7 +8,7 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# Concept PRD
+# Write concept specifications
 
 ## Goal
 

@@ -24,14 +24,14 @@ domains:
 skills:
 - id: settle-the-concept-design
   path: skills/en/settle-the-concept-design
-  display_name: Settle the Concept Design
-  display_title: Settle the Concept Design — Consolidate Decisions for Confirmation
-  display_name_zh: 把概念设计定下来
-  display_title_zh: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
+  display_name: "Prepare concept proposals"
+  display_title: "Prepare concept proposals"
+  display_name_zh: "整理概念方案"
+  display_title_zh: "整理概念方案"
   domain: concept-design
-  summary: Use on explicit invocation to turn concept-design discussion into a proposal with goals, choices, consequences, acceptance criteria, and confirmation status.
-  summary_zh: 仅显式调用。将概念设计讨论整理为待确认方案，说明目标、取舍、影响、验收与确认状态。
-  version: 0.1.4
+  summary: "Use when explicitly invoked to consolidate a concept-design discussion. Organize goals, options, tradeoffs, and acceptance criteria, distinguishing confirmed decisions from items awaiting user confirmation."
+  summary_zh: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍与验收条件，区分已确认决定和待用户确认事项。"
+  version: "0.1.5"
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -44,14 +44,14 @@ skills:
     topics: [concept-design, software-architecture, requirements, design-decisions, synchronizations]
 - id: settle-the-concept-design-cn
   path: skills/zh-CN/settle-the-concept-design-cn
-  display_name: 把概念设计定下来
-  display_title: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
-  display_name_zh: 把概念设计定下来
-  display_title_zh: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
+  display_name: "整理概念方案"
+  display_title: "整理概念方案"
+  display_name_zh: "整理概念方案"
+  display_title_zh: "整理概念方案"
   domain: concept-design
-  summary: Chinese edition. 仅显式调用。将概念设计讨论整理为待确认方案，说明目标、取舍、影响、验收与确认状态。
-  summary_zh: 仅显式调用。将概念设计讨论整理为待确认方案，说明目标、取舍、影响、验收与确认状态。
-  version: 0.1.4
+  summary: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍与验收条件，区分已确认决定和待用户确认事项。"
+  summary_zh: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍与验收条件，区分已确认决定和待用户确认事项。"
+  version: "0.1.5"
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -164,18 +164,18 @@ skills:
   translation_of: personal-knowledge-architect
 - id: concept-design
   path: skills/en/concept-design
-  display_name: Concept design
-  display_title: Concept design
-  display_name_zh: 概念设计
-  display_title_zh: 概念设计
+  display_name: "Design software concepts"
+  display_title: "Design software concepts"
+  display_name_zh: "设计软件概念"
+  display_title_zh: "设计软件概念"
   domain: concept-design
   subdomains: &id009
   - concept-design
   - requirements
   - software-design
-  summary: Use on explicit invocation to define independent concepts, explain their purposes and behavior, and design synchronization rules.
-  summary_zh: 仅显式调用。明确概念目的、状态与动作，设计同步规则并记录待确认事项。
-  version: 1.0.1
+  summary: "Use when explicitly invoked to model software requirements as independent concepts. Define purposes, state, actions, and synchronization rules, and prepare a design for confirmation."
+  summary_zh: "仅在显式调用时使用。需要将需求建模为软件概念时使用。明确独立概念的目的、状态、动作与同步规则，形成待确认设计。"
+  version: "1.0.2"
   agents: &id010
   - cursor
   - claude-code
@@ -195,15 +195,15 @@ skills:
     topics: [concept-design, software-architecture, requirements]
 - id: concept-design-cn
   path: skills/zh-CN/concept-design-cn
-  display_name: 概念设计
-  display_title: 概念设计
-  display_name_zh: 概念设计
-  display_title_zh: 概念设计
+  display_name: "设计软件概念"
+  display_title: "设计软件概念"
+  display_name_zh: "设计软件概念"
+  display_title_zh: "设计软件概念"
   domain: concept-design
   subdomains: *id009
-  summary: Chinese edition. 仅显式调用。明确概念目的、状态与动作，设计同步规则并记录待确认事项。
-  summary_zh: 仅显式调用。明确概念目的、状态与动作，设计同步规则并记录待确认事项。
-  version: 1.0.1
+  summary: "仅在显式调用时使用。需要将需求建模为软件概念时使用。明确独立概念的目的、状态、动作与同步规则，形成待确认设计。"
+  summary_zh: "仅在显式调用时使用。需要将需求建模为软件概念时使用。明确独立概念的目的、状态、动作与同步规则，形成待确认设计。"
+  version: "1.0.2"
   agents: *id010
   compatibility: No external tools or network; pure concept modeling
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -216,18 +216,18 @@ skills:
     topics: [concept-design, software-architecture, requirements]
 - id: concept-prd
   path: skills/en/concept-prd
-  display_name: Concept PRD
-  display_title: Concept PRD
-  display_name_zh: 概念需求规格
-  display_title_zh: 概念需求规格
+  display_name: "Write concept specifications"
+  display_title: "Write concept specifications"
+  display_name_zh: "编写概念规格"
+  display_title_zh: "编写概念规格"
   domain: concept-design
   subdomains: &id012
   - concept-design
   - prd
   - specifications
-  summary: Use on explicit invocation to transcribe a confirmed model into PRD, concept specifications, synchronization rules, and traceable acceptance criteria.
-  summary_zh: 仅显式调用。将确认模型转录为 PRD、概念与同步规格，保留前提、未决和验收依据。
-  version: 1.1.1
+  summary: "Use when explicitly invoked to document a confirmed concept model. Write a PRD, CONCEPT and SYNCS specifications, and acceptance criteria, preserving unresolved decisions."
+  summary_zh: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与验收条件，保留待确认事项。"
+  version: "1.1.2"
   agents: &id013
   - cursor
   - claude-code
@@ -247,15 +247,15 @@ skills:
     topics: [concept-design, software-architecture, prd, specifications]
 - id: concept-prd-cn
   path: skills/zh-CN/concept-prd-cn
-  display_name: 概念需求规格
-  display_title: 概念需求规格
-  display_name_zh: 概念需求规格
-  display_title_zh: 概念需求规格
+  display_name: "编写概念规格"
+  display_title: "编写概念规格"
+  display_name_zh: "编写概念规格"
+  display_title_zh: "编写概念规格"
   domain: concept-design
   subdomains: *id012
-  summary: Chinese edition. 仅显式调用。将确认模型转录为 PRD、概念与同步规格，保留前提、未决和验收依据。
-  summary_zh: 仅显式调用。将确认模型转录为 PRD、概念与同步规格，保留前提、未决和验收依据。
-  version: 1.1.1
+  summary: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与验收条件，保留待确认事项。"
+  summary_zh: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与验收条件，保留待确认事项。"
+  version: "1.1.2"
   agents: *id013
   compatibility: No external tools or network; writes Markdown PRD files
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -268,18 +268,18 @@ skills:
     topics: [concept-design, software-architecture, prd, specifications]
 - id: concept-build
   path: skills/en/concept-build
-  display_name: Concept build
-  display_title: Concept build
-  display_name_zh: 概念实现
-  display_title_zh: 概念实现
+  display_name: "Implement concept models"
+  display_title: "Implement concept models"
+  display_name_zh: "实现概念模型"
+  display_title_zh: "实现概念模型"
   domain: concept-design
   subdomains: &id015
   - concept-design
   - modular-monolith
   - implementation
-  summary: Use on explicit invocation to implement confirmed concepts in independently built modules. Default to ports and adapters; add Clean layers for distinct responsibilities.
-  summary_zh: 仅显式调用。实现已确认概念，模块独立构建。默认端口与适配器，按职责采用 Clean 分层，验证同步与恢复。
-  version: 1.1.1
+  summary: "Use when explicitly invoked to implement confirmed concept specifications. Build independent concept modules and synchronization rules, and verify contracts, module boundaries, and end-to-end flows."
+  summary_zh: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。实现独立概念模块与同步规则，验证契约、模块边界和完整流程。"
+  version: "1.1.2"
   agents: &id016
   - cursor
   - claude-code
@@ -299,15 +299,15 @@ skills:
     topics: [concept-design, software-architecture, implementation, modular-monolith]
 - id: concept-build-cn
   path: skills/zh-CN/concept-build-cn
-  display_name: 概念实现
-  display_title: 概念实现
-  display_name_zh: 概念实现
-  display_title_zh: 概念实现
+  display_name: "实现概念模型"
+  display_title: "实现概念模型"
+  display_name_zh: "实现概念模型"
+  display_title_zh: "实现概念模型"
   domain: concept-design
   subdomains: *id015
-  summary: Chinese edition. 仅显式调用。实现已确认概念，模块独立构建。默认端口与适配器，按职责采用 Clean 分层，验证同步与恢复。
-  summary_zh: 仅显式调用。实现已确认概念，模块独立构建。默认端口与适配器，按职责采用 Clean 分层，验证同步与恢复。
-  version: 1.1.1
+  summary: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。实现独立概念模块与同步规则，验证契约、模块边界和完整流程。"
+  summary_zh: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。实现独立概念模块与同步规则，验证契约、模块边界和完整流程。"
+  version: "1.1.2"
   agents: *id016
   compatibility: Mapping needs only the confirmed model; language-specific boundary tests may use cargo, Spring Modulith, or dependency-cruiser
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -320,18 +320,18 @@ skills:
     topics: [concept-design, software-architecture, implementation, modular-monolith]
 - id: concept-review
   path: skills/en/concept-review
-  display_name: Concept review
-  display_title: Concept review
-  display_name_zh: 概念审查
-  display_title_zh: 概念审查
+  display_name: "Review concept designs"
+  display_title: "Review concept designs"
+  display_name_zh: "审查概念设计"
+  display_title_zh: "审查概念设计"
   domain: concept-design
   subdomains: &id018
   - concept-design
   - architecture-audit
   - spec-drift
-  summary: Use on explicit invocation for read-only review of purpose fulfillment, independence, composition, code drift, and requested product subsets.
-  summary_zh: 仅显式调用。只读审查目的兑现、独立性、组合、实现漂移及指定产品子集，发现须有证据。
-  version: 1.1.1
+  summary: "Use when explicitly invoked to assess a concept design or compare code with specifications. Perform a read-only review of purpose, responsibilities, synchronization composition, and implementation deviations, and report evidence."
+  summary_zh: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读审查目的、职责、同步组合与实现偏差，报告问题及证据。"
+  version: "1.1.2"
   agents: &id019
   - cursor
   - claude-code
@@ -351,15 +351,15 @@ skills:
     topics: [concept-design, software-architecture, code-review, design-review]
 - id: concept-review-cn
   path: skills/zh-CN/concept-review-cn
-  display_name: 概念审查
-  display_title: 概念审查
-  display_name_zh: 概念审查
-  display_title_zh: 概念审查
+  display_name: "审查概念设计"
+  display_title: "审查概念设计"
+  display_name_zh: "审查概念设计"
+  display_title_zh: "审查概念设计"
   domain: concept-design
   subdomains: *id018
-  summary: Chinese edition. 仅显式调用。只读审查目的兑现、独立性、组合、实现漂移及指定产品子集，发现须有证据。
-  summary_zh: 仅显式调用。只读审查目的兑现、独立性、组合、实现漂移及指定产品子集，发现须有证据。
-  version: 1.1.1
+  summary: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读审查目的、职责、同步组合与实现偏差，报告问题及证据。"
+  summary_zh: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读审查目的、职责、同步组合与实现偏差，报告问题及证据。"
+  version: "1.1.2"
   agents: *id019
   compatibility: Read-only; design review needs requirements and a concept model, implementation checks additionally need code
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -372,19 +372,19 @@ skills:
     topics: [concept-design, software-architecture, code-review, design-review]
 - id: concept-guard
   path: skills/en/concept-guard
-  display_name: Concept guard
-  display_title: Concept guard
-  display_name_zh: 概念规格护栏
-  display_title_zh: 概念规格护栏
+  display_name: "Maintain concept specifications"
+  display_title: "Maintain concept specifications"
+  display_name_zh: "维护概念规格"
+  display_title_zh: "维护概念规格"
   domain: concept-design
   subdomains: &id021
   - architecture
   - module-boundaries
   - drift-detection
   - concept-specs
-  summary: Use on explicit invocation to audit, create, backfill, compare, or map concept specifications. Keep evidence, inferred intent, and decisions distinct.
-  summary_zh: 仅显式调用。检查、维护或映射概念、同步与数据质量规格，区分证据、推断和决定。
-  version: 1.1.1
+  summary: "Use when explicitly invoked to maintain concept specifications in an existing project. Audit coverage, reconstruct contracts from code, detect implementation drift, or update specification maps. Apply writes only through the selected writing mode."
+  summary_zh: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。检查规格覆盖、回填契约、检测实现漂移或更新地图；写入按所选模式执行。"
+  version: "1.1.2"
   agents: &id022
   - cursor
   - claude-code
@@ -405,15 +405,15 @@ skills:
     topics: [concept-design, software-architecture, specifications, drift-detection]
 - id: concept-guard-cn
   path: skills/zh-CN/concept-guard-cn
-  display_name: 概念规格护栏
-  display_title: 概念规格护栏
-  display_name_zh: 概念规格护栏
-  display_title_zh: 概念规格护栏
+  display_name: "维护概念规格"
+  display_title: "维护概念规格"
+  display_name_zh: "维护概念规格"
+  display_title_zh: "维护概念规格"
   domain: concept-design
   subdomains: *id021
-  summary: Chinese edition. 仅显式调用。检查、维护或映射概念、同步与数据质量规格，区分证据、推断和决定。
-  summary_zh: 仅显式调用。检查、维护或映射概念、同步与数据质量规格，区分证据、推断和决定。
-  version: 1.1.1
+  summary: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。检查规格覆盖、回填契约、检测实现漂移或更新地图；写入按所选模式执行。"
+  summary_zh: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。检查规格覆盖、回填契约、检测实现漂移或更新地图；写入按所选模式执行。"
+  version: "1.1.2"
   agents: *id022
   compatibility: Specs and drift checks need only file read/write plus Grep/Glob; the optional boundary-injection runtime requires Claude Code hooks and jq
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -427,14 +427,14 @@ skills:
     topics: [concept-design, software-architecture, specifications, drift-detection]
 - id: concept-refine
   path: skills/en/concept-refine
-  display_name: Concept refine
-  display_title: Concept refine
-  display_name_zh: 概念精炼
-  display_title_zh: 概念精炼
+  display_name: "Refine existing concepts"
+  display_title: "Refine existing concepts"
+  display_name_zh: "精炼现有概念"
+  display_title_zh: "精炼现有概念"
   domain: concept-design
-  summary: Refine existing concept designs with evidence and the smallest sufficient change. Compare alternatives, preserve confirmed decisions, and verify affected behavior.
-  summary_zh: 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
-  version: 1.0.1
+  summary: "Use when explicitly invoked to address overloaded, redundant, or fragmented concepts. Use application scenarios to propose splits, merges, or reductions, and explain their effects and the smallest necessary scope of change."
+  summary_zh: "仅在显式调用时使用。已有概念职责过载、重复或碎片化时使用。依据使用场景提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
+  version: "1.0.2"
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
@@ -446,14 +446,14 @@ skills:
     topics: [concept-design, software-architecture, refactoring]
 - id: concept-refine-cn
   path: skills/zh-CN/concept-refine-cn
-  display_name: 概念精炼
-  display_title: 概念精炼
-  display_name_zh: 概念精炼
-  display_title_zh: 概念精炼
+  display_name: "精炼现有概念"
+  display_title: "精炼现有概念"
+  display_name_zh: "精炼现有概念"
+  display_title_zh: "精炼现有概念"
   domain: concept-design
-  summary: Chinese edition. 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
-  summary_zh: 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
-  version: 1.0.1
+  summary: "仅在显式调用时使用。已有概念职责过载、重复或碎片化时使用。依据使用场景提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
+  summary_zh: "仅在显式调用时使用。已有概念职责过载、重复或碎片化时使用。依据使用场景提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
+  version: "1.0.2"
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
@@ -497,13 +497,14 @@ skills:
   translation_of: read-it-reframe-it-own-it
 - id: show-me-the-design
   path: skills/en/show-me-the-design
-  display_name: ShowMeTheDesign
-  display_title: ShowMeTheDesign
-  display_name_zh: 概念图解
+  display_name: "Explain software concepts visually"
+  display_title: "Explain software concepts visually"
+  display_name_zh: "图解软件概念"
+  display_title_zh: "图解软件概念"
   domain: concept-design
-  summary: Use on explicit request to explain software concepts and collaboration with diagrams grounded in source code, using only the views needed for the question.
-  summary_zh: 仅显式请求。用有源码依据的图解解释软件概念与协作，按读者问题选择必要视图。
-  version: 0.2.1
+  summary: "Use when explicitly requested to understand software concepts, designs, or collaboration flows. Create the diagrams and examples needed from code and specifications, distinguishing facts, inferences, and unverified details."
+  summary_zh: "仅在显式调用时使用。需要理解软件概念、设计或协作流程时使用。依据代码与规格生成必要图解和示例，标明事实、推断与待核实项。"
+  version: "0.2.2"
   agents:
   - cursor
   - claude-code
@@ -530,13 +531,14 @@ skills:
     - learning
 - id: show-me-the-design-cn
   path: skills/zh-CN/show-me-the-design-cn
-  display_name: ShowMeTheDesign · 概念图解
-  display_title: ShowMeTheDesign · 概念图解
-  display_name_zh: 概念图解
+  display_name: "图解软件概念"
+  display_title: "图解软件概念"
+  display_name_zh: "图解软件概念"
+  display_title_zh: "图解软件概念"
   domain: concept-design
-  summary: Chinese edition. 仅显式请求。用有源码依据的图解解释软件概念与协作，按读者问题选择必要视图。
-  summary_zh: 仅显式请求。用有源码依据的图解解释软件概念与协作，按读者问题选择必要视图。
-  version: 0.2.1
+  summary: "仅在显式调用时使用。需要理解软件概念、设计或协作流程时使用。依据代码与规格生成必要图解和示例，标明事实、推断与待核实项。"
+  summary_zh: "仅在显式调用时使用。需要理解软件概念、设计或协作流程时使用。依据代码与规格生成必要图解和示例，标明事实、推断与待核实项。"
+  version: "0.2.2"
   agents:
   - cursor
   - claude-code

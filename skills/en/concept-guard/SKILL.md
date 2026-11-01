@@ -1,17 +1,17 @@
 ---
 name: concept-guard
-description: "Validates and maintains concept specifications. Use when explicitly invoked for audit, concept, drift, pipeline, sync, or map."
+description: "Use when explicitly invoked to maintain concept specifications in an existing project. Audit coverage, reconstruct contracts from code, detect implementation drift, or update specification maps. Apply writes only through the selected writing mode."
 compatibility: "Read/write/search files; optional Claude Code hooks need bash and jq."
 metadata:
   language: en
   translation_of: concept-guard-cn
   author: ontology-of-everything
-  version: "1.1.1"
+  version: "1.1.2"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# Concept guard
+# Maintain concept specifications
 
 ## Goal
 

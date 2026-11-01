@@ -1,6 +1,6 @@
 ---
 name: concept-build
-description: "Generates implementations of confirmed concepts. Use when explicitly invoked to plan or build a modular application."
+description: "Use when explicitly invoked to implement confirmed concept specifications. Build independent concept modules and synchronization rules, and verify contracts, module boundaries, and end-to-end flows."
 metadata:
   language: en
   translation_of: concept-build-cn
@@ -8,7 +8,7 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# Concept build
+# Implement concept models
 
 ## Goal
 

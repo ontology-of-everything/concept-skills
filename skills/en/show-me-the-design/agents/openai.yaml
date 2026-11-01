@@ -1,7 +1,7 @@
 interface:
-  display_name: ShowMeTheDesign
-  short_description: Explain concepts with diagrams and source evidence
-  default_prompt: Use $show-me-the-design to explain the current concept design with
-    source evidence and the smallest useful diagrams.
+  display_name: Explain software concepts visually
+  short_description: Explain software concepts with diagrams and examples
+  default_prompt: Use $show-me-the-design to explain the current concept design with source evidence and
+    the smallest useful diagrams.
 policy:
   allow_implicit_invocation: false

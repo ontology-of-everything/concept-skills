@@ -1,6 +1,6 @@
 ---
 name: concept-review
-description: "Analyzes concept fitness and code conformance. Use when explicitly invoked for read-only purpose, independence, composition, drift, or product-subset review."
+description: "Use when explicitly invoked to assess a concept design or compare code with specifications. Perform a read-only review of purpose, responsibilities, synchronization composition, and implementation deviations, and report evidence."
 metadata:
   language: en
   translation_of: concept-review-cn
@@ -8,7 +8,7 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# Concept review
+# Review concept designs
 
 ## Goal
 

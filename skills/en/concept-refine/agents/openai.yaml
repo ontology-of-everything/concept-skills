@@ -1,7 +1,7 @@
 interface:
-  display_name: Concept refine
-  short_description: Untangle Overloaded Concepts
-  default_prompt: Use $concept-refine to refine this concept design with evidence,
-    minimal necessary changes, and scenario verification.
+  display_name: Refine existing concepts
+  short_description: Refine overloaded, redundant, or fragmented concepts
+  default_prompt: Use $concept-refine to refine this concept design with evidence, minimal necessary changes,
+    and scenario verification.
 policy:
   allow_implicit_invocation: false

@@ -1,8 +1,7 @@
 interface:
-  display_name: Concept build
-  short_description: Turn Models into Independent Modules
-  default_prompt: Use $concept-build to implement the confirmed model as a modular
-    monolith, preserving concept boundaries and synchronization contracts, with tests
-    for concept and application purposes.
+  display_name: Implement concept models
+  short_description: Build concept modules and synchronization rules
+  default_prompt: Use $concept-build to implement the confirmed model as a modular monolith, preserving
+    concept boundaries and synchronization contracts, with tests for concept and application purposes.
 policy:
   allow_implicit_invocation: false

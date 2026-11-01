@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **2.7.0**。概念设计工作流、`show-me-the-design` 与 `settle-the-concept-design` 仅显式调用；`read-it-reframe-it-own-it` 支持自动匹配；全部概念技能在 Codex 中需显式调用；`concept-guard` 只消费 Jackson 记法。
+当前版本为 **2.7.1**。概念设计工作流、`show-me-the-design` 与 `settle-the-concept-design` 仅显式调用；`read-it-reframe-it-own-it` 支持自动匹配；全部概念技能在 Codex 中需显式调用；`concept-guard` 只消费 Jackson 记法。
 
 ## 目录
 
@@ -44,14 +44,14 @@ English: [README.md](README.md)。
 
 | 技能 | 版本 | ClawHub 分类 |
 | --- | --- | --- |
-| [把概念设计定下来](skills/zh-CN/settle-the-concept-design-cn/SKILL.md) | 0.1.4 | development, knowledge |
-| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 1.0.1 | development |
-| [概念需求规格](skills/zh-CN/concept-prd-cn/SKILL.md) | 1.1.1 | development |
-| [概念实现](skills/zh-CN/concept-build-cn/SKILL.md) | 1.1.1 | development |
-| [概念审查](skills/zh-CN/concept-review-cn/SKILL.md) | 1.1.1 | development |
-| [概念规格护栏](skills/zh-CN/concept-guard-cn/SKILL.md) | 1.1.1 | development |
-| [概念精炼](skills/zh-CN/concept-refine-cn/SKILL.md) | 1.0.1 | development |
-| [ShowMeTheDesign · 概念图解](skills/zh-CN/show-me-the-design-cn/SKILL.md) | 0.2.1 | knowledge |
+| [整理概念方案](skills/zh-CN/settle-the-concept-design-cn/SKILL.md) | 0.1.5 | development, knowledge |
+| [设计软件概念](skills/zh-CN/concept-design-cn/SKILL.md) | 1.0.2 | development |
+| [编写概念规格](skills/zh-CN/concept-prd-cn/SKILL.md) | 1.1.2 | development |
+| [实现概念模型](skills/zh-CN/concept-build-cn/SKILL.md) | 1.1.2 | development |
+| [审查概念设计](skills/zh-CN/concept-review-cn/SKILL.md) | 1.1.2 | development |
+| [维护概念规格](skills/zh-CN/concept-guard-cn/SKILL.md) | 1.1.2 | development |
+| [精炼现有概念](skills/zh-CN/concept-refine-cn/SKILL.md) | 1.0.2 | development |
+| [图解软件概念](skills/zh-CN/show-me-the-design-cn/SKILL.md) | 0.2.2 | knowledge |
 
 ### 语义建模
 
@@ -198,7 +198,7 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 
 每项技能保留两个例子。先安装技能、提供相关材料，再复制一句试试。示例路径换成你自己的项目路径。
 
-### 把概念设计定下来
+### 整理概念方案
 
 `settle-the-concept-design-cn` · [技能正文](skills/zh-CN/settle-the-concept-design-cn/SKILL.md)
 
@@ -220,7 +220,7 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 
 第二个例子还需要搭配图片生成工具。[ClawHub 英文版](https://clawhub.ai/agenticweb4/skills/learning-read-it-reframe-it-own-it)使用独立地址；本仓库的技能安装名不变。
 
-### 概念图解 · ShowMeTheDesign
+### 图解软件概念
 
 `show-me-the-design-cn` · [使用说明与可视化工具箱](skills/zh-CN/show-me-the-design-cn/SKILL.md)
 
@@ -249,7 +249,7 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 | 看懂数据表 | `$data-knowledge-architect-cn` 帮我看看这张订单表，哪些是事实、维度和度量？ |
 | 整理接口模型 | `$data-knowledge-architect-cn` 把这组订单接口整理成语义模型，确认后输出 OKF。 |
 
-### 软件概念架构师 · 设计
+### 设计软件概念
 
 `concept-design-cn`
 
@@ -258,7 +258,7 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 | 设计待办清单 | `$concept-design-cn` 帮我设计一个待办清单，支持添加、完成和重新打开。 |
 | 设计预约与候补 | `$concept-design-cn` 餐厅预约满了还能排队，帮我理清需要哪些概念、怎么配合。 |
 
-### 软件概念架构师 · 需求规格
+### 编写概念规格
 
 `concept-prd-cn`
 
@@ -267,7 +267,7 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 | 整理 PRD | `$concept-prd-cn` 把确认好的待办模型整理成一份简明 PRD。 |
 | 补齐规格 | `$concept-prd-cn` 给这个预约系统补上 CONCEPT.md 和 SYNCS.md，按已确认的设计来。 |
 
-### 软件概念架构师 · 实现
+### 实现概念模型
 
 `concept-build-cn`
 
@@ -276,7 +276,7 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 | 实现待办清单 | `$concept-build-cn` 按确认好的待办模型，用 TypeScript 实现一下，顺便测测。 |
 | 实现预约与取消 | `$concept-build-cn` 把餐厅预约和取消做出来，按现有规格写，并验证流程。 |
 
-### 软件概念架构师 · 审查
+### 审查概念设计
 
 `concept-review-cn`
 
@@ -285,7 +285,7 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 | 检查概念模型 | `$concept-review-cn` 帮我看看这个待办模型有没有问题，先别改。 |
 | 检查代码偏差 | `$concept-review-cn` 对照规格检查预约代码，看看有没有写偏，给我指出来。 |
 
-### 软件概念架构师 · 规格护栏
+### 维护概念规格
 
 `concept-guard-cn`
 
@@ -294,7 +294,7 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 | 盘点缺少的规格 | `$concept-guard-cn` audit src/reservations 这里缺哪些规格？帮我列一下。 |
 | 检查规格漂移 | `$concept-guard-cn` drift src 对照现有规格看看代码有没有写偏，先别改。 |
 
-### 软件概念架构师 · 精炼
+### 精炼现有概念
 
 `concept-refine-cn`
 

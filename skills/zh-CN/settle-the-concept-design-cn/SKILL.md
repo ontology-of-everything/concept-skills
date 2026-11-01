@@ -1,13 +1,13 @@
 ---
 name: settle-the-concept-design-cn
-description: "Generates concept-design decision proposals. Use when explicitly invoked. 整理取舍、验收与确认状态。"
+description: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍与验收条件，区分已确认决定和待用户确认事项。"
 metadata:
   language: zh-CN
   translation_of: settle-the-concept-design
-  version: "0.1.4"
+  version: "0.1.5"
 ---
 
-# 把概念设计定下来
+# 整理概念方案
 
 基于 Daniel Jackson 的概念设计，将讨论收敛为可确认的设计方案，仅在用户显式调用本技能时运行。保留已确认决定，区分建议、假设和信息缺口，没有新证据不重开已定事项。
 

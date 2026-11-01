@@ -1,6 +1,6 @@
 interface:
-  display_name: 概念精炼
-  short_description: 基于证据定位概念过载、冗余与碎片，以最小必要改动精炼设计
+  display_name: 精炼现有概念
+  short_description: 依据使用场景精炼已有概念，提出拆分、合并或裁剪方案
   default_prompt: 使用 $concept-refine-cn，以证据和最小必要改动精炼当前概念设计，并验证局部与端到端场景。
 policy:
   allow_implicit_invocation: false

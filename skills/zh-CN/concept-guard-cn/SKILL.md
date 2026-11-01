@@ -1,17 +1,17 @@
 ---
 name: concept-guard-cn
-description: "Validates concept specifications. Use when explicitly invoked. 检查、维护或映射概念与同步规格。"
+description: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。检查规格覆盖、回填契约、检测实现漂移或更新地图；写入按所选模式执行。"
 compatibility: "读写与搜索文件；可选 Claude Code hooks 需要 bash 和 jq。"
 metadata:
   language: zh-CN
   translation_of: concept-guard
   author: ontology-of-everything
-  version: "1.1.1"
+  version: "1.1.2"
   openclaw:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# 概念规格护栏
+# 维护概念规格
 
 ## 目标
 

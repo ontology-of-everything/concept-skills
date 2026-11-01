@@ -1,8 +1,7 @@
 interface:
-  display_name: Concept PRD
-  short_description: Turn Models into Traceable Specs
-  default_prompt: Use $concept-prd to transcribe the confirmed model into an overall
-    PRD, concept specifications and synchronizations, preserving concept and application
-    purposes, assumptions and acceptance traceability.
+  display_name: Write concept specifications
+  short_description: Write confirmed models as specs and acceptance criteria
+  default_prompt: Use $concept-prd to transcribe the confirmed model into an overall PRD, concept specifications
+    and synchronizations, preserving concept and application purposes, assumptions and acceptance traceability.
 policy:
   allow_implicit_invocation: false

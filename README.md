@@ -23,7 +23,7 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **2.7.0**. The concept design workflow, `show-me-the-design`, and `settle-the-concept-design` are explicit-only;
+Current release is **2.7.1**. The concept design workflow, `show-me-the-design`, and `settle-the-concept-design` are explicit-only;
 `read-it-reframe-it-own-it` supports automatic discovery; all concept skills require explicit invocation in Codex;
 `concept-guard` modes
 consume Jackson notation only.
@@ -50,14 +50,14 @@ Design software concepts, responsibilities, specifications, and implementations.
 
 | Skill | Version | ClawHub category |
 | --- | --- | --- |
-| [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.4 | development, knowledge |
-| [Concept design](skills/en/concept-design/SKILL.md) | 1.0.1 | development |
-| [Concept PRD](skills/en/concept-prd/SKILL.md) | 1.1.1 | development |
-| [Concept build](skills/en/concept-build/SKILL.md) | 1.1.1 | development |
-| [Concept review](skills/en/concept-review/SKILL.md) | 1.1.1 | development |
-| [Concept guard](skills/en/concept-guard/SKILL.md) | 1.1.1 | development |
-| [Concept refine](skills/en/concept-refine/SKILL.md) | 1.0.1 | development |
-| [ShowMeTheDesign](skills/en/show-me-the-design/SKILL.md) | 0.2.1 | knowledge |
+| [Prepare concept proposals](skills/en/settle-the-concept-design/SKILL.md) | 0.1.5 | development, knowledge |
+| [Design software concepts](skills/en/concept-design/SKILL.md) | 1.0.2 | development |
+| [Write concept specifications](skills/en/concept-prd/SKILL.md) | 1.1.2 | development |
+| [Implement concept models](skills/en/concept-build/SKILL.md) | 1.1.2 | development |
+| [Review concept designs](skills/en/concept-review/SKILL.md) | 1.1.2 | development |
+| [Maintain concept specifications](skills/en/concept-guard/SKILL.md) | 1.1.2 | development |
+| [Refine existing concepts](skills/en/concept-refine/SKILL.md) | 1.0.2 | development |
+| [Explain software concepts visually](skills/en/show-me-the-design/SKILL.md) | 0.2.2 | knowledge |
 
 ### Semantic Modeling
 
@@ -207,7 +207,7 @@ To pin a skill explicitly: `/skill-name` in Cursor, `$skill-name` in Codex.
 Each skill has two examples. Install it, share the relevant material, then copy a request.
 Replace example paths with your project paths.
 
-### Settle the Concept Design
+### Prepare concept proposals
 
 `settle-the-concept-design` · [Skill](skills/en/settle-the-concept-design/SKILL.md)
 
@@ -230,7 +230,7 @@ Based on Daniel Jackson's concept design, consolidate discussion into decisions 
 The second example also needs an image-generation tool. [The English skill is on ClawHub](https://clawhub.ai/agenticweb4/skills/learning-read-it-reframe-it-own-it);
 its marketplace URL uses a different slug from the repository installation name.
 
-### ShowMeTheDesign
+### Explain software concepts visually
 
 `show-me-the-design` · [Usage and visual toolbox](skills/en/show-me-the-design/SKILL.md)
 
@@ -259,7 +259,7 @@ Help beginners understand and examine software concepts and how they work togeth
 | Understand a table | `$data-knowledge-architect` Which parts of this order table are facts, dimensions, and measures? |
 | Model APIs | `$data-knowledge-architect` Build a semantic model from these order APIs. Export OKF after we confirm it. |
 
-### Software Concept Architect · Design
+### Design software concepts
 
 `concept-design`
 
@@ -268,7 +268,7 @@ Help beginners understand and examine software concepts and how they work togeth
 | Design a task list | `$concept-design` Help me design a task list that supports adding, completing, and reopening tasks. |
 | Design reservations | `$concept-design` When a restaurant is full, customers can join a waiting list. What concepts do we need, and how do they work together? |
 
-### Software Concept Architect · PRD
+### Write concept specifications
 
 `concept-prd`
 
@@ -277,7 +277,7 @@ Help beginners understand and examine software concepts and how they work togeth
 | Write a PRD | `$concept-prd` Turn our confirmed task-list model into a short PRD. |
 | Write specifications | `$concept-prd` Write CONCEPT.md and SYNCS.md for this reservation system using our confirmed design. |
 
-### Software Concept Architect · Build
+### Implement concept models
 
 `concept-build`
 
@@ -286,7 +286,7 @@ Help beginners understand and examine software concepts and how they work togeth
 | Build a task list | `$concept-build` Build our confirmed task-list model in TypeScript and test it. |
 | Build reservations | `$concept-build` Implement reservations and cancellations from these specs, then check the flow. |
 
-### Software Concept Architect · Review
+### Review concept designs
 
 `concept-review`
 
@@ -295,7 +295,7 @@ Help beginners understand and examine software concepts and how they work togeth
 | Review a model | `$concept-review` Check this task-list model for problems. Leave it unchanged for now. |
 | Compare code with specs | `$concept-review` Check the reservation code against its specs and show me where they differ. |
 
-### Software Concept Architect · Guardrails
+### Maintain concept specifications
 
 `concept-guard`
 
@@ -304,7 +304,7 @@ Help beginners understand and examine software concepts and how they work togeth
 | Find missing specs | `$concept-guard` audit src/reservations Which specs are missing here? List them for me. |
 | Check drift | `$concept-guard` drift src Check whether the code matches its specs. Report only. |
 
-### Software Concept Architect · Refine
+### Refine existing concepts
 
 `concept-refine`
 

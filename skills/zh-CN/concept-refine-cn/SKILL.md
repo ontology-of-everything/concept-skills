@@ -1,13 +1,13 @@
 ---
 name: concept-refine-cn
-description: Analyzes and refines software concepts. Use when concept designs need refactoring. / 以证据和最小必要改动精炼已有概念，适用于过载、冗余、过窄、碎片化及同步问题。
+description: "仅在显式调用时使用。已有概念职责过载、重复或碎片化时使用。依据使用场景提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
 metadata:
   language: zh-CN
   translation_of: concept-refine
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
-# 概念精炼
+# 精炼现有概念
 
 ## 目标
 
