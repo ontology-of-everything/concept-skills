@@ -27,7 +27,10 @@ spec.loader.exec_module(catalog_tools)
 class UploadRedirectHandler(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         if code in (307, 308) and urllib.parse.urlsplit(newurl).scheme == "https":
-            return urllib.request.Request(newurl, data=req.data, headers=dict(req.headers), method=req.get_method())
+            forwarded = dict(req.headers)
+            if urllib.parse.urlsplit(newurl).netloc != urllib.parse.urlsplit(req.full_url).netloc:
+                forwarded.pop("Authorization", None)
+            return urllib.request.Request(newurl, data=req.data, headers=forwarded, method=req.get_method())
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
@@ -115,7 +118,13 @@ def main():
         if hashlib.sha256(data).hexdigest() != file["sha256"]:
             raise ValueError("Bundle changed after validation")
         ticket = request("/api/v1/skills/-/upload-url", token, file)
-        upload = urllib.request.Request(ticket["uploadUrl"], data=data, headers={"Content-Type": file["contentType"]})
+        headers = {"Content-Type": file["contentType"]}
+        destination = urllib.parse.urlsplit(ticket["uploadUrl"])
+        if destination.scheme != "https":
+            raise ValueError("Upload URL must use HTTPS")
+        if destination.netloc == urllib.parse.urlsplit(REGISTRY).netloc or (destination.hostname or "").endswith(".convex.site"):
+            headers["Authorization"] = "Bearer " + token
+        upload = urllib.request.Request(ticket["uploadUrl"], data=data, headers=headers)
         with urllib.request.build_opener(UploadRedirectHandler()).open(upload, timeout=60) as response:
             storage = json.load(response)
         uploaded.append({**file, "storageId": storage["storageId"], "uploadTicket": ticket["uploadTicket"]})

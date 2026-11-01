@@ -547,6 +547,7 @@ skills:
   marketplaces:
   - skills-sh
   - skillsmp
+  - clawhub
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
