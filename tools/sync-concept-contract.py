@@ -12,9 +12,9 @@ def main():
     root = Path(__file__).resolve().parents[1]
     stale = []
     for locale, suffix in (("en", ""), ("zh-CN", "-cn")):
-        source = root / "skills" / locale / f"software-concept-architect-design{suffix}" / "references/spec-format.md"
+        source = root / "skills" / locale / f"concept-design{suffix}" / "references/spec-format.md"
         content = source.read_bytes()
-        for name in ("software-concept-architect-prd", "software-concept-architect-build", "software-concept-architect-review", "software-concept-architect-guardrails"):
+        for name in ("concept-prd", "concept-build", "concept-review", "concept-guard"):
             target = root / "skills" / locale / f"{name}{suffix}" / "references/spec-format.md"
             if args.write:
                 target.write_bytes(content)

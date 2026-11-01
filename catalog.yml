@@ -159,12 +159,12 @@ skills:
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
   translation_of: personal-knowledge-architect
-- id: software-concept-architect-design
-  path: skills/en/software-concept-architect-design
-  display_name: Software Concept Architect · Design
-  display_title: Software Concept Architect · Design — Turn Requirements into Clear Concepts
-  display_name_zh: 软件概念架构师 · 设计
-  display_title_zh: 软件概念架构师 · 设计 — 把需求变成清晰的软件概念
+- id: concept-design
+  path: skills/en/concept-design
+  display_name: Concept design
+  display_title: Concept design
+  display_name_zh: 概念设计
+  display_title_zh: 概念设计
   domain: concept-design
   subdomains: &id009
   - concept-design
@@ -186,16 +186,16 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: en
-  translation_of: software-concept-architect-design-cn
+  translation_of: concept-design-cn
   clawhub:
     categories: [development]
     topics: [concept-design, software-architecture, requirements]
-- id: software-concept-architect-design-cn
-  path: skills/zh-CN/software-concept-architect-design-cn
-  display_name: 软件概念架构师 · 设计
-  display_title: 软件概念架构师 · 设计 — 把需求变成清晰的软件概念
-  display_name_zh: 软件概念架构师 · 设计
-  display_title_zh: 软件概念架构师 · 设计 — 把需求变成清晰的软件概念
+- id: concept-design-cn
+  path: skills/zh-CN/concept-design-cn
+  display_name: 概念设计
+  display_title: 概念设计
+  display_name_zh: 概念设计
+  display_title_zh: 概念设计
   domain: concept-design
   subdomains: *id009
   summary: Chinese edition. 仅显式调用。明确概念目的、状态与动作，设计同步规则并记录待确认事项。
@@ -207,13 +207,13 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
-  translation_of: software-concept-architect-design
-- id: software-concept-architect-prd
-  path: skills/en/software-concept-architect-prd
-  display_name: Software Concept Architect · PRD
-  display_title: Software Concept Architect · PRD — Turn Models into Traceable Specs
-  display_name_zh: 软件概念架构师 · 需求规格
-  display_title_zh: 软件概念架构师 · 需求规格 — 把确认的模型变成可追溯规格
+  translation_of: concept-design
+- id: concept-prd
+  path: skills/en/concept-prd
+  display_name: Concept PRD
+  display_title: Concept PRD
+  display_name_zh: 概念需求规格
+  display_title_zh: 概念需求规格
   domain: concept-design
   subdomains: &id012
   - concept-design
@@ -235,16 +235,16 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: en
-  translation_of: software-concept-architect-prd-cn
+  translation_of: concept-prd-cn
   clawhub:
     categories: [development]
     topics: [concept-design, software-architecture, prd, specifications]
-- id: software-concept-architect-prd-cn
-  path: skills/zh-CN/software-concept-architect-prd-cn
-  display_name: 软件概念架构师 · 需求规格
-  display_title: 软件概念架构师 · 需求规格 — 把确认的模型变成可追溯规格
-  display_name_zh: 软件概念架构师 · 需求规格
-  display_title_zh: 软件概念架构师 · 需求规格 — 把确认的模型变成可追溯规格
+- id: concept-prd-cn
+  path: skills/zh-CN/concept-prd-cn
+  display_name: 概念需求规格
+  display_title: 概念需求规格
+  display_name_zh: 概念需求规格
+  display_title_zh: 概念需求规格
   domain: concept-design
   subdomains: *id012
   summary: Chinese edition. 仅显式调用。将确认模型转录为 PRD、概念与同步规格，保留前提、未决和验收依据。
@@ -256,13 +256,13 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
-  translation_of: software-concept-architect-prd
-- id: software-concept-architect-build
-  path: skills/en/software-concept-architect-build
-  display_name: Software Concept Architect · Build
-  display_title: Software Concept Architect · Build — Turn Models into Independent Modules
-  display_name_zh: 软件概念架构师 · 实现
-  display_title_zh: 软件概念架构师 · 实现 — 把确认的模型落成独立模块
+  translation_of: concept-prd
+- id: concept-build
+  path: skills/en/concept-build
+  display_name: Concept build
+  display_title: Concept build
+  display_name_zh: 概念实现
+  display_title_zh: 概念实现
   domain: concept-design
   subdomains: &id015
   - concept-design
@@ -284,16 +284,16 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: en
-  translation_of: software-concept-architect-build-cn
+  translation_of: concept-build-cn
   clawhub:
     categories: [development]
     topics: [concept-design, software-architecture, implementation, modular-monolith]
-- id: software-concept-architect-build-cn
-  path: skills/zh-CN/software-concept-architect-build-cn
-  display_name: 软件概念架构师 · 实现
-  display_title: 软件概念架构师 · 实现 — 把确认的模型落成独立模块
-  display_name_zh: 软件概念架构师 · 实现
-  display_title_zh: 软件概念架构师 · 实现 — 把确认的模型落成独立模块
+- id: concept-build-cn
+  path: skills/zh-CN/concept-build-cn
+  display_name: 概念实现
+  display_title: 概念实现
+  display_name_zh: 概念实现
+  display_title_zh: 概念实现
   domain: concept-design
   subdomains: *id015
   summary: Chinese edition. 仅显式调用。实现已确认概念，模块独立构建。默认端口与适配器，按职责采用 Clean 分层，验证同步与恢复。
@@ -305,13 +305,13 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
-  translation_of: software-concept-architect-build
-- id: software-concept-architect-review
-  path: skills/en/software-concept-architect-review
-  display_name: Software Concept Architect · Review
-  display_title: Software Concept Architect · Review — Find Design Gaps and Code Drift
-  display_name_zh: 软件概念架构师 · 审查
-  display_title_zh: 软件概念架构师 · 审查 — 找出设计缺口与代码偏差
+  translation_of: concept-build
+- id: concept-review
+  path: skills/en/concept-review
+  display_name: Concept review
+  display_title: Concept review
+  display_name_zh: 概念审查
+  display_title_zh: 概念审查
   domain: concept-design
   subdomains: &id018
   - concept-design
@@ -333,16 +333,16 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: en
-  translation_of: software-concept-architect-review-cn
+  translation_of: concept-review-cn
   clawhub:
     categories: [development]
     topics: [concept-design, software-architecture, code-review, design-review]
-- id: software-concept-architect-review-cn
-  path: skills/zh-CN/software-concept-architect-review-cn
-  display_name: 软件概念架构师 · 审查
-  display_title: 软件概念架构师 · 审查 — 找出设计缺口与代码偏差
-  display_name_zh: 软件概念架构师 · 审查
-  display_title_zh: 软件概念架构师 · 审查 — 找出设计缺口与代码偏差
+- id: concept-review-cn
+  path: skills/zh-CN/concept-review-cn
+  display_name: 概念审查
+  display_title: 概念审查
+  display_name_zh: 概念审查
+  display_title_zh: 概念审查
   domain: concept-design
   subdomains: *id018
   summary: Chinese edition. 仅显式调用。只读审查目的兑现、独立性、组合、实现漂移及指定产品子集，发现须有证据。
@@ -354,13 +354,13 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
-  translation_of: software-concept-architect-review
-- id: software-concept-architect-guardrails
-  path: skills/en/software-concept-architect-guardrails
-  display_name: Software Concept Architect · Guardrails
-  display_title: Software Concept Architect · Guardrails — Keep Specs and Code Aligned
-  display_name_zh: 软件概念架构师 · 规格护栏
-  display_title_zh: 软件概念架构师 · 规格护栏 — 让规格与代码保持一致
+  translation_of: concept-review
+- id: concept-guard
+  path: skills/en/concept-guard
+  display_name: Concept guard
+  display_title: Concept guard
+  display_name_zh: 概念规格护栏
+  display_title_zh: 概念规格护栏
   domain: concept-design
   subdomains: &id021
   - architecture
@@ -382,18 +382,18 @@ skills:
   - clawhub
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
-  upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/software-concept-architect-guardrails/LICENSE.upstream)
+  upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/concept-guard/LICENSE.upstream)
   language: en
-  translation_of: software-concept-architect-guardrails-cn
+  translation_of: concept-guard-cn
   clawhub:
     categories: [development]
     topics: [concept-design, software-architecture, specifications, drift-detection]
-- id: software-concept-architect-guardrails-cn
-  path: skills/zh-CN/software-concept-architect-guardrails-cn
-  display_name: 软件概念架构师 · 规格护栏
-  display_title: 软件概念架构师 · 规格护栏 — 让规格与代码保持一致
-  display_name_zh: 软件概念架构师 · 规格护栏
-  display_title_zh: 软件概念架构师 · 规格护栏 — 让规格与代码保持一致
+- id: concept-guard-cn
+  path: skills/zh-CN/concept-guard-cn
+  display_name: 概念规格护栏
+  display_title: 概念规格护栏
+  display_name_zh: 概念规格护栏
+  display_title_zh: 概念规格护栏
   domain: concept-design
   subdomains: *id021
   summary: Chinese edition. 仅显式调用。检查、维护或映射概念、同步与数据质量规格，区分证据、推断和决定。
@@ -404,15 +404,15 @@ skills:
   marketplaces: [skills-sh, skillsmp]
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
-  upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/software-concept-architect-guardrails/LICENSE.upstream)
+  upstream: https://github.com/jlifyio/wyx (MIT; notice retained as skills/concept-guard/LICENSE.upstream)
   language: zh-CN
-  translation_of: software-concept-architect-guardrails
-- id: software-concept-architect-refine
-  path: skills/en/software-concept-architect-refine
-  display_name: Software Concept Architect · Refine
-  display_title: Software Concept Architect · Refine — Untangle Overloaded Concepts
-  display_name_zh: 软件概念架构师 · 精炼
-  display_title_zh: 软件概念架构师 · 精炼 — 理清过载职责，精炼概念边界
+  translation_of: concept-guard
+- id: concept-refine
+  path: skills/en/concept-refine
+  display_name: Concept refine
+  display_title: Concept refine
+  display_name_zh: 概念精炼
+  display_title_zh: 概念精炼
   domain: concept-design
   summary: Refine existing concept designs with evidence and the smallest sufficient change. Compare alternatives, preserve confirmed decisions, and verify affected behavior.
   summary_zh: 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
@@ -422,16 +422,16 @@ skills:
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   distribution: direct-skill
   language: en
-  translation_of: software-concept-architect-refine-cn
+  translation_of: concept-refine-cn
   clawhub:
     categories: [development]
     topics: [concept-design, software-architecture, refactoring]
-- id: software-concept-architect-refine-cn
-  path: skills/zh-CN/software-concept-architect-refine-cn
-  display_name: 软件概念架构师 · 精炼
-  display_title: 软件概念架构师 · 精炼 — 理清过载职责，精炼概念边界
-  display_name_zh: 软件概念架构师 · 精炼
-  display_title_zh: 软件概念架构师 · 精炼 — 理清过载职责，精炼概念边界
+- id: concept-refine-cn
+  path: skills/zh-CN/concept-refine-cn
+  display_name: 概念精炼
+  display_title: 概念精炼
+  display_name_zh: 概念精炼
+  display_title_zh: 概念精炼
   domain: concept-design
   summary: Chinese edition. 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
   summary_zh: 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
@@ -441,7 +441,7 @@ skills:
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   distribution: direct-skill
   language: zh-CN
-  translation_of: software-concept-architect-refine
+  translation_of: concept-refine
 - id: read-it-reframe-it-own-it
   path: skills/en/read-it-reframe-it-own-it
   display_name: Read It. Reframe It. Own It.

@@ -16,7 +16,7 @@ longer distributed from this repository.
 Office-focused skills now live in the sibling `myoffice-skills` repository and are no longer
 distributed from this repository.
 
-The software-concept-architect-design skills adapt Daniel Jackson's concepts-and-synchronizations model —
+The concept-design skills adapt Daniel Jackson's concepts-and-synchronizations model —
 [The Essence of Software](https://essenceofsoftware.com/) (2021), with the current when/where/then
 sync notation from _Beyond Objects_ ([arXiv:2606.27258](https://arxiv.org/abs/2606.27258)) — for
 agent use; an adaptation, not endorsed by the author.
@@ -24,8 +24,8 @@ agent use; an adaptation, not endorsed by the author.
 中文说明见 [README-CN.md](README-CN.md).
 
 Current release is **2.7.0**. The concept design workflow, `show-me-the-design`, and `settle-the-concept-design` are explicit-only;
-`read-it-reframe-it-own-it` supports automatic discovery; concept refinement requires explicit invocation in Codex;
-`software-concept-architect-guardrails` modes
+`read-it-reframe-it-own-it` supports automatic discovery; all concept skills require explicit invocation in Codex;
+`concept-guard` modes
 consume Jackson notation only.
 
 ## Table of Contents
@@ -51,12 +51,12 @@ Design software concepts, responsibilities, specifications, and implementations.
 | Skill | Version | ClawHub category |
 | --- | --- | --- |
 | [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.4 | development, knowledge |
-| [Software Concept Architect · Design](skills/en/software-concept-architect-design/SKILL.md) | 1.0.1 | development |
-| [Software Concept Architect · PRD](skills/en/software-concept-architect-prd/SKILL.md) | 1.1.1 | development |
-| [Software Concept Architect · Build](skills/en/software-concept-architect-build/SKILL.md) | 1.1.1 | development |
-| [Software Concept Architect · Review](skills/en/software-concept-architect-review/SKILL.md) | 1.1.1 | development |
-| [Software Concept Architect · Guardrails](skills/en/software-concept-architect-guardrails/SKILL.md) | 1.1.1 | development |
-| [Software Concept Architect · Refine](skills/en/software-concept-architect-refine/SKILL.md) | 1.0.1 | development |
+| [Concept design](skills/en/concept-design/SKILL.md) | 1.0.1 | development |
+| [Concept PRD](skills/en/concept-prd/SKILL.md) | 1.1.1 | development |
+| [Concept build](skills/en/concept-build/SKILL.md) | 1.1.1 | development |
+| [Concept review](skills/en/concept-review/SKILL.md) | 1.1.1 | development |
+| [Concept guard](skills/en/concept-guard/SKILL.md) | 1.1.1 | development |
+| [Concept refine](skills/en/concept-refine/SKILL.md) | 1.0.1 | development |
 | [ShowMeTheDesign](skills/en/show-me-the-design/SKILL.md) | 0.2.1 | knowledge |
 
 ### Semantic Modeling
@@ -107,13 +107,13 @@ Use `--agent claude-code` or `--agent cursor` for another agent; add `--global` 
 ### English editions
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect software-concept-architect-design software-concept-architect-prd software-concept-architect-build software-concept-architect-review software-concept-architect-guardrails software-concept-architect-refine read-it-reframe-it-own-it show-me-the-design settle-the-concept-design --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect concept-design concept-prd concept-build concept-review concept-guard concept-refine read-it-reframe-it-own-it show-me-the-design settle-the-concept-design --agent codex --copy --yes
 ```
 
 ### Simplified Chinese editions
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn software-concept-architect-design-cn software-concept-architect-prd-cn software-concept-architect-build-cn software-concept-architect-review-cn software-concept-architect-guardrails-cn software-concept-architect-refine-cn read-it-reframe-it-own-it-cn show-me-the-design-cn settle-the-concept-design-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn concept-design-cn concept-prd-cn concept-build-cn concept-review-cn concept-guard-cn concept-refine-cn read-it-reframe-it-own-it-cn show-me-the-design-cn settle-the-concept-design-cn --agent codex --copy --yes
 ```
 
 ### Install one skill
@@ -130,40 +130,40 @@ npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledg
 npx --yes skills add ontology-of-everything/concept-skills --skill personal-knowledge-architect --agent codex --copy --yes
 ```
 
-**`software-concept-architect-design`**
+**`concept-design`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-design --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-design --agent codex --copy --yes
 ```
 
-**`software-concept-architect-prd`**
+**`concept-prd`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-prd --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-prd --agent codex --copy --yes
 ```
 
-**`software-concept-architect-build`**
+**`concept-build`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-build --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-build --agent codex --copy --yes
 ```
 
-**`software-concept-architect-review`**
+**`concept-review`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-review --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-review --agent codex --copy --yes
 ```
 
-**`software-concept-architect-guardrails`**
+**`concept-guard`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-guardrails --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-guard --agent codex --copy --yes
 ```
 
-**`software-concept-architect-refine`**
+**`concept-refine`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-refine --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-refine --agent codex --copy --yes
 ```
 
 **`read-it-reframe-it-own-it`**
@@ -189,13 +189,13 @@ English payloads live in `skills/en/`; Simplified Chinese payloads live in `skil
 ## Usage
 
 Skills normally activate from their description, so plain requests are enough. The
-concept design workflow is explicit-only and must be named (`/software-concept-architect-design` in Cursor,
-`$software-concept-architect-design` in Codex):
+concept design workflow is explicit-only and must be named (`/concept-design` in Cursor,
+`$concept-design` in Codex):
 
 ```text
-$software-concept-architect-design model this requirement as independent concepts
-$software-concept-architect-prd transcribe the confirmed model into a PRD
-$software-concept-architect-guardrails drift src/orders
+$concept-design model this requirement as independent concepts
+$concept-prd transcribe the confirmed model into a PRD
+$concept-guard drift src/orders
 $show-me-the-design explain this concept model with a small diagram
 Turn this API into a semantic layer                 → data-knowledge-architect
 ```
@@ -261,57 +261,57 @@ Help beginners understand and examine software concepts and how they work togeth
 
 ### Software Concept Architect · Design
 
-`software-concept-architect-design`
+`concept-design`
 
 | Scenario | Try saying |
 | --- | --- |
-| Design a task list | `$software-concept-architect-design` Help me design a task list that supports adding, completing, and reopening tasks. |
-| Design reservations | `$software-concept-architect-design` When a restaurant is full, customers can join a waiting list. What concepts do we need, and how do they work together? |
+| Design a task list | `$concept-design` Help me design a task list that supports adding, completing, and reopening tasks. |
+| Design reservations | `$concept-design` When a restaurant is full, customers can join a waiting list. What concepts do we need, and how do they work together? |
 
 ### Software Concept Architect · PRD
 
-`software-concept-architect-prd`
+`concept-prd`
 
 | Scenario | Try saying |
 | --- | --- |
-| Write a PRD | `$software-concept-architect-prd` Turn our confirmed task-list model into a short PRD. |
-| Write specifications | `$software-concept-architect-prd` Write CONCEPT.md and SYNCS.md for this reservation system using our confirmed design. |
+| Write a PRD | `$concept-prd` Turn our confirmed task-list model into a short PRD. |
+| Write specifications | `$concept-prd` Write CONCEPT.md and SYNCS.md for this reservation system using our confirmed design. |
 
 ### Software Concept Architect · Build
 
-`software-concept-architect-build`
+`concept-build`
 
 | Scenario | Try saying |
 | --- | --- |
-| Build a task list | `$software-concept-architect-build` Build our confirmed task-list model in TypeScript and test it. |
-| Build reservations | `$software-concept-architect-build` Implement reservations and cancellations from these specs, then check the flow. |
+| Build a task list | `$concept-build` Build our confirmed task-list model in TypeScript and test it. |
+| Build reservations | `$concept-build` Implement reservations and cancellations from these specs, then check the flow. |
 
 ### Software Concept Architect · Review
 
-`software-concept-architect-review`
+`concept-review`
 
 | Scenario | Try saying |
 | --- | --- |
-| Review a model | `$software-concept-architect-review` Check this task-list model for problems. Leave it unchanged for now. |
-| Compare code with specs | `$software-concept-architect-review` Check the reservation code against its specs and show me where they differ. |
+| Review a model | `$concept-review` Check this task-list model for problems. Leave it unchanged for now. |
+| Compare code with specs | `$concept-review` Check the reservation code against its specs and show me where they differ. |
 
 ### Software Concept Architect · Guardrails
 
-`software-concept-architect-guardrails`
+`concept-guard`
 
 | Scenario | Try saying |
 | --- | --- |
-| Find missing specs | `$software-concept-architect-guardrails` audit src/reservations Which specs are missing here? List them for me. |
-| Check drift | `$software-concept-architect-guardrails` drift src Check whether the code matches its specs. Report only. |
+| Find missing specs | `$concept-guard` audit src/reservations Which specs are missing here? List them for me. |
+| Check drift | `$concept-guard` drift src Check whether the code matches its specs. Report only. |
 
 ### Software Concept Architect · Refine
 
-`software-concept-architect-refine`
+`concept-refine`
 
 | Scenario | Try saying |
 | --- | --- |
-| Check responsibilities | `$software-concept-architect-refine` This Todo handles tasks and sends reminders. Should we split it? |
-| Compare similar concepts | `$software-concept-architect-refine` Should Favorites and Read Later stay separate? Walk me through the use cases. |
+| Check responsibilities | `$concept-refine` This Todo handles tasks and sends reminders. Should we split it? |
+| Compare similar concepts | `$concept-refine` Should Favorites and Read Later stay separate? Walk me through the use cases. |
 
 **A connected workflow:** design and confirm the model → PRD → implementation → review. For an existing project, start with Guardrails audit, then backfill specifications or refine concepts as needed.
 

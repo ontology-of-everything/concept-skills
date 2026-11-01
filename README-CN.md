@@ -20,7 +20,7 @@ Objects_（[arXiv:2606.27258](https://arxiv.org/abs/2606.27258)）里现行的 w
 
 English: [README.md](README.md)。
 
-当前版本为 **2.7.0**。概念设计工作流、`show-me-the-design` 与 `settle-the-concept-design` 仅显式调用；`read-it-reframe-it-own-it` 支持自动匹配；概念精炼在 Codex 中需显式调用；`software-concept-architect-guardrails` 只消费 Jackson 记法。
+当前版本为 **2.7.0**。概念设计工作流、`show-me-the-design` 与 `settle-the-concept-design` 仅显式调用；`read-it-reframe-it-own-it` 支持自动匹配；全部概念技能在 Codex 中需显式调用；`concept-guard` 只消费 Jackson 记法。
 
 ## 目录
 
@@ -45,12 +45,12 @@ English: [README.md](README.md)。
 | 技能 | 版本 | ClawHub 分类 |
 | --- | --- | --- |
 | [把概念设计定下来](skills/zh-CN/settle-the-concept-design-cn/SKILL.md) | 0.1.4 | development, knowledge |
-| [软件概念架构师 · 设计](skills/zh-CN/software-concept-architect-design-cn/SKILL.md) | 1.0.1 | development |
-| [软件概念架构师 · 需求规格](skills/zh-CN/software-concept-architect-prd-cn/SKILL.md) | 1.1.1 | development |
-| [软件概念架构师 · 实现](skills/zh-CN/software-concept-architect-build-cn/SKILL.md) | 1.1.1 | development |
-| [软件概念架构师 · 审查](skills/zh-CN/software-concept-architect-review-cn/SKILL.md) | 1.1.1 | development |
-| [软件概念架构师 · 规格护栏](skills/zh-CN/software-concept-architect-guardrails-cn/SKILL.md) | 1.1.1 | development |
-| [软件概念架构师 · 精炼](skills/zh-CN/software-concept-architect-refine-cn/SKILL.md) | 1.0.1 | development |
+| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 1.0.1 | development |
+| [概念需求规格](skills/zh-CN/concept-prd-cn/SKILL.md) | 1.1.1 | development |
+| [概念实现](skills/zh-CN/concept-build-cn/SKILL.md) | 1.1.1 | development |
+| [概念审查](skills/zh-CN/concept-review-cn/SKILL.md) | 1.1.1 | development |
+| [概念规格护栏](skills/zh-CN/concept-guard-cn/SKILL.md) | 1.1.1 | development |
+| [概念精炼](skills/zh-CN/concept-refine-cn/SKILL.md) | 1.0.1 | development |
 | [ShowMeTheDesign · 概念图解](skills/zh-CN/show-me-the-design-cn/SKILL.md) | 0.2.1 | knowledge |
 
 ### 语义建模
@@ -99,13 +99,13 @@ English: [README.md](README.md)。
 ### 中文版
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn software-concept-architect-design-cn software-concept-architect-prd-cn software-concept-architect-build-cn software-concept-architect-review-cn software-concept-architect-guardrails-cn software-concept-architect-refine-cn read-it-reframe-it-own-it-cn show-me-the-design-cn settle-the-concept-design-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn concept-design-cn concept-prd-cn concept-build-cn concept-review-cn concept-guard-cn concept-refine-cn read-it-reframe-it-own-it-cn show-me-the-design-cn settle-the-concept-design-cn --agent codex --copy --yes
 ```
 
 ### 英文版
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect software-concept-architect-design software-concept-architect-prd software-concept-architect-build software-concept-architect-review software-concept-architect-guardrails software-concept-architect-refine read-it-reframe-it-own-it show-me-the-design settle-the-concept-design --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect concept-design concept-prd concept-build concept-review concept-guard concept-refine read-it-reframe-it-own-it show-me-the-design settle-the-concept-design --agent codex --copy --yes
 ```
 
 ### 按需安装单个技能
@@ -122,40 +122,40 @@ npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledg
 npx --yes skills add ontology-of-everything/concept-skills --skill personal-knowledge-architect-cn --agent codex --copy --yes
 ```
 
-**`software-concept-architect-design-cn`**
+**`concept-design-cn`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-design-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-design-cn --agent codex --copy --yes
 ```
 
-**`software-concept-architect-prd-cn`**
+**`concept-prd-cn`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-prd-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-prd-cn --agent codex --copy --yes
 ```
 
-**`software-concept-architect-build-cn`**
+**`concept-build-cn`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-build-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-build-cn --agent codex --copy --yes
 ```
 
-**`software-concept-architect-review-cn`**
+**`concept-review-cn`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-review-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-review-cn --agent codex --copy --yes
 ```
 
-**`software-concept-architect-guardrails-cn`**
+**`concept-guard-cn`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-guardrails-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-guard-cn --agent codex --copy --yes
 ```
 
-**`software-concept-architect-refine-cn`**
+**`concept-refine-cn`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill software-concept-architect-refine-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill concept-refine-cn --agent codex --copy --yes
 ```
 
 **`read-it-reframe-it-own-it-cn`**
@@ -181,13 +181,13 @@ npx --yes skills add ontology-of-everything/concept-skills --list
 ## 用法
 
 技能通常按 description 自动触发，正常说话就够。概念设计工作流默认不启动，必须显式指名（Cursor
-`/software-concept-architect-design`，Codex `$software-concept-architect-design`）：
+`/concept-design`，Codex `$concept-design`）：
 
 ```text
-$software-concept-architect-design-cn 把这个需求建成概念模型
-$software-concept-architect-prd-cn 模型定了，出一份 PRD 规格
-$software-concept-architect-guardrails-cn concept src/orders
-$software-concept-architect-guardrails-cn drift src/orders
+$concept-design-cn 把这个需求建成概念模型
+$concept-prd-cn 模型定了，出一份 PRD 规格
+$concept-guard-cn concept src/orders
+$concept-guard-cn drift src/orders
 $show-me-the-design-cn 用一张小图解释当前概念模型
 把这套接口做成语义层                        → data-knowledge-architect-cn
 ```
@@ -251,57 +251,57 @@ $show-me-the-design-cn 用一张小图解释当前概念模型
 
 ### 软件概念架构师 · 设计
 
-`software-concept-architect-design-cn`
+`concept-design-cn`
 
 | 场景 | 可以这样说 |
 | --- | --- |
-| 设计待办清单 | `$software-concept-architect-design-cn` 帮我设计一个待办清单，支持添加、完成和重新打开。 |
-| 设计预约与候补 | `$software-concept-architect-design-cn` 餐厅预约满了还能排队，帮我理清需要哪些概念、怎么配合。 |
+| 设计待办清单 | `$concept-design-cn` 帮我设计一个待办清单，支持添加、完成和重新打开。 |
+| 设计预约与候补 | `$concept-design-cn` 餐厅预约满了还能排队，帮我理清需要哪些概念、怎么配合。 |
 
 ### 软件概念架构师 · 需求规格
 
-`software-concept-architect-prd-cn`
+`concept-prd-cn`
 
 | 场景 | 可以这样说 |
 | --- | --- |
-| 整理 PRD | `$software-concept-architect-prd-cn` 把确认好的待办模型整理成一份简明 PRD。 |
-| 补齐规格 | `$software-concept-architect-prd-cn` 给这个预约系统补上 CONCEPT.md 和 SYNCS.md，按已确认的设计来。 |
+| 整理 PRD | `$concept-prd-cn` 把确认好的待办模型整理成一份简明 PRD。 |
+| 补齐规格 | `$concept-prd-cn` 给这个预约系统补上 CONCEPT.md 和 SYNCS.md，按已确认的设计来。 |
 
 ### 软件概念架构师 · 实现
 
-`software-concept-architect-build-cn`
+`concept-build-cn`
 
 | 场景 | 可以这样说 |
 | --- | --- |
-| 实现待办清单 | `$software-concept-architect-build-cn` 按确认好的待办模型，用 TypeScript 实现一下，顺便测测。 |
-| 实现预约与取消 | `$software-concept-architect-build-cn` 把餐厅预约和取消做出来，按现有规格写，并验证流程。 |
+| 实现待办清单 | `$concept-build-cn` 按确认好的待办模型，用 TypeScript 实现一下，顺便测测。 |
+| 实现预约与取消 | `$concept-build-cn` 把餐厅预约和取消做出来，按现有规格写，并验证流程。 |
 
 ### 软件概念架构师 · 审查
 
-`software-concept-architect-review-cn`
+`concept-review-cn`
 
 | 场景 | 可以这样说 |
 | --- | --- |
-| 检查概念模型 | `$software-concept-architect-review-cn` 帮我看看这个待办模型有没有问题，先别改。 |
-| 检查代码偏差 | `$software-concept-architect-review-cn` 对照规格检查预约代码，看看有没有写偏，给我指出来。 |
+| 检查概念模型 | `$concept-review-cn` 帮我看看这个待办模型有没有问题，先别改。 |
+| 检查代码偏差 | `$concept-review-cn` 对照规格检查预约代码，看看有没有写偏，给我指出来。 |
 
 ### 软件概念架构师 · 规格护栏
 
-`software-concept-architect-guardrails-cn`
+`concept-guard-cn`
 
 | 场景 | 可以这样说 |
 | --- | --- |
-| 盘点缺少的规格 | `$software-concept-architect-guardrails-cn` audit src/reservations 这里缺哪些规格？帮我列一下。 |
-| 检查规格漂移 | `$software-concept-architect-guardrails-cn` drift src 对照现有规格看看代码有没有写偏，先别改。 |
+| 盘点缺少的规格 | `$concept-guard-cn` audit src/reservations 这里缺哪些规格？帮我列一下。 |
+| 检查规格漂移 | `$concept-guard-cn` drift src 对照现有规格看看代码有没有写偏，先别改。 |
 
 ### 软件概念架构师 · 精炼
 
-`software-concept-architect-refine-cn`
+`concept-refine-cn`
 
 | 场景 | 可以这样说 |
 | --- | --- |
-| 理清职责 | `$software-concept-architect-refine-cn` 这个 Todo 又管任务又发提醒，要不要拆开？帮我看看。 |
-| 比较相似概念 | `$software-concept-architect-refine-cn` 收藏和稍后阅读要分开吗？结合使用场景说说。 |
+| 理清职责 | `$concept-refine-cn` 这个 Todo 又管任务又发提醒，要不要拆开？帮我看看。 |
+| 比较相似概念 | `$concept-refine-cn` 收藏和稍后阅读要分开吗？结合使用场景说说。 |
 
 **串联使用：** 设计并确认模型 → PRD → 实现 → 审查。已有项目可先运行 Guardrails audit，再根据问题补规格或精炼概念。
 

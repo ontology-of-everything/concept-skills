@@ -1,0 +1,53 @@
+---
+name: concept-prd-cn
+description: "Generates confirmed concept specifications. Use when explicitly invoked. 转录 PRD、概念、同步与验收依据。"
+metadata:
+  language: zh-CN
+  translation_of: concept-prd
+  openclaw:
+    homepage: https://github.com/ontology-of-everything/concept-skills
+---
+
+# 概念需求规格
+
+## 目标
+
+把已确认模型写成 PRD 与规格文件，保留原有含义。仅在显式调用 `$concept-prd-cn` 时运行。
+输入包括已确认的概念、同步规则、依赖、排除与未决。
+
+## 原则
+
+转录已确认行为，不重新设计模型，不从代码差异推定需求或猜补缺口。
+同步须遵守概念契约。保留前提、人工备注、已放弃方案与确认状态。
+
+## 概念
+
+| 文件 | 职责 |
+| --- | --- |
+| 总体 PRD | 应用目的、场景、索引、依赖、子集、排除与未决 |
+| CONCEPT | 概念的目的、状态、动作和运作原理，简称 OP |
+| SYNCS | 应用实例、类型绑定与同步规则 |
+
+每个模型元素只保留一处权威来源。概念论证说明契约如何支持 OP、OP 如何兑现目的。
+应用论证说明概念选择和规则如何支持场景、场景如何兑现应用目的。验收标准注明所检查的论证或契约。
+
+## 流程
+
+1. 读确认模型、需求出处和现有文档，仅为定位模块或核实索引事实检查代码。
+2. 按[文件编排](references/templates.md)确定唯一权威位置。模块未建时按参考暂存，建好后分别与概念和 composition 模块共置。
+3. 写总体 PRD，保存目的、场景、行为偏差、索引、同步图、产品依赖、可行子集、跨概念前提、排除与未决。
+4. 按[规格契约](references/spec-format.md)转录。概念定义保持独立，应用背景进 notes，类型实例化进 SYNCS，规则用 `// flow:` 分组。
+5. 从 OP、应用场景和契约导出验收，保留失败与查询空集的含义。核对签名、绑定和结果，修改后更新索引与派生图。
+
+转录示例见[订位例](references/example-reserving.md)，记法依据见[来源](references/sources.md)。实现期迁移或拆模块交给实现技能。
+
+## 正反例
+
+| 正例 | 反例 |
+| --- | --- |
+| 取消结果未定义时保留未决，并指出它影响哪项验收。 | 为填满模板，自行补造错误结果。 |
+
+## 完成条件
+
+每项定义和决策只有一处权威位置，链接与签名有效，验收有出处，缺失目标仍标未决。
+模型缺口交 `concept-design-cn`，实现交 `concept-build-cn`。技能不可用时说明所需工作。

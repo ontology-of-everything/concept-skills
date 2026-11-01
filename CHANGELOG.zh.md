@@ -8,15 +8,19 @@
 - 将 See the Concept 更名为 ShowMeTheDesign，保留当前方案确认技能的行为。
 - 同步目录、包元数据、安装示例与英文 ClawHub 发布版本。
 
+- 全部概念技能在 Codex 中仅显式调用，包括图解技能。
+
+- 六项架构技能改为 concept-design、concept-prd、concept-build、concept-review、concept-guard、concept-refine，通过 ClawHub 原地改名保留原记录。
+
 | 英文技能 | 版本 |
 | --- | --- |
 | settle-the-concept-design | 0.1.4 |
-| software-concept-architect-design | 1.0.1 |
-| software-concept-architect-prd | 1.1.1 |
-| software-concept-architect-build | 1.1.1 |
-| software-concept-architect-review | 1.1.1 |
-| software-concept-architect-guardrails | 1.1.1 |
-| software-concept-architect-refine | 1.0.1 |
+| concept-design | 1.0.1 |
+| concept-prd | 1.1.1 |
+| concept-build | 1.1.1 |
+| concept-review | 1.1.1 |
+| concept-guard | 1.1.1 |
+| concept-refine | 1.0.1 |
 | show-me-the-design | 0.2.1 |
 
 中文对应技能使用相同版本。

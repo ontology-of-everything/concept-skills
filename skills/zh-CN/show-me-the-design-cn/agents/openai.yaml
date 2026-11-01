@@ -1,0 +1,6 @@
+interface:
+  display_name: 概念图解
+  short_description: 以源码证据图解软件概念与协作
+  default_prompt: 使用 $show-me-the-design-cn，以源码证据和必要图解说明当前概念设计。
+policy:
+  allow_implicit_invocation: false

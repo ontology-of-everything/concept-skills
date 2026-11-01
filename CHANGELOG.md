@@ -8,15 +8,19 @@
 - Rename See the Concept to ShowMeTheDesign and retain the current Settle the Concept Design behavior.
 - Synchronize catalog, package metadata, installation examples, and English ClawHub releases.
 
+- Make every concept skill explicit-only in Codex, including visual teaching.
+
+- Shorten the six architecture skill IDs to concept-design, concept-prd, concept-build, concept-review, concept-guard, and concept-refine. Preserve ClawHub records through owner rename.
+
 | English skill | Version |
 | --- | --- |
 | settle-the-concept-design | 0.1.4 |
-| software-concept-architect-design | 1.0.1 |
-| software-concept-architect-prd | 1.1.1 |
-| software-concept-architect-build | 1.1.1 |
-| software-concept-architect-review | 1.1.1 |
-| software-concept-architect-guardrails | 1.1.1 |
-| software-concept-architect-refine | 1.0.1 |
+| concept-design | 1.0.1 |
+| concept-prd | 1.1.1 |
+| concept-build | 1.1.1 |
+| concept-review | 1.1.1 |
+| concept-guard | 1.1.1 |
+| concept-refine | 1.0.1 |
 | show-me-the-design | 0.2.1 |
 
 Chinese counterparts use the same versions.
