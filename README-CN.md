@@ -44,7 +44,7 @@ English: [README.md](README.md)。
 
 | 技能 | 版本 | ClawHub 分类 |
 | --- | --- | --- |
-| [把概念设计定下来](skills/zh-CN/settle-the-concept-design-cn/SKILL.md) | 0.1.2 | development, knowledge |
+| [把概念设计定下来](skills/zh-CN/settle-the-concept-design-cn/SKILL.md) | 0.1.3 | development, knowledge |
 | [软件概念架构师 · 设计](skills/zh-CN/software-concept-architect-design-cn/SKILL.md) | 1.0.0 | development |
 | [软件概念架构师 · 需求规格](skills/zh-CN/software-concept-architect-prd-cn/SKILL.md) | 1.1.0 | development |
 | [软件概念架构师 · 实现](skills/zh-CN/software-concept-architect-build-cn/SKILL.md) | 1.1.0 | development |

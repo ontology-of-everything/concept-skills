@@ -50,7 +50,7 @@ Design software concepts, responsibilities, specifications, and implementations.
 
 | Skill | Version | ClawHub category |
 | --- | --- | --- |
-| [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.2 | development, knowledge |
+| [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.3 | development, knowledge |
 | [Software Concept Architect · Design](skills/en/software-concept-architect-design/SKILL.md) | 1.0.0 | development |
 | [Software Concept Architect · PRD](skills/en/software-concept-architect-prd/SKILL.md) | 1.1.0 | development |
 | [Software Concept Architect · Build](skills/en/software-concept-architect-build/SKILL.md) | 1.1.0 | development |

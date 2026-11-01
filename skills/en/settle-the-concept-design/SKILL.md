@@ -5,17 +5,15 @@ description: >-
 metadata:
   language: en
   translation_of: settle-the-concept-design-cn
-  version: "0.1.2"
+  version: "0.1.3"
 ---
 
-# Settle the Concept Design
+# Settle the concept design
 
-Based on Daniel Jackson's concept design, consolidate the discussion into business goals, application scope, and design tradeoffs, producing a proposal for confirmation.
+Use Daniel Jackson's concept design to consolidate the discussion into a design proposal for confirmation. Run only when the user explicitly invokes this skill. Retain confirmed decisions, distinguish proposals, assumptions, and information gaps, and do not reopen settled matters without new evidence.
 
-Present the concept overview, key scenarios, and necessary specifications in that order, using a decision matrix to record choices, rationale, impact, and confirmation status, prioritizing design changes and details that affect decisions.
+Start with business goals, scope, constraints, and changes, then present a concept overview and key scenarios. Expand details as needed. A concept is a complete functional unit with a clear purpose that can be understood independently. It includes state, actions, and an operational principle. The operational principle uses a typical action sequence to explain how the purpose is fulfilled. State expresses facts needed for behavior as sets and relations. Table records show facts that hold at a particular moment. Actions specify inputs, outputs, preconditions, and state effects.
 
-Define concepts around independent, complete functional responsibilities, specifying their names, purposes, operational principles (OPs) showing how those purposes are fulfilled, states, and actions with inputs, outputs, preconditions, and effects.
+Concept composition identifies the concept instances and their type bindings. Synchronization rules sit outside the concepts and specify triggering actions, state conditions, parameter sources, and requested subsequent actions. Execution must still satisfy each action's own conditions. Use business scenarios to explain how the composition supports goals, what assumptions it depends on, and how to assess acceptance. Add mappings to physical table structures, external interfaces, or services only when they affect the decision. Distinguish behavioral requirements from implementation choices.
 
-Compose concepts through external causal synchronization rules that coordinate actions, specifying type bindings, triggering actions and state conditions, subsequent actions, parameters, and failure handling while preserving concept behavioral contracts, and use business scenarios to check the composition's observable outcomes, contribution to goals, and underlying assumptions to derive acceptance criteria.
-
-Use consistent terminology, retain decisions and the rationale for revisions, distinguish confirmed, awaiting confirmation, rejected, and unresolved items, label new options, inferences, and missing information as proposals, assumptions, and gaps respectively, and use the design as the basis for subsequent work once confirmed.
+Use a decision matrix to present choices, rationale, impact, acceptance criteria, and confirmation status. Ask the user to confirm only unresolved matters. Use confirmed results as the basis for subsequent work. Reuse existing authorization for implementation and publication, and obtain the relevant authorization when it is missing.
