@@ -1,6 +1,6 @@
 ---
 name: settle-the-concept-design-cn
-description: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍与验收条件，区分已确认决定和待用户确认事项。"
+description: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍、影响与验收条件，保留确认状态，区分已确认决定、建议和未决事项。"
 metadata:
   language: zh-CN
   translation_of: settle-the-concept-design

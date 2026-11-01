@@ -1,6 +1,6 @@
 ---
 name: settle-the-concept-design
-description: "Use when explicitly invoked to consolidate a concept-design discussion. Organize goals, options, tradeoffs, and acceptance criteria, distinguishing confirmed decisions from items awaiting user confirmation."
+description: "Use when explicitly invoked to consolidate a concept-design discussion. Organize goals, options, tradeoffs, consequences, and acceptance criteria. Preserve confirmation status, distinguishing confirmed decisions, suggestions, and unresolved matters."
 metadata:
   language: en
   translation_of: settle-the-concept-design-cn

@@ -2,8 +2,8 @@
 
 ## 2.7.1 - 2026-11-01
 
-- Apply the confirmed option B entry copy to all eight English/Chinese concept skill pairs.
-- Describe task intent, outputs, and necessary boundaries; use Chinese descriptions in Chinese packages.
+- Apply the confirmed merged B/C entry copy to all eight English/Chinese concept skill pairs.
+- Describe task intent, outputs, confirmation status, and read/write boundaries; use Chinese descriptions in Chinese packages.
 - Synchronize Codex display metadata, catalog views, and usage headings. Retain skill IDs and explicit-only invocation.
 - Publish matching patch versions for both languages through the existing ClawHub records.
 

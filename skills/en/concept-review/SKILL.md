@@ -1,6 +1,6 @@
 ---
 name: concept-review
-description: "Use when explicitly invoked to assess a concept design or compare code with specifications. Perform a read-only review of purpose, responsibilities, synchronization composition, and implementation deviations, and report evidence."
+description: "Use when explicitly invoked to assess a concept design or compare code with specifications. Perform a read-only review of purpose, independence, and synchronization composition. Use evidence to distinguish design defects, specification issues, and implementation deviations."
 metadata:
   language: en
   translation_of: concept-review-cn

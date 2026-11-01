@@ -1,6 +1,6 @@
 interface:
   display_name: Prepare concept proposals
-  short_description: Organize concept design decisions for user confirmation
+  short_description: Prepare concept proposals and preserve confirmation status
   default_prompt: Use $settle-the-concept-design to consolidate our discussion into a concept design for
     confirmation, with goals, concept specifications, synchronization rules, tradeoffs, acceptance criteria,
     and unresolved issues.

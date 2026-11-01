@@ -1,6 +1,6 @@
 ---
 name: concept-refine
-description: "Use when explicitly invoked to address overloaded, redundant, or fragmented concepts. Use application scenarios to propose splits, merges, or reductions, and explain their effects and the smallest necessary scope of change."
+description: "Use when explicitly invoked to address overloaded, redundant, overly narrow, or fragmented concepts, or unsuitable synchronizations. Use scenarios and counterexamples to propose splits, merges, or reductions, explaining their effects and the smallest necessary scope of change."
 metadata:
   language: en
   translation_of: concept-refine-cn

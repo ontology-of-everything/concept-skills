@@ -1,6 +1,6 @@
 interface:
   display_name: Design software concepts
-  short_description: Design independent concepts and synchronization rules
+  short_description: Model software concepts with Daniel Jackson's approach
   default_prompt: 'Use $concept-design to complete the concept design with the user: confirm the alignment,
     then write the design record.'
 policy:

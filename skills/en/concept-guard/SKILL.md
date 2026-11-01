@@ -1,6 +1,6 @@
 ---
 name: concept-guard
-description: "Use when explicitly invoked to maintain concept specifications in an existing project. Audit coverage, reconstruct contracts from code, detect implementation drift, or update specification maps. Apply writes only through the selected writing mode."
+description: "Use when explicitly invoked to maintain concept specifications in an existing project. Audit, reconstruct, or compare CONCEPT, SYNCS, and PIPELINE specifications, and update specification maps. Distinguish read-only checks from authorized writes."
 compatibility: "Read/write/search files; optional Claude Code hooks need bash and jq."
 metadata:
   language: en

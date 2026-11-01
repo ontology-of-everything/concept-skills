@@ -1,6 +1,6 @@
 ---
 name: concept-prd
-description: "Use when explicitly invoked to document a confirmed concept model. Write a PRD, CONCEPT and SYNCS specifications, and acceptance criteria, preserving unresolved decisions."
+description: "Use when explicitly invoked to document a confirmed concept model. Write a PRD, CONCEPT and SYNCS specifications, and traceable acceptance criteria, preserving assumptions and unresolved decisions."
 metadata:
   language: en
   translation_of: concept-prd-cn

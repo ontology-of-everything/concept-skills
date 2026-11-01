@@ -1,6 +1,6 @@
 ---
 name: concept-build
-description: "Use when explicitly invoked to implement confirmed concept specifications. Build independent concept modules and synchronization rules, and verify contracts, module boundaries, and end-to-end flows."
+description: "Use when explicitly invoked to implement confirmed concept specifications. Follow project conventions to build independent concept modules and synchronization rules. Verify contracts, end-to-end flows, and required failure recovery."
 metadata:
   language: en
   translation_of: concept-build-cn

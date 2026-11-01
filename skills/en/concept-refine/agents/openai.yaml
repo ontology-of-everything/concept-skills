@@ -1,6 +1,6 @@
 interface:
   display_name: Refine existing concepts
-  short_description: Refine overloaded, redundant, or fragmented concepts
+  short_description: Refine concepts using scenarios and counterexamples
   default_prompt: Use $concept-refine to refine this concept design with evidence, minimal necessary changes,
     and scenario verification.
 policy:

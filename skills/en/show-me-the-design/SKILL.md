@@ -1,6 +1,6 @@
 ---
 name: show-me-the-design
-description: "Use when explicitly requested to understand software concepts, designs, or collaboration flows. Create the diagrams and examples needed from code and specifications, distinguishing facts, inferences, and unverified details."
+description: "Use when explicitly requested to understand software concepts, design tradeoffs, or collaboration flows. Select the diagrams and examples needed from code and specifications, distinguishing facts, inferences, and unverified details."
 metadata:
   language: en
   translation_of: show-me-the-design-cn

@@ -1,6 +1,6 @@
 ---
 name: concept-refine-cn
-description: "仅在显式调用时使用。已有概念职责过载、重复或碎片化时使用。依据使用场景提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
+description: "仅在显式调用时使用。已有概念职责过载、重复、过窄、碎片化或同步不合理时使用。依据场景与反例提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
 metadata:
   language: zh-CN
   translation_of: concept-refine

@@ -1,6 +1,6 @@
 ---
 name: concept-build-cn
-description: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。实现独立概念模块与同步规则，验证契约、模块边界和完整流程。"
+description: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。按工程约定实现独立概念模块与同步规则，验证契约、完整流程与必要的失败恢复。"
 metadata:
   language: zh-CN
   translation_of: concept-build

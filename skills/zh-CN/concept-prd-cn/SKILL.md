@@ -1,6 +1,6 @@
 ---
 name: concept-prd-cn
-description: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与验收条件，保留待确认事项。"
+description: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与可追溯验收条件，保留前提和未决事项。"
 metadata:
   language: zh-CN
   translation_of: concept-prd

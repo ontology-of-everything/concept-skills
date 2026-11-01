@@ -1,6 +1,6 @@
 ---
 name: concept-design-cn
-description: "仅在显式调用时使用。需要将需求建模为软件概念时使用。明确独立概念的目的、状态、动作与同步规则，形成待确认设计。"
+description: "仅在显式调用时使用。需要将软件需求建模为独立概念时使用。依据 Daniel Jackson 模型明确目的、状态、动作与同步规则，记录取舍和未决事项。"
 metadata:
   language: zh-CN
   translation_of: concept-design

@@ -1,6 +1,6 @@
 interface:
   display_name: Explain software concepts visually
-  short_description: Explain software concepts with diagrams and examples
+  short_description: Explain concepts visually using code and specification evidence
   default_prompt: Use $show-me-the-design to explain the current concept design with source evidence and
     the smallest useful diagrams.
 policy:

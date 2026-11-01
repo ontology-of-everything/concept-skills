@@ -1,6 +1,6 @@
 ---
 name: concept-review-cn
-description: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读审查目的、职责、同步组合与实现偏差，报告问题及证据。"
+description: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读检查目的、独立性与同步组合，按证据区分设计缺陷、规格问题和实现偏差。"
 metadata:
   language: zh-CN
   translation_of: concept-review

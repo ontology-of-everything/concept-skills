@@ -29,8 +29,8 @@ skills:
   display_name_zh: "整理概念方案"
   display_title_zh: "整理概念方案"
   domain: concept-design
-  summary: "Use when explicitly invoked to consolidate a concept-design discussion. Organize goals, options, tradeoffs, and acceptance criteria, distinguishing confirmed decisions from items awaiting user confirmation."
-  summary_zh: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍与验收条件，区分已确认决定和待用户确认事项。"
+  summary: "Use when explicitly invoked to consolidate a concept-design discussion. Organize goals, options, tradeoffs, consequences, and acceptance criteria. Preserve confirmation status, distinguishing confirmed decisions, suggestions, and unresolved matters."
+  summary_zh: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍、影响与验收条件，保留确认状态，区分已确认决定、建议和未决事项。"
   version: "0.1.5"
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
@@ -49,8 +49,8 @@ skills:
   display_name_zh: "整理概念方案"
   display_title_zh: "整理概念方案"
   domain: concept-design
-  summary: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍与验收条件，区分已确认决定和待用户确认事项。"
-  summary_zh: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍与验收条件，区分已确认决定和待用户确认事项。"
+  summary: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍、影响与验收条件，保留确认状态，区分已确认决定、建议和未决事项。"
+  summary_zh: "仅在显式调用时使用。需要收敛概念设计讨论时使用。整理目标、方案、取舍、影响与验收条件，保留确认状态，区分已确认决定、建议和未决事项。"
   version: "0.1.5"
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
@@ -173,8 +173,8 @@ skills:
   - concept-design
   - requirements
   - software-design
-  summary: "Use when explicitly invoked to model software requirements as independent concepts. Define purposes, state, actions, and synchronization rules, and prepare a design for confirmation."
-  summary_zh: "仅在显式调用时使用。需要将需求建模为软件概念时使用。明确独立概念的目的、状态、动作与同步规则，形成待确认设计。"
+  summary: "Use when explicitly invoked to model software requirements as independent concepts. Apply Daniel Jackson's concept model to define purposes, state, actions, and synchronization rules, recording tradeoffs and unresolved decisions."
+  summary_zh: "仅在显式调用时使用。需要将软件需求建模为独立概念时使用。依据 Daniel Jackson 模型明确目的、状态、动作与同步规则，记录取舍和未决事项。"
   version: "1.0.2"
   agents: &id010
   - cursor
@@ -201,8 +201,8 @@ skills:
   display_title_zh: "设计软件概念"
   domain: concept-design
   subdomains: *id009
-  summary: "仅在显式调用时使用。需要将需求建模为软件概念时使用。明确独立概念的目的、状态、动作与同步规则，形成待确认设计。"
-  summary_zh: "仅在显式调用时使用。需要将需求建模为软件概念时使用。明确独立概念的目的、状态、动作与同步规则，形成待确认设计。"
+  summary: "仅在显式调用时使用。需要将软件需求建模为独立概念时使用。依据 Daniel Jackson 模型明确目的、状态、动作与同步规则，记录取舍和未决事项。"
+  summary_zh: "仅在显式调用时使用。需要将软件需求建模为独立概念时使用。依据 Daniel Jackson 模型明确目的、状态、动作与同步规则，记录取舍和未决事项。"
   version: "1.0.2"
   agents: *id010
   compatibility: No external tools or network; pure concept modeling
@@ -225,8 +225,8 @@ skills:
   - concept-design
   - prd
   - specifications
-  summary: "Use when explicitly invoked to document a confirmed concept model. Write a PRD, CONCEPT and SYNCS specifications, and acceptance criteria, preserving unresolved decisions."
-  summary_zh: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与验收条件，保留待确认事项。"
+  summary: "Use when explicitly invoked to document a confirmed concept model. Write a PRD, CONCEPT and SYNCS specifications, and traceable acceptance criteria, preserving assumptions and unresolved decisions."
+  summary_zh: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与可追溯验收条件，保留前提和未决事项。"
   version: "1.1.2"
   agents: &id013
   - cursor
@@ -253,8 +253,8 @@ skills:
   display_title_zh: "编写概念规格"
   domain: concept-design
   subdomains: *id012
-  summary: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与验收条件，保留待确认事项。"
-  summary_zh: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与验收条件，保留待确认事项。"
+  summary: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与可追溯验收条件，保留前提和未决事项。"
+  summary_zh: "仅在显式调用时使用。需要将已确认模型写成规格时使用。编写 PRD、CONCEPT、SYNCS 与可追溯验收条件，保留前提和未决事项。"
   version: "1.1.2"
   agents: *id013
   compatibility: No external tools or network; writes Markdown PRD files
@@ -277,8 +277,8 @@ skills:
   - concept-design
   - modular-monolith
   - implementation
-  summary: "Use when explicitly invoked to implement confirmed concept specifications. Build independent concept modules and synchronization rules, and verify contracts, module boundaries, and end-to-end flows."
-  summary_zh: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。实现独立概念模块与同步规则，验证契约、模块边界和完整流程。"
+  summary: "Use when explicitly invoked to implement confirmed concept specifications. Follow project conventions to build independent concept modules and synchronization rules. Verify contracts, end-to-end flows, and required failure recovery."
+  summary_zh: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。按工程约定实现独立概念模块与同步规则，验证契约、完整流程与必要的失败恢复。"
   version: "1.1.2"
   agents: &id016
   - cursor
@@ -305,8 +305,8 @@ skills:
   display_title_zh: "实现概念模型"
   domain: concept-design
   subdomains: *id015
-  summary: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。实现独立概念模块与同步规则，验证契约、模块边界和完整流程。"
-  summary_zh: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。实现独立概念模块与同步规则，验证契约、模块边界和完整流程。"
+  summary: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。按工程约定实现独立概念模块与同步规则，验证契约、完整流程与必要的失败恢复。"
+  summary_zh: "仅在显式调用时使用。需要依据已确认规格编写代码时使用。按工程约定实现独立概念模块与同步规则，验证契约、完整流程与必要的失败恢复。"
   version: "1.1.2"
   agents: *id016
   compatibility: Mapping needs only the confirmed model; language-specific boundary tests may use cargo, Spring Modulith, or dependency-cruiser
@@ -329,8 +329,8 @@ skills:
   - concept-design
   - architecture-audit
   - spec-drift
-  summary: "Use when explicitly invoked to assess a concept design or compare code with specifications. Perform a read-only review of purpose, responsibilities, synchronization composition, and implementation deviations, and report evidence."
-  summary_zh: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读审查目的、职责、同步组合与实现偏差，报告问题及证据。"
+  summary: "Use when explicitly invoked to assess a concept design or compare code with specifications. Perform a read-only review of purpose, independence, and synchronization composition. Use evidence to distinguish design defects, specification issues, and implementation deviations."
+  summary_zh: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读检查目的、独立性与同步组合，按证据区分设计缺陷、规格问题和实现偏差。"
   version: "1.1.2"
   agents: &id019
   - cursor
@@ -357,8 +357,8 @@ skills:
   display_title_zh: "审查概念设计"
   domain: concept-design
   subdomains: *id018
-  summary: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读审查目的、职责、同步组合与实现偏差，报告问题及证据。"
-  summary_zh: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读审查目的、职责、同步组合与实现偏差，报告问题及证据。"
+  summary: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读检查目的、独立性与同步组合，按证据区分设计缺陷、规格问题和实现偏差。"
+  summary_zh: "仅在显式调用时使用。需要评估概念设计或核对代码与规格时使用。只读检查目的、独立性与同步组合，按证据区分设计缺陷、规格问题和实现偏差。"
   version: "1.1.2"
   agents: *id019
   compatibility: Read-only; design review needs requirements and a concept model, implementation checks additionally need code
@@ -382,8 +382,8 @@ skills:
   - module-boundaries
   - drift-detection
   - concept-specs
-  summary: "Use when explicitly invoked to maintain concept specifications in an existing project. Audit coverage, reconstruct contracts from code, detect implementation drift, or update specification maps. Apply writes only through the selected writing mode."
-  summary_zh: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。检查规格覆盖、回填契约、检测实现漂移或更新地图；写入按所选模式执行。"
+  summary: "Use when explicitly invoked to maintain concept specifications in an existing project. Audit, reconstruct, or compare CONCEPT, SYNCS, and PIPELINE specifications, and update specification maps. Distinguish read-only checks from authorized writes."
+  summary_zh: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。审计、回填或比较 CONCEPT、SYNCS、PIPELINE，并更新规格地图；区分只读检查与授权写入。"
   version: "1.1.2"
   agents: &id022
   - cursor
@@ -411,8 +411,8 @@ skills:
   display_title_zh: "维护概念规格"
   domain: concept-design
   subdomains: *id021
-  summary: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。检查规格覆盖、回填契约、检测实现漂移或更新地图；写入按所选模式执行。"
-  summary_zh: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。检查规格覆盖、回填契约、检测实现漂移或更新地图；写入按所选模式执行。"
+  summary: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。审计、回填或比较 CONCEPT、SYNCS、PIPELINE，并更新规格地图；区分只读检查与授权写入。"
+  summary_zh: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。审计、回填或比较 CONCEPT、SYNCS、PIPELINE，并更新规格地图；区分只读检查与授权写入。"
   version: "1.1.2"
   agents: *id022
   compatibility: Specs and drift checks need only file read/write plus Grep/Glob; the optional boundary-injection runtime requires Claude Code hooks and jq
@@ -432,8 +432,8 @@ skills:
   display_name_zh: "精炼现有概念"
   display_title_zh: "精炼现有概念"
   domain: concept-design
-  summary: "Use when explicitly invoked to address overloaded, redundant, or fragmented concepts. Use application scenarios to propose splits, merges, or reductions, and explain their effects and the smallest necessary scope of change."
-  summary_zh: "仅在显式调用时使用。已有概念职责过载、重复或碎片化时使用。依据使用场景提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
+  summary: "Use when explicitly invoked to address overloaded, redundant, overly narrow, or fragmented concepts, or unsuitable synchronizations. Use scenarios and counterexamples to propose splits, merges, or reductions, explaining their effects and the smallest necessary scope of change."
+  summary_zh: "仅在显式调用时使用。已有概念职责过载、重复、过窄、碎片化或同步不合理时使用。依据场景与反例提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
   version: "1.0.2"
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -451,8 +451,8 @@ skills:
   display_name_zh: "精炼现有概念"
   display_title_zh: "精炼现有概念"
   domain: concept-design
-  summary: "仅在显式调用时使用。已有概念职责过载、重复或碎片化时使用。依据使用场景提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
-  summary_zh: "仅在显式调用时使用。已有概念职责过载、重复或碎片化时使用。依据使用场景提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
+  summary: "仅在显式调用时使用。已有概念职责过载、重复、过窄、碎片化或同步不合理时使用。依据场景与反例提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
+  summary_zh: "仅在显式调用时使用。已有概念职责过载、重复、过窄、碎片化或同步不合理时使用。依据场景与反例提出拆分、合并或裁剪方案，说明影响与最小修改范围。"
   version: "1.0.2"
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -502,8 +502,8 @@ skills:
   display_name_zh: "图解软件概念"
   display_title_zh: "图解软件概念"
   domain: concept-design
-  summary: "Use when explicitly requested to understand software concepts, designs, or collaboration flows. Create the diagrams and examples needed from code and specifications, distinguishing facts, inferences, and unverified details."
-  summary_zh: "仅在显式调用时使用。需要理解软件概念、设计或协作流程时使用。依据代码与规格生成必要图解和示例，标明事实、推断与待核实项。"
+  summary: "Use when explicitly requested to understand software concepts, design tradeoffs, or collaboration flows. Select the diagrams and examples needed from code and specifications, distinguishing facts, inferences, and unverified details."
+  summary_zh: "仅在显式调用时使用。需要理解软件概念、设计取舍或协作流程时使用。依据代码与规格选择必要图解和实例，标明事实、推断与待核实项。"
   version: "0.2.2"
   agents:
   - cursor
@@ -536,8 +536,8 @@ skills:
   display_name_zh: "图解软件概念"
   display_title_zh: "图解软件概念"
   domain: concept-design
-  summary: "仅在显式调用时使用。需要理解软件概念、设计或协作流程时使用。依据代码与规格生成必要图解和示例，标明事实、推断与待核实项。"
-  summary_zh: "仅在显式调用时使用。需要理解软件概念、设计或协作流程时使用。依据代码与规格生成必要图解和示例，标明事实、推断与待核实项。"
+  summary: "仅在显式调用时使用。需要理解软件概念、设计取舍或协作流程时使用。依据代码与规格选择必要图解和实例，标明事实、推断与待核实项。"
+  summary_zh: "仅在显式调用时使用。需要理解软件概念、设计取舍或协作流程时使用。依据代码与规格选择必要图解和实例，标明事实、推断与待核实项。"
   version: "0.2.2"
   agents:
   - cursor

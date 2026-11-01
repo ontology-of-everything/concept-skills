@@ -1,6 +1,6 @@
 ---
 name: concept-design
-description: "Use when explicitly invoked to model software requirements as independent concepts. Define purposes, state, actions, and synchronization rules, and prepare a design for confirmation."
+description: "Use when explicitly invoked to model software requirements as independent concepts. Apply Daniel Jackson's concept model to define purposes, state, actions, and synchronization rules, recording tradeoffs and unresolved decisions."
 metadata:
   language: en
   translation_of: concept-design-cn

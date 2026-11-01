@@ -1,6 +1,6 @@
 ---
 name: concept-guard-cn
-description: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。检查规格覆盖、回填契约、检测实现漂移或更新地图；写入按所选模式执行。"
+description: "仅在显式调用时使用。需要维护现有项目的概念规格时使用。审计、回填或比较 CONCEPT、SYNCS、PIPELINE，并更新规格地图；区分只读检查与授权写入。"
 compatibility: "读写与搜索文件；可选 Claude Code hooks 需要 bash 和 jq。"
 metadata:
   language: zh-CN

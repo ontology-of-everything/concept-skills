@@ -1,6 +1,6 @@
 ---
 name: show-me-the-design-cn
-description: "仅在显式调用时使用。需要理解软件概念、设计或协作流程时使用。依据代码与规格生成必要图解和示例，标明事实、推断与待核实项。"
+description: "仅在显式调用时使用。需要理解软件概念、设计取舍或协作流程时使用。依据代码与规格选择必要图解和实例，标明事实、推断与待核实项。"
 metadata:
   language: zh-CN
   translation_of: show-me-the-design

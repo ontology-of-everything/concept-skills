@@ -1,6 +1,6 @@
 interface:
   display_name: Implement concept models
-  short_description: Build concept modules and synchronization rules
+  short_description: Build concept modules and verify flows and required recovery
   default_prompt: Use $concept-build to implement the confirmed model as a modular monolith, preserving
     concept boundaries and synchronization contracts, with tests for concept and application purposes.
 policy:

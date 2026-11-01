@@ -1,6 +1,6 @@
 interface:
   display_name: 编写概念规格
-  short_description: 将已确认概念模型写成 PRD、概念与同步规格，明确验收条件
+  short_description: 将已确认模型转成 PRD、概念与同步规格及可追溯验收条件
   default_prompt: Use $concept-prd-cn to transcribe the confirmed model into an overall PRD, concept specifications
     and synchronizations, preserving concept and application purposes, assumptions and acceptance traceability.
 policy:

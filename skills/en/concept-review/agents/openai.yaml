@@ -1,6 +1,6 @@
 interface:
   display_name: Review concept designs
-  short_description: Review concept designs and implementation conformance
+  short_description: Review concept designs and code conformance, read-only
   default_prompt: Use $concept-review to review concept and application purposes, design arguments, independence
     and composition; check implementation conformance when code is available. Read-only, with evidence
     and fix routing.
