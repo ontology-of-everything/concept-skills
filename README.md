@@ -23,8 +23,8 @@ agent use; an adaptation, not endorsed by the author.
 
 中文说明见 [README-CN.md](README-CN.md).
 
-Current release is **2.5.0**. The concept design workflow, `see-the-concept`, and `settle-the-concept-design` are explicit-only;
-`software-concept-architect-refine` and `read-it-reframe-it-own-it` support automatic discovery;
+Current release is **2.7.0**. The concept design workflow, `show-me-the-design`, and `settle-the-concept-design` are explicit-only;
+`read-it-reframe-it-own-it` supports automatic discovery; concept refinement requires explicit invocation in Codex;
 `software-concept-architect-guardrails` modes
 consume Jackson notation only.
 
@@ -50,14 +50,14 @@ Design software concepts, responsibilities, specifications, and implementations.
 
 | Skill | Version | ClawHub category |
 | --- | --- | --- |
-| [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.3 | development, knowledge |
-| [Software Concept Architect · Design](skills/en/software-concept-architect-design/SKILL.md) | 1.0.0 | development |
-| [Software Concept Architect · PRD](skills/en/software-concept-architect-prd/SKILL.md) | 1.1.0 | development |
-| [Software Concept Architect · Build](skills/en/software-concept-architect-build/SKILL.md) | 1.1.0 | development |
-| [Software Concept Architect · Review](skills/en/software-concept-architect-review/SKILL.md) | 1.1.0 | development |
-| [Software Concept Architect · Guardrails](skills/en/software-concept-architect-guardrails/SKILL.md) | 1.1.0 | development |
-| [Software Concept Architect · Refine](skills/en/software-concept-architect-refine/SKILL.md) | 1.0.0 | development |
-| [See the Concept](skills/en/see-the-concept/SKILL.md) | 0.1.4 | knowledge |
+| [Settle the Concept Design](skills/en/settle-the-concept-design/SKILL.md) | 0.1.4 | development, knowledge |
+| [Software Concept Architect · Design](skills/en/software-concept-architect-design/SKILL.md) | 1.0.1 | development |
+| [Software Concept Architect · PRD](skills/en/software-concept-architect-prd/SKILL.md) | 1.1.1 | development |
+| [Software Concept Architect · Build](skills/en/software-concept-architect-build/SKILL.md) | 1.1.1 | development |
+| [Software Concept Architect · Review](skills/en/software-concept-architect-review/SKILL.md) | 1.1.1 | development |
+| [Software Concept Architect · Guardrails](skills/en/software-concept-architect-guardrails/SKILL.md) | 1.1.1 | development |
+| [Software Concept Architect · Refine](skills/en/software-concept-architect-refine/SKILL.md) | 1.0.1 | development |
+| [ShowMeTheDesign](skills/en/show-me-the-design/SKILL.md) | 0.2.1 | knowledge |
 
 ### Semantic Modeling
 
@@ -107,13 +107,13 @@ Use `--agent claude-code` or `--agent cursor` for another agent; add `--global` 
 ### English editions
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect software-concept-architect-design software-concept-architect-prd software-concept-architect-build software-concept-architect-review software-concept-architect-guardrails software-concept-architect-refine read-it-reframe-it-own-it see-the-concept settle-the-concept-design --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect software-concept-architect-design software-concept-architect-prd software-concept-architect-build software-concept-architect-review software-concept-architect-guardrails software-concept-architect-refine read-it-reframe-it-own-it show-me-the-design settle-the-concept-design --agent codex --copy --yes
 ```
 
 ### Simplified Chinese editions
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn software-concept-architect-design-cn software-concept-architect-prd-cn software-concept-architect-build-cn software-concept-architect-review-cn software-concept-architect-guardrails-cn software-concept-architect-refine-cn read-it-reframe-it-own-it-cn see-the-concept-cn settle-the-concept-design-cn --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn software-concept-architect-design-cn software-concept-architect-prd-cn software-concept-architect-build-cn software-concept-architect-review-cn software-concept-architect-guardrails-cn software-concept-architect-refine-cn read-it-reframe-it-own-it-cn show-me-the-design-cn settle-the-concept-design-cn --agent codex --copy --yes
 ```
 
 ### Install one skill
@@ -172,10 +172,10 @@ npx --yes skills add ontology-of-everything/concept-skills --skill software-conc
 npx --yes skills add ontology-of-everything/concept-skills --skill read-it-reframe-it-own-it --agent codex --copy --yes
 ```
 
-**`see-the-concept`**
+**`show-me-the-design`**
 
 ```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill see-the-concept --agent codex --copy --yes
+npx --yes skills add ontology-of-everything/concept-skills --skill show-me-the-design --agent codex --copy --yes
 ```
 
 ### List available skills
@@ -196,7 +196,7 @@ concept design workflow is explicit-only and must be named (`/software-concept-a
 $software-concept-architect-design model this requirement as independent concepts
 $software-concept-architect-prd transcribe the confirmed model into a PRD
 $software-concept-architect-guardrails drift src/orders
-$see-the-concept explain this concept model with a small diagram
+$show-me-the-design explain this concept model with a small diagram
 Turn this API into a semantic layer                 → data-knowledge-architect
 ```
 
@@ -230,16 +230,16 @@ Based on Daniel Jackson's concept design, consolidate discussion into decisions 
 The second example also needs an image-generation tool. [The English skill is on ClawHub](https://clawhub.ai/agenticweb4/skills/learning-read-it-reframe-it-own-it);
 its marketplace URL uses a different slug from the repository installation name.
 
-### See the Concept
+### ShowMeTheDesign
 
-`see-the-concept` · [Usage and visual toolbox](skills/en/see-the-concept/SKILL.md)
+`show-me-the-design` · [Usage and visual toolbox](skills/en/show-me-the-design/SKILL.md)
 
 Help beginners understand and examine software concepts and how they work together, from overview to detail, using source evidence and visuals. The bundled design reference provides reusable HTML, CSS, and JavaScript.
 
 | Scenario | Try saying |
 | --- | --- |
-| Understand a design | `$see-the-concept` Explore this project and visualize concept boundaries and coordinated actions. |
-| Check implementation | `$see-the-concept` Compare this design with source and explain differences and their effects. |
+| Understand a design | `$show-me-the-design` Explore this project and visualize concept boundaries and coordinated actions. |
+| Check implementation | `$show-me-the-design` Compare this design with source and explain differences and their effects. |
 
 ### Personal Knowledge Architect
 
@@ -315,7 +315,7 @@ Help beginners understand and examine software concepts and how they work togeth
 
 **A connected workflow:** design and confirm the model → PRD → implementation → review. For an existing project, start with Guardrails audit, then backfill specifications or refine concepts as needed.
 
-Use `see-the-concept` at any step to explain the current model or implementation visually.
+Use `show-me-the-design` at any step to explain the current model or implementation visually.
 
 ## Contributing
 

@@ -1,10 +1,6 @@
 ---
 name: software-concept-architect-prd
-description:
-  Transcribes a confirmed concept model into traceable PRD and colocated specification files only
-  when the user explicitly invokes $software-concept-architect-prd. Use to preserve purposes, behavior,
-  synchronizations, assumptions, exclusions, open decisions, and acceptance provenance without
-  redesigning the model.
+description: "Generates PRD and specification files. Use when explicitly invoked to document a confirmed concept model and its acceptance criteria."
 metadata:
   language: en
   translation_of: software-concept-architect-prd-cn
@@ -12,56 +8,57 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# Software Concept Architect · PRD
+# Software concept architect · PRD
 
-Focus: how can a confirmed model be persisted without losing purpose, behavior, or acceptance
-traceability? Run only on explicit `$software-concept-architect-prd` invocation. Input includes concepts,
-synchronizations, dependencies, exclusions, and open decisions. Route model gaps to `software-concept-architect-design`
-and code realization to `software-concept-architect-build`.
+## Goal
 
-## Transcription Principles
+Write a confirmed model into a PRD and specification files without changing its meaning.
+Run only on explicit `$software-concept-architect-prd` invocation. Use the confirmed concepts,
+synchronizations, dependencies, exclusions, and open decisions as input.
 
-CONCEPT owns the confirmed concept contract, SYNCS the coordination, and the overall PRD global
-relations. Keep one authoritative location per element. Preserve both arguments and assumptions:
-contract → OP → concept purpose; selection/sync → application scenario → application purpose.
-Derive acceptance with provenance; complete files cannot repair model gaps.
+## Principles
 
-**Synchronization may restrict behavior, never extend the contract**: record application restrictions
-in SYNCS/the overall PRD while preserving the concept's allowed behavior. Flag contract-violating
-coordination as a model gap for design revision.
+Transcribe confirmed behavior without redesigning it. Do not infer requirements from code differences
+or fill model gaps. Synchronizations must stay within concept contracts. Preserve assumptions,
+human notes, rejected options, and confirmation status.
 
-## Transcribe
+## Concepts
 
-1. **Verify input** — Read the confirmed model, requirement sources, and existing documents. Inspect
-   code only for module locations and indexing facts. Never let implementation differences silently
-   rewrite the model.
-2. **Choose locations** — Use the following layout. Stage centrally only until modules exist.
+| File | Responsibility |
+| --- | --- |
+| Overall PRD | Application purpose, scenarios, indexes, dependencies, subsets, exclusions, and open decisions |
+| CONCEPT | A concept's purpose, state, actions, and operational principle, or OP |
+| SYNCS | Application instances, type bindings, and synchronization rules |
 
-   ```text
-   docs/prd/README.md
-   <module>/CONCEPT.md or docs/prd/concepts/<name>.md
-   <syncs>/SYNCS.md or docs/prd/SYNCS.md
-   ```
+Keep one authoritative location per model element. The concept argument connects its contract,
+OP, and purpose. The application argument connects concept selection, rules, scenarios, and purpose.
+Acceptance criteria cite the argument or contract they check.
 
-3. **Write the overall PRD** — Preserve application purpose, end-to-end scenarios and their
-   concept/sync basis, misfits, concept index with purpose and links, synchronization graph, product
-   dependencies and subsets, exclusions, and open decisions. Put cross-concept assumptions and
-   arguments here.
-4. **Write specifications and acceptance** — Read `references/spec-format.md` and
-   `references/templates.md`. Preserve the four CONCEPT sections, concept-local assumptions, and
-   purpose argument; put application context in notes. Transcribe app/include/sync into one SYNCS
-   file grouped by entry point or rule responsibility with `// flow:`. Derive acceptance separately
-   from concept OPs, application scenarios, and behavioral contracts, each with provenance. Mark
-   missing application goals as open rather than constructing them from concept purposes.
-5. **Update consistently** — Make minimal edits to existing documents, refresh indexes and derived
-   diagrams, and preserve human-maintained content. Leave implementation-time migration and sync
-   package splitting to `software-concept-architect-build`.
+## Workflow
 
-Completion requires one authoritative location per model element; no lost definitions, relations,
-assumptions, exclusions, or open decisions; independent CONCEPT sections; application instantiation
-in SYNCS rather than legacy interactions/dependencies sections; acceptance linked to OP, application
-scenario, or contract evidence; real sync declarations for every parameter, binding, and output;
-preserved reachable failure behavior and empty-query semantics; and valid global links.
+1. Read the confirmed model, requirement sources, and existing documents. Inspect code only to
+   locate modules or verify index facts.
+2. Use [file layout](references/templates.md) to choose one authoritative location per element.
+   Use the staging locations before modules exist; otherwise colocate specifications with
+   their concept and composition modules.
+3. Write the overall PRD with purpose, scenarios, mismatches, indexes, sync diagram, product
+   dependencies, viable subsets, cross-concept assumptions, exclusions, and open decisions.
+4. Follow [the specification contract](references/spec-format.md). Keep concept definitions independent,
+   application context in notes, type instantiation in SYNCS, and rule groups under `// flow:`.
+5. Derive acceptance from OPs, scenarios, and contracts. Preserve failure and empty-query behavior;
+   check signatures, bindings, and results. Update indexes and derived diagrams after focused edits.
 
-For the first transcription read `references/example-reserving.md`; for specification sources read
-`references/sources.md`.
+Use [the reservation example](references/example-reserving.md) for transcription and
+[sources](references/sources.md) for notation. Implementation-time moves and module splits belong to build.
+
+## Examples
+
+| Prefer | Avoid |
+| --- | --- |
+| Keep an unspecified cancellation result open and name the acceptance it blocks. | Invent an error result to complete the template. |
+
+## Completion
+
+Each definition and decision has one location; links and signatures resolve. Acceptance cites its
+source, and missing goals remain open. Route model gaps to `software-concept-architect-design`
+and implementation to `software-concept-architect-build`. If unavailable, describe the required work.

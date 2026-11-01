@@ -1,23 +1,23 @@
-# Reservation Transcription Example
+# Reservation transcription example
 
-This example shows authoritative placement and traceability for a confirmed Reserving/Availability
-fragment; it is neither paper text nor a complete product.
+Transcribe this confirmed fragment; do not treat it as a complete product or fill omitted fields.
 
-## Confirmed Input
+## Confirmed input and location
 
-- Reserving [U, S] maintains reservation commitments; Availability [V] provides slots.
-- `Reserving.reserve` returns `reservation` on success and `Conflict` without state change on
-  collision.
-- `Availability._find` returns every offered slot for one venue; an empty set means no candidate.
-- After the user chooses one slot, `Requesting/reserve` receives named user/slot fields and returns
-  `request`; `Requesting/respond` receives request plus reservation or error and returns no fields.
-- The application supplies UserId, VenueId, and RequestId. Correlate responses by flow/request and
-  user/slot.
+Reserving commits slots; Availability offers them. Reserve returns reservation or Conflict without
+state change on collision. _find returns all offered slots for a venue, with an empty set for none.
 
-Place each concept's four sections beside its module or under `docs/prd/concepts/`, application
-instantiation and rules in `syncs/SYNCS.md` or staged `docs/prd/SYNCS.md`, and user needs,
-dependencies, graph, and open decisions in `docs/prd/README.md`. Keep local type parameters inside
-CONCEPT and concrete instantiation inside SYNCS.
+The user selects one slot. Requesting/reserve takes user/slot and returns request; respond takes
+request plus reservation or error and returns no fields. The application provides UserId, VenueId,
+and RequestId; Conflict is Reserving's error. Correlate flow/request and user/slot.
+
+| Content | Existing module | Before module creation |
+| --- | --- | --- |
+| Concept's four sections | Module's CONCEPT.md | docs/prd/concepts/ |
+| Instances and rules | composition/SYNCS.md | docs/prd/SYNCS.md |
+| Needs, dependencies, diagram, open decisions | docs/prd/README.md | Same |
+
+Keep local parameters in CONCEPT and actual type instantiation in SYNCS.
 
 ```text
 # app Reservations
@@ -45,11 +45,11 @@ when {
 then { Requesting/respond: [request: ?request; error: ?error] }
 ```
 
-Trace “a successful reservation creates a fulfillable commitment” to the reserve/grant contracts and
-preserve attendance assumptions. If grant or attendance is missing, mark acceptance incomplete.
-Trace collision with unchanged state to the reserve error case.
+## Acceptance and gaps
 
-Never turn `_find` empty results into an undeclared error or multiple candidates into reservations
-for all. Keep identity, concurrency, attendance, and cancellation open until confirmed. Verify one
-location per element, valid indexes, conjunctive accepted/rejected graph edges, and queries not
-drawn as completions.
+Trace a fulfillable commitment to reserve/grant, retaining arrival assumptions. Missing grant or
+arrival contracts leave acceptance incomplete. Trace unchanged-state collision to the reserve error case.
+
+Do not convert empty _find results into undeclared errors or candidates into bookings for all.
+Keep identity, concurrency, arrival, and cancellation gaps until confirmed. Verify unique file
+ownership, valid indexes, conjunctive accepted/rejected triggers, and query reads distinct from completions.

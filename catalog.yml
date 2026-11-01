@@ -29,9 +29,9 @@ skills:
   display_name_zh: 把概念设计定下来
   display_title_zh: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
   domain: concept-design
-  summary: "Settle software concept designs using Daniel Jackson's method: clarify goals, concept specifications, synchronization rules, tradeoffs, and acceptance criteria through decision matrices and user confirmation. Explicit invocation only."
-  summary_zh: "基于 Daniel Jackson 的概念设计，通过决策矩阵与用户确认，收敛业务目标、概念规格、同步规则、取舍和验收标准；适用于方案定稿及已确认设计的变更核对，仅显式调用。"
-  version: 0.1.3
+  summary: Use on explicit invocation to turn concept-design discussion into a proposal with goals, choices, consequences, acceptance criteria, and confirmation status.
+  summary_zh: 仅显式调用。将概念设计讨论整理为待确认方案，说明目标、取舍、影响、验收与确认状态。
+  version: 0.1.4
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
   marketplaces: [skills-sh, skillsmp, clawhub]
@@ -49,9 +49,9 @@ skills:
   display_name_zh: 把概念设计定下来
   display_title_zh: 把概念设计定下来 — 收敛设计决策，确认取舍与未决事项
   domain: concept-design
-  summary: "基于 Daniel Jackson 的概念设计，通过决策矩阵与用户确认，收敛业务目标、概念规格、同步规则、取舍和验收标准；适用于方案定稿及已确认设计的变更核对，仅显式调用。"
-  summary_zh: "基于 Daniel Jackson 的概念设计，通过决策矩阵与用户确认，收敛业务目标、概念规格、同步规则、取舍和验收标准；适用于方案定稿及已确认设计的变更核对，仅显式调用。"
-  version: 0.1.3
+  summary: Chinese edition. 仅显式调用。将概念设计讨论整理为待确认方案，说明目标、取舍、影响、验收与确认状态。
+  summary_zh: 仅显式调用。将概念设计讨论整理为待确认方案，说明目标、取舍、影响、验收与确认状态。
+  version: 0.1.4
   agents: [cursor, claude-code, codex, openclaw]
   compatibility: Uses the supplied discussion and design materials; no required runtime dependencies.
   marketplaces: [skills-sh, skillsmp]
@@ -170,9 +170,9 @@ skills:
   - concept-design
   - requirements
   - software-design
-  summary: Explicit-invocation-only — completes a concept design with the user; confirm the alignment, then write the design record.
-  summary_zh: 仅显式调用 · 和用户一起完成概念设计；先确认对齐，再写设计记录
-  version: 1.0.0
+  summary: Use on explicit invocation to define independent concepts, explain their purposes and behavior, and design synchronization rules.
+  summary_zh: 仅显式调用。明确概念目的、状态与动作，设计同步规则并记录待确认事项。
+  version: 1.0.1
   agents: &id010
   - cursor
   - claude-code
@@ -198,9 +198,9 @@ skills:
   display_title_zh: 软件概念架构师 · 设计 — 把需求变成清晰的软件概念
   domain: concept-design
   subdomains: *id009
-  summary: Chinese edition. 仅显式调用 · 和用户一起完成概念设计；先确认对齐，再写设计记录
-  summary_zh: 仅显式调用 · 和用户一起完成概念设计；先确认对齐，再写设计记录
-  version: 1.0.0
+  summary: Chinese edition. 仅显式调用。明确概念目的、状态与动作，设计同步规则并记录待确认事项。
+  summary_zh: 仅显式调用。明确概念目的、状态与动作，设计同步规则并记录待确认事项。
+  version: 1.0.1
   agents: *id010
   compatibility: No external tools or network; pure concept modeling
   marketplaces: [skills-sh, skillsmp]
@@ -219,9 +219,9 @@ skills:
   - concept-design
   - prd
   - specifications
-  summary: Explicit-invocation-only — transcribes confirmed models into an overall PRD, per-concept specifications and synchronizations, preserving concept/application purposes, assumptions, unresolved decisions and acceptance traceability.
-  summary_zh: 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
-  version: 1.1.0
+  summary: Use on explicit invocation to transcribe a confirmed model into PRD, concept specifications, synchronization rules, and traceable acceptance criteria.
+  summary_zh: 仅显式调用。将确认模型转录为 PRD、概念与同步规格，保留前提、未决和验收依据。
+  version: 1.1.1
   agents: &id013
   - cursor
   - claude-code
@@ -247,9 +247,9 @@ skills:
   display_title_zh: 软件概念架构师 · 需求规格 — 把确认的模型变成可追溯规格
   domain: concept-design
   subdomains: *id012
-  summary: Chinese edition. 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
-  summary_zh: 仅显式调用 · 将确认模型转录为总体 PRD、概念规格与同步规则，保留概念/应用目的、论证前提、未决取舍及验收追溯
-  version: 1.1.0
+  summary: Chinese edition. 仅显式调用。将确认模型转录为 PRD、概念与同步规格，保留前提、未决和验收依据。
+  summary_zh: 仅显式调用。将确认模型转录为 PRD、概念与同步规格，保留前提、未决和验收依据。
+  version: 1.1.1
   agents: *id013
   compatibility: No external tools or network; writes Markdown PRD files
   marketplaces: [skills-sh, skillsmp]
@@ -268,9 +268,9 @@ skills:
   - concept-design
   - modular-monolith
   - implementation
-  summary: Explicit-invocation-only — defaults to a modular monolith with independently built Clean Architecture modules, causal synchronization, a unified gateway, colocated specifications, and concept/application tests.
-  summary_zh: 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
-  version: 1.1.0
+  summary: Use on explicit invocation to implement confirmed concepts in independently built modules. Default to ports and adapters; add Clean layers for distinct responsibilities.
+  summary_zh: 仅显式调用。实现已确认概念，模块独立构建。默认端口与适配器，按职责采用 Clean 分层，验证同步与恢复。
+  version: 1.1.1
   agents: &id016
   - cursor
   - claude-code
@@ -296,9 +296,9 @@ skills:
   display_title_zh: 软件概念架构师 · 实现 — 把确认的模型落成独立模块
   domain: concept-design
   subdomains: *id015
-  summary: Chinese edition. 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
-  summary_zh: 仅显式调用 · 默认模块单体，独立构建与整洁架构，同步模块及统一网关，规格共存并验证概念与应用行为
-  version: 1.1.0
+  summary: Chinese edition. 仅显式调用。实现已确认概念，模块独立构建。默认端口与适配器，按职责采用 Clean 分层，验证同步与恢复。
+  summary_zh: 仅显式调用。实现已确认概念，模块独立构建。默认端口与适配器，按职责采用 Clean 分层，验证同步与恢复。
+  version: 1.1.1
   agents: *id016
   compatibility: Mapping needs only the confirmed model; language-specific boundary tests may use cargo, Spring Modulith, or dependency-cruiser
   marketplaces: [skills-sh, skillsmp]
@@ -317,9 +317,9 @@ skills:
   - concept-design
   - architecture-audit
   - spec-drift
-  summary: Explicit-invocation-only — read-only audit of concept and application design arguments, with optional implementation conformance checks; covers fitness for purpose, independence, composition, drift and product subsets, routing evidenced findings by root cause.
-  summary_zh: 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
-  version: 1.1.0
+  summary: Use on explicit invocation for read-only review of purpose fulfillment, independence, composition, code drift, and requested product subsets.
+  summary_zh: 仅显式调用。只读审查目的兑现、独立性、组合、实现漂移及指定产品子集，发现须有证据。
+  version: 1.1.1
   agents: &id019
   - cursor
   - claude-code
@@ -345,9 +345,9 @@ skills:
   display_title_zh: 软件概念架构师 · 审查 — 找出设计缺口与代码偏差
   domain: concept-design
   subdomains: *id018
-  summary: Chinese edition. 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
-  summary_zh: 仅显式调用 · 只读审查概念与应用目的兑现论证；有代码时再核对实现符合性，覆盖适切性、独立性、组合、漂移和产品子集，按证据与根因路由修复
-  version: 1.1.0
+  summary: Chinese edition. 仅显式调用。只读审查目的兑现、独立性、组合、实现漂移及指定产品子集，发现须有证据。
+  summary_zh: 仅显式调用。只读审查目的兑现、独立性、组合、实现漂移及指定产品子集，发现须有证据。
+  version: 1.1.1
   agents: *id019
   compatibility: Read-only; design review needs requirements and a concept model, implementation checks additionally need code
   marketplaces: [skills-sh, skillsmp]
@@ -367,9 +367,9 @@ skills:
   - module-boundaries
   - drift-detection
   - concept-specs
-  summary: Explicit-invocation-only — six modes for specification coverage, concept backfill, drift, pipelines, synchronizations and derived maps; distinguishes evidence, inferred purposes and design gaps in the local Jackson notation, with optional wyx hooks.
-  summary_zh: 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
-  version: 1.1.0
+  summary: Use on explicit invocation to audit, create, backfill, compare, or map concept specifications. Keep evidence, inferred intent, and decisions distinct.
+  summary_zh: 仅显式调用。检查、维护或映射概念、同步与数据质量规格，区分证据、推断和决定。
+  version: 1.1.1
   agents: &id022
   - cursor
   - claude-code
@@ -396,9 +396,9 @@ skills:
   display_title_zh: 软件概念架构师 · 规格护栏 — 让规格与代码保持一致
   domain: concept-design
   subdomains: *id021
-  summary: Chinese edition. 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
-  summary_zh: 仅显式调用 · 六种模式处理规格覆盖、概念回填、漂移、管道、同步与地图；区分事实、推定目的及设计缺口，使用本仓 Jackson 记法，可选 wyx hooks
-  version: 1.1.0
+  summary: Chinese edition. 仅显式调用。检查、维护或映射概念、同步与数据质量规格，区分证据、推断和决定。
+  summary_zh: 仅显式调用。检查、维护或映射概念、同步与数据质量规格，区分证据、推断和决定。
+  version: 1.1.1
   agents: *id022
   compatibility: Specs and drift checks need only file read/write plus Grep/Glob; the optional boundary-injection runtime requires Claude Code hooks and jq
   marketplaces: [skills-sh, skillsmp]
@@ -414,9 +414,9 @@ skills:
   display_name_zh: 软件概念架构师 · 精炼
   display_title_zh: 软件概念架构师 · 精炼 — 理清过载职责，精炼概念边界
   domain: concept-design
-  summary: Evidence-led concept refinement with minimal necessary changes.
-  summary_zh: 以证据和最小必要改动精炼概念与同步。
-  version: 1.0.0
+  summary: Refine existing concept designs with evidence and the smallest sufficient change. Compare alternatives, preserve confirmed decisions, and verify affected behavior.
+  summary_zh: 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
+  version: 1.0.1
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
@@ -433,9 +433,9 @@ skills:
   display_name_zh: 软件概念架构师 · 精炼
   display_title_zh: 软件概念架构师 · 精炼 — 理清过载职责，精炼概念边界
   domain: concept-design
-  summary: Evidence-led concept refinement with minimal necessary changes.
-  summary_zh: 以证据和最小必要改动精炼概念与同步。
-  version: 1.0.0
+  summary: Chinese edition. 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
+  summary_zh: 以证据和最小充分改动精炼已有概念。比较备选，保留确认决定，验证受影响行为。
+  version: 1.0.1
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp]
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
@@ -474,15 +474,15 @@ skills:
   distribution: direct-skill
   language: zh-CN
   translation_of: read-it-reframe-it-own-it
-- id: see-the-concept
-  path: skills/en/see-the-concept
-  display_name: See the Concept
-  display_title: See the Concept — Concept Design Understanding
+- id: show-me-the-design
+  path: skills/en/show-me-the-design
+  display_name: ShowMeTheDesign
+  display_title: ShowMeTheDesign
   display_name_zh: 概念图解
   domain: concept-design
-  summary: "Use only when the user explicitly requests this skill. Help beginners understand and examine software concepts and their collaboration through visuals grounded in source code, from overview to detail."
-  summary_zh: "仅在用户明确要求使用本技能时调用。以源码为依据，从整体到局部图解软件概念与协作，帮助零基础读者理解和审视设计。"
-  version: 0.1.4
+  summary: Use on explicit request to explain software concepts and collaboration with diagrams grounded in source code, using only the views needed for the question.
+  summary_zh: 仅显式请求。用有源码依据的图解解释软件概念与协作，按读者问题选择必要视图。
+  version: 0.2.1
   agents:
   - cursor
   - claude-code
@@ -497,7 +497,7 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: en
-  translation_of: see-the-concept-cn
+  translation_of: show-me-the-design-cn
   clawhub:
     categories:
     - knowledge
@@ -507,15 +507,15 @@ skills:
     - synchronizations
     - software-design
     - learning
-- id: see-the-concept-cn
-  path: skills/zh-CN/see-the-concept-cn
-  display_name: 概念图解
-  display_title: 概念图解
+- id: show-me-the-design-cn
+  path: skills/zh-CN/show-me-the-design-cn
+  display_name: ShowMeTheDesign · 概念图解
+  display_title: ShowMeTheDesign · 概念图解
   display_name_zh: 概念图解
   domain: concept-design
-  summary: "仅在用户明确要求使用本技能时调用。以源码为依据，从整体到局部图解软件概念与协作，帮助零基础读者理解和审视设计。"
-  summary_zh: "仅在用户明确要求使用本技能时调用。以源码为依据，从整体到局部图解软件概念与协作，帮助零基础读者理解和审视设计。"
-  version: 0.1.4
+  summary: Chinese edition. 仅显式请求。用有源码依据的图解解释软件概念与协作，按读者问题选择必要视图。
+  summary_zh: 仅显式请求。用有源码依据的图解解释软件概念与协作，按读者问题选择必要视图。
+  version: 0.2.1
   agents:
   - cursor
   - claude-code
@@ -529,4 +529,4 @@ skills:
   distribution: direct-skill
   clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
   language: zh-CN
-  translation_of: see-the-concept
+  translation_of: show-me-the-design

@@ -1,9 +1,6 @@
 ---
 name: software-concept-architect-review
-description:
-  Audits concept and application design arguments and optional code conformance only when the user
-  explicitly invokes $software-concept-architect-review. Read-only; use for purpose fitness, independence, composition,
-  drift, and product-subset review.
+description: "Analyzes concept fitness and code conformance. Use when explicitly invoked for read-only purpose, independence, composition, drift, or product-subset review."
 metadata:
   language: en
   translation_of: software-concept-architect-review-cn
@@ -11,79 +8,64 @@ metadata:
     homepage: https://github.com/ontology-of-everything/concept-skills
 ---
 
-# Software Concept Architect · Review
+# Software concept architect · review
 
-Focus: can the concept and application designs fulfill their respective purposes, and does the
-implementation conform? Run only on explicit `$software-concept-architect-review` invocation and remain read-only.
-Design can be reviewed without code; without specifications, review only observable code properties.
-Mark conclusions unsupported by missing material as unverified.
+## Goal
 
-## Model
+Determine whether concept and application designs meet their purposes, and whether available code
+conforms. Run only on explicit `$software-concept-architect-review` invocation. Remain read-only.
+Review design without code; without specifications, limit conclusions to observable code properties.
 
-A **concept** is a behavioral unit designed for one purpose. A concept argument connects its purpose
-to its operational principle (OP), state, and actions. An application argument connects the
-application purpose to concept selection, synchronizations, and end-to-end scenarios. Conformance to
-an unsuitable model does not establish fitness; successful OP tests do not prove the purpose, and
-locally sound concepts do not prove the application purpose.
+## Principles
 
-Review five dimensions:
+Remain read-only. Support findings with inspected requirements, specifications, code, or tests;
+label inference and gaps. Without implementation, do not report implementation violations.
+Missing tests for an operational principle are verification gaps; a failed purpose argument needs a counterexample.
 
-- **Fitness:** behavior meets the real need under stated assumptions.
-- **Independence:** concept definitions do not depend on other concepts; this repository also
-  requires concept modules not to reference one another.
-- **Composition:** **synchronization may restrict behavior, never extend the contract**. Restriction
-  alone is not a violation; remaining scenarios must still meet the need.
-- **Drift:** implementation differs from a confirmed behavioral contract; distinguish omissions from
-  contradictions.
-- **Product subsets:** each subset preserves its purpose, entry points, required synchronizations,
-  and resources.
+Check confirmed engineering conventions. Report architecture deviations separately from concept
+defects, without imposing a new project skeleton.
 
-Evidence means a fact supported by inspected requirements, models, code, or tests. Missing evidence
-is not evidence of absence.
+## Concepts
 
-## Audit
+| Dimension | Question |
+| --- | --- |
+| Fitness | Does the behavior meet the real need under stated assumptions? |
+| Independence | Can each concept be understood independently, and do concept modules avoid mutual references? |
+| Composition | Do synchronizations respect concept contracts and support application scenarios? |
+| Drift | Where does implementation omit or contradict the confirmed contract? |
+| Product subsets | Does each requested subset retain its purpose, entries, rules, and resources? |
 
-1. **Scope** — Read `references/spec-format.md`, requirements, concept and synchronization
-   specifications, the overall PRD, and staged links. With code, trace real entry points, calls,
-   state/schema, migrations, and tests. Record versions, terms, facts, inferences, coverage, and
-   gaps.
-2. **Design arguments** — State concept and application purposes. For every concept, test the
-   contract → OP → purpose argument and specificity, completeness, independence, and familiarity.
-   Review application selection and synchronizations against end-to-end scenarios. Novelty or
-   infrastructure identity alone is not a defect.
-3. **Drift and independence** — When code exists, use `references/drift-checklist.md` to compare
-   signatures, outputs, invariants, state, and dependencies, including public calls, shared mutable
-   state, private access, and DTO/protocol leakage. Same-named local type parameters are not
-   semantic dependencies.
-4. **Composition** — Use `references/composition-checklist.md` to trace each action and
-   synchronization from the application purpose. Check each concept's composed behavior sequences,
-   then completions, bindings, isolation, failure, replay, loops, and under-/over-synchronization.
-5. **Dependencies and subsets** — Check product inclusion dependencies separately from code
-   restrictions. A product graph need not mirror a code graph.
-6. **Aggregate** — Cross-check includes, actions and queries, parameters, outputs, bindings, and
-   diagrams. Merge findings by root cause and report all five dimensions; an unexecuted check cannot
-   pass.
+A concept argument connects its contract, operational principle, and purpose. An application argument
+connects selection and rules to scenarios and purpose. Successful local tests do not establish
+application fitness. Synchronization may restrict behavior while remaining within the contract.
 
-## Report
+## Workflow
 
-```markdown
-# Audit Report <date>
+1. Read [the specification contract](references/spec-format.md), requirements, indexes, and relevant
+   specifications. Record scope, versions, and gaps; trace available code.
+2. Review purpose fulfillment, single purpose, complete behavior, independence, and familiarity for
+   the actual user, including API programmers. Novelty alone is not a defect.
+3. With code, use [drift checks](references/drift-checklist.md) for interfaces, state, invariants,
+   dependencies, private access, shared mutable state, and leaked protocol types.
+4. Use [composition checks](references/composition-checklist.md) for legal scenarios, triggers,
+   bindings, isolation, failures, replay, loops, and missing/excessive automation.
+5. Verify each requested product subset's requirement-based dependencies, entries, rules, resources,
+   and build support. Reconcile references and diagrams, then merge findings by root cause.
 
-Scope: <requirements/spec/code versions; verified and unverified material> Summary: <coverage,
-finding count, severity>
+Read [sources](references/sources.md) to verify definitions. Static reasoning does not prove runtime conformance.
 
-| Proposition or finding | Scenario and evidence | Failed relation or assumption | Impact/severity | Fix route |
-| ---------------------- | --------------------- | ----------------------------- | --------------- | --------- |
+## Examples
 
-Coverage: <five dimensions and every concept, entry point, or rule group> Fix order: <merged root
-causes, affected locations, current fix, dependencies>
-```
+| Prefer | Avoid |
+| --- | --- |
+| Show how a decline leaves a held reservation unreleased, with the rule and reachable path. | Report a long flow as a defect without a failing scenario. |
 
-Medium or higher severity needs current specification or code evidence; pure design review is a
-specification-level projection. Separate missing OP tests from purpose failure. Without
-implementation, do not report implementation violations. Attach a scenario to every under- or
-over-synchronization claim.
+## Report and completion
 
-Route model defects to `software-concept-architect-design`, transcription/index errors to `software-concept-architect-prd`, and code
-violations to `software-concept-architect-build`. Read `references/sources.md` when source definitions or
-criteria must be verified. Do not write specifications, code, or history.
+Report scope, coverage, severity, and unverified items across the dimensions above. Each finding
+states a scenario, current evidence location, failed relation or assumption, impact, and repair step.
+Medium-or-higher findings need specification/code evidence; under/over-sync needs a concrete scenario.
+
+Route model defects to design, transcription/index errors to PRD, and code violations to build.
+Separate current repairs from later dependencies. Report only executed checks as passed; change no
+specifications, code, or history.

@@ -1,6 +1,6 @@
 ---
 name: software-concept-architect-prd-cn
-description: Generates PRD files from a confirmed concept model only when the user explicitly invokes $software-concept-architect-prd-cn. / 仅在用户显式调用 $software-concept-architect-prd-cn 时转录概念 PRD。
+description: "Generates confirmed concept specifications. Use when explicitly invoked. 转录 PRD、概念、同步与验收依据。"
 metadata:
   language: zh-CN
   translation_of: software-concept-architect-prd
@@ -10,36 +10,44 @@ metadata:
 
 # 软件概念架构师 · 需求规格
 
-焦点问题：如何把已确认模型持久化，使目的、行为与验收仍可追溯？仅在显式调用 `$software-concept-architect-prd-cn` 时运行。输入模型含 concepts、syncs、依赖、排除与未决；模型缺口回 software-concept-architect-design-cn，代码落地交 software-concept-architect-build-cn。
+## 目标
 
-## 转录原则
+把已确认模型写成 PRD 与规格文件，保留原有含义。仅在显式调用 `$software-concept-architect-prd-cn` 时运行。
+输入包括已确认的概念、同步规则、依赖、排除与未决。
 
-确认模型约束目的、行为与取舍；CONCEPT 保存概念契约，SYNCS 保存协调，总体 PRD 索引全局关系。每个模型元素只保留一份权威文件。
+## 原则
 
-保存两层论证及前提：契约 → OP → 概念目的；概念选择/sync → 应用场景 → 应用目的。验收从这些场景或行为契约导出并附来源；文件齐全不能补足模型缺口。
+转录已确认行为，不重新设计模型，不从代码差异推定需求或猜补缺口。
+同步须遵守概念契约。保留前提、人工备注、已放弃方案与确认状态。
 
-**同步可收窄行为，不可扩展契约**：应用排除与限制归 SYNCS/总体 PRD，保留概念自身允许的行为；模型中的违约协调标为缺口，交回设计修订。
+## 概念
 
-## 转录与核对
+| 文件 | 职责 |
+| --- | --- |
+| 总体 PRD | 应用目的、场景、索引、依赖、子集、排除与未决 |
+| CONCEPT | 概念的目的、状态、动作和运作原理，简称 OP |
+| SYNCS | 应用实例、类型绑定与同步规则 |
 
-1. **核对输入**：读确认模型、需求出处与现有文档；仅核实模块路径及索引所需代码事实。实际代码差异不能未经确认改写模型。
-2. **确定落点**：以下为输出路径；模块未就绪时暂存。
+每个模型元素只保留一处权威来源。概念论证说明契约如何支持 OP、OP 如何兑现目的。
+应用论证说明概念选择和规则如何支持场景、场景如何兑现应用目的。验收标准注明所检查的论证或契约。
 
-   ```text
-   docs/prd/README.md        # 总体 PRD
-   <模块>/CONCEPT.md          # 或 docs/prd/concepts/<名>.md
-   <syncs>/SYNCS.md           # 或 docs/prd/SYNCS.md
-   ```
+## 流程
 
-3. **写总体 PRD**：保存应用目的、端到端场景及其概念/sync 依据、Misfits、概念索引（purpose + 链接）、同步图、产品依赖与子集、排除和未决；跨概念前提及论证放这里。
-4. **转录规格与验收**：读 [规格契约](references/spec-format.md) 与 [文件编排](references/templates.md)，CONCEPT 保留四节、概念内前提与目的兑现说明；应用背景进 notes。SYNCS 转录 app/include/sync，按入口或规则职责以 `// flow:` 分组，转录期单文件。概念 OP、应用场景和行为契约分别导出验收，均附出处；应用目标缺失时标未决，不从概念目的拼造。
-5. **更新核对**：对已有文档做最小编辑，同步索引/派生图，保留人工维护内容；实现期迁移或 sync 拆包由 software-concept-architect-build-cn 承接。
+1. 读确认模型、需求出处和现有文档，仅为定位模块或核实索引事实检查代码。
+2. 按[文件编排](references/templates.md)确定唯一权威位置。模块未建时按参考暂存，建好后分别与概念和 composition 模块共置。
+3. 写总体 PRD，保存目的、场景、行为偏差、索引、同步图、产品依赖、可行子集、跨概念前提、排除与未决。
+4. 按[规格契约](references/spec-format.md)转录。概念定义保持独立，应用背景进 notes，类型实例化进 SYNCS，规则用 `// flow:` 分组。
+5. 从 OP、应用场景和契约导出验收，保留失败与查询空集的含义。核对签名、绑定和结果，修改后更新索引与派生图。
+
+转录示例见[订位例](references/example-reserving.md)，记法依据见[来源](references/sources.md)。实现期迁移或拆模块交给实现技能。
+
+## 正反例
+
+| 正例 | 反例 |
+| --- | --- |
+| 取消结果未定义时保留未决，并指出它影响哪项验收。 | 为填满模板，自行补造错误结果。 |
 
 ## 完成条件
 
-- 每个模型元素有唯一落点，定义、关系、论证前提、排除与未决无遗漏；未确认信息保持原状态。
-- CONCEPT 四节不依赖其他概念定义；同名局部参数合法；无 interactions/dependencies 段，应用实例化归 SYNCS。
-- 验收可追溯到概念 OP、应用场景或行为契约；缺口不被占位内容包装成已确认行为。
-- sync 参数、绑定与输出对应真实声明，可达失败策略保留，查询空集不变成错误；全局索引链接有效。
-
-首次转录读 [订位例](references/example-reserving.md)；核验规格依据读 [sources.md](references/sources.md)。
+每项定义和决策只有一处权威位置，链接与签名有效，验收有出处，缺失目标仍标未决。
+模型缺口交 `software-concept-architect-design-cn`，实现交 `software-concept-architect-build-cn`。技能不可用时说明所需工作。

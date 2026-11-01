@@ -1,10 +1,9 @@
 # TypeScript
 
-Read for TypeScript targets. [Architecture](architecture.md) owns module relationships and examples.
-Use a pnpm workspace with independently buildable/testable packages for each concept, syncs, gateway,
-and shared; server assembles and starts them.
+Map [the architecture](architecture.md) to pnpm workspace packages. Each concept, composition, api,
+and shared package has its own build/test entry; server assembles them.
 
-## Project skeleton
+## Packages and exports
 
 ```text
 pnpm-workspace.yaml
@@ -12,58 +11,55 @@ apps/server/                        # package.json, tsconfig.json, src/main.ts
 modules/
   concepts/reservation/              # package.json, tsconfig.json, CONCEPT.md
   concepts/payment/                 # same
-  syncs/                            # package.json, tsconfig.json, SYNCS.md
-  gateway/                          # package.json, tsconfig.json, HTTP/DTO
-  shared/                           # package.json, tsconfig.json, foundational types
+  composition/                        # package.json, tsconfig.json, SYNCS.md
+    src/syncs/                      # named synchronization rules; not a build unit
+  api/                                # package.json, tsconfig.json, HTTP/DTO
+  shared/                             # package.json, tsconfig.json, foundational types
 ```
 
-Include actual packages under `apps/*`, `modules/concepts/*`, and `modules/*`; update globs when adding
-groups. Each package declares dependencies and build/test scripts. Use `src/index.ts`, `api.ts`,
-`domain/`, `application/`, and `adapter/` internally. Export only business APIs, result types, and
-necessary assembly entries from `index.ts`.
+Include actual packages under `apps/*`, `modules/concepts/*`, and `modules/*`; update globs for groups.
+Declare dependencies and scripts in each package. Export public contracts and restricted factories
+from `src/index.ts`. Use ports for facilities and add domain/application layers only when needed.
 
-Manifest fragment for a project using ESM and declarations:
+ESM package example:
 
 ```json
 {
-  "name": "@app/gateway",
+  "name": "@app/api",
   "type": "module",
   "exports": {".": {"types": "./dist/index.d.ts", "import": "./dist/index.js"}},
-  "dependencies": {"@app/syncs": "workspace:*"},
+  "dependencies": {"@app/composition": "workspace:*"},
   "scripts": {"build": "tsc -b"}
 }
 ```
 
-Configure TypeScript project references, `composite`, and declaration output so builds follow the
-dependency graph. Workspace membership alone does not prove independent compilation. Package
-`exports` limits consumer entry points; source checks also prohibit relative-path or tsconfig-alias
-access into another package.
+Use project references, `composite`, and declaration output to build the dependency graph.
+Workspace membership alone is insufficient. Package exports restrict consumers; source checks must
+also prevent relative-path and tsconfig-alias access to another package's internals.
 
 ## Interfaces and assembly
 
-Inner ports are interfaces, implemented by adapters and injected through restricted public factories
-by server. Concepts never depend on other concepts; use generic/branded external identities. Syncs
-exports application DTOs; gateway invokes syncs and owns external protocol/JSON mapping.
+Inner code declares port interfaces; adapters implement them and server injects them through public
+factories. External identities use generic or branded types without concept-to-concept imports.
+Composition owns its application DTOs; api maps protocol/JSON data and calls composition.
+Implement named rule functions or objects under [the execution contract](execution.md).
+Listeners and Promise chains alone do not establish matching or recovery guarantees.
 
-Implement named rule functions/objects preserving output cases, flow correlation, and object
-bindings. Async mediators and engines follow the entrypoint's matching/recovery contract. Verify an
-engine's installed capabilities; event listeners or Promise chains do not imply full synchronization semantics.
-
-## Verification
+## Checks
 
 ```bash
 pnpm --filter '@app/reservation...' build
 pnpm --filter @app/reservation test
-pnpm --filter @app/syncs test
+pnpm --filter @app/composition test
 pnpm -r build
 pnpm -r test
 ```
 
-Substitute actual package names/scripts; targeted builds include dependency closure. Use
-dependency-cruiser or equivalent checks for zero concept dependencies, gateway access limited to
-syncs/shared, source layers, and public entries. Allow server's multi-module assembly separately.
-Type checking does not establish permitted access; exports alone does not stop every source-level bypass.
+Use actual package names and scripts. Targeted builds include dependencies. Check package dependencies,
+source layers, public entries, concept independence, api access to composition/shared, and server's
+assembly access with dependency-cruiser or equivalent rules. Type checking and exports alone do not
+prove these boundaries.
 
-Sources: [pnpm workspaces](https://pnpm.io/workspaces), [dependency filtering](https://pnpm.io/filtering),
+Sources: [pnpm workspaces](https://pnpm.io/workspaces), [filtering](https://pnpm.io/filtering),
 [TypeScript project references](https://www.typescriptlang.org/docs/handbook/project-references.html),
-[Node package exports](https://nodejs.org/api/packages.html#package-entry-points).
+[Node exports](https://nodejs.org/api/packages.html#package-entry-points).

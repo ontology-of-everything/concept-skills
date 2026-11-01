@@ -1,22 +1,20 @@
-# File Layout for CONCEPT and SYNCS
+# Specification layout
 
-Read `spec-format.md` first; this file governs where a confirmed model is persisted, not its syntax.
-See `example-reserving.md` for a traced example.
+Use [the contract](spec-format.md) for syntax and [the reservation example](example-reserving.md)
+for transcription. Each model element has one authoritative location.
 
-| Content | Authoritative location | Requirement |
-| --- | --- | --- |
-| Application purpose, scenarios, misfits | overall PRD | preserve concept/sync basis and cross-concept assumptions; mark missing purpose open |
-| One concept | CONCEPT.md beside its module; stage under `docs/prd/concepts/` before modules exist | transcribe four core sections, declared queries, and notes; concrete types belong in SYNCS |
-| Application composition | SYNCS.md in sync package; stage at `docs/prd/SYNCS.md` | one file per syncs module, with app/include and rules grouped by `// flow:`; source every external entry signature |
-| Acceptance | overall PRD table or existing acceptance file | link every case to an OP, action case, invariant, or application scenario |
-| Graphs, dependencies, exclusions, open decisions | overall PRD | derive sync graph from rules; give product dependencies independent requirement evidence |
+| Content | Location and required links |
+| --- | --- |
+| Purpose, scenarios, counterexamples, assumptions | Overall PRD; retain evidence for concept and rule choices. Missing goals stay open. |
+| One concept | CONCEPT.md beside its module, or staged under `docs/prd/concepts/`; retain four core sections, declared queries, and notes. |
+| Application composition | Composition module's SYNCS.md, or staged `docs/prd/SYNCS.md`; include app/type bindings, external-entry signatures, and rules grouped by `// flow:`. |
+| Acceptance | Overall PRD or existing acceptance file; cite an OP, action case, invariant, or application scenario. |
+| Diagrams, dependencies, exclusions, open decisions | Overall PRD; derive sync diagrams from rules and justify product dependencies from requirements. |
 
-Specifications may omit irrelevant details but not confirmed signatures, results, or state meanings.
-Resolve every referenced action, query, and type. An absent concept type parameter needs no `[]`; an
-action with no returned fields writes `=> []`.
+Preserve confirmed signatures, results, state meanings, and human notes. Resolve referenced types,
+actions, and queries. Omit `[]` when a concept has no type parameters; actions with no result use `=> []`.
 
-Minimally update existing files and preserve notes and human-authored content. Read legacy dialects
-compatibly. A full migration must recover success/error discrimination, correlation, and state
-effects rather than converting ambiguity into requirements. Colocate one CONCEPT per concept build unit and one SYNCS per syncs build unit; flow groups do not
-create additional specification files. Update indexes when moving staged files or actually splitting
-modules, retaining one authoritative home per element.
+During implementation, colocate one CONCEPT per concept build unit and one SYNCS per composition
+unit. Flow groups need no extra specifications. Update indexes after moving staged files or splitting
+real modules. For legacy migration, recover result cases, correlation, and state effects before
+changing notation; do not turn ambiguity into a requirement.

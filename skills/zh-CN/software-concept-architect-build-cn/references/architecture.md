@@ -1,69 +1,82 @@
 # 工程架构
 
-确定或核对工程结构时读取；原则见 [技能正文](../SKILL.md)，构建配置只读目标语言参考。
+本页说明模块职责，构建配置只读目标语言映射。
 
-## 构建与运行边界
+## 依赖与状态
 
 ```text
-apps/server/                     # 唯一启动应用，配置与装配
-modules/
-  concepts/<组>/<概念>/           # 每个叶目录一个构建单元
-    CONCEPT.md
-    src/                         # 公开 API + domain/application/adapter
-  syncs/                         # 独立构建单元，公开应用接口
-    SYNCS.md                     # 按 flow 分组的具名规则
-    src/                         # 规则实现；执行端口/适配器按需
-  gateway/                       # 独立构建单元，协议/DTO/错误映射
-  shared/                        # 独立构建单元，被动基础类型
+api → composition → concepts
+server 通过公开工厂装配所有模块
 ```
 
-组和 flow 是导航，不自动成为模块。独立构建会构建声明的依赖闭包；模块最终装配到同一进程，单独构建不意味着单独启动或部署。单模块任务只交付所需范围，不补齐无关骨架。
+第一行表示业务调用。概念之间不互调、不互引，server 经公开工厂装配，协调留在 composition。
 
-| 模块 | 业务依赖 | 公开面 |
+| 模块 | 允许的业务依赖 | 公开接口 |
 | --- | --- | --- |
-| concept | shared（按需） | 动作、查询、结果类型、必要完成事件 |
-| syncs | concept 公开接口、shared | 应用动作与结果；公开签名使用 syncs/shared 类型 |
-| gateway | syncs 公开接口、shared | 对外协议；对 server 提供路由/配置入口 |
-| shared | 无业务模块 | 身份、时间等被动基础类型 |
-| server | 各模块公开装配入口 | 启动应用；装配多模块不是业务协调 |
+| concept | 按需依赖 shared | 动作、查询、结果类型、必要完成事件 |
+| composition | 概念接口、shared | 应用请求与结果，使用自身或 shared 类型 |
+| api | composition 接口、shared | 协议映射与路由配置工厂 |
+| shared | 无 | 身份、时间等被动类型 |
+| server | 公开装配入口 | 启动与配置 |
 
-公开面分业务接口和装配接口；syncs 只使用概念业务接口。每个概念封装自己的存储，可共享数据库设施，但读写仍经所属概念。迁移标明状态所有者。
+概念拥有自己的业务状态和存储访问。可共享数据库设施，读写仍经过拥有者，迁移须标明归属。
+composition 可以保存执行记录，不持有独立业务状态。
 
-## 模块内依赖
-
-- `domain`：模型、不变量与纯规则；存储端口由需要它的内层声明。
-- `application`：实现公开动作/查询，调用领域逻辑与端口，处理用例事务边界。
-- `adapter`：实现端口，接入数据库或外部设施；技术细节依赖内层契约。
-- 装配入口：构造具体实现并返回公开接口；内部实现保持隐藏。
-
-syncs 的应用层承载具名规则，需要恢复时增加执行端口与适配器；业务状态留在概念。gateway 本身承担入站适配，不为目录对称添加领域层。Rust 的 crate 内模块、Java 的包、TypeScript 的目录承载层次，默认不每层再拆构建单元。
-
-## 一条请求的正常与失败路径
-
-例：已确认 Reservation 可产生 Held、Confirmed、Cancelled，Payment 可产生 Paid、Declined；拒付后必须最终释放预约。以下是因果路径，具体字段与 case 以规格为准。
+## 构建结构
 
 ```text
-gateway：HTTP 请求 → syncs.reserve（建立请求/flow 关联）
-syncs：请求完成 → Reservation.hold
-syncs：hold[Held] → Payment.charge
-syncs：charge[Paid] → Reservation.confirm
-syncs：confirm[Confirmed] → 响应成功
-syncs：charge[Declined] → Reservation.cancel
-syncs：cancel[Cancelled] → 响应拒付
-gateway：应用结果 → HTTP 响应
+apps/server/                 # 唯一启动应用
+modules/
+  concepts/<名称>/           # 每个概念一个构建单元
+    CONCEPT.md
+    src/
+  composition/               # 应用接口与协调
+    SYNCS.md
+    src/
+      syncs/                 # 具名规则，不另成构建单元
+  api/                       # 协议、DTO 与错误映射
+  shared/                    # 被动类型
 ```
 
-每条边是具名规则，后续调用由前一动作完成结果绑定；flow 与预约身份贯穿匹配。若取消暂时失败，已完成的 hold/charge 仍成立：持久记录待恢复执行，按确认的入口契约响应，重试取消并避免重复扣款。重试耗尽须可观察，不能提前声称已释放；补偿也不自动抹去历史。普通连续调用必须实现同样的关联、分支和恢复语义。
+composition 是模块，syncs 是规则集合，sync 是单条规则。模块根目录一份 SYNCS，按入口或职责分组。
+源码路径按语言映射，例如 Java 的 composition.syncs 包。
 
-## 关键正反例
+每个模块有清单、公开接口和构建测试入口。定向构建包含依赖，独立构建不表示单独启动或部署。
+分组只用于导航，不自动成为构建单元。单模块任务不补齐无关工程结构。
 
-| 正例 | 反例与后果 |
+## 端口与分层
+
+需要设施的内层代码声明契约，adapter 实现，server 经受限工厂注入。
+核心策略应能脱离 HTTP、SQL 或具体调度器测试。
+
+| 模块 | 内部组织 |
 | --- | --- |
-| 模块有自己的构建清单、接口与测试入口 | 仅分文件夹却宣称独立编译，无法验证构建边界 |
-| gateway → syncs → concept API | Controller 编排概念或概念互调，应用策略散落 |
-| 内层声明端口，adapter 实现 | domain 导入 HTTP/SQL 实现，领域规则绑定设施 |
-| server 使用受限公开工厂/配置 | 为装配公开所有内部包，业务调用可绕过边界 |
-| 具名规则匹配输出 case 和关联 | 连续 `?`/异常冒泡代替失败策略，留下未处理状态 |
-| 同时检查构建图和源码/API 边界 | 只检查无环，漏掉合法编译却违规的概念依赖 |
+| composition | 具名规则与应用接口，按需增加执行端口、恢复适配器 |
+| concept | 简单行为集中实现，职责不同再采用 domain/application/adapter |
+| api | 入站适配，无领域职责就不加领域层 |
 
-验证分别覆盖模块构建、公开面/层次、概念 OP 与不变量、同步分支及整条请求的失败恢复；静态边界通过不能证明行为正确。
+采用 Clean 时，domain 保存模型和不变量，application 实现动作与查询，adapter 接入设施，依赖指向内层。
+不建空层、纯转发层，不给既有接口再包相同端口。内部层次用包或目录，不另拆构建单元。
+已有确认约定优先，本基线不自动授权迁移。
+
+## 示例与检查
+
+已确认预约与支付契约时：
+
+```text
+请求完成         → Reservation.hold
+hold[Held]       → Payment.charge
+charge[Paid]     → Reservation.confirm
+charge[Declined] → Reservation.cancel
+```
+
+匹配 flow 与预约身份，相关动作完成后响应，取消失败则保留待办。详细要求见[执行与恢复](execution.md)。
+
+| 正例 | 反例 |
+| --- | --- |
+| 同查构建清单和源码访问。 | 只凭目录或无环图证明全部边界。 |
+| 通过具名规则协调。 | Controller 编排概念，或概念互调。 |
+| 公开受限装配工厂。 | 为方便装配而开放全部实现。 |
+| 验证拒绝、部分完成与重试。 | 把异常传播当作恢复。 |
+
+核对构建、公开接口、适用分层、概念不变量与运作原理、规则和应用场景。静态检查不证明运行行为。

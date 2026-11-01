@@ -1,11 +1,10 @@
 ---
 name: settle-the-concept-design-cn
-description: >-
-  基于 Daniel Jackson 的概念设计，将讨论收敛为待用户确认的设计方案。仅在显式调用 $settle-the-concept-design-cn 时运行，默认不自动触发。适用于定稿概念设计、对齐设计决策，或核对已确认方案的变更；覆盖业务目标、范围、概念规格、同步规则、取舍、验收标准、假设与未决事项，通过总览、场景和决策矩阵逐步呈现。实现与发布需要另行授权。
+description: "Generates concept-design decision proposals. Use when explicitly invoked. 整理取舍、验收与确认状态。"
 metadata:
   language: zh-CN
   translation_of: settle-the-concept-design
-  version: "0.1.3"
+  version: "0.1.4"
 ---
 
 # 把概念设计定下来

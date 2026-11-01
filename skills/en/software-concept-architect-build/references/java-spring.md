@@ -1,10 +1,9 @@
 # Java / Spring
 
-Read for Java targets. [Architecture](architecture.md) owns module relationships and examples.
-Use Gradle multi-project or Maven multi-module builds: one library JAR per module and server as the
-sole Spring Boot startup application.
+Map [the architecture](architecture.md) to Gradle projects or Maven modules. Each module produces a
+library JAR; server is the only Spring Boot application.
 
-## Build skeleton
+## Build layout
 
 ```text
 settings.gradle.kts
@@ -13,35 +12,36 @@ apps/server/                          # build.gradle.kts + startup/assembly
 modules/
   concepts/reservation/               # build.gradle.kts + CONCEPT.md
   concepts/payment/                   # separate src/main/java and src/test/java
-  syncs/                              # build.gradle.kts + SYNCS.md
-  gateway/                            # build.gradle.kts + Controller/DTO
+  composition/                        # build.gradle.kts + SYNCS.md
+    src/main/java/<base>/composition/syncs/  # named rules; not a build unit
+  api/                                # build.gradle.kts + Controller/DTO
   shared/                             # build.gradle.kts + foundational types
 ```
 
-Example `settings.gradle.kts`:
+Declare the projects:
 
 ```kotlin
 include(":apps:server", ":modules:concepts:reservation", ":modules:concepts:payment",
-        ":modules:syncs", ":modules:gateway", ":modules:shared")
+        ":modules:composition", ":modules:api", ":modules:shared")
 ```
 
-Library projects use `java-library`; only server produces an executable Boot JAR. Gateway dependency fragment:
+Use `java-library` for libraries; only server builds an executable Boot JAR. Api depends on composition:
 
 ```kotlin
 dependencies {
-    implementation(project(":modules:syncs"))
+    implementation(project(":modules:composition"))
     implementation(project(":modules:shared"))
     // Web framework dependencies follow the project's version conventions.
 }
 ```
 
-Syncs depends on concept projects; server assembles modules. Use Gradle `api` only when a public
-signature exposes a dependency type; otherwise use `implementation`. Syncs application DTOs keep concept types out of their public signatures so gateway needs no concept
-dependency. Maven uses parent aggregation and
-explicit module dependencies for the same boundaries. Java packages alone do not establish
-independent builds.
+Composition depends on concept projects. Use Gradle `api` only when a public signature exposes a
+dependency type, otherwise `implementation`. Composition DTOs must not force api to import concepts.
+Maven expresses the same boundaries through parent aggregation and explicit dependencies.
 
-## Module internals and assembly
+## Interfaces and assembly
+
+Use this Clean layout only when domain and application responsibilities need separation:
 
 ```text
 io.example.concept.reservation/
@@ -53,39 +53,37 @@ io.example.concept.reservation/
   adapter/persistence/               # repository implementations
 ```
 
-Inner layers declare storage ports; application code depends on them and adapters implement them.
-Keep implementations package-private where possible. Assemble with module-local Bean configuration
-or a restricted public configuration entry, rather than server importing internals. Concept
-signatures contain no HTTP/JSON types. Syncs implements application APIs using named methods/rule
-objects; gateway controllers invoke those APIs and translate protocols.
+Inner code declares ports; adapters implement them. Keep implementations package-private where
+possible. Assemble through module-local Bean configuration or restricted public factories.
+Concept interfaces contain no HTTP/JSON types. Composition implements named rules and application
+interfaces; controllers call those interfaces and map protocols.
 
-## Boundary and behavior verification
+## Checks
 
-Build units and Spring Modulith application modules are distinct boundaries; verify both. Configure
-explicit discovery for the project version so every concept leaf package, syncs, gateway, and shared
-is checked. Group directories and multiple JARs do not automatically guarantee correct discovery.
+Verify both build units and Spring Modulith modules. Configure discovery for the project version so
+all concept leaves, composition, api, and shared are checked; directories and JARs alone do not prove this.
 
-- `ApplicationModules.of(App.class).verify()` checks cycles and internal access. Also declare allowed
-  dependencies, restricting concepts to necessary shared types. Default verification permits concept API dependencies.
-- Use ArchUnit for source layers, gateway access limited to syncs/shared, and server's assembly-only
-  access. Check that build manifests and source boundaries agree.
-- `@ApplicationModuleTest`/module tests check OPs and invariants; composition tests cover application
-  scenarios, concurrent correlation, and recovery.
-- `@Transactional`, `@ApplicationModuleListener`, and event publication records do not automatically
-  provide conjunctive matching, flow bindings, or effect idempotency. Follow the entrypoint's commit/completion contract.
+- `ApplicationModules.of(App.class).verify()` checks cycles and internal access. Declare allowed
+  dependencies too, since it permits concept-to-concept public API dependencies by default.
+- Use ArchUnit to check internal layers, api access to composition/shared, server assembly access,
+  and agreement between source dependencies and build manifests.
+- Use `@ApplicationModuleTest` or module tests for operational principles/invariants and composition tests for scenarios,
+  concurrent correlation, and recovery.
+- Transactions, application-module listeners, and publication records do not alone provide joint
+  matching, flow bindings, or idempotency. Follow [execution and recovery](execution.md).
 
 ```bash
 ./gradlew :modules:concepts:reservation:build
-./gradlew :modules:syncs:test
+./gradlew :modules:composition:test
 ./gradlew :apps:server:check :apps:server:bootJar
 # Equivalent targeted Maven build; substitute the actual artifactId.
 ./mvnw -pl concept-reservation -am verify
 ```
 
-A module build includes required dependencies. Separately run all module checks and application
-assembly tests. Ensure server's architecture tests scan every module on the multi-module classpath.
+Use actual project names. Targeted builds include dependencies. Run all module and assembly checks;
+ensure server's architecture tests scan every module on the classpath.
 
-Sources: [Gradle multi-project builds](https://docs.gradle.org/current/userguide/multi_project_builds.html),
+Sources: [Gradle projects](https://docs.gradle.org/current/userguide/multi_project_builds.html),
 [Maven reactor](https://maven.apache.org/guides/mini/guide-multiple-modules.html),
 [Modulith model](https://docs.spring.io/spring-modulith/reference/fundamentals.html),
 [verification](https://docs.spring.io/spring-modulith/reference/verification.html).

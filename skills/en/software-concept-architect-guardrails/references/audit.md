@@ -1,31 +1,26 @@
-# Specification Coverage Audit
+# Specification coverage audit
 
-Use `audit` for read-only discovery before creating or changing specifications. Inspect project
-instructions, the overall PRD, CONCEPT/SYNCS/PIPELINE files, implementation modules, entry points,
-tests, schemas, migrations, build boundaries, and generated maps.
+Run audit read-only. Read project conventions, PRD/staged indexes, specifications, code entries,
+state/schema/migrations, tests, build manifests, and existing maps within scope. Skip dependency and
+generated/build trees, but inspect single-file core modules too.
 
-Check build modules separately from concept qualification: read Cargo/Gradle/Maven/package manifests
-for physical boundaries. Independent syncs, gateway, shared, and server builds do not make them
-concepts. SYNCS covers syncs; technical wiring/protocol code does not need a synthetic CONCEPT.
-If such code owns independent business state, examine its concept ownership.
+## Classify evidence
 
-## Classify
+For each module or flow, record one status: covered, staged, missing, support code, or unverified.
+Name the authoritative file and actual coverage, or explain the missing evidence/skip reason.
+An ancestor file covers a module only when its content does.
 
-For every module or flow, record one state:
+Build units and concepts are different. Concepts need independent purpose and coherent behavior;
+composition rules belong in SYNCS, data transformations in PIPELINE, and protocol/wiring/types may
+need neither. Tables, classes, logs, queues, imports, and file counts are only search clues.
+Report direct concept calls as coupling, even through public interfaces.
 
-- covered by an authoritative specification with a valid index link;
-- staged because the target module does not yet exist;
-- missing despite evidenced concept behavior or coordination;
-- not a concept/synchronization/pipeline, with the observed reason;
-- unverified because required material could not be read.
+## Report and plan
 
-Distinguish facts from inferred purpose and open design. Do not infer a concept merely from a table,
-class, route, service, log, or queue. A candidate needs an independent purpose and coherent
-behavior.
+Return scope, counts, candidates with locations, broken links, and migration work. Do not report a
+coverage percentage without enumerating its denominator. Coverage proves neither fitness nor correctness.
 
-## Plan and Completion
-
-Return scan scope, coverage counts, candidates, broken references, and a dependency-ordered command
-plan. Each command names the mode, path, evidence, expected artifact, and prerequisite. Do not
-execute repair in audit mode. Complete only after every scanned candidate has a state and every
-declared specification/index link has been checked.
+Order backfill commands by actual code dependencies, handling cycles together and marking boundary
+problems. Code dependencies determine this order, not product dependencies. Each command states mode,
+path, evidence, expected artifact, and prerequisite; sort paths within a batch. Execute no repairs.
+Send freshness checks to drift, maps to map, and purpose/conformance review to review.

@@ -1,8 +1,8 @@
 # TypeScript
 
-目标为 TypeScript 时读取。模块关系与案例见 [工程架构](architecture.md)。采用 pnpm workspace，每个 concept、syncs、gateway、shared 一个可独立构建/测试的 package，server 统一装配与启动。
+将[工程架构](architecture.md)映射为 pnpm workspace。每个 concept、composition、api、shared 包独立构建和测试，由 server 装配。
 
-## 工程骨架
+## 包与导出
 
 ```text
 pnpm-workspace.yaml
@@ -10,46 +10,50 @@ apps/server/                        # package.json、tsconfig.json、src/main.ts
 modules/
   concepts/reservation/              # package.json、tsconfig.json、CONCEPT.md
   concepts/payment/                 # 同上
-  syncs/                            # package.json、tsconfig.json、SYNCS.md
-  gateway/                          # package.json、tsconfig.json、HTTP/DTO
-  shared/                           # package.json、tsconfig.json、基础类型
+  composition/                        # package.json、tsconfig.json、SYNCS.md
+    src/syncs/                      # 具名同步规则，非独立构建单元
+  api/                                # package.json、tsconfig.json、HTTP/DTO
+  shared/                             # package.json、tsconfig.json、基础类型
 ```
 
-workspace 包含 `apps/*`、`modules/concepts/*` 和 `modules/*` 的实际包；增加组目录时更新 glob。每包声明自己的依赖与 build/test 脚本。内部组织为 `src/index.ts`、`api.ts`、`domain/`、`application/`、`adapter/`；`index.ts` 仅导出业务接口、结果类型与必要装配入口。
+workspace 纳入 `apps/*`、`modules/concepts/*` 和 `modules/*` 的实际包，分组后更新 glob。
+各包声明依赖和脚本，`src/index.ts` 只导出公开契约与受限工厂。设施使用端口，按需增加 domain/application。
 
-包清单片段（使用 ESM 与声明文件的工程）：
+ESM 包示例：
 
 ```json
 {
-  "name": "@app/gateway",
+  "name": "@app/api",
   "type": "module",
   "exports": {".": {"types": "./dist/index.d.ts", "import": "./dist/index.js"}},
-  "dependencies": {"@app/syncs": "workspace:*"},
+  "dependencies": {"@app/composition": "workspace:*"},
   "scripts": {"build": "tsc -b"}
 }
 ```
 
-配置 TypeScript project references 与 `composite`/声明输出，使构建顺序遵循依赖；不能仅写 workspace 清单就宣称可独立编译。`exports` 限制消费入口，源码边界检查另阻止相对路径或 tsconfig alias 穿透其他包。
+用 project references、`composite` 和声明输出构建依赖图。仅列入 workspace 不足以证明独立编译。
+exports 限制消费入口，源码检查还须阻止相对路径和 tsconfig alias 穿透内部实现。
 
 ## 接口与装配
 
-端口用 `interface`，adapter 实现，由 server 经受限公开工厂注入。概念不依赖其他概念，外部身份用泛型或 branded ID。syncs 公开应用 DTO；gateway 仅调用 syncs，外部协议与 JSON 映射留在 gateway。
+内层声明端口 interface，adapter 实现，server 经公开工厂注入。
+外部身份用泛型或 branded 类型，不引入另一概念。composition 定义应用 DTO，api 映射协议与 JSON 并调用 composition。
+具名规则函数或对象遵循[执行契约](execution.md)，监听器与 Promise 链本身不保证匹配和恢复。
 
-规则实现为具名函数/对象，保留输出 case、flow 与对象绑定。async mediator 或规则引擎均按正文兑现匹配和恢复；选引擎时核验实际版本能力，不能由事件监听或 Promise 链推定完整同步语义。
-
-## 验证
+## 检查
 
 ```bash
 pnpm --filter '@app/reservation...' build
 pnpm --filter @app/reservation test
-pnpm --filter @app/syncs test
+pnpm --filter @app/composition test
 pnpm -r build
 pnpm -r test
 ```
 
-名称与脚本按包清单替换；定向构建含依赖闭包。用 dependency-cruiser 或等价工具检查概念零互引、gateway 仅依赖 syncs/shared、源码层次与公开入口；server 的多模块装配单独允许。类型检查通过不证明访问合法，包 exports 也不阻止所有源码级绕过。
+包名和脚本按清单替换，定向构建包含依赖。
+用 dependency-cruiser 等检查包依赖、源码层次、公开入口、概念独立性、api 只访问 composition/shared，以及 server 的装配访问。
+类型检查与 exports 本身不能证明全部边界。
 
-依据：[pnpm workspace](https://pnpm.io/workspaces)、
-[筛选依赖闭包](https://pnpm.io/filtering)、
+依据：[pnpm workspace](https://pnpm.io/workspaces)、[依赖筛选](https://pnpm.io/filtering)、
 [TypeScript project references](https://www.typescriptlang.org/docs/handbook/project-references.html)、
-[Node package exports](https://nodejs.org/api/packages.html#package-entry-points)。
+[Node exports](https://nodejs.org/api/packages.html#package-entry-points)。

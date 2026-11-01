@@ -1,54 +1,28 @@
 # Design artifacts
 
-Confirm the three alignment sections with the user, then write the design record from those same
-facts. Pending concepts, scenarios, and subsets do not enter confirmed Concepts or Synchronizations.
+Confirm the inventory, application scenarios, and product subsets before adding them to the
+confirmed record. Keep pending items separate and reuse earlier confirmation.
 
 ## Alignment
 
-### Concept inventory
+| Section | Required content |
+| --- | --- |
+| Concept inventory | Name, purpose, operational principle, familiar/variant/new, user-visible state, confirmation status |
+| Application scenarios | Beneficiary, purpose, current and desired behavior, constraints, observable conditions/results, participating concepts and rules, counterexamples |
+| Dependencies and subsets | Requirement-backed dependencies, explanation order, viable subsets, minimum product, entries, remaining rules, and external resources |
 
-| Concept | Purpose | OP | Familiar or new | User-visible state | Confirmation |
-| --- | --- | --- | --- | --- | --- |
-| <name> | <one need> | <archetypal scenario: what the user sees after the actions> | familiar / variant / new | <state a user can explain> | confirmed / pending |
+For each item, distinguish evidence, inference, and unresolved assumptions. Record confirmed or
+pending status. `A → B` means retaining A in this product requires B; it is not a code dependency.
 
-### Application purpose and scenarios
+## Confirmed record
 
-<beneficiaries, application purpose, current state, desired outcome, constraints; source / inference / open; confirmed / pending>
+| Section | Required content |
+| --- | --- |
+| Concepts | Purpose, state, actions, operational principle, optional queries/notes; reasons for all eight qualification decisions |
+| Synchronizations | App/include/sync rules grouped by entry or responsibility and linked to confirmed scenarios |
+| Synchronization diagram | Rule nodes with all conjunctive when inputs, then targets, and separate where reads |
+| Exclusions and open decisions | Candidate/action/assumption, decision, source, impact, and the work it blocks |
 
-<If <observable condition>, then <observable result>. Concepts: <names>. Synchronizations: <rule names>. Misfit: <counterexample, or leave empty>. Confirmation: confirmed / pending>
-
-### Dependencies and subsets
-
-Explanation order: <concepts explained before those that depend on them>
-
-<A → B means including A requires B>
-
-Viable subsets: <concepts in each subset>
-
-MVP: <subset, and whether its entry, remaining rules, and external resources are satisfied>
-
-Confirmation: confirmed / pending
-
-## Design record
-
-### Concepts
-
-<purpose, state, actions, OP, and optional queries/notes per spec-format.md, for each confirmed concept>
-
-Argument: <why the contract supports the OP and the result fulfills the purpose; counterexamples or open points>
-
-Seam: <decision and reasons for each of the eight criteria>
-
-### Synchronizations
-
-<app / include / sync, grouped by entry or rule responsibility, tied to a confirmed application scenario and purpose>
-
-### Synchronization diagram
-
-<when → rule node → then; where reads marked separately>
-
-<Checks composition only. Keep multi-source conjunctions, multiple targets, and query edges here; this is not the product dependency graph>
-
-### Exclusions and open decisions
-
-<candidate / action / assumption, conclusion, source, and impact. Pending items belong here>
+Follow [the specification contract](spec-format.md). Explain how each contract supports its
+operational principle and how the result meets the purpose. State gaps instead of implying proof.
+Keep the synchronization diagram separate from product dependencies.

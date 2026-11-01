@@ -1,84 +1,88 @@
-# Engineering Architecture
+# Engineering architecture
 
-Read when defining or checking project structure. Principles live in [SKILL.md](../SKILL.md);
-read build configuration only for the target language.
+Use this page for module responsibilities. Read only the target language mapping for build configuration.
 
-## Build and runtime boundaries
+## Dependencies and state
 
 ```text
-apps/server/                     # sole startup application; configuration and assembly
-modules/
-  concepts/<group>/<concept>/    # each leaf is a build unit
-    CONCEPT.md
-    src/                        # public API + domain/application/adapter
-  syncs/                        # independent build unit; public application API
-    SYNCS.md                    # named rules grouped by flow
-    src/                        # rules; execution ports/adapters when needed
-  gateway/                      # independent build unit; protocol/DTO/error mapping
-  shared/                       # independent build unit; passive foundational types
+api → composition → concepts
+server assembles all modules through public factories
 ```
 
-Groups and flows aid navigation; they do not automatically become modules. Building a module also
-builds its declared dependency closure. Modules assemble into one process; separate builds do not
-imply separate startup or deployment. A single-module task delivers only its required scope.
+The first line shows business calls. Concepts never call or import one another.
+Server assembles public factories; coordination stays in composition.
 
-| Module | Business dependencies | Public surface |
+| Module | Allowed business dependencies | Public interface |
 | --- | --- | --- |
-| concept | shared as needed | actions, queries, result types, necessary completion events |
-| syncs | concept APIs, shared | application actions/results; signatures use syncs/shared types |
-| gateway | syncs APIs, shared | external protocol; route/configuration entry for server |
-| shared | no business modules | passive identity/time types |
-| server | public assembly entries | startup; multi-module wiring is not business coordination |
+| concept | Shared as needed | Actions, queries, result types, necessary completions |
+| composition | Concept interfaces, shared | Application requests/results using its own or shared types |
+| api | Composition interfaces, shared | Protocol mapping and route/configuration factories |
+| shared | None | Passive identity/time types |
+| server | Public assembly entries | Startup and configuration |
 
-Distinguish business APIs from assembly APIs; syncs uses only concept business APIs. Concepts
-encapsulate storage. Database infrastructure may be shared, while reads/writes go through the owning
-concept. Identify state owners in migrations.
+Each concept owns its business state and storage access. Database infrastructure may be shared,
+but reads/writes go through the owner, identified in migrations. Composition may retain execution
+records, not independent business state.
 
-## Internal dependencies
-
-- `domain`: models, invariants, pure rules; the inner layer needing storage declares its port.
-- `application`: implements public actions/queries, uses domain logic and ports, owns use-case transaction boundaries.
-- `adapter`: implements ports against storage/external facilities; technical details depend on inner contracts.
-- Assembly entry: constructs implementations and returns public interfaces while hiding internals.
-
-Syncs application code holds named rules; recovery may require execution ports and adapters. Business
-state remains in concepts. Gateway is an inbound adapter; add no domain layer for directory symmetry.
-Use crate modules, Java packages, or TypeScript directories for internal layers; do not split every
-layer into a build unit by default.
-
-## One request, including failure
-
-Example confirmed contract: Reservation produces Held, Confirmed, or Cancelled; Payment produces
-Paid or Declined. Declined payment must eventually release the reservation. This causal sketch
-does not replace the specification's exact fields and cases.
+## Build layout
 
 ```text
-gateway: HTTP request → syncs.reserve (establish request/flow correlation)
-syncs: request completion → Reservation.hold
-syncs: hold[Held] → Payment.charge
-syncs: charge[Paid] → Reservation.confirm
-syncs: confirm[Confirmed] → success response
-syncs: charge[Declined] → Reservation.cancel
-syncs: cancel[Cancelled] → declined response
-gateway: application result → HTTP response
+apps/server/                 # sole startup application
+modules/
+  concepts/<name>/           # one build unit per concept
+    CONCEPT.md
+    src/
+  composition/               # application interfaces and coordination
+    SYNCS.md
+    src/
+      syncs/                 # named rules; not another build unit
+  api/                       # protocol, DTO, and error mapping
+  shared/                    # passive types
 ```
 
-Each edge is a named rule binding a prior completion. Carry flow and reservation identity through
-matching. If cancellation temporarily fails, completed hold/charge actions remain: persist pending
-execution, respond under the confirmed entry contract, and retry cancellation without charging again.
-Exhausted retries must be observable; do not claim release prematurely. Compensation does not erase
-history. Sequential implementations must preserve the same correlation, branches, and recovery.
+`composition` names the module, `syncs` its rules, and `sync` one rule. Keep one SYNCS at the module root,
+grouped by entry or responsibility. Adapt source paths to the language, such as Java's composition.syncs package.
 
-## Decisions that prevent mistakes
+Each module has a manifest, public interface, and build/test entry. Targeted builds include declared
+dependencies; separate builds do not imply separate startup/deployment. Groups aid navigation and
+are not automatically build units. Deliver single-module tasks without an unrelated application skeleton.
 
-| Correct | Counterexample and consequence |
+## Ports and layers
+
+The code needing a facility declares its contract; an adapter implements it. Server injects adapters
+through restricted factories. Test core policies without HTTP, SQL, or a specific scheduler.
+
+| Module | Internal organization |
 | --- | --- |
-| module manifest, API, and test entry | folders alone cannot prove independent builds |
-| gateway → syncs → concept API | controller orchestration or concept calls scatter application policy |
-| inner port implemented by adapter | domain imports HTTP/SQL implementations and binds rules to infrastructure |
-| restricted public factory/configuration for server | exposing every internal package lets business code bypass boundaries |
-| named rules match cases and correlation | sequential `?`/exception propagation leaves partial state unmanaged |
-| build graph plus source/API checks | acyclicity alone misses compilable but forbidden concept dependencies |
+| composition | Named rules and application interfaces; execution ports/recovery adapters as needed |
+| concept | Keep simple behavior together; use domain/application/adapter when responsibilities differ |
+| api | Inbound adapters; add no domain layer without domain responsibilities |
 
-Verify module builds, API/layer boundaries, concept OPs/invariants, rule branches, and end-to-end
-failure recovery separately. Static boundary checks do not establish correct behavior.
+With Clean layers, domain holds models/invariants, application implements actions/queries, and
+adapters implement facilities. Dependencies point inward. Do not add empty layers, forwarding wrappers,
+or duplicate ports around existing interfaces. Internal layers use packages/directories rather than
+separate build units. Existing confirmed conventions take precedence; these defaults do not authorize migration.
+
+## Example and checks
+
+For a confirmed reservation/payment contract:
+
+```text
+request completion → Reservation.hold
+hold[Held]         → Payment.charge
+charge[Paid]       → Reservation.confirm
+charge[Declined]   → Reservation.cancel
+```
+
+Match flow and reservation identity, respond after the relevant completion, and retain pending
+cancellation on failure. Follow [execution and recovery](execution.md) for exact obligations.
+
+| Prefer | Avoid |
+| --- | --- |
+| Check manifests and source access. | Treat folders or an acyclic graph as proof of every boundary. |
+| Coordinate through named rules. | Let controllers coordinate concepts or concepts call one another. |
+| Expose restricted assembly factories. | Open every implementation package for wiring. |
+| Test refusal, partial completion, and retry. | Treat exception propagation as recovery. |
+
+Verify builds, public interfaces, applicable layers, concept invariants/operational principles, rules,
+and application scenarios. Static checks alone do not establish behavior.

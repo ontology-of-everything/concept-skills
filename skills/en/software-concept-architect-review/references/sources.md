@@ -1,18 +1,16 @@
-# Audit Sources
+# Review sources
 
-| Primary source                                                                                                                                                                                                                                       | Adopted knowledge                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [Concept Purposes and Synchronization](https://essenceofsoftware.com/posts/distillation/)                                                                                                                                                            | applications may have several purposes; each concept has its own; synchronization composes them                        |
-| [Jackson 2015, abstract and sections 8–9](https://groups.csail.mit.edu/sdg/pubs/2015/concept-essay.pdf)                                                                                                                                              | audit the purpose/OP argument; negative scenarios expose misfit; a weak argument alone does not prove a system useless |
-| [Qualification](https://essenceofsoftware.com/tutorials/concept-basics/criteria/), [composition](https://essenceofsoftware.com/tutorials/concept-basics/sync/), and [dependency](https://essenceofsoftware.com/tutorials/concept-basics/dependency/) | API programmers are users; under/over-synchronization; concept dependencies and product subsets                        |
-| [Beyond Objects](https://arxiv.org/abs/2606.27258) and [WYSIWID](https://arxiv.org/abs/2508.14511)                                                                                                                                                   | concept and causal-rule semantics                                                                                      |
-| [wyx](https://github.com/jlifyio/wyx)                                                                                                                                                                                                                | upstream drift scanning mechanics adapted to this repository's semantics                                               |
+| Source | Used for |
+| --- | --- |
+| [Concept purposes](https://essenceofsoftware.com/posts/distillation/) | Separate application and concept purposes. |
+| [Jackson 2015, sections 8 and 9](https://groups.csail.mit.edu/sdg/pubs/2015/concept-essay.pdf) | Review purpose/OP arguments and counterexamples. A weak argument alone does not prove useless software. |
+| [Qualification](https://essenceofsoftware.com/tutorials/concept-basics/criteria/), [composition](https://essenceofsoftware.com/tutorials/concept-basics/sync/), [dependency](https://essenceofsoftware.com/tutorials/concept-basics/dependency/) | API users, coordination defects, and product subsets. |
+| [Beyond Objects](https://arxiv.org/abs/2606.27258) and [WYSIWID](https://arxiv.org/abs/2508.14511) | Concept contracts and causal rules. |
+| [wyx](https://github.com/jlifyio/wyx) | Drift-scanning mechanics adapted to this repository. |
 
-Audit definition independence, fitness for purpose, and the repository's no-module-reference rule
-separately. Query interfaces, Markdown notation, the five-dimension report, and severity calibration
-are local conventions. Reading public abstract state is not a theoretical violation. Continuous CI
-complements, rather than replaces, purpose review.
+Review definition independence, purpose fulfillment, and engineering dependencies separately.
+Query APIs, Markdown, report dimensions, and severity are local conventions; public abstract-state
+reads are allowed. Tests do not replace purpose review.
 
-The format baseline is WYSIWID v1 sections 4–6, verified 2026-09-14. Named records, result cases,
-state reads, and synchronization semantics are consolidated in `spec-format.md`; legacy queries and
-Requesting remain labeled extensions.
+[The contract](spec-format.md) adapts [WYSIWID v1 sections 4 to 6](https://arxiv.org/html/2508.14511v1#S4)
+and labels query/entry extensions. The format baseline was checked on 2026-09-14.

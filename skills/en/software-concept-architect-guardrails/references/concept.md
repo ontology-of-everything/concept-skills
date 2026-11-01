@@ -1,26 +1,25 @@
-# Concept Specification
+# Concept specification
 
-Use `concept` to create a confirmed concept specification or backfill an evidenced contract from
-implementation. Read `spec-format.md` first.
+Use [the contract](spec-format.md) to create a confirmed specification or backfill one from code.
 
-- Purpose states one evaluable need; the OP uses a discriminating scenario to show fulfillment;
-  state and actions define allowed behavior.
-- Core sections remain independent of other concept definitions. Type parameters express identity
-  without field assumptions. Cross-concept business behavior belongs in SYNCS; notes hold
-  application context.
-- State ownership defines the seam: writes use declared actions, reads use public abstract state or
-  declared queries, concepts neither call one another nor share mutable state.
-- An action declaration says what may occur; a completion records what did occur. Logging or metrics
-  are not concepts without independent purpose and behavior.
+## Establish the boundary
 
-## Work
+A purpose states one need; state/actions define allowed behavior; the operational principle explains
+a useful result. The definition assumes no other concept's fields. Use type parameters for external
+identities, SYNCS for coordination, and notes for application context.
 
-For creation, derive purpose, OP, state, actions, cases, and assumptions from confirmed design. For
-backfill, trace public entry points, persistence, invariants, errors, and tests; label observed
-facts, inferred purpose, current defects, and open decisions. Never use an idealized OP to justify
-defective behavior.
+Writes go through declared actions; reads use public abstract state or queries. Concepts neither
+call one another nor share mutable state. An action declares allowed behavior; a completion records
+an occurrence. Events, logs, and metrics alone do not establish a concept.
 
-Write one authoritative CONCEPT file, update the overall index, and identify required
-synchronizations without embedding them. Completion requires named types, cardinality and
-initial-state facts where needed, complete observable action cases, an evidenced purpose argument,
-and resolvable links.
+## Write from evidence
+
+Inspect exports, callers, persistence, failures, invariants, and tests. Separate facts, inferred
+purpose, defects, and open decisions. An idealized OP must not justify defective code.
+Check how actions produce the OP result and how that result meets the need; report counterexamples.
+
+Write confirmed types, cardinality, initial state, actions/results, and queries where applicable.
+Private helpers/caches need no contract entry without observable effect. Preserve gaps rather than
+inventing behavior. Discovery only lists candidates. Keep one CONCEPT, colocate its PIPELINE, and
+update the index. Identify required syncs without embedding them. Record coupling in decisions or
+drift reports, not legacy interactions/dependencies sections. Complex model choices go to design.

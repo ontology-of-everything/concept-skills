@@ -1,27 +1,22 @@
-# 订位转录例：权威文件与追溯
+# 订位转录例
 
-展示 Reserving/Availability 已确认片段的落盘与追溯，非论文原文或完整预约产品。
+转录以下确认片段，不视为完整产品，也不补造缺失字段。
 
-## 已确认输入
+## 确认输入与位置
 
-- Reserving [U, S] 维护预约承诺；Availability [V] 提供时段。
-- Reserving.reserve 成功返回 reservation；冲突返回 Conflict 且不改状态。
-- Availability._find 返回该 venue 全部 offered 时段，空集合表示无候选。
-- 用户选择单一 slot 后，Requesting/reserve 的具名输入为 user/slot，完成输出为 request；Requesting/respond 接受 request 加 reservation 或 error，完成输出为空。
-  应用提供 UserId/VenueId/RequestId；Conflict 对应 Reserving 的错误类型。响应按同一 flow/request 及 user/slot 关联。
+Reserving 维护时段承诺，Availability 提供时段。reserve 成功返回 reservation，冲突返回 Conflict 且不改状态。
+_find 返回场所全部 offered 时段，空集表示没有候选。
 
-## 转录落点
+用户选一个时段。Requesting/reserve 输入 user/slot、输出 request；respond 输入 request 加 reservation 或 error，输出为空。
+应用提供 UserId、VenueId、RequestId，Conflict 对应 Reserving 错误。按 flow/request 和 user/slot 关联响应。
 
-| 模型内容 | 模块已存在 | 尚无模块 |
+| 内容 | 模块已建 | 模块未建 |
 | --- | --- | --- |
-| Reserving 的完整四节 | `reserving/CONCEPT.md` | `docs/prd/concepts/Reserving.md` |
-| Availability 的完整四节 | `availability/CONCEPT.md` | `docs/prd/concepts/Availability.md` |
-| 应用实例化与规则 | `syncs/SYNCS.md` | `docs/prd/SYNCS.md` |
-| 用户需要、依赖、图及未决项 | `docs/prd/README.md` | 同左 |
+| 概念四节 | 模块的 CONCEPT.md | docs/prd/concepts/ |
+| 实例与规则 | composition/SYNCS.md | docs/prd/SYNCS.md |
+| 需要、依赖、图与未决 | docs/prd/README.md | 同左 |
 
-四节从确认模型逐项转录；本例未提供的字段不得推断。CONCEPT.md 内仍使用局部类型参数，实际实例化只进入 SYNCS.md。
-
-## syncs/SYNCS.md 片段
+局部类型参数留在 CONCEPT，实际类型实例化归 SYNCS。
 
 ```text
 # app Reservations
@@ -59,8 +54,8 @@ then {
 
 ## 验收与缺口
 
-将“成功预约后可兑现承诺”的 principle 编为代表性验收场景，链接 reserve/grant 契约并保留到场等前提；grant 或到场契约缺失时标为待补充，不能声称验收已可执行。冲突且状态不变的边界场景追溯到 reserve 的错误 case。两者均源于模型，不发明新要求。
+预约承诺验收关联 reserve/grant，保留到场前提。缺 grant 或到场契约时，验收仍不完整。
+冲突且状态不变关联 reserve 的错误分支。
 
-`_find` 的空集合不能转录成 `[error: E]`，多候选也不能变成预约全部。若上游尚未说明身份、并发、到场条件或取消入口，把这些保留为未决；只有用户确认后才更新对应规格及派生图。
-
-核对：确认元素落点唯一，索引有效；同步图保留 accepted/rejected 合取输入，query 不画为完成事件。
+不把 _find 空集转成未声明错误，也不将多候选转成全部预约。身份、并发、到场和取消缺口须保留到确认。
+核对唯一文件归属、有效索引、accepted/rejected 的合取输入，并将查询读取与完成事件分开。

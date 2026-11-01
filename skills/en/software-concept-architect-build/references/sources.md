@@ -1,25 +1,25 @@
-# Implementation Sources
+# Implementation sources
 
-Verified 2026-09-25. These are the latest relevant public versions found and checked in this review;
-syntax across papers is not a single engine API.
+Publication dates identify consulted versions. Engineering choices were updated on 2026-11-01.
 
-| Source | Adopted knowledge and limits |
+| Source | Used for |
 | --- | --- |
-| [Beyond Objects v1, 2026-06-25, §§12–13](https://arxiv.org/html/2606.27258v1) | Partition actions/relations while sharing identities; no cross-concept references; queries return bindings and are not actions; separate requests from requested actions |
-| [Making Software Meaningful v1, 2026-06-09, §§4.4–4.5, 5.2](https://arxiv.org/html/2606.11051v1) | Align action meanings across specifications, code, and logs; independent granular syncs; Requesting can encapsulate HTTP/routing without extra layers. TypeScript classes, DSL, and folders are example choices |
-| [WYSIWID v2, 2025-08-27, §§3, 5–6](https://arxiv.org/html/2508.14511v2) | Completion matching, bindings, same-flow correlation, and engine firing recovery; the execution model adopted here, not the only possible concept implementation |
-| [Jackson 2015, §8](https://groups.csail.mit.edu/sdg/pubs/2015/concept-essay.pdf) | OPs explain purpose fulfillment; conformance and model fitness remain distinct |
+| [Beyond Objects v1, 2026-06-25, sections 12 and 13](https://arxiv.org/html/2606.27258v1) | Independent concepts sharing identities; relation queries; requests distinct from requested actions. |
+| [Making Software Meaningful v1, 2026-06-09, sections 4.4, 4.5, 5.2](https://arxiv.org/html/2606.11051v1) | Shared meanings across specifications/code/logs, granular rules, and Requesting's HTTP/routing example. |
+| [WYSIWID v2, 2025-08-27, sections 3, 5, 6](https://arxiv.org/html/2508.14511v2) | Completion matching, binding, flow correlation, and firing recovery. |
+| [Jackson 2015, section 8](https://groups.csail.mit.edu/sdg/pubs/2015/concept-essay.pdf) | Purpose/OP arguments, distinct from implementation conformance. |
 
-[The shared specification contract](spec-format.md) retains named-record notation adapted from
-WYSIWID v1 as a repository format baseline, not a claim that theory stops at v1. Its query extension
-aligns with Beyond Objects; Requesting appears in both 2026 papers and is not merely legacy material.
-Preserve confirmed dialects and signatures rather than mechanically migrating them.
+[The local contract](spec-format.md) uses adapted WYSIWID v1 record notation with query extensions.
+Preserve confirmed dialects; the papers do not define one interchangeable engine API.
 
-Engineering baseline, 2026-10-08: a modular monolith by default, independent module builds, Clean
-Architecture internally, independent syncs and gateway modules, and one server process for assembly.
-Keep verifiable rule boundaries without hidden sync-to-sync causality. These are repository choices,
-not paper requirements; the papers allowing protocols inside Requesting do not contradict this
-engineering profile. Language references provide mappings and technical sources; choose mediators
-or engines for actual execution needs. Public abstract state does not expose physical storage or bypass authorization. Transactions,
-outboxes, external-effect idempotency, response handling, and cycle controls are engineering measures,
-not a mandatory Jackson technology stack. Verify recovery claims against durable firing records.
+## Engineering choices
+
+This repository defaults to independently built modules in one server process. Composition owns
+named rules; api maps protocols. [Ports and adapters](https://alistair.cockburn.us/hexagonal-architecture)
+isolate facilities. Add [Clean layers](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+when domain and application responsibilities differ. The papers require neither style and allow
+Requesting to encapsulate HTTP/routing.
+
+Choose mediator/engine, transactions, outbox, idempotency, responses, and loop controls to meet the
+contract. Verify recovery with durable records. Public state access opens neither private storage
+nor permissions. These are engineering decisions, not a mandatory Jackson stack.

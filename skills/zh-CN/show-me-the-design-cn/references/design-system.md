@@ -1,8 +1,9 @@
-# 设计语言：直接复用代码
+# 可复用设计代码
 
-**先复制下面的 CSS、HTML 和 JS，再替换项目内容。** 配色、字号、间距和断点以代码为准；全站只维护一份 `styles.css` 和 `main.js`。保留项目术语，字体使用本机回退或 `assets/` 中的本地文件。
+复制 CSS、HTML 与 JavaScript，将演示内容替换为项目证据。全站共用 styles.css 与 main.js，颜色、字体、间距和断点以代码为准。
+沿用项目术语，字体使用系统回退或本地资源。
 
-## styles.css：变量与布局
+## 样式
 
 ```css
 :root {
@@ -144,9 +145,10 @@ code { font: 14px/1.6 var(--font-mono); }
 }
 ```
 
-## index.html：章节与逐行对照
+## 章节与源码解释
 
-**每个 `.code-row` 放一行源码和对应解释。** 桌面左右并排；≤768px 时每行先代码、后解释。保留源码空格、真实行号与文件定位；插入 HTML 时转义 `& < >`，高亮只加标签，不改源码。下面是演示内容，交付时换成项目证据；新章节沿用结构并使用唯一 ID。
+每个 code-row 对应一行源码和解释，桌面并排，768px 以下逐行堆叠。
+保留空格、真实行号与文件链接。HTML 中转义 `& < >`，高亮不得改变源码，每节使用唯一 ID。
 
 ```html
 <!doctype html>
@@ -187,9 +189,9 @@ code { font: 14px/1.6 var(--font-mono); }
 </html>
 ```
 
-## main.js：导航与阅读位置
+## 导航
 
-只标记滚动位置与已到达章节，**不把阅读进度当作理解程度**。原生锚点保留 Tab、Enter 和浏览器历史行为；代码不接管方向键，不自动隐藏正文，不强制滚动。
+脚本记录滚动位置，不代表理解程度。原生锚点保留键盘与浏览器历史行为，不接管方向键、隐藏正文或强制滚动。
 
 ```js
 const nav = document.querySelector('.chapter-nav');
@@ -226,9 +228,16 @@ addEventListener('load', scheduleReading);
 updateReading();
 ```
 
-## 按内容替换的规则
+## 替换与检查
 
-- **角色与状态分开：** `.card.actor[data-actor="1"]` 表示固定角色，卡片内写角色名；结果用 `.status[data-status="success|error|info"]`，同时写“成功／失败／提示”。`--color-text-muted` 只作装饰；必要标签用正文或次级文字色。
-- **图随屏幕重排：** SVG 用 `viewBox`；480px 以下改为竖向坐标并同步调整箭头。必须保留宽图时，包进 `<div class="diagram" role="region" aria-label="图名" tabindex="0">`，在图旁提供文字说明。重绘后用同一概念 ID 恢复选择。
-- **交互可核对：** 按钮明确写“下一步／重置”；每次操作同时更新图、状态值与解释，用 `aria-live="polite"` 宣布结果。重置恢复演示初值。默认无自动入场动画；需要转场时复用 150/300/500ms 变量，遵循减少动态效果设置。
-- **验收：** 断网打开 `index.html`；在 1000/768/480/320px 检查无页面横向溢出、代码与解释逐行配对；Tab/Enter 能操作；禁用 JS 仍能读全部正文；页面不能滚动时进度为 0；正文对比度≥4.5:1，大字和控件边界≥3:1。
+`.card.actor[data-actor="1"]` 固定角色身份并显示名称，`.status[data-status="success|error|info"]` 表示结果，同时写明状态文字。
+--color-text-muted 只作装饰，必要标签用正文/次级文字色。
+
+SVG 使用 viewBox，480px 以下改竖向坐标并调整箭头。必须保留宽图时用
+`<div class="diagram" role="region" aria-label="图名" tabindex="0">` 包裹，旁边配解释，重绘后按概念 ID 恢复选择。
+
+按钮标明"下一步"和"重置"，同时更新图、数值与解释，用 aria-live="polite" 宣布结果。
+重置恢复演示初值。默认无入场动画，需要转场时用 150/300/500ms 并遵循减少动态效果设置。
+
+离线打开 index.html，检查 1000/768/480/320px、无整页横向溢出、源码解释配对、Tab/Enter 操作和禁用 JavaScript 后的可读性。
+不能滚动时进度为零。正文对比度至少 4.5:1，大字和控件边界至少 3:1。

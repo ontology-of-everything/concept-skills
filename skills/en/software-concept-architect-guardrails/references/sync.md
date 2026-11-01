@@ -1,27 +1,27 @@
-# Synchronization Specification
+# Synchronization specification
 
-Use `sync` to create or backfill causal application rules after reading `spec-format.md`.
+Create or backfill causal rules under [the contract](spec-format.md). Match completed actions,
+query public state, and call declared actions with bound values. Documentation groups are not
+runtime flow identity; each request, timer, or message needs an explicit entry contract.
 
-- `when` matches completed actions and selected inputs/outputs. Multiple patterns are conjunctive
-  within one causal flow.
-- `where` reads public abstract state or declared queries and produces zero, one, or many binding
-  sets. Zero emits nothing and does not imply an error or response.
-- `then` invokes declared actions once per binding set using only constants or bound values. Split
-  dependencies on future outputs into another rule.
-- Runtime flow is one causal instance rooted in an external event. `// flow:` is documentation
-  grouping, not a token. Requesting, timers, and messages each need explicit entry contracts.
+## Establish the rule
 
-## Work
+Start from application purpose and scenarios. Identify entry completions, success/error cases,
+bindings, outputs, response obligations, object/request correlation, partial completion, replay,
+and loops. One rule states one explainable decision. Actions enforce invariants atomically;
+a query cannot replace a write-time check.
 
-Starting from application purpose and end-to-end scenarios, identify entry completions, required
-coordination, success/error discrimination, bindings, outputs, correlation IDs, response
-obligations, concurrency, replay, partial completion, and loops. One rule expresses one explainable
-decision.
+For backfill, trace handlers, registration, mediators, and adapters to public actions. Mark inferred
+intent and defects. Direct concept calls or private SQL access cannot become valid syncs merely by
+transcription. Pure data transformation belongs in PIPELINE; difficult model choices go to design.
 
-For backfill, trace the mediator/engine and interface adapters to actual public actions. Preserve
-observed defects and mark inferred intent. Never translate direct concept calls into acceptable
-synchronization without reporting the independence violation.
+## Check completion
 
-Completion requires resolvable includes and instances, real action/query signatures, bound `then`
-inputs, explicit zero/many-match behavior where relevant, success/refusal/failure response coverage,
-request correlation, replay strategy, and a diagram that preserves conjunction and query edges.
+Use one SYNCS per composition module, grouping by entry/responsibility with unique rule identities.
+Resolve includes, instances, action/query signatures, and call parameters. Preserve zero/many-result
+behavior, request isolation, and all reachable response/retry/compensation/ignore decisions.
+Loops need termination or controlled continuation; depth limits are optional safeguards.
+
+Report rule count, scenario coverage, boundary findings, and unknowns. Missing application purpose
+stays open. Preserve conjunctive triggers, multiple targets, and query edges in diagrams, and retain
+behavior when migrating. Hooks list SYNCS but do not check its semantics.

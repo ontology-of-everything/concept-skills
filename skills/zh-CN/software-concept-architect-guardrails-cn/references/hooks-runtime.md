@@ -1,29 +1,31 @@
 # 可选 hooks 运行时
 
-焦点：哪些规格信息会被自动提示？runtime 保留 wyx v0.26.0 脚本/hooks 和 MIT 通知，插件清单已改名。规格工作不依赖 Claude Code；自动注入需 Claude Code、bash/jq。
+只在用户要求时启用，需要 Claude Code、bash 和 jq。保留 wyx v0.26.0 脚本与 MIT 通知，规格工作本身不依赖 hooks。
 
-## 能力与限制
-
-| hook | 本仓 Jackson 记法下的行为 |
+| Hook | 行为 |
 | --- | --- |
-| SessionStart | 列规格、覆盖线索、历史最后结果、mtime 提示和遮蔽告警；缺 jq 则警告 |
-| PreToolUse | Write/Edit/NotebookEdit 前向上找最近 CONCEPT/PIPELINE；只注入 PIPELINE data boundary，CONCEPT 提示无旧边界段 |
-| PostToolUse | 查 CONCEPT dependencies；本记法没有此节，因而静默 |
+| SessionStart | 列规格、历史最后快照、mtime 线索、遮蔽提示与缺 jq 警告。 |
+| PreToolUse | Write/Edit/NotebookEdit 前找最近 CONCEPT/PIPELINE，只注入 PIPELINE data boundary。 |
+| PostToolUse | 查旧 CONCEPT dependencies，本记法下静默。 |
 
-最近含 CONCEPT/PIPELINE 的目录终止边界查找，SYNCS 只列名；仅有 PIPELINE 时再找祖先 CONCEPT，可能标 SHADOWED。主动读本地规格及相关 sync，祖先提示不能替代它；避免根级 CONCEPT 笼罩无关模块。
+最近 CONCEPT/PIPELINE 终止边界查找，SYNCS 只列名。只有 PIPELINE 时可能再查祖先并标 SHADOWED。
+根目录依次取 CLAUDE_PROJECT_DIR、输入 cwd、当前目录，空根或文件系统根则停止。
+提取器只识别有限标题，跳过 json/jsonl/lock/log/txt，编辑规格时提示校对。
 
-项目根依次取 CLAUDE_PROJECT_DIR、输入 cwd、当前目录；根为空或 `/` 则退出，不越界。跳过 json/jsonl/lock/log/txt，编辑规格只给校对提示；提取器支持有限大小写形式，非通用 Markdown 解析器。
+hooks 不阻断写入，不检查 import、契约或规则，也不自动覆盖 Bash/MCP 写入和其他客户端。
+须主动读本地规格，不能补旧节迎合提示。
 
-核心命题：hook 提示不证明边界成立。它不阻断写入、不解析 import/四节/sync；Bash/MCP 写入及其他客户端不自动受它覆盖。语义核对依靠读规格、架构测试和漂移审查，不能补旧节来迎合提示。
+## 启用与检查
 
-## 启用与自检
-
-用户要求启用时：
+先读 runtime/hooks/hooks.json 与三个运行时脚本，保留既有设置：
 
 ```bash
 claude --plugin-dir /绝对路径/skills/software-concept-architect-guardrails-cn/runtime
 ```
 
-渠道缺隐藏插件清单时，将 runtime/hooks/hooks.json 合并到项目 `.claude/settings.json`，替换 CLAUDE_PLUGIN_ROOT 为绝对路径并保留现有设置。自检设 CLAUDE_PROJECT_DIR 后运行 `bash runtime/scripts/session-start.sh`；本仓 QA 在 qa，runtime 无 check-rules.sh。
+渠道缺插件清单时，将 runtime/hooks/hooks.json 合并到项目 .claude/settings.json，CLAUDE_PLUGIN_ROOT 替换为绝对路径。
+启用前运行 bash -n 并解析 JSON。设 CLAUDE_PROJECT_DIR 后运行 bash runtime/scripts/session-start.sh，开启新会话，确认各 hook 只触发一次且不影响其他工作。
+移除时恢复旧设置，只删除本技能安装的文件。
 
-SessionStart 只读历史最后一条，fix 用 specs_remaining；局部扫描不表示全仓清洁，mtime 不证明语义新鲜。回填提示不改变已确认新行为规格先行的约定。历史仅按明确请求保存真实测量，格式见 [drift-detection.md](drift-detection.md#可选历史)。
+历史仅按明确请求保存，格式见[漂移检测](drift-detection.md#报告与可选历史)。SessionStart 读取最后快照，fix 使用 specs_remaining。
+局部扫描与 mtime 不证明全仓新鲜。运行时没有 check-rules.sh，校验在本仓 QA。

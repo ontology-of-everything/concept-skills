@@ -1,9 +1,6 @@
 ---
 name: software-concept-architect-design-cn
-description: >-
-  Use when the user explicitly invokes $software-concept-architect-design-cn. Completes a Daniel Jackson concept design
-  with the user. Confirm the alignment, then write the design record. / 仅在显式调用
-  $software-concept-architect-design-cn 时，和用户一起完成概念设计：先确认对齐，再写设计记录。
+description: "Generates concept designs. Use when explicitly invoked. 明确概念目的、行为与同步规则。"
 metadata:
   language: zh-CN
   translation_of: software-concept-architect-design
@@ -13,46 +10,46 @@ metadata:
 
 # 软件概念架构师 · 设计
 
-和用户一起完成概念设计：先确认对齐三节，再写设计记录。仅在显式调用 `$software-concept-architect-design-cn` 时运行。已有授权才继续 PRD 或实现。没有 `software-concept-architect-prd-cn` 或 `software-concept-architect-build-cn` 时，交付模型并标明缺哪一环。
+## 目标
 
-## 设计原则
+把软件需求整理为可确认的概念设计。仅在显式调用 `$software-concept-architect-design-cn` 时运行。
+交付模型和未决事项。用户已授权时，继续编写 PRD 或实现。
 
-- **熟悉优先**。能用熟悉概念或它的变体时，用那个概念。
-- **专一**。每个概念只服务一个 purpose。同一个 purpose 不另立第二个概念。
-- **完整性**。同步可以排除概念的部分行为，不能让它做出自身规格不允许的行为。
-- **两层论证**。契约 → OP → 概念目的；概念选择与 sync → 应用场景 → 应用目的。局部成立不推出整体成立。单一目的用于概念，不机械套用应用。
-- **证据**。事实附来源，推断与未决另标。未找到反例不等于证明正确。页面、实体、代码模块只是候选线索。
+## 原则
 
-## 设计流程
+需求、实例和已读代码是证据。区分事实、建议、推断与未决，页面、实体和文件只提供候选线索。
 
-和用户逐段确认。尚未确认的内容标为待确认，不写成已确认事实。
+分别检查概念契约如何支持运作原理和目的，以及概念选择与同步如何兑现应用场景和目的。
+两层论证分别成立，不能互相代替。单一目的要求用于概念。
 
-1. **核对事实**：和用户明确受益者、应用目的、现状、期望结果与约束。既有系统沿实际入口读调用、状态归属、失败路径及测试；分别记录现状与期望。目的未说清则标未决。
-2. **提出清单**：按 [产物规范](references/artifacts.md) 写出概念清单，请用户确认纳入哪些。确认后按 [规格契约](references/spec-format.md) 写 state 与 actions。外部身份用类型参数，不假设它有字段。
-3. **审查边界**：读 [资格标准](references/criteria.md)。每个候选给出八项结论。有分歧的交给用户定。
-4. **确认范围并组合**：先按 [组合标准](references/sync-notation.md) 请用户确认依赖与子集。再按规格契约写 sync，并检查欠同步、过同步、同步图和 MVP。
-5. **写入记录**：已证实的 misfit 按资格标准修正。已确认的对齐写入设计记录。待确认项留在排除与未决，只挡住依赖它的部分。
+沿用已有确认。只确认影响范围或行为的未决取舍，继续不依赖它的工作，并说明它阻碍哪部分。
 
-## 设计产物
+## 概念
 
-字段见 [产物规范](references/artifacts.md)。
+- 概念服务一个目的，拥有自己的状态与动作，定义不依赖其他概念。熟悉的概念或小幅变体能满足需要时，优先采用。
+- 运作原理称为 OP，用典型动作说明概念怎样兑现目的。
+- 同步规则在概念外协调动作，使它们共同满足应用需要。规则可以限制行为，但须遵守各概念的契约。
 
-对齐（和用户确认）：概念清单、应用目的与场景、依赖与子集。
+## 流程
 
-设计记录（确认后写入）：Concepts、Synchronizations、同步图、排除与未决。
+1. 明确受益者、应用目的、现状、期望结果与约束。既有系统还要检查入口、状态归属、失败路径和测试。
+2. 按[设计产物](references/artifacts.md)提出清单。确认纳入范围后，按[规格契约](references/spec-format.md)写状态与动作。
+   外部身份使用不假定字段的类型参数。
+3. 检查八项[资格判据](references/criteria.md)，记录证据与争议边界，修正已证实的行为与需要的偏差。
+4. 按[组合检查](references/sync-notation.md)写规则与同步图，核对遗漏联动和过度自动化。
+   确认产品依赖及子集的目的、入口、剩余规则与资源。
+5. 已确认项写入设计记录，待确认概念、前提与备选放入排除和未决，说明影响。
 
-## 标准
+首次操作读[订位例](references/example-reserving.md)，核对定义时读[来源](references/sources.md)。每步只读所需参考。
 
-| 标准 | 用于 |
+## 正反例
+
+| 正例 | 反例 |
 | --- | --- |
-| [资格](references/criteria.md) | 概念是否成立 |
-| [规格契约](references/spec-format.md) | purpose、state、actions、OP 与 sync 怎么写 |
-| [组合](references/sync-notation.md) | 同步规则、同步图、依赖、MVP |
+| 评论使用通用的目标身份，在应用中绑定到帖子。 | 评论直接引用帖子概念或读取它的私有状态。 |
+| 用预订和到场兑现说明预约承诺。 | 把创建数据库记录当作预约目的已经兑现。 |
 
-## 完成标准
+## 完成条件
 
-- 对齐每项都有确认栏。待确认项只出现在排除与未决，并写明挡住哪一部分。
-- 概念目的和应用目的各有兑现依据，或标成未决。
-- 需响应的入口写明成功与拒绝。同步图、依赖和 MVP 满足组合标准。规格满足规格契约。
-
-首次一起做完读 [订位例](references/example-reserving.md)；核对定义及本仓约定读 [sources.md](references/sources.md)。
+记录包含已确认概念、规则、同步图、排除与未决。标明确认状态、目的论证与缺口。
+需要响应的入口覆盖成功与拒绝，模型通过规格和组合检查。

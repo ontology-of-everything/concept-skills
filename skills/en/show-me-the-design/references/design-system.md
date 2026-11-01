@@ -1,8 +1,10 @@
-# Design language: reuse the code
+# Reusable design code
 
-**Copy the CSS, HTML, and JS below, then replace the project content.** The code defines colors, type, spacing, and breakpoints. Maintain one shared `styles.css` and `main.js`. Preserve project vocabulary; use the font fallbacks or local files in `assets/`.
+Copy the CSS, HTML, and JavaScript, then replace demo content with project evidence. Keep one shared
+styles.css and main.js. The code defines colors, typography, spacing, and breakpoints. Use project
+terms and system fonts or local assets.
 
-## styles.css: tokens and layout
+## Styles
 
 ```css
 :root {
@@ -144,9 +146,11 @@ code { font: 14px/1.6 var(--font-mono); }
 }
 ```
 
-## index.html: sections and paired lines
+## Sections and source explanations
 
-**Each `.code-row` contains one source line and its explanation.** Desktop places them side by side; at ≤768px each line stacks code before explanation. Preserve source whitespace, actual line numbers, and file references. Escape `& < >` when inserting HTML; highlighting adds markup without changing source text. Replace this demo with project evidence; give new sections unique IDs.
+Each code-row pairs one source line with its explanation, side by side on desktop and stacked below
+768px. Preserve whitespace, real line numbers, and file links. Escape `& < >` in HTML; highlighting
+must not alter source text. Give each section a unique ID.
 
 ```html
 <!doctype html>
@@ -187,9 +191,10 @@ code { font: 14px/1.6 var(--font-mono); }
 </html>
 ```
 
-## main.js: navigation and reading position
+## Navigation
 
-Track scroll position and reached sections; **reading progress does not measure understanding**. Native anchors preserve Tab, Enter, and browser history. This code does not intercept arrow keys, hide content, or force scrolling.
+The script tracks scroll position, not understanding. Native anchors retain keyboard and browser
+history behavior. It neither intercepts arrow keys nor hides content or forces scrolling.
 
 ```js
 const nav = document.querySelector('.chapter-nav');
@@ -226,9 +231,20 @@ addEventListener('load', scheduleReading);
 updateReading();
 ```
 
-## Content-specific rules
+## Adapt and check
 
-- **Separate actor and status:** `.card.actor[data-actor="1"]` keeps a stable actor identity; include its name. Use `.status[data-status="success|error|info"]` for outcomes, with the words “Success / Error / Info.” Reserve `--color-text-muted` for decoration; essential labels use body or secondary text.
-- **Reflow diagrams:** give SVG a `viewBox`; below 480px use vertical coordinates and reorient arrows. When a wide diagram must remain wide, wrap it in `<div class="diagram" role="region" aria-label="Diagram name" tabindex="0">` with an adjacent text explanation. Restore selection using the same concept ID after redraw.
-- **Make interactions checkable:** label buttons “Next step / Reset.” Each action updates the diagram, state values, and explanation together; announce results through `aria-live="polite"`. Reset restores demo initial values. Default to no automatic entrance animation; when transitions are needed, reuse the 150/300/500ms tokens and respect reduced motion.
-- **Verify:** open `index.html` offline; at 1000/768/480/320px check no page-wide horizontal overflow and correct line pairing. Operate with Tab/Enter; read all content with JS disabled. Non-scrollable pages report 0 progress. Require ≥4.5:1 body contrast and ≥3:1 large-text and control-boundary contrast.
+Keep actor identity in `.card.actor[data-actor="1"]` and include the actor name. Use
+`.status[data-status="success|error|info"]` for outcomes, with text labels. Use --color-text-muted only
+for decoration; essential labels use body/secondary text.
+
+Give SVG a viewBox. Below 480px, use vertical coordinates and reorient arrows. If a wide diagram is
+necessary, use `<div class="diagram" role="region" aria-label="Diagram name" tabindex="0">` and
+an adjacent explanation. Restore selection by concept ID after redraw.
+
+Label buttons "Next step" and "Reset". Update diagram, values, and explanation together; announce
+results through aria-live="polite". Reset restores demo values. Default to no entrance animation;
+use 150/300/500ms transitions only when needed and respect reduced motion.
+
+Open index.html offline. Check 1000/768/480/320px widths, no page-wide overflow, correct code pairing,
+Tab/Enter operation, and readable content without JavaScript. Non-scrollable pages show zero progress.
+Require body contrast of at least 4.5:1, and large-text/control-boundary contrast of at least 3:1.
