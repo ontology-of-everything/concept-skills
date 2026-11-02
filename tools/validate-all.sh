@@ -8,12 +8,19 @@ export PYTHONDONTWRITEBYTECODE=1
 }
 python3 "$ROOT/tools/check-repository-hygiene.py" --repo "$ROOT"
 python3 "$ROOT/tools/validate-localization.py"
+python3 "$ROOT/tools/check-skill-links.py"
 python3 "$ROOT/tools/skill-catalog.py"
-python3 "$ROOT/tools/sync-concept-contract.py"
+python3 "$ROOT/tools/check-concept-package.py"
+python3 "$ROOT/tools/test-concept-checker.py"
+python3 "$ROOT/tools/test-concept-map.py"
 if [[ ${1:-} == --local-qa ]]; then
   count=0 status=0
   for validate in "$ROOT"/qa/{en,cn}/*/validate.sh; do
     [[ -f "$validate" ]] || continue
+    package="$(basename "$(dirname "$validate")")"
+    locale="$(basename "$(dirname "$(dirname "$validate")")")"
+    [[ $locale == cn ]] && locale=zh-CN
+    [[ -f "$ROOT/skills/$locale/$package/SKILL.md" ]] || continue
     count=$((count + 1))
     "$validate" || status=1
   done

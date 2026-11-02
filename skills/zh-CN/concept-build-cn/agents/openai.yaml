@@ -1,7 +1,0 @@
-interface:
-  display_name: 实现概念模型
-  short_description: 按确认规格实现独立概念模块与同步规则，验证流程和必要恢复
-  default_prompt: Use $concept-build-cn to implement the confirmed model as a modular monolith, preserving
-    concept boundaries and synchronization contracts, with tests for concept and application purposes.
-policy:
-  allow_implicit_invocation: false

@@ -1,7 +1,6 @@
 interface:
-  display_name: 设计软件概念
-  short_description: 依据 Daniel Jackson 模型设计独立概念与同步规则，保留取舍和未决
-  default_prompt: 'Use $concept-design-cn to complete the concept design with the user: confirm the alignment,
-    then write the design record.'
+  display_name: 概念设计
+  short_description: 设计、写规格、实现与检查软件概念
+  default_prompt: 使用 $concept-design-cn 处理本次任务。从目的出发，用反例检查前提，只读取所需流程与参考。
 policy:
   allow_implicit_invocation: false

@@ -1,22 +1,16 @@
-# Concept and synchronization contract
+# CONCEPT and SYNCS format
 
-Use this contract to write or check CONCEPT and SYNCS. It adapts
-[WYSIWID v1 sections 4 to 6](https://arxiv.org/html/2508.14511v1#S4).
-Markdown headings, requires/ensures, queries, and app declarations are local conventions, not engine syntax.
-
-## Preserve concept behavior
-
-Composition may restrict behavior, but each concept's action, state, and output sequence must remain
-within its contract. Keep application restrictions in SYNCS; the concept owns preconditions,
-invariants, effects, and result cases. Confirm a revised contract before requiring new behavior.
-Also check purpose fulfillment, since a legal restriction can prevent a useful result.
+These are local Markdown conventions adapted from the [sources](sources.md).
+They are not engine syntax.
 
 ## CONCEPT
 
-Use this order for new specifications. Leave unconfirmed behavior open.
+New files MUST use this order. Each core section MUST contain a declaration.
+`coverage: complete|partial` is local metadata declaring coverage, not engine syntax.
 
 ```markdown
 # concept Name [T]
+coverage: partial
 
 ## purpose
 <one evaluable need>
@@ -24,114 +18,139 @@ Use this order for new specifications. Leave unconfirmed behavior open.
 ## state
 items: set Item
 owner: Item -> T
-<define local identity Item, cardinality, initial state, and invariants>
+<local types, cardinality, initial state, invariants>
 
 ## actions
 act [item: Item; owner: T] => [item: Item]
   requires <success condition>
-  ensures <state change, output, and unchanged information>
+  ensures <effect, output, unchanged state>
 act [item: Item; owner: T] => [error: E]
-  requires <error condition and meaning of E>
-  ensures <error value and state consequence>
+  requires <refusal condition>
+  ensures <error meaning and state consequence>
 
 ## operational principle
-after <conditions and declared action input => output>
-then <later action or observation and the useful result>
+after <declared actions and results>
+then <later action or observation fulfilling purpose>
 ```
 
-| Element | Check |
-| --- | --- |
-| Types | External identities are field-free parameters. Define local types; instantiate concrete types in SYNCS. |
-| Purpose | State one evaluable need. |
-| State | Declare cardinality, initial state, and invariants. `A -> B` alone means neither totality nor uniqueness. |
-| Actions | Name inputs/outputs. Use `[]` for no inputs and `=> []` for no result. State each case's condition, effect, and output. |
-| OP | Use declared actions to explain a useful result, not every possible behavior. |
+`requires` enables a case.
+`ensures` relates before/after state and outputs.
 
-Field names affect matching. Distinguish success and refusal; define selection for overlapping cases
-with different effects, or mark it open. Failure need not preserve state, and success need not change it.
-Read-only actions still produce completions. Preserve details affecting coordination; resolve
-behavior-changing ambiguity before implementation without inventing errors, permissions, or functions.
+- `A -> B` alone implies neither totality nor uniqueness.
+- Actions MUST name inputs/outputs and define each case's conditions, effects, and unchanged state.
+  No input is `[]`; no result is `=> []`.
+- A false case precondition does not itself produce a completion or error.
+  Invalid requests need a declared refusal or entry policy.
+- Different effects MUST have distinguishable cases or a selection rule.
+  Success need not change state; failure need not preserve it.
+  Read-only actions still complete.
+- Transitions MUST atomically preserve invariants.
+  Resolve behavior-changing ambiguity before dependent implementation.
 
-## State and queries
-
-Applications may read public abstract state, including joins, through its declared interface.
-This opens neither private tables nor implementations. Concepts do not call or read one another.
-
-`where` reads declared relations. Optional `## queries` may map those relations to an API:
+Optional `## queries` maps public relations to read APIs:
 
 ```text
 _owners [item: Item] => [owner: T]
-  returns matching owner bindings; no match returns zero rows
+  returns owner bindings; no match returns zero rows
 ```
 
-Declare inputs, results, cardinality, and the underlying relation. Queries are read-only and produce
-no completion; they are not a fifth core section. Use
-`Name/_owners: [item: ?item] => [owner: ?owner]` only in `where`. Do not add a getter per field or
-turn empty results into undeclared errors. Mark unknown state/cardinality/query facts open.
+Declare signatures, cardinality, and underlying relations.
+Queries MUST be read-only and have no completion.
+In SYNCS, `Name/_query: [inputs] => [outputs]` appears only in `where`.
+Do not turn empty query results into undeclared errors.
+
+When useful, include one `state` example satisfying its types, cardinalities, and invariants, with grain, identity, observation point, and relation mapping.
+Optional table or interface mappings state their confirmation status and reference state constraints or action/query contracts respectively.
+Analytical fact tables additionally define grain, time semantics, applicable measures, and historical sources.
 
 ## SYNCS
 
-Every include resolves to a concept specification or an explicit external-entry contract.
-Define aliases, types, and entry signatures. Requesting/Web is one option; timers and messages need
-root actions too.
+Includes MUST resolve to concept or external-entry contracts.
+Declare aliases, concrete types, and root signatures for requests, timers, or messages.
 
 ```text
 # app AppName
 include Source [Id]
 include Target [Id]
-include Web
 
-// flow: transfer
 sync Transfer
-when {
-  Web/request: [method: "transfer"] => [request: ?request]
-  Source/finish: [] => [item: ?item]
-}
-where {
-  Source: { ?item owner: ?owner }
-}
-then {
-  Target/accept: [item: ?item; owner: ?owner]
-}
+when { Source/finish: [] => [item: ?item] }
+where { Source: { ?item owner: ?owner } }
+then { Target/accept: [item: ?item; owner: ?owner] }
 ```
 
-This is a notation example. Check Source.owner, target inputs, and response obligations against
-actual contracts.
-
-| Part | Meaning |
+| Part | Constraint |
 | --- | --- |
-| `sync` | A stable, application-unique name for one explainable decision. |
-| `when` | Required. Match completed actions as `Concept/action: [inputs] => [outputs]`. All patterns share one runtime flow. |
-| Patterns | Omitted fields are wildcards. `[]` does not mean success; match a proven discriminator when errors are possible. |
-| `where` | Optional. Read state, filter, compute, or bind zero or more rows. If absent, retain the input bindings. |
-| `then` | Required. Emit calls for every binding row, with all named inputs and no output pattern. Wildcard matching does not permit omitted call arguments. |
-| Variables | `?name` has one value per rule. Calls use constants or bound values. Calls in one `then` have no implicit order; another rule matches later outputs. |
+| `sync` | Stable, application-unique name for one decision. |
+| `when` | Required and nonempty. All completion patterns MUST match in one runtime flow. |
+| Patterns | Omissions are wildcards; `[]` is not success. MUST distinguish cases affecting later effects. |
+| `where` | Optional. Read, filter, compute, bind rows; omission retains input bindings. |
+| `then` | Required and nonempty. MUST call per binding row with all required named inputs and no outputs. |
+| `?name` | One value per rule. Calls use constants or bound values. |
 
-## Results and correlation
+Calls in one `then` have no implicit order.
+Use later results for ordering.
+`where` reads evaluation-time state.
+Snapshots, locks, and reevaluation on later changes are not implied.
+Required consistency MUST be explicit.
 
-- Match declared errors separately from negative values such as `valid: false`. Obtain authorization
-  before writing; later refusal cannot undo a completed write.
-- Zero query rows emit no calls; multiple rows expand calls. Define required zero-match responses.
-  Choosing the first candidate or acting on all candidates needs a contract.
-- A flow identifies one root event and its descendants. Repeated actions also need object identity.
-  Request identity locates the response; `// flow:` only groups documentation.
-- Preserve completed actions. Define response, retry, compensation, or intentional ignore and its
-  state consequences. Actions check invariants atomically; a prior query cannot replace that check.
-- When recovery is needed, retain action identity, flow, rule, cause, bindings, and emitted calls.
-  Verify engine deduplication so replayed matches do not emit again. External effects need separate
-  idempotency guarantees.
+## Execution checks
 
-## Compatibility and checks
+- An invocation requests execution; a completion records its result.
+  Occurrence identity connects them; equal arguments do not.
+- A flow contains a root occurrence and its causal descendants.
+  Repeated actions need occurrence/cause correlation as well as request/business identity.
+  Specify all matches or a particular attempt.
+  `// flow:` only labels documentation.
+- Old completions from independent flows MUST NOT satisfy `when`.
+  Use `where` for persistent facts and an entry/correlation protocol for delayed callbacks.
+- Match errors separately from values such as `valid: false`.
+  Required access checks MUST precede protected effects.
+  Later refusal does not undo writes.
+- Zero rows emit no calls; multiple rows expand calls.
+  Specify required zero-match responses and candidate selection.
+- Later failures MUST NOT erase existing completion records.
+  Define responses, retries, compensation, or intentional ignore and their effects.
+- Verify firing identity and atomic deduplication for occurrence tuples and rows.
+  Reevaluation MUST preserve legitimate repetitions and prevent forbidden duplicates.
+- In-memory records MAY suffice without restart recovery.
+  Required recovery MUST persist occurrence, flow, rule/version, cause, bindings, and calls consistently.
+  External effects need separate idempotency.
 
-Accept legacy `principle`, section order, `act (arg: T) : (result: R)`,
-`Concept.act (...) : (...)`, and action-local `_` queries. Syntax alone is not drift.
-New files use this contract; local edits retain the existing dialect unless migration is authorized.
+## Compatibility
 
-Before migrating, recover inputs, outputs, success/error discrimination, and correlation.
-Do not replace an omitted output with `=> []` if that also matches errors. Identify older transactional
-sync and wyx boundary sections separately. Preserve behavior and open decisions; update all consumers and diagrams.
+Syntax alone is not drift.
+Accept legacy `principle`, section order, `act (arg: T) : (result: R)`, `Concept.act (...) : (...)`, and action-local `_` queries.
+Local edits SHOULD retain the dialect.
+Migration MUST preserve signatures, result cases, correlation, and open decisions.
+Do not turn omitted output into error-matching `=> []`.
+Distinguish transactional synchronization from causal rules.
+Update consumers and diagrams together.
 
-Check types, state/queries, action results, matched cases, query cardinality, call arguments, and
-correlated responses. Trace OPs and application scenarios separately. Cross-concept policy belongs
-in SYNCS; purpose, product dependencies, exclusions, and open decisions belong in the overall PRD.
-Implementation also checks concurrency, recovery, and observable results.
+## concept-lint
+
+```sh
+python3 scripts/concept_lint.py CONCEPT.md SYNCS.md --json
+```
+
+The read-only standard-library CLI checks declarations, coverage, unique/nonempty core sections, rule blocks, and rule-body delimiters.
+In closed `when`/`then` blocks, it checks action input records, completion outputs in `when`, and absence of outputs in `then`.
+Top-level input/output fields must be named, nonempty, and unique within their record.
+Rule names must be unique across supplied files with the same `# app Name`; different apps may reuse names.
+It preserves diagnostic line numbers while excluding comments, string contents, and fenced annotations from structural matching.
+Unknown call notation is `not_checked`, including braced legacy dot-calls.
+Nested record values and `where` expressions are opaque; includes, action signatures, types, and variable bindings are not resolved.
+Concept independence, purpose, contract conformance, and runtime behavior require code review, architecture checks, or execution evidence.
+
+| Exit | Status | Meaning |
+| --- | --- | --- |
+| 0 | `format_checked` | All inputs passed the listed structural checks. |
+| 1 | `format_error` | At least one determined structural error. |
+| 2 | `read_error` | Usage, file access, or encoding error. |
+| 3 | `not_checked` | Legacy, unknown, incomplete notation, or missing coverage. |
+
+Read errors take precedence over format errors; format errors take precedence over unchecked portions.
+Incomplete comments, strings, or fences cannot turn hidden content into an inferred missing section.
+Errors in already closed sections/blocks still count.
+For a deliberately absent state or action set, write that declaration instead of leaving the section blank.
+`format_checked` is not semantic verification.

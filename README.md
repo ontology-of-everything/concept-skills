@@ -1,336 +1,96 @@
 # concept-skills
 
-[![skills.sh](https://skills.sh/b/ontology-of-everything/concept-skills)](https://skills.sh/ontology-of-everything/concept-skills)
+**Give functionality boundaries. Make coordination visible.**
 
-> Name the meaning first — then write code, run a CLI, or draft a spec.
+Adding a share feature can touch posting, authorization, and notification code.
+When the connections are scattered, the effects of a change are hard to see.
 
-[concept-skills](https://github.com/ontology-of-everything/concept-skills) provides eleven
-capabilities as 22 localized [Agent Skills](https://agentskills.io/) for ontology, semantic layers,
-concept design, and visual learning. English uses the base name;
-Simplified Chinese adds `-cn`.
+`concept-design` is a skill for software design and AI coding.
+Start from a user's need, express behavior as concepts and synchronization rules, then use them to specify, implement, and review software.
+Diagrams use Mermaid in Markdown.
+Adapts ideas from WYSIWID (Meng & Jackson, MIT).
 
-Cloud operational skills now live in
-[`concept-git/cloud-concept-skills`](https://github.com/concept-git/cloud-concept-skills) and are no
-longer distributed from this repository.
+## 🧩 How it works
 
-Office-focused skills now live in the sibling `myoffice-skills` repository and are no longer
-distributed from this repository.
+- **Concepts** provide independent functionality with their own state and actions; concepts do not call one another or read one another's state.
+- **Synchronizations** make coordination explicit: what happened, which conditions hold, and which actions follow.
+- **LLMs and the CLI** have separate roles: an LLM generates or changes code from specifications, the CLI checks specification structure, and review and tests check behavior.
 
-The concept-design skills adapt Daniel Jackson's concepts-and-synchronizations model —
-[The Essence of Software](https://essenceofsoftware.com/) (2021), with the current when/where/then
-sync notation from _Beyond Objects_ ([arXiv:2606.27258](https://arxiv.org/abs/2606.27258)) — for
-agent use; an adaptation, not endorsed by the author.
+For example: comment created → query the post's author → send a notification.
+The synchronization holds the coordination; Comment need not depend on Notification.
 
-中文说明见 [README-CN.md](README-CN.md).
+## ✨ What it helps with
 
-Current release is **2.7.1**. The concept design workflow, `show-me-the-design`, and `settle-the-concept-design` are explicit-only;
-`read-it-reframe-it-own-it` supports automatic discovery; all concept skills require explicit invocation in Codex;
-`concept-guard` modes
-consume Jackson notation only.
+Locate functionality, change concepts independently, and read coordination rules directly.
+Before adding a feature, consider reusing concepts or changing a few synchronizations, then check that existing behavior is preserved.
+The goal is more modular, transparent, and understandable software.
+See the [MIT report](https://news.mit.edu/2025/mit-researchers-propose-new-model-for-legible-modular-software-1106) for background.
+See [sources](skills/en/concept-design/references/sources.md) for theory and local choices.
 
-## Table of Contents
+## Get started
 
-- [Skills](#skills)
-- [Install](#install)
-- [Usage](#usage)
-- [Classic usage examples](#classic-usage-examples)
-- [Contributing](#contributing)
-- [Changelog](CHANGELOG.md)
-- [License](#license)
+From this repository, install one language edition:
 
-## Skills
+```sh
+npx --yes skills add . --skill concept-design --agent codex --copy --yes
+npx --yes skills add . --skill concept-design-cn --agent codex --copy --yes
+```
+
+Invoke explicitly; only the workflow needed for the task is read:
+
+```text
+$concept-design design Define concepts and synchronizations for reservations.
+$concept-design build Implement the confirmed specifications.
+$concept-design review src/orders Inspect concept boundaries and code, read-only.
+$concept-design guard map src Generate a concept and synchronization diagram.
+```
+
+Also supports settle, prd, guard, refine, and explain; Chinese uses `$concept-design-cn`.
+
+## What concept-lint checks
+
+Read-only, with no third-party dependencies. Checks the skill's local [CONCEPT/SYNCS notation](skills/en/concept-design/references/spec-format.md):
+
+```sh
+python3 skills/en/concept-design/scripts/concept_lint.py CONCEPT.md SYNCS.md --json
+```
+
+Checks declarations and core sections, when/then completion and invocation shapes, top-level named fields, and rule-name uniqueness for each app across the supplied files.
+Unknown or legacy call notation is unchecked; types, bindings, concept independence, and runtime results still require other evidence.
+Exit codes: `0` passed the listed checks, `1` format error, `2` read/usage error, `3` not checked.
+
+## Generate a concept and synchronization diagram
+
+Scan CONCEPT.md and SYNCS.md to produce one ARCHITECTURE.md with a concept index, Mermaid diagram, relation table, and source lines.
+Definitions, instances, and synchronization rules have separate identities; unresolved references remain gaps.
+
+```sh
+python3 skills/en/concept-design/scripts/concept_map.py <project-root> --output <project-root>/ARCHITECTURE.md
+```
+
+Use `--scope RELPATH` to narrow the view or `--check` to compare without writing. Existing documents retain text outside the generated region.
+See the [map format](skills/en/concept-design/references/map-format.md).
+
+## Repository skills
+
+Data semantics, personal knowledge management, and learning remain separate skills; each has English and Chinese editions.
 
 <!-- skill-catalog:start -->
 
-Classified by the primary problem each skill solves; family names identify the series.
-
-### Concept Design
-
-Design software concepts, responsibilities, specifications, and implementations.
-
-| Skill | Version | ClawHub category |
+| Skill | Purpose | Version |
 | --- | --- | --- |
-| [Prepare concept proposals](skills/en/settle-the-concept-design/SKILL.md) | 0.1.5 | development, knowledge |
-| [Design software concepts](skills/en/concept-design/SKILL.md) | 1.0.2 | development |
-| [Write concept specifications](skills/en/concept-prd/SKILL.md) | 1.1.2 | development |
-| [Implement concept models](skills/en/concept-build/SKILL.md) | 1.1.2 | development |
-| [Review concept designs](skills/en/concept-review/SKILL.md) | 1.1.2 | development |
-| [Maintain concept specifications](skills/en/concept-guard/SKILL.md) | 1.1.2 | development |
-| [Refine existing concepts](skills/en/concept-refine/SKILL.md) | 1.0.2 | development |
-| [Explain software concepts visually](skills/en/show-me-the-design/SKILL.md) | 0.2.2 | knowledge |
-
-### Semantic Modeling
-
-Model the business meaning of data, facts, dimensions, and relations.
-
-| Skill | Version | ClawHub category |
-| --- | --- | --- |
-| [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | 1.1.0 | knowledge |
-
-### Knowledge Management
-
-Extract, connect, organize, and reuse knowledge from source material.
-
-| Skill | Version | ClawHub category |
-| --- | --- | --- |
-| [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | 0.4.0 | knowledge |
-
-### Learning Methods
-
-Build and revise understanding around a learning goal and a key framework.
-
-| Skill | Version | ClawHub category |
-| --- | --- | --- |
-| [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | 0.2.0 | knowledge |
+| [Concept Design](skills/en/concept-design/SKILL.md) | Design, specify, build, and inspect software concepts through one entry. | 2.0.0 |
+| [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
+| [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
+| [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
 
 <!-- skill-catalog:end -->
 
-### Concept design workflow
+## Maintenance and license
 
-Purpose-Driven Software Design. Based on Daniel Jackson’s concept design approach in _The Essence of Software_.
+The former eight concept-design workflows are combined in **2.0.0**, with English and Chinese editions. Repository version: **3.0.0**.
+Retired ClawHub entries redirect to the matching language edition. Preserve project specifications, code, and user configuration during migration.
 
-Requirements to modules, with the concept model as the contract. Each skill stops at its own
-boundary and hands off: `design` → `prd` / `build` → `review`.
-
-Shared principle: synchronization may restrict behavior, never extend a concept contract. Check
-contract conformance and purpose fulfillment separately.
-
-Per-skill details and taxonomy: [catalog.yml](catalog.yml).
-Localization and directory rules: [CLAUDE.md](CLAUDE.md).
-
-## Install
-
-Requires Node.js 22.20+ and Git. Copy a command below and run it from your project directory. These commands install to Codex in the current project.
-
-Use `--agent claude-code` or `--agent cursor` for another agent; add `--global` to install across projects. See the [installer options](https://github.com/vercel-labs/skills/blob/main/docs/commands.md).
-
-### English editions
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect personal-knowledge-architect concept-design concept-prd concept-build concept-review concept-guard concept-refine read-it-reframe-it-own-it show-me-the-design settle-the-concept-design --agent codex --copy --yes
-```
-
-### Simplified Chinese editions
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect-cn personal-knowledge-architect-cn concept-design-cn concept-prd-cn concept-build-cn concept-review-cn concept-guard-cn concept-refine-cn read-it-reframe-it-own-it-cn show-me-the-design-cn settle-the-concept-design-cn --agent codex --copy --yes
-```
-
-### Install one skill
-
-**`data-knowledge-architect`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill data-knowledge-architect --agent codex --copy --yes
-```
-
-**`personal-knowledge-architect`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill personal-knowledge-architect --agent codex --copy --yes
-```
-
-**`concept-design`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill concept-design --agent codex --copy --yes
-```
-
-**`concept-prd`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill concept-prd --agent codex --copy --yes
-```
-
-**`concept-build`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill concept-build --agent codex --copy --yes
-```
-
-**`concept-review`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill concept-review --agent codex --copy --yes
-```
-
-**`concept-guard`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill concept-guard --agent codex --copy --yes
-```
-
-**`concept-refine`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill concept-refine --agent codex --copy --yes
-```
-
-**`read-it-reframe-it-own-it`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill read-it-reframe-it-own-it --agent codex --copy --yes
-```
-
-**`show-me-the-design`**
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --skill show-me-the-design --agent codex --copy --yes
-```
-
-### List available skills
-
-```bash
-npx --yes skills add ontology-of-everything/concept-skills --list
-```
-
-English payloads live in `skills/en/`; Simplified Chinese payloads live in `skills/zh-CN/` and keep the `-cn` skill names. ClawHub publishes both editions of the concept-design family; Chinese skill names retain `-cn`.
-
-## Usage
-
-Skills normally activate from their description, so plain requests are enough. The
-concept design workflow is explicit-only and must be named (`/concept-design` in Cursor,
-`$concept-design` in Codex):
-
-```text
-$concept-design model this requirement as independent concepts
-$concept-prd transcribe the confirmed model into a PRD
-$concept-guard drift src/orders
-$show-me-the-design explain this concept model with a small diagram
-Turn this API into a semantic layer                 → data-knowledge-architect
-```
-
-To pin a skill explicitly: `/skill-name` in Cursor, `$skill-name` in Codex.
-
-## Classic usage examples
-
-Each skill has two examples. Install it, share the relevant material, then copy a request.
-Replace example paths with your project paths.
-
-### Prepare concept proposals
-
-`settle-the-concept-design` · [Skill](skills/en/settle-the-concept-design/SKILL.md)
-
-Based on Daniel Jackson's concept design, consolidate discussion into decisions for confirmation, from goals and concept purposes to scenarios and the specifications needed for those decisions.
-
-| Scenario | Try saying |
-| --- | --- |
-| Settle a design | `$settle-the-concept-design` Consolidate our discussion into a concept design; show the choices, rationale, and unresolved issues for confirmation. |
-| Revisit decisions | `$settle-the-concept-design` Compare this round with our confirmed design; show what changed, why, and how it affects business goals and acceptance criteria. |
-
-### Read It. Reframe It. Own It
-
-`read-it-reframe-it-own-it`
-
-| Scenario | Try saying |
-| --- | --- |
-| Organize notes | `$read-it-reframe-it-own-it` Turn these concept-design notes into a knowledge tree I can use for revision. |
-| Make a study sketchnote | `$read-it-reframe-it-own-it` Turn this knowledge tree into a Chinese study sketchnote. |
-
-The second example also needs an image-generation tool. [The English skill is on ClawHub](https://clawhub.ai/agenticweb4/skills/learning-read-it-reframe-it-own-it);
-its marketplace URL uses a different slug from the repository installation name.
-
-### Explain software concepts visually
-
-`show-me-the-design` · [Usage and visual toolbox](skills/en/show-me-the-design/SKILL.md)
-
-Help beginners understand and examine software concepts and how they work together, from overview to detail, using source evidence and visuals. The bundled design reference provides reusable HTML, CSS, and JavaScript.
-
-| Scenario | Try saying |
-| --- | --- |
-| Understand a design | `$show-me-the-design` Explore this project and visualize concept boundaries and coordinated actions. |
-| Check implementation | `$show-me-the-design` Compare this design with source and explain differences and their effects. |
-
-### Personal Knowledge Architect
-
-`personal-knowledge-architect`
-
-| Scenario | Try saying |
-| --- | --- |
-| Find reusable methods | `$personal-knowledge-architect` Pull out reusable methods from these interview notes. Show me the outline first. |
-| Build a method library | `$personal-knowledge-architect` Turn these product-research notes into a method library and merge duplicates. |
-
-### Data Knowledge Architect
-
-`data-knowledge-architect`
-
-| Scenario | Try saying |
-| --- | --- |
-| Understand a table | `$data-knowledge-architect` Which parts of this order table are facts, dimensions, and measures? |
-| Model APIs | `$data-knowledge-architect` Build a semantic model from these order APIs. Export OKF after we confirm it. |
-
-### Design software concepts
-
-`concept-design`
-
-| Scenario | Try saying |
-| --- | --- |
-| Design a task list | `$concept-design` Help me design a task list that supports adding, completing, and reopening tasks. |
-| Design reservations | `$concept-design` When a restaurant is full, customers can join a waiting list. What concepts do we need, and how do they work together? |
-
-### Write concept specifications
-
-`concept-prd`
-
-| Scenario | Try saying |
-| --- | --- |
-| Write a PRD | `$concept-prd` Turn our confirmed task-list model into a short PRD. |
-| Write specifications | `$concept-prd` Write CONCEPT.md and SYNCS.md for this reservation system using our confirmed design. |
-
-### Implement concept models
-
-`concept-build`
-
-| Scenario | Try saying |
-| --- | --- |
-| Build a task list | `$concept-build` Build our confirmed task-list model in TypeScript and test it. |
-| Build reservations | `$concept-build` Implement reservations and cancellations from these specs, then check the flow. |
-
-### Review concept designs
-
-`concept-review`
-
-| Scenario | Try saying |
-| --- | --- |
-| Review a model | `$concept-review` Check this task-list model for problems. Leave it unchanged for now. |
-| Compare code with specs | `$concept-review` Check the reservation code against its specs and show me where they differ. |
-
-### Maintain concept specifications
-
-`concept-guard`
-
-| Scenario | Try saying |
-| --- | --- |
-| Find missing specs | `$concept-guard` audit src/reservations Which specs are missing here? List them for me. |
-| Check drift | `$concept-guard` drift src Check whether the code matches its specs. Report only. |
-
-### Refine existing concepts
-
-`concept-refine`
-
-| Scenario | Try saying |
-| --- | --- |
-| Check responsibilities | `$concept-refine` This Todo handles tasks and sends reminders. Should we split it? |
-| Compare similar concepts | `$concept-refine` Should Favorites and Read Later stay separate? Walk me through the use cases. |
-
-**A connected workflow:** design and confirm the model → PRD → implementation → review. For an existing project, start with Guardrails audit, then backfill specifications or refine concepts as needed.
-
-Use `show-me-the-design` at any step to explain the current model or implementation visually.
-
-## Contributing
-
-`qa/` is private and untracked; public checks do not depend on it. Run `./tools/validate-all.sh --local-qa` only when local QA is available.
-
-Project rules and repository ownership: [CLAUDE.md](CLAUDE.md).
-
-```bash
-git config core.hooksPath .githooks
-./tools/validate-all.sh
-```
-
-`skills/en/<name>/` and `skills/zh-CN/<name>-cn/` are self-contained install payloads. QA stays private and untracked. Update both locales, the public catalog, README views, and parity checks together.
-
-## License
-
-[Apache-2.0](LICENSE) © concept-skills contributors. Bundles published to
-[ClawHub](https://clawhub.ai/) are MIT-0 there; the repository source stays Apache-2.0.
+Run `./tools/validate-all.sh` to check public packages.
+[Repository rules](CLAUDE.md) · [Changes](CHANGELOG.md) · [中文](README-CN.md).
+[Apache-2.0](LICENSE); ClawHub bundles use MIT-0. Adapted material retains its [MIT notice](skills/en/concept-design/references/sources.md#wyx-mit) in each package.

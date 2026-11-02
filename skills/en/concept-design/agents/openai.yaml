@@ -1,7 +1,6 @@
 interface:
-  display_name: Design software concepts
-  short_description: Model software concepts with Daniel Jackson's approach
-  default_prompt: 'Use $concept-design to complete the concept design with the user: confirm the alignment,
-    then write the design record.'
+  display_name: Concept Design
+  short_description: Design, specify, build, and check software concepts
+  default_prompt: Use $concept-design for the requested task. Start from purpose, test the assumptions, and load only the workflow and references needed.
 policy:
   allow_implicit_invocation: false

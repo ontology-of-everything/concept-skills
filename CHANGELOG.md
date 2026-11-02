@@ -1,21 +1,9 @@
 # Changelog
 
-## 2.7.1 - 2026-11-01
+## 3.0.0 - 2026-11-02
 
-- Apply the confirmed merged B/C entry copy to all eight English/Chinese concept skill pairs.
-- Describe task intent, outputs, confirmation status, and read/write boundaries; use Chinese descriptions in Chinese packages.
-- Synchronize Codex display metadata, catalog views, and usage headings. Retain skill IDs and explicit-only invocation.
-- Publish matching patch versions for both languages through the existing ClawHub records.
+Consolidate the eight concept-design workflows into one explicitly invoked skill. Add concept-lint and deterministic Mermaid concept/synchronization maps with stable IDs and source references. Remove hook runtime and HTML explanation templates. Keep the other three skill families separate. The seven retired English entries redirect to concept-design; Chinese counterparts redirect to concept-design-cn.
 
-| English skill | Version |
-| --- | --- |
-| concept-design | 1.0.2 |
-| concept-prd | 1.1.2 |
-| concept-build | 1.1.2 |
-| concept-review | 1.1.2 |
-| concept-guard | 1.1.2 |
-| concept-refine | 1.0.2 |
-| show-me-the-design | 0.2.2 |
-| settle-the-concept-design | 0.1.5 |
+Concept Design / 概念设计: `2.0.0` (`concept-design`, `concept-design-cn`).
 
-Chinese counterparts use the same versions.
+Validation: 111 format-checker regressions and 24 map test groups; localization, package links, catalog, and repository hygiene.

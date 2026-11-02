@@ -4,24 +4,10 @@
   "groupings": [
     {
       "title": "Concept Design",
-      "description": "Design software concepts, responsibilities, specifications, and implementations.",
+      "description": "Design, specify, build, and inspect software concepts through one entry.",
       "skills": [
-        "settle-the-concept-design",
-        "settle-the-concept-design-cn",
         "concept-design",
-        "concept-design-cn",
-        "concept-prd",
-        "concept-prd-cn",
-        "concept-build",
-        "concept-build-cn",
-        "concept-review",
-        "concept-review-cn",
-        "concept-guard",
-        "concept-guard-cn",
-        "concept-refine",
-        "concept-refine-cn",
-        "show-me-the-design",
-        "show-me-the-design-cn"
+        "concept-design-cn"
       ]
     },
     {

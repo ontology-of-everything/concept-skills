@@ -61,6 +61,18 @@ for base in bases:
         fail(f"English locale metadata mismatch for {base}")
     if cn_loc.get("language") != "zh-CN" or cn_loc.get("translation_of") != base:
         fail(f"Chinese locale metadata mismatch for {cn}")
+    if catalog_by_id.get(base, {}).get("version") != catalog_by_id.get(cn, {}).get("version"):
+        fail(f"localized catalog versions differ: {base}")
+    for name, package in ((base, en_dir), (cn, cn_dir)):
+        expected_pair = cn if name == base else base
+        if catalog_by_id.get(name, {}).get("translation_of") != expected_pair:
+            fail(f"catalog translation is not reciprocal: {name}")
+    en_resources = {str(p.relative_to(en_dir)) for folder in ("references", "assets")
+                    for p in (en_dir / folder).rglob("*") if p.is_file()}
+    cn_resources = {str(p.relative_to(cn_dir)) for folder in ("references", "assets")
+                    for p in (cn_dir / folder).rglob("*") if p.is_file()}
+    if en_resources != cn_resources:
+        fail(f"localized resource inventories differ: {base}: {sorted(en_resources ^ cn_resources)}")
     if HAN.search((en_dir / "SKILL.md").read_text(encoding="utf-8")):
         fail(f"English SKILL.md contains Chinese prose: {base}")
     if not HAN.search((cn_dir / "SKILL.md").read_text(encoding="utf-8")):
@@ -93,6 +105,19 @@ for name, entry in catalog_by_id.items():
     meta = frontmatter(ROOT / entry["path"] / "SKILL.md")
     if not isinstance(meta.get("description"), str) or not meta["description"].strip():
         fail(f"missing skill description: {name}")
+    if len(name) > 64 or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
+        fail(f"invalid Agent Skills name: {name}")
+    if len(meta["description"]) > 1024:
+        fail(f"skill description exceeds 1024 characters: {name}")
+    if entry.get("summary") != meta["description"]:
+        fail(f"catalog summary differs from skill description: {name}")
+    chinese_id = name if name.endswith("-cn") else f"{name}-cn"
+    chinese_meta = frontmatter(CN_SKILLS / chinese_id / "SKILL.md")
+    if entry.get("summary_zh") != chinese_meta["description"]:
+        fail(f"catalog Chinese summary differs from skill description: {name}")
+    compatibility = meta.get("compatibility")
+    if compatibility is not None and (not isinstance(compatibility, str) or not 1 <= len(compatibility) <= 500):
+        fail(f"invalid compatibility field: {name}")
     source_version = (meta.get("metadata") or {}).get("version")
     if source_version is not None and str(source_version) != version:
         fail(f"catalog/frontmatter version mismatch: {name}")

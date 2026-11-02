@@ -1,6 +1,0 @@
-interface:
-  display_name: 精炼现有概念
-  short_description: 以场景和反例精炼已有概念，控制拆分、合并或裁剪范围
-  default_prompt: 使用 $concept-refine-cn，以证据和最小必要改动精炼当前概念设计，并验证局部与端到端场景。
-policy:
-  allow_implicit_invocation: false

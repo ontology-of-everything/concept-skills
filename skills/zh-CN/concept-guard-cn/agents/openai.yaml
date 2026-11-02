@@ -1,7 +1,0 @@
-interface:
-  display_name: 维护概念规格
-  short_description: 审计、回填并维护概念规格，区分只读检查与授权写入
-  default_prompt: Use $concept-guard-cn <audit|concept|drift|pipeline|sync|map> to declare this module's
-    boundaries as a concept spec, or to check specs against code for drift.
-policy:
-  allow_implicit_invocation: false

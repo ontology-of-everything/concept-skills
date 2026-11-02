@@ -1,7 +1,0 @@
-interface:
-  display_name: Maintain concept specifications
-  short_description: Audit and maintain concept specs within authorized scope
-  default_prompt: Use $concept-guard <audit|concept|drift|pipeline|sync|map> to declare this module's
-    boundaries as a concept spec, or to check specs against code for drift.
-policy:
-  allow_implicit_invocation: false

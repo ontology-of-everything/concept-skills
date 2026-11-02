@@ -53,21 +53,18 @@ def generated_views(catalog):
     for lang, filename in [("en", "README.md"), ("zh-CN", "README-CN.md")]:
         cn = lang == "zh-CN"
         lines = [START, ""]
-        lines += ["按主要解决的问题分类；系列名称用于展示。" if cn else "Classified by the primary problem each skill solves; family names identify the series.", ""]
+        lines += ["| 技能 | 用途 | 版本 |" if cn else "| Skill | Purpose | Version |", "| --- | --- | --- |"]
         for domain, spec in catalog["domains"].items():
-            lines += ["### " + spec["name_zh" if cn else "name"], "", spec["description_zh" if cn else "description"], ""]
-            lines += ["| 技能 | 版本 | ClawHub 分类 |" if cn else "| Skill | Version | ClawHub category |", "| --- | --- | --- |"]
             for skill in skills:
                 if skill["domain"] != domain or skill["language"] != lang:
                     continue
                 base = next(s for s in skills if s["id"] == skill["translation_of"]) if cn else skill
                 meta = skill.get("clawhub", base["clawhub"])
-                status = ", ".join(meta["categories"])
+                status = skill["version"]
                 if meta.get("enabled", True) is False:
                     status += "（暂缓发布）" if cn else " (publication deferred)"
-                lines.append(f"| [{skill['display_name']}]({skill['path']}/SKILL.md) | {skill['version']} | {status} |")
-            lines.append("")
-        lines.append(END)
+                lines.append(f"| [{skill['display_name']}]({skill['path']}/SKILL.md) | {spec['description_zh' if cn else 'description']} | {status} |")
+        lines += ["", END]
         readmes[filename] = "\n".join(lines)
     for domain, spec in catalog["domains"].items():
         groups.append({"title": spec["name"], "description": spec["description"], "skills": [s["id"] for s in skills if s["domain"] == domain]})

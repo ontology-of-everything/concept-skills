@@ -1,6 +1,0 @@
-interface:
-  display_name: 图解软件概念
-  short_description: 依据代码与规格图解概念和设计取舍，标明事实、推断与待核实项
-  default_prompt: 使用 $show-me-the-design-cn，以源码证据和必要图解说明当前概念设计。
-policy:
-  allow_implicit_invocation: false

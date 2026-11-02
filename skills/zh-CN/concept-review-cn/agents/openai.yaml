@@ -1,8 +1,0 @@
-interface:
-  display_name: 审查概念设计
-  short_description: 只读审查概念设计与代码符合性，区分设计、规格和实现问题
-  default_prompt: Use $concept-review-cn to review concept and application purposes, design arguments,
-    independence and composition; check implementation conformance when code is available. Read-only,
-    with evidence and fix routing.
-policy:
-  allow_implicit_invocation: false

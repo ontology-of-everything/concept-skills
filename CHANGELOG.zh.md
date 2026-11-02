@@ -1,21 +1,9 @@
 # 更新日志
 
-## 2.7.1 - 2026-11-01
+## 3.0.0 - 2026-11-02
 
-- 采用确认的 B/C 融合版入口文案，同步八组技能的中英文展示标题与 description。
-- 描述明确使用情境、具体产出、确认状态与读写边界；中文入口使用中文。
-- 同步 Codex 展示元数据、公开目录与使用示例。技能 ID 保持不变，Codex 继续仅显式调用。
-- 中英文技能使用相同补丁版本，通过原记录更新 ClawHub。
+将八项概念设计流程合并为一个显式调用的技能。增加 concept-lint，以及带稳定 ID 和来源引用的确定性 Mermaid 概念与同步关系图。移除 hook 运行时与 HTML 讲解模板。另三类技能保持独立。七项旧英文入口重定向到 concept-design，中文入口重定向到 concept-design-cn。
 
-| 英文技能 | 版本 |
-| --- | --- |
-| concept-design | 1.0.2 |
-| concept-prd | 1.1.2 |
-| concept-build | 1.1.2 |
-| concept-review | 1.1.2 |
-| concept-guard | 1.1.2 |
-| concept-refine | 1.0.2 |
-| show-me-the-design | 0.2.2 |
-| settle-the-concept-design | 0.1.5 |
+Concept Design / 概念设计: `2.0.0` (`concept-design`, `concept-design-cn`).
 
-中文对应技能使用相同版本。
+Validation: 111 format-checker regressions and 24 map test groups; localization, package links, catalog, and repository hygiene.
