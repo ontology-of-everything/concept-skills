@@ -5,9 +5,8 @@
 Adding a share feature can touch posting, authorization, and notification code.
 When the connections are scattered, the effects of a change are hard to see.
 
-`concept-design` is a skill for software design and AI coding.
-Start from a user's need, express behavior as concepts and synchronization rules, then use them to specify, implement, and review software.
-Diagrams use Mermaid in Markdown.
+`concept-design` supports software design and AI coding with Daniel Jackson's concepts and synchronizations.
+Start from a user's need, define independent modules and explicit coordination rules, then use them for specifications, implementation, review, and Mermaid maps.
 Adapts ideas from WYSIWID (Meng & Jackson, MIT).
 
 ## 🧩 How it works
@@ -79,7 +78,7 @@ Data semantics, personal knowledge management, and learning remain separate skil
 
 | Skill | Purpose | Version |
 | --- | --- | --- |
-| [Concept Design](skills/en/concept-design/SKILL.md) | Design, specify, build, and inspect software concepts through one entry. | 2.0.0 |
+| [Concept Design — Modular, Legible Software](skills/en/concept-design/SKILL.md) | Organize software into independent concepts and explicit synchronization rules so behavior is easier to understand and change. | 2.0.1 |
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
 | [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
@@ -88,8 +87,8 @@ Data semantics, personal knowledge management, and learning remain separate skil
 
 ## Maintenance and license
 
-The former eight concept-design workflows are combined in **2.0.0**, with English and Chinese editions. Repository version: **3.0.0**.
-Retired ClawHub entries redirect to the matching language edition. Preserve project specifications, code, and user configuration during migration.
+The former eight concept-design workflows share one entry per language. Current skill version: **2.0.1**. Repository version: **3.0.1**.
+Old ClawHub entries redirect to the matching language edition where possible; the rest are retired or already unavailable. Preserve project specifications, code, and user configuration during migration.
 
 Run `./tools/validate-all.sh` to check public packages.
 [Repository rules](CLAUDE.md) · [Changes](CHANGELOG.md) · [中文](README-CN.md).

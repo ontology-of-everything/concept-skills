@@ -5,8 +5,8 @@
 加一个“分享”功能，常常要同时修改发帖、权限和通知代码。
 关联藏在多处，改动会影响什么，很难直接看出来。
 
-`concept-design` 是面向软件设计与 AI 编程的技能。
-从用户需要出发，把行为写成概念与同步规则，再用于规格、实现和审查；图统一使用 Mermaid。
+`concept-design` 用 Daniel Jackson 的概念与同步方法支持软件设计与 AI 编程。
+从用户需要出发，划分独立模块、写明协作规则，再用于规格、实现、审查与 Mermaid 关系图。
 借鉴 Meng 与 Jackson（MIT）的 WYSIWID。
 
 ## 🧩 怎么工作
@@ -77,7 +77,7 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 
 | 技能 | 用途 | 版本 |
 | --- | --- | --- |
-| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用一个入口设计、写规格、实现与检查软件概念。 | 2.0.0 |
+| [概念设计：模块独立，协作清楚](skills/zh-CN/concept-design-cn/SKILL.md) | 用独立概念与明确同步规则组织软件，让行为更容易理解与修改。 | 2.0.1 |
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |
 | [个人知识架构师](skills/zh-CN/personal-knowledge-architect-cn/SKILL.md) | 从原文萃取、关联、组织和复用知识。 | 0.4.0 |
 | [读它，重构它，化为己有](skills/zh-CN/read-it-reframe-it-own-it-cn/SKILL.md) | 围绕学习目标与关键框架建立并修正理解。 | 0.2.0 |
@@ -86,8 +86,8 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 
 ## 维护与许可
 
-原八项概念设计流程已合并为 **2.0.0**，提供中英文版本；仓库版本为 **3.0.0**。
-ClawHub 旧入口重定向到对应语言的新技能；迁移时保留项目规格、源码和用户配置。
+原八项概念设计流程共用一个入口，每种语言一份。当前技能版本为 **2.0.1**，仓库版本为 **3.0.1**。
+ClawHub 旧入口能合并的已跳转，其余已下线或原本不可用；迁移时保留项目规格、源码和用户配置。
 
 运行 `./tools/validate-all.sh` 检查公开安装包。
 [仓库规则](CLAUDE.md) · [更新日志](CHANGELOG.zh.md) · [English](README.md)。

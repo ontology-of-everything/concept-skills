@@ -4,7 +4,7 @@
   "groupings": [
     {
       "title": "Concept Design",
-      "description": "Design, specify, build, and inspect software concepts through one entry.",
+      "description": "Organize software into independent concepts and explicit synchronization rules so behavior is easier to understand and change.",
       "skills": [
         "concept-design",
         "concept-design-cn"

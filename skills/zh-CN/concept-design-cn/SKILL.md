@@ -1,13 +1,13 @@
 ---
 name: concept-design-cn
-description: "仅在显式调用时，按 Daniel Jackson 的概念与同步方法设计、写规格、实现、检查、精炼或解释软件。分别检查目的、行为、边界与证据。"
+description: "仅在显式调用时，用 Daniel Jackson 的概念与同步方法设计、写规格、实现、审查、重构或解释软件。将功能放进独立模块，将协作写成明确规则，让软件更模块化、行为更透明、更容易理解与修改。支持 CONCEPT.md/SYNCS.md 结构检查与 Mermaid 关系图。"
 metadata:
   language: zh-CN
   translation_of: concept-design
-  version: "2.0.0"
+  version: "2.0.1"
 ---
 
-# 概念设计
+# 概念设计：模块独立，协作清楚
 
 先定义有用行为，再选择实现。
 

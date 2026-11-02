@@ -3,8 +3,8 @@ domains:
   concept-design:
     name: Concept Design
     name_zh: 概念设计
-    description: Design, specify, build, and inspect software concepts through one entry.
-    description_zh: 用一个入口设计、写规格、实现与检查软件概念。
+    description: Organize software into independent concepts and explicit synchronization rules so behavior is easier to understand and change.
+    description_zh: 用独立概念与明确同步规则组织软件，让行为更容易理解与修改。
   semantic-modeling:
     name: Semantic Modeling
     name_zh: 语义建模
@@ -23,14 +23,14 @@ domains:
 skills:
 - id: concept-design
   path: skills/en/concept-design
-  display_name: Concept Design
-  display_title: Concept Design
-  display_name_zh: 概念设计
-  display_title_zh: 概念设计
+  display_name: Concept Design — Modular, Legible Software
+  display_title: Concept Design — Modular, Legible Software
+  display_name_zh: 概念设计：模块独立，协作清楚
+  display_title_zh: 概念设计：模块独立，协作清楚
   domain: concept-design
-  summary: Use only when explicitly invoked to design, specify, implement, inspect, refine, or explain software with Daniel Jackson's concepts and synchronizations. Check purpose, behavior, boundaries, and evidence.
-  summary_zh: 仅在显式调用时，按 Daniel Jackson 的概念与同步方法设计、写规格、实现、检查、精炼或解释软件。分别检查目的、行为、边界与证据。
-  version: 2.0.0
+  summary: Use only when explicitly invoked for software design, specifications, implementation, review, refactoring, or explanation with Daniel Jackson's concepts and synchronizations. Put functionality in independent modules and coordination in explicit rules to make software more modular, transparent, and easier to understand and change. Check CONCEPT.md/SYNCS.md structure and generate Mermaid relationship maps.
+  summary_zh: 仅在显式调用时，用 Daniel Jackson 的概念与同步方法设计、写规格、实现、审查、重构或解释软件。将功能放进独立模块，将协作写成明确规则，让软件更模块化、行为更透明、更容易理解与修改。支持 CONCEPT.md/SYNCS.md 结构检查与 Mermaid 关系图。
+  version: 2.0.1
   agents:
   - cursor
   - claude-code
@@ -57,14 +57,14 @@ skills:
     - verification
 - id: concept-design-cn
   path: skills/zh-CN/concept-design-cn
-  display_name: 概念设计
-  display_title: 概念设计
-  display_name_zh: 概念设计
-  display_title_zh: 概念设计
+  display_name: 概念设计：模块独立，协作清楚
+  display_title: 概念设计：模块独立，协作清楚
+  display_name_zh: 概念设计：模块独立，协作清楚
+  display_title_zh: 概念设计：模块独立，协作清楚
   domain: concept-design
-  summary: 仅在显式调用时，按 Daniel Jackson 的概念与同步方法设计、写规格、实现、检查、精炼或解释软件。分别检查目的、行为、边界与证据。
-  summary_zh: 仅在显式调用时，按 Daniel Jackson 的概念与同步方法设计、写规格、实现、检查、精炼或解释软件。分别检查目的、行为、边界与证据。
-  version: 2.0.0
+  summary: 仅在显式调用时，用 Daniel Jackson 的概念与同步方法设计、写规格、实现、审查、重构或解释软件。将功能放进独立模块，将协作写成明确规则，让软件更模块化、行为更透明、更容易理解与修改。支持 CONCEPT.md/SYNCS.md 结构检查与 Mermaid 关系图。
+  summary_zh: 仅在显式调用时，用 Daniel Jackson 的概念与同步方法设计、写规格、实现、审查、重构或解释软件。将功能放进独立模块，将协作写成明确规则，让软件更模块化、行为更透明、更容易理解与修改。支持 CONCEPT.md/SYNCS.md 结构检查与 Mermaid 关系图。
+  version: 2.0.1
   agents:
   - cursor
   - claude-code

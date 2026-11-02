@@ -1,13 +1,13 @@
 ---
 name: concept-design
-description: "Use only when explicitly invoked to design, specify, implement, inspect, refine, or explain software with Daniel Jackson's concepts and synchronizations. Check purpose, behavior, boundaries, and evidence."
+description: "Use only when explicitly invoked for software design, specifications, implementation, review, refactoring, or explanation with Daniel Jackson's concepts and synchronizations. Put functionality in independent modules and coordination in explicit rules to make software more modular, transparent, and easier to understand and change. Check CONCEPT.md/SYNCS.md structure and generate Mermaid relationship maps."
 metadata:
   language: en
   translation_of: concept-design-cn
-  version: "2.0.0"
+  version: "2.0.1"
 ---
 
-# Concept Design
+# Concept Design — Modular, Legible Software
 
 Define the useful behavior before choosing its implementation.
 
