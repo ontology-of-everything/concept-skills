@@ -1,11 +1,7 @@
 # 更新日志
 
-## 3.0.1 - 2026-11-02
+## 3.1.0 - 2026-11-04
 
-重写技能标题与描述，以独立概念和明确同步规则说明软件如何更模块化、行为更透明、更容易理解。写明适用任务、规格检查与 Mermaid 关系图。
+新增 4R 架构师英文版（`architect-4r`）与简体中文版（`architect-4r-cn`），技能版本均为 `0.1.0`。以单文件技能说明李运华的 Rank、Role、Relation、Rule，包含系统模型、架构视图、Mermaid 支付示例与常见误用。新增“软件架构”目录分类，并启用两个版本的 ClawHub 发布。
 
-Concept Design / 概念设计: `2.0.1` (`concept-design`, `concept-design-cn`).
-
-ClawHub：七个旧入口已跳转到对应语言版本。concept-refine 因历史别名冲突下线，其余六个旧中文入口原已不可用。
-
-Validation: 111 format-checker regressions and 24 map test groups; localization, package links, catalog, and repository hygiene.
+其他技能内容与版本保持不变。

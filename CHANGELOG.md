@@ -1,11 +1,7 @@
 # Changelog
 
-## 3.0.1 - 2026-11-02
+## 3.1.0 - 2026-11-04
 
-Rewrite the skill titles and descriptions around independent concepts, explicit synchronization rules, and software that is more modular, transparent, and easier to understand. Name the supported tasks, specification checks, and Mermaid maps.
+Add 4R Architect in English (`architect-4r`) and Simplified Chinese (`architect-4r-cn`), both at `0.1.0`. The self-contained skills explain Li Yunhua's Rank, Role, Relation, and Rule through a system model, architecture views, a Mermaid payment example, and common mistakes. Register both editions under Software Architecture and enable their ClawHub distribution.
 
-Concept Design / 概念设计: `2.0.1` (`concept-design`, `concept-design-cn`).
-
-ClawHub: seven old entries redirect to the matching language edition. Retire concept-refine after a historical alias collision; six older Chinese entries were already unavailable.
-
-Validation: 111 format-checker regressions and 24 map test groups; localization, package links, catalog, and repository hygiene.
+Keep other skill packages and their versions unchanged.
