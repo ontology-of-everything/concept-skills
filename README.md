@@ -72,7 +72,14 @@ See the [map format](skills/en/concept-design/references/map-format.md).
 
 ## Repository skills
 
-Data semantics, personal knowledge management, and learning remain separate skills; each has English and Chinese editions.
+4R architecture documentation, data semantics, personal knowledge management, and learning have separate skills; each has English and Chinese editions.
+
+`architect-4r` explains Li Yunhua's Rank, Role, Relation, and Rule from discussion context or source code, with diagrams, a payment example, and common mistakes. The Chinese edition is `architect-4r-cn`.
+
+```sh
+npx --yes skills add . --skill architect-4r --agent codex --copy --yes
+npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
+```
 
 <!-- skill-catalog:start -->
 
@@ -82,12 +89,13 @@ Data semantics, personal knowledge management, and learning remain separate skil
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
 | [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
+| [4R Architect](skills/en/architect-4r/SKILL.md) | Explain system structure and behavior through diagrams and text. | 0.1.0 |
 
 <!-- skill-catalog:end -->
 
 ## Maintenance and license
 
-The former eight concept-design workflows share one entry per language. Current skill version: **2.0.1**. Repository version: **3.0.1**.
+The former eight concept-design workflows share one entry per language. Current concept-design version: **2.0.1**. Repository version: **3.1.0**.
 Old ClawHub entries redirect to the matching language edition where possible; the rest are retired or already unavailable. Preserve project specifications, code, and user configuration during migration.
 
 Run `./tools/validate-all.sh` to check public packages.

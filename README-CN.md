@@ -71,7 +71,14 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 
 ## 仓库技能
 
-数据语义、个人知识管理与学习技能独立保留；每项能力有中英文版本。
+4R 架构文档、数据语义、个人知识管理与学习分别提供独立技能；每项能力有中英文版本。
+
+`architect-4r-cn` 基于李运华的 Rank、Role、Relation、Rule，从讨论或源码中总结系统模型，包含图文、支付示例与常见误用。英文版为 `architect-4r`。
+
+```sh
+npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
+npx --yes skills add . --skill architect-4r --agent codex --copy --yes
+```
 
 <!-- skill-catalog:start -->
 
@@ -81,12 +88,13 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |
 | [个人知识架构师](skills/zh-CN/personal-knowledge-architect-cn/SKILL.md) | 从原文萃取、关联、组织和复用知识。 | 0.4.0 |
 | [读它，重构它，化为己有](skills/zh-CN/read-it-reframe-it-own-it-cn/SKILL.md) | 围绕学习目标与关键框架建立并修正理解。 | 0.2.0 |
+| [4R 架构师](skills/zh-CN/architect-4r-cn/SKILL.md) | 用图文说明系统的组成、联系与运行方式。 | 0.1.0 |
 
 <!-- skill-catalog:end -->
 
 ## 维护与许可
 
-原八项概念设计流程共用一个入口，每种语言一份。当前技能版本为 **2.0.1**，仓库版本为 **3.0.1**。
+原八项概念设计流程共用一个入口，每种语言一份。当前概念设计版本为 **2.0.1**，仓库版本为 **3.1.0**。
 ClawHub 旧入口能合并的已跳转，其余已下线或原本不可用；迁移时保留项目规格、源码和用户配置。
 
 运行 `./tools/validate-all.sh` 检查公开安装包。

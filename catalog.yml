@@ -20,6 +20,11 @@ domains:
     name_zh: 学习方法
     description: Build and revise understanding around a learning goal and a key framework.
     description_zh: 围绕学习目标与关键框架建立并修正理解。
+  software-architecture:
+    name: Software Architecture
+    name_zh: 软件架构
+    description: Explain system structure and behavior through diagrams and text.
+    description_zh: 用图文说明系统的组成、联系与运行方式。
 skills:
 - id: concept-design
   path: skills/en/concept-design
@@ -251,3 +256,67 @@ skills:
   distribution: direct-skill
   language: zh-CN
   translation_of: read-it-reframe-it-own-it
+- id: architect-4r
+  path: skills/en/architect-4r
+  display_name: 4R Architect
+  display_title: 4R Architect
+  display_name_zh: 4R 架构师
+  display_title_zh: 4R 架构师
+  domain: software-architecture
+  summary: Use Li Yunhua's 4R method to summarize a system model from discussion context or source code and produce architecture documentation with diagrams and text.
+  summary_zh: 基于李运华的 4R 方法，从上下文讨论或源代码中总结系统模型，生成图文结合的架构文档。
+  version: 0.1.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: architect-4r-cn
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - software-architecture
+    - 4r
+    - architecture-documentation
+    - system-modeling
+- id: architect-4r-cn
+  path: skills/zh-CN/architect-4r-cn
+  display_name: 4R 架构师
+  display_title: 4R 架构师
+  display_name_zh: 4R 架构师
+  display_title_zh: 4R 架构师
+  domain: software-architecture
+  summary: 基于李运华的 4R 方法，从上下文讨论或源代码中总结系统模型，生成图文结合的架构文档。
+  summary_zh: 基于李运华的 4R 方法，从上下文讨论或源代码中总结系统模型，生成图文结合的架构文档。
+  version: 0.1.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: architect-4r
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - software-architecture
+    - 4r
+    - architecture-documentation
+    - system-modeling

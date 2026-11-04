@@ -33,6 +33,14 @@
         "read-it-reframe-it-own-it",
         "read-it-reframe-it-own-it-cn"
       ]
+    },
+    {
+      "title": "Software Architecture",
+      "description": "Explain system structure and behavior through diagrams and text.",
+      "skills": [
+        "architect-4r",
+        "architect-4r-cn"
+      ]
     }
   ]
 }
