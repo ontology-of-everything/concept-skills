@@ -3,8 +3,8 @@
   "notGrouped": "bottom",
   "groupings": [
     {
-      "title": "Concept Design",
-      "description": "Organize software into independent concepts and explicit synchronization rules so behavior is easier to understand and change.",
+      "title": "Concept design",
+      "description": "Define independent functionality with concepts and coordinate them with synchronization rules.",
       "skills": [
         "concept-design",
         "concept-design-cn"

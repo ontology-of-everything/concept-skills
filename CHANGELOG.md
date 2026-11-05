@@ -1,7 +1,9 @@
 # Changelog
 
-## 3.1.0 - 2026-11-04
+## 3.1.1 - 2026-11-05
 
-Add 4R Architect in English (`architect-4r`) and Simplified Chinese (`architect-4r-cn`), both at `0.1.0`. The self-contained skills explain Li Yunhua's Rank, Role, Relation, and Rule through a system model, architecture views, a Mermaid payment example, and common mistakes. Register both editions under Software Architecture and enable their ClawHub distribution.
+Simplify Concept design and synchronize both language editions. Keep one CONCEPT/SYNCS specification contract, add default execution-constraint templates, and align design, PRD, implementation, backfill, and review guidance. Add a four-scenario index with complete interfaces, acceptance checks, and counterexamples. Use Markdown specification fences, clarify per-flow correlation and partial failures, and remove obsolete provenance and duplicated guidance. Preserve the structural checker and diagram generator behavior.
 
-Keep other skill packages and their versions unchanged.
+Concept design: `2.0.3` (`concept-design`, `concept-design-cn`).
+
+Validation: localization, links, catalog, repository hygiene, 14 specification examples, 111 checker regressions, and 24 map tests.

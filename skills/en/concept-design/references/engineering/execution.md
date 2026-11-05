@@ -1,22 +1,17 @@
 # Execution, recovery, and migration
 
-Use [the shared contract](../spec-format.md) for matching, bindings, results, and correlation.
+Implement the model's [execution constraints](../spec-format.md#execution-constraints) under the shared [execution checks](../spec-format.md#execution-checks).
 
 ## Rule execution
 
 Implement named rules as functions or objects in composition.
-In-memory records suffice unless restart recovery is required.
+Choose storage from the declared durability and recovery requirements.
 Atomically claim each matched completion tuple and binding row before emitting calls.
-Repeated evaluation MUST neither duplicate a forbidden effect nor suppress a legitimate repeated action.
 Ordinary calls, listeners, and Promise chains need the same guarantees.
 
-For each reachable result, implement the declared response, retry, compensation, or intentional-ignore policy and state consequences.
-Required responses MUST cover refusal and zero matches without omission, duplication, or delivery to another request.
-Define candidate selection before choosing one or acting on all.
+Implement the declared outcome policies, request correlation, candidate selection, and loop controls from the owning SYNCS.
 Later-valid query results need an explicit reevaluation trigger.
-Check business permissions before the protected effect under the required consistency policy.
-A prior query cannot replace an action's atomic invariant check.
-Loops MUST terminate or have controlled continuation.
+Enforce invariant checks atomically inside the action; preserve the required consistency between authorization and protected effects.
 
 ## Atomicity and recovery
 
@@ -37,8 +32,7 @@ When restart recovery is required:
    Compensation need not restore the original state.
 5. Bound retries or define controlled continuation, and expose exhaustion.
 
-For a confirmed policy that releases a reservation after payment declines, a temporary release failure leaves release work pending.
-Retrying release MUST NOT charge again.
+The [external login example](../examples.md#external-identity-login) illustrates partial effects: an error response does not undo completed identity or profile changes.
 
 ## Compatibility
 

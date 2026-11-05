@@ -1,21 +1,19 @@
 ---
 name: concept-design
-description: "Use only when explicitly invoked for software design, specifications, implementation, review, refactoring, or explanation with Daniel Jackson's concepts and synchronizations. Put functionality in independent modules and coordination in explicit rules to make software more modular, transparent, and easier to understand and change. Check CONCEPT.md/SYNCS.md structure and generate Mermaid relationship maps."
+description: "Use only when explicitly invoked. Design, specify, implement, review, refactor, or explain software with Daniel Jackson's concepts and synchronizations. Check CONCEPT.md/SYNCS.md structure and generate Mermaid relationship diagrams."
 metadata:
   language: en
   translation_of: concept-design-cn
-  version: "2.0.1"
+  version: "2.0.3"
 ---
 
-# Concept Design — Modular, Legible Software
+# Concept design
 
-Define the useful behavior before choosing its implementation.
+Define independent functionality with concepts and coordinate them with synchronization rules.
+Specify the behavior users need before choosing an implementation.
+When understanding or changing a behavior, locate its concepts and rules.
 
-Adapts ideas from **WYSIWID** (Meng & Jackson, MIT).
-
-Software structure should directly express behavior observable to users.
-Concepts define independent functionality; synchronization rules define how concepts work together.
-It should be possible to locate the corresponding concepts and rules when understanding or changing a behavior.
+This skill adapts Meng and Jackson's WYSIWID method.
 
 ## Start from the need
 
@@ -91,4 +89,4 @@ python3 <skill-directory>/scripts/concept_lint.py <CONCEPT.md-or-SYNCS.md> [more
 ```
 
 A syntax result does not establish purpose fulfillment, contract conformance, or runtime correctness.
-[Sources and local conventions](references/sources.md).
+[References](references/sources.md).

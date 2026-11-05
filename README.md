@@ -23,8 +23,7 @@ The synchronization holds the coordination; Comment need not depend on Notificat
 Locate functionality, change concepts independently, and read coordination rules directly.
 Before adding a feature, consider reusing concepts or changing a few synchronizations, then check that existing behavior is preserved.
 The goal is more modular, transparent, and understandable software.
-See the [MIT report](https://news.mit.edu/2025/mit-researchers-propose-new-model-for-legible-modular-software-1106) for background.
-See [sources](skills/en/concept-design/references/sources.md) for theory and local choices.
+See [references](skills/en/concept-design/references/sources.md) for the concept and synchronization methods used by this skill.
 
 ## Get started
 
@@ -85,7 +84,7 @@ npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
 
 | Skill | Purpose | Version |
 | --- | --- | --- |
-| [Concept Design — Modular, Legible Software](skills/en/concept-design/SKILL.md) | Organize software into independent concepts and explicit synchronization rules so behavior is easier to understand and change. | 2.0.1 |
+| [Concept design](skills/en/concept-design/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 2.0.3 |
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
 | [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
@@ -95,9 +94,9 @@ npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
 
 ## Maintenance and license
 
-The former eight concept-design workflows share one entry per language. Current concept-design version: **2.0.1**. Repository version: **3.1.0**.
+The former eight concept-design workflows share one entry per language. Current concept-design version: **2.0.3**. Repository version: **3.1.1**.
 Old ClawHub entries redirect to the matching language edition where possible; the rest are retired or already unavailable. Preserve project specifications, code, and user configuration during migration.
 
 Run `./tools/validate-all.sh` to check public packages.
 [Repository rules](CLAUDE.md) · [Changes](CHANGELOG.md) · [中文](README-CN.md).
-[Apache-2.0](LICENSE); ClawHub bundles use MIT-0. Adapted material retains its [MIT notice](skills/en/concept-design/references/sources.md#wyx-mit) in each package.
+[Apache-2.0](LICENSE). ClawHub bundles use MIT-0.

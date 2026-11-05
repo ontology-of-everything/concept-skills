@@ -7,7 +7,7 @@ Record scope, versions, contract confirmation/coverage, and unknowns before judg
 1. Apply [qualification criteria](criteria.md) to the actual user, including API programmers.
 2. Apply [drift checks and severity](drift.md) where applicable contracts and code exist.
 3. Trace required success and refusal through rules and actual composition/adapters.
-   Verify conjunction, cases, bindings/cardinality, parameter sources, occurrence/object/request isolation, and all required outcomes under [the format](spec-format.md).
+   Compare matching, binding sources/cardinality, occurrence/object/request isolation, and outcomes against the [execution constraints and shared checks](spec-format.md#execution-constraints).
 4. Check joint effects for hidden ordering, misplaced invariant checks, stale authorization, and forbidden replay effects.
    Inspect state commit → completion → dispatch crash windows when durability is required.
 5. Check required progress, loops, missing coordination, lost user control, and distorted concept purpose against concrete scenarios.

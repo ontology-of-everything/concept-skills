@@ -5,7 +5,7 @@
    Retain required security, timing, and reliability bounds.
 2. Propose concepts and scenarios in the [decision record](decisions.md).
 3. Apply all eight [qualification criteria](criteria.md).
-   Write contracts in the [specification format](spec-format.md).
+   Write contracts and their execution constraints in the [specification format](spec-format.md).
 4. Design rules and check [composition and subsets](composition.md).
 
 Deliver concept contracts, rules, their diagram, exclusions, and open decisions.

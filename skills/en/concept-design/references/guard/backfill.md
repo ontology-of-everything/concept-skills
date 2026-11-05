@@ -4,6 +4,7 @@ Inspect actual code and write an evidenced candidate baseline using [the format]
 Label each claim's evidence and confirmation status.
 MUST separate observed behavior, inferred purpose, known defects, desired repairs, and confirmed requirements.
 State which consumers may rely on the reconstructed contract.
+Record evidenced [execution constraints](../spec-format.md#execution-constraints); unknown policies remain open.
 
 ## Concept
 
@@ -11,7 +12,7 @@ Inspect exports, callers, persistence, result cases, invariants, and tests.
 Write evidenced types, cardinality, initial state, actions/results, and applicable queries.
 Private helpers/caches need no entry without observable effects.
 List required syncs separately.
-Record coupling in decisions/drift rather than adding legacy interactions/dependencies sections.
+Record coupling as an observed defect in decisions/drift, not as a permitted concept dependency.
 
 ## Synchronization
 

@@ -1,21 +1,19 @@
 ---
 name: concept-design-cn
-description: "仅在显式调用时，用 Daniel Jackson 的概念与同步方法设计、写规格、实现、审查、重构或解释软件。将功能放进独立模块，将协作写成明确规则，让软件更模块化、行为更透明、更容易理解与修改。支持 CONCEPT.md/SYNCS.md 结构检查与 Mermaid 关系图。"
+description: "仅在显式调用时使用。用 Daniel Jackson 的概念与同步方法设计、实现、审查和重构软件，编写规格并解释软件行为。检查 CONCEPT.md/SYNCS.md 结构，生成 Mermaid 关系图。"
 metadata:
   language: zh-CN
   translation_of: concept-design
-  version: "2.0.1"
+  version: "2.0.3"
 ---
 
-# 概念设计：模块独立，协作清楚
+# 概念设计
 
-先定义有用行为，再选择实现。
+用概念定义独立功能，用同步规则定义概念之间的协作。
+先写明用户需要的行为，再选择实现。
+理解或修改行为时，定位对应概念和规则。
 
-本技能借鉴 **WYSIWID**（Meng 与 Jackson，MIT）的概念与同步方法。
-
-软件结构应直接表达用户可观察的行为。
-概念定义独立功能，同步规则定义概念之间的协作。
-理解或修改一项行为时，应能找到对应的概念与规则。
+本技能参考 Meng 与 Jackson 的 WYSIWID 方法。
 
 ## 从需要出发
 
@@ -91,4 +89,4 @@ python3 <技能目录>/scripts/concept_lint.py <CONCEPT.md或SYNCS.md> [其他�
 ```
 
 语法结果不证明目的达成、契约符合性或运行时正确性。
-[来源与本地约定](references/sources.md)。
+[参考资料](references/sources.md)。

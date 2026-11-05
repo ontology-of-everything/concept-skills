@@ -23,7 +23,7 @@
 功能更容易定位，概念可以单独修改，协作规则直接可读。
 新增功能时，先检查能否复用概念或增改少量同步规则，再验证已有行为是否保持。
 目标是更模块化、更透明、更容易理解的软件。
-研究背景见 [MIT 报道](https://news.mit.edu/2025/mit-researchers-propose-new-model-for-legible-modular-software-1106)，理论与本地约定见[来源](skills/zh-CN/concept-design-cn/references/sources.md)。
+本技能采用的概念与同步方法见[参考资料](skills/zh-CN/concept-design-cn/references/sources.md)。
 
 ## 开始使用
 
@@ -84,7 +84,7 @@ npx --yes skills add . --skill architect-4r --agent codex --copy --yes
 
 | 技能 | 用途 | 版本 |
 | --- | --- | --- |
-| [概念设计：模块独立，协作清楚](skills/zh-CN/concept-design-cn/SKILL.md) | 用独立概念与明确同步规则组织软件，让行为更容易理解与修改。 | 2.0.1 |
+| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 2.0.3 |
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |
 | [个人知识架构师](skills/zh-CN/personal-knowledge-architect-cn/SKILL.md) | 从原文萃取、关联、组织和复用知识。 | 0.4.0 |
 | [读它，重构它，化为己有](skills/zh-CN/read-it-reframe-it-own-it-cn/SKILL.md) | 围绕学习目标与关键框架建立并修正理解。 | 0.2.0 |
@@ -94,9 +94,9 @@ npx --yes skills add . --skill architect-4r --agent codex --copy --yes
 
 ## 维护与许可
 
-原八项概念设计流程共用一个入口，每种语言一份。当前概念设计版本为 **2.0.1**，仓库版本为 **3.1.0**。
+原八项概念设计流程共用一个入口，每种语言一份。当前概念设计版本为 **2.0.3**，仓库版本为 **3.1.1**。
 ClawHub 旧入口能合并的已跳转，其余已下线或原本不可用；迁移时保留项目规格、源码和用户配置。
 
 运行 `./tools/validate-all.sh` 检查公开安装包。
 [仓库规则](CLAUDE.md) · [更新日志](CHANGELOG.zh.md) · [English](README.md)。
-[Apache-2.0](LICENSE)；ClawHub 安装包使用 MIT-0，改编内容的 [MIT 声明](skills/zh-CN/concept-design-cn/references/sources.md#wyx-mit)随包保留。
+[Apache-2.0](LICENSE)。ClawHub 安装包使用 MIT-0。
