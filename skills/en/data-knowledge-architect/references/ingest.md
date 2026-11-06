@@ -1,20 +1,28 @@
-# Phase 1: Ingest
+# Phase 1: Inventory and grain
 
-Normalize supplied interfaces into one complete operation inventory before modeling.
+Inventory each supplied operation or table once: identifier, source/version/locator, inputs, outputs,
+read/write/unknown status, pagination, errors, temporal fields, keys, and evidence gaps. Inspect the
+actual contract; a method name such as `get` or an HTTP verb is only a clue to effects.
 
-| Source        | Extract                                                                                             | Grain clues                                                           |
-| ------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| REST/OpenAPI  | path+method operation; parameters/requestBody inputs; 2xx schema outputs                            | array element is often one row; object is often one resource snapshot |
-| CLI           | subcommand operation; flags inputs; JSON/example output; classify read/write from observed contract | list often yields detail facts; show/get often yields snapshots       |
-| table/DDL/CSV | table candidate; columns attributes/measures; PK business or degenerate key; FK dimension reference | unique-key combination suggests grain                                 |
+| Evidence | What it can establish | What it cannot establish alone |
+| --- | --- | --- |
+| API/CLI response array | Candidate record shape and pagination boundary | Business event, uniqueness, history, or additivity |
+| Table key/DDL | Declared uniqueness and structural relations | Measurement grain or business meaning of identity |
+| Business definition | Event/snapshot meaning and intended analysis | Undocumented available fields or source guarantees |
 
-Record operation name, source location/version, safety (`read` or `write`), inputs, output schema,
-pagination, time fields, identifiers, enums, and evidence gaps. Do not infer undocumented response
-fields from names or examples from another operation.
+Classify supported roles as fact candidate, dimension/source lookup, command/utility, mixed, or
+out of analytical scope; otherwise mark unresolved. A fact may represent an event, periodic or
+accumulating snapshot, or factless occurrence. A dimension provides descriptive context, not merely
+code translation. Split mixed responses only when their independent meanings are evidenced.
 
-Classify a **fact** only when records measure a repeatable business process/event or an aggregatable
-snapshot. Classify a **dimension lookup** when it translates stable codes or identifiers. Leave
-ambiguous roles open with the evidence needed to decide.
+Declare grain in business terms, including relevant event/snapshot time and uniqueness scope.
+Distinguish one order, one order line, and one observed order version. Investigate null/duplicate
+keys and corrections; do not infer a historical series from a current-state endpoint. A query
+needing unsupported history remains outside the evidence boundary.
 
-Exit only when every supplied operation appears exactly once with source, read/write status, inputs,
-outputs, and a supported role or explicit open decision.
+Exit when the inventory covers all supplied material and every unresolved role/effect has an
+explicit gap. A gap blocks dependent decisions, not unrelated inventory work. Modeling does not
+require executing writes or fetching production data.
+
+Source: [Kimball grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/).
+The inventory roles and evidence records are this repository's conventions.

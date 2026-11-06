@@ -23,8 +23,8 @@ domains:
   software-architecture:
     name: Software Architecture
     name_zh: 软件架构
-    description: Explain system structure and behavior through diagrams and text.
-    description_zh: 用图文说明系统的组成、联系与运行方式。
+    description: Core concepts, definitions, principles, and common mistakes in software architecture models.
+    description_zh: 软件架构模型的核心概念、定义、原则与常见误用。
 skills:
 - id: concept-design
   path: skills/en/concept-design
@@ -107,8 +107,8 @@ skills:
   - ontology
   - okf
   - enterprise-knowledge
-  summary: Builds semantic models from API, CLI, and database contracts with an HTML review and OKF/YAML export. Use when modeling enterprise knowledge, semantic layers, dimensional models, or ontology.
-  summary_zh: 把 API、CLI 与数据库契约转成有证据支撑的语义模型，通过 HTML 决策工作台审查后输出 Google OKF 或 YAML。适用于企业知识建模、语义层、维度建模与本体设计。
+  summary: Builds analytical semantic models from API, CLI, and database contracts with an HTML decision review and OKF/YAML export. Use for analytical semantic layers, facts, dimensions, measures, and metrics.
+  summary_zh: 从 API、CLI 与数据库契约建立有证据的分析语义模型，经 HTML 决策评审后输出 OKF 或 YAML。适用于分析语义层、事实、维度、度量与指标建模。
   version: 1.1.0
   agents: &id002
   - cursor
@@ -140,8 +140,8 @@ skills:
   display_title_zh: 数据知识架构师 — 为 API 与数据结构建立清晰的语义模型
   domain: semantic-modeling
   subdomains: *id001
-  summary: 把 API、CLI 与数据库契约转成有证据支撑的语义模型，通过 HTML 决策工作台审查后输出 Google OKF 或 YAML。适用于企业知识建模、语义层、维度建模与本体设计。
-  summary_zh: 把 API、CLI 与数据库契约转成有证据支撑的语义模型，通过 HTML 决策工作台审查后输出 Google OKF 或 YAML。适用于企业知识建模、语义层、维度建模与本体设计。
+  summary: 从 API、CLI 与数据库契约建立有证据的分析语义模型，经 HTML 决策评审后输出 OKF 或 YAML。适用于分析语义层、事实、维度、度量与指标建模。
+  summary_zh: 从 API、CLI 与数据库契约建立有证据的分析语义模型，经 HTML 决策评审后输出 OKF 或 YAML。适用于分析语义层、事实、维度、度量与指标建模。
   version: 1.1.0
   agents: *id002
   compatibility: No external tools or network; pure modeling + file generation; review report is self-contained HTML (inline CSS/JS, no CDN)
@@ -258,14 +258,14 @@ skills:
   translation_of: read-it-reframe-it-own-it
 - id: architect-4r
   path: skills/en/architect-4r
-  display_name: 4R Architect
-  display_title: 4R Architect
-  display_name_zh: 4R 架构师
-  display_title_zh: 4R 架构师
+  display_name: 4R System Modeling Framework
+  display_title: 4R System Modeling Framework
+  display_name_zh: 4R 系统建模框架
+  display_title_zh: 4R 系统建模框架
   domain: software-architecture
-  summary: Use Li Yunhua's 4R method to summarize a system model from discussion context or source code and produce architecture documentation with diagrams and text.
-  summary_zh: 基于李运华的 4R 方法，从上下文讨论或源代码中总结系统模型，生成图文结合的架构文档。
-  version: 0.1.0
+  summary: Use only when explicitly invoked. Model systems with Li Yunhua's 4R method and create separate Mermaid diagrams for Rank, Role, Relation, and Rule, with templates and checks.
+  summary_zh: 仅在显式调用时使用。基于李运华的 4R 方法梳理系统层级、角色、联系与协作规则，为每个 R 分别绘制 Mermaid 图，并提供模板与检查项。
+  version: 0.3.0
   agents:
   - cursor
   - claude-code
@@ -285,19 +285,20 @@ skills:
     - knowledge
     topics:
     - software-architecture
-    - 4r
-    - architecture-documentation
     - system-modeling
+    - 4r
+    - mermaid
+    - architecture-documentation
 - id: architect-4r-cn
   path: skills/zh-CN/architect-4r-cn
-  display_name: 4R 架构师
-  display_title: 4R 架构师
-  display_name_zh: 4R 架构师
-  display_title_zh: 4R 架构师
+  display_name: 4R 系统建模框架
+  display_title: 4R 系统建模框架
+  display_name_zh: 4R 系统建模框架
+  display_title_zh: 4R 系统建模框架
   domain: software-architecture
-  summary: 基于李运华的 4R 方法，从上下文讨论或源代码中总结系统模型，生成图文结合的架构文档。
-  summary_zh: 基于李运华的 4R 方法，从上下文讨论或源代码中总结系统模型，生成图文结合的架构文档。
-  version: 0.1.0
+  summary: 仅在显式调用时使用。基于李运华的 4R 方法梳理系统层级、角色、联系与协作规则，为每个 R 分别绘制 Mermaid 图，并提供模板与检查项。
+  summary_zh: 仅在显式调用时使用。基于李运华的 4R 方法梳理系统层级、角色、联系与协作规则，为每个 R 分别绘制 Mermaid 图，并提供模板与检查项。
+  version: 0.3.0
   agents:
   - cursor
   - claude-code
@@ -317,6 +318,69 @@ skills:
     - knowledge
     topics:
     - software-architecture
+    - system-modeling
     - 4r
+    - mermaid
     - architecture-documentation
+- id: architect-4c
+  path: skills/en/architect-4c
+  display_name: C4 Software Architecture Model
+  display_title: C4 Software Architecture Model
+  display_name_zh: C4 软件架构模型
+  display_title_zh: C4 软件架构模型
+  domain: software-architecture
+  summary: Use only when explicitly invoked. Core concepts, level definitions, principles, and common mistakes in Simon Brown's C4 model.
+  summary_zh: 仅在显式调用时使用。Simon Brown C4 模型的核心概念、层级定义、原则与常见误用。
+  version: 0.1.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: architect-4c-cn
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - software-architecture
+    - c4
+    - system-modeling
+- id: architect-4c-cn
+  path: skills/zh-CN/architect-4c-cn
+  display_name: C4 软件架构模型
+  display_title: C4 软件架构模型
+  display_name_zh: C4 软件架构模型
+  display_title_zh: C4 软件架构模型
+  domain: software-architecture
+  summary: 仅在显式调用时使用。Simon Brown C4 模型的核心概念、层级定义、原则与常见误用。
+  summary_zh: 仅在显式调用时使用。Simon Brown C4 模型的核心概念、层级定义、原则与常见误用。
+  version: 0.1.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: architect-4c
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - software-architecture
+    - c4
     - system-modeling

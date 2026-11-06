@@ -1,0 +1,6 @@
+interface:
+  display_name: C4 软件架构模型
+  short_description: C4 的核心概念、定义、原则与常见误用。
+  default_prompt: $architect-4c-cn
+policy:
+  allow_implicit_invocation: false

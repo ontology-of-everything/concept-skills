@@ -1,85 +1,49 @@
-# Phase 3 · Emit — repo-YAML（可选目标）+ 共享字段语义
+# Phase 3：仓库 YAML 与共享字段语义
 
-输入：Phase 2 批准的建模决策集。产出：Kimball 星型/星座 YAML，三类文件：**catalog（薄路由）** → **shared-dimensions（一致性维度）** → **model（事实）**。本文件同时是两个目标共享的**字段语义定义**（OKF frontmatter 扩展键同源此处）。生成后跑 `verify.md`。
-
-铁律：形态/路由/粒度 → 语义层；可键入或读取的取值（枚举、code、字段路径、命令）→ 契约层，语义层只指向。
-
-## §1 `semantic_catalog`（路由，每 bundle 1 个）
+仓库 YAML 是本地语义配置，不是通用本体标准。用户提供项目 schema 时沿用并记录版本；
+否则可使用下面的紧凑记录结构：
 
 ```yaml
-name: <PascalCaseName>
-type: semantic_catalog
-version: <semver>
-domain: <snake_case_domain>
-description: <一句话；薄路由，触发词/对话流不放这里>
-entry_points:
-  <entry_key>:                 # 按场景
-    <axis>: <value>            # 可选路由轴（如 time）
-    primary_facts: [<Fact>, ...]
-    ontology_files: [<file>, ...]
-command_contracts_file: <相对路径或 null>   # 指向契约层
-```
-
-约束：`name/type/domain/entry_points` 必填；每个 entry_point 至少 1 个 `ontology_files`；catalog 不得内联事实/维度定义，也不重复 model 已有的 operations/doc 出处（推导即可，避免第二真源）。
-
-**多 bundle**：≥2 个 bundle 时在共同父目录生成薄 `index.yml`——每 bundle 一行（`domain / 一句 scope / catalog 路径`）；单 bundle 不生成。
-
-## §2 `semantic_ontology` — shared dimensions（一致性维度，按需 1 个）
-
-```yaml
-name: <Name>
+name: Sales
+schema_version: "1"
 type: semantic_ontology
-description: <共享维度集；被各 model 引用>
-source_evidence: { <key>: <url> }     # 可选，证据出处
-dimensions:
-  - name: Dim_<Name>                  # PascalCase，以 Dim_ 前缀
-    kind: <见 §4>
-    business_key: <field>
-    parent_dimension: <Dim_*>         # 仅 snowflake
-    source_operations: [<Service/Operation>, ...]
-    source_documents: [<url>, ...]    # 无 List API 时
-    attributes: [<field>, ...]
-    notes: <可选>
-evidence_boundary: [<句>, ...]
-```
-
-## §3 `semantic_ontology` — model（事实，每个业务过程/计费模式 1 个）
-
-```yaml
-name: <Name>
-type: semantic_ontology
-description: <对齐哪个 operation 的哪段结构>
-<axis>: <value>                       # 可选路由轴，与 catalog 对应
-shared_dimensions_file: <相对路径>
 facts:
-  - name: <Fact>                      # PascalCase
-    role: primary | child
-    grain: <一句可证伪的粒度>
-    parent_fact: <Fact>               # 仅 child
-    child_facts: [<Fact>, ...]        # 仅 primary
-    cardinality_max: <int>            # 可选
-    degenerate_dimensions: [<field>, ...]
-    dimensions: [Dim_<Name>, ...]     # 引用 §2/§4 的维度名
-    attributes:
-      - name: <field>
-        type: string|integer|number|boolean|date|datetime
-        dimension: Dim_<Name>         # 该列是某维度的外键时
-        required: true | false | conditional
-        condition: <when conditional>
-        max_length: <int>             # 可选
-        min: <n>; max: <n>            # 可选
-        notes: <取值/枚举指向契约层>
+  - name: Order
+    grain: one confirmed order at creation
+    source_operations: [ListOrders]
+    identity: {key: order_id, scope: tenant}
+    time: {field: placed_at, meaning: creation, timezone: UTC}
+    dimensions: [Store]
     measures:
-      - { name: <field>, additivity: additive|semi_additive|non_additive, unit: <或指向契约层>, notes: <basis> }
-evidence_boundary: [<句>, ...]
+      - name: order_amount
+        source_field: amount
+        unit: USD
+        basis: gross order amount before refunds
+        additivity: additive
+        aggregation_scope: unique orders in one currency
+    evidence: [contract-v1#ListOrders, business-definitions#order]
+evidence_boundary: [No refund or recognized-revenue inference]
 ```
 
-约束：每个 fact 必有 `name/role/grain`；`child` 必有 `parent_fact`；`dimensions` 中每名必须在 shared-dimensions 或本文件可解析；可被键入/读取的枚举值不得写进 `attributes`（只在 `notes` 指向契约层）。
+这是示意的已批准输入，不是其他来源存在这些字段的证据。
 
-## §4 Dimension `kind` 取值
+每 bundle 一个 `semantic_catalog`：名称、目的、证据边界、所需上下文，以及将支持的问题映射到
+模型文件和来源操作的 `entry_points`。目录链接模型，不重复定义。两个以上 bundle 可有薄父索引。
 
-| kind | 用途 | 必填 |
-| --- | --- | --- |
-| `conformed_dimension` | 跨事实复用的一致性维度 | business_key, source_operations |
-| `snowflake_dimension` | 规范化子维（挂在父维下） | business_key, parent_dimension |
-| `degenerate`（不单列） | 事实里的裸键 | 记于 fact.degenerate_dimensions |
+事实声明来源操作、业务粒度、身份/范围、时间含义、维度、度量和证据。
+`primary|child` 与父引用是可选的本地组织方式，不是必需语义种类。
+不同粒度先聚合再连接，或明确有证据的分摊；一对多连接不能重复计入头级度量。
+
+维度声明名称、带范围的键、属性、来源、连接基数，以及必要的历史解释。
+本地维度用 `dimension`，跨事实含义一致的复用用 `conformed_dimension`，
+有父关系和基数的规范化层级用 `snowflake_dimension`；退化键留在事实。
+字段同名不能证明一致性：比较业务含义、键域、租户、时间/版本和属性。
+
+度量是声明事实粒度上的数量，需声明来源或计算、单位、相关币种/口径、分轴可加性与聚合范围。
+指标是基于度量的具名业务计算；在可选 `metrics` 清单记录公式、来源度量、筛选、时间/窗口与
+聚合范围，和事实内的 `measures` 清单区分。
+计数需去重身份；比率和均值需有效组成量；快照通常不能跨时间相加。
+空值、空集、修订与删除会影响回答时须说明，缺失含义保留为未决。
+
+来源字段映射留在模型，引用可执行枚举/取值/命令目录，避免复制。
+每项选择追溯到证据与已批准决定或明确范围排除；这些语义同样适用于 OKF。

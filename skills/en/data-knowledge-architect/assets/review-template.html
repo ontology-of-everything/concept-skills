@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -146,7 +146,7 @@ padding:9px;border:1px solid var(--line);border-radius:8px;resize:vertical}
       <div class="title-row">
         <div>
           <h1>{{ meta.title || 'Semantic Decision Review' }}</h1>
-          <div class="sub">{{ meta.generated_at }} · Every decision requires explicit confirmation</div>
+          <div class="sub">{{ meta.generated_at }} · Confirm unresolved choices; keep valid earlier feedback</div>
         </div>
         <span class="iteration">Iteration {{ meta.iteration || 1 }}</span>
       </div>
@@ -335,7 +335,7 @@ padding:9px;border:1px solid var(--line);border-radius:8px;resize:vertical}
       <div v-show="io.mode==='import'">
         <h3>Import prior feedback</h3>
         <div class="hint">Paste prior JSON or select decisions.json; only explicit actions are restored.</div>
-        <textarea v-model="io.text" placeholder='{"decisions":[...],"approved":false}'></textarea>
+        <textarea v-model="io.text" placeholder='Paste exported feedback including review_id and proposal fingerprints.'></textarea>
         <div class="row">
           <input type="file" accept=".json,application/json" @change="importFile($event)">
           <button @click="io.show=false">Cancel</button>
@@ -351,9 +351,36 @@ var pn=Object.defineProperty,hn=(e,t,n)=>t in e?pn(e,t,{enumerable:!0,configurab
 <script>
 function App(){
   var model = JSON.parse(document.getElementById('model').textContent);
-  var decisionMap = {};
+  // Fingerprints detect stale proposals; they are not authentication tokens.
+  function fingerprint(value){
+    var text = JSON.stringify(value), hash = 14695981039346656037n;
+    for (var i = 0; i < text.length; i++) {
+      hash = BigInt.asUintN(64, (hash ^ BigInt(text.charCodeAt(i))) * 1099511628211n);
+    }
+    return hash.toString(16).padStart(16, '0');
+  }
+  var rawModel = JSON.parse(JSON.stringify(model));
+  var rawDecisions = Object.create(null), rawObjects = Object.create(null);
+  (rawModel.objects || []).forEach(function(o){
+    (o.decisions || []).forEach(function(d){
+      var ref = o.id + '#' + d.id;
+      rawDecisions[ref] = d;
+      rawObjects[ref] = { id: o.id, kind: o.kind, title: o.title, evidence: o.evidence };
+    });
+  });
+  function proposalFingerprint(ref, ancestors){
+    ancestors = ancestors || [];
+    if (!rawDecisions[ref] || ancestors.includes(ref)) return 'unresolved:' + ref;
+    var d = rawDecisions[ref];
+    var dependencies = (d.relations || []).filter(function(r){ return r.type === 'depends_on'; })
+      .map(function(r){ return proposalFingerprint(r.target, ancestors.concat(ref)); });
+    return fingerprint({ brief: rawModel.brief, constraints: rawModel.constraints,
+      object: rawObjects[ref], decision: d, dependencies: dependencies });
+  }
+  var modelFingerprint = fingerprint(rawModel);
+  var decisionMap = Object.create(null);
   var modelErrors = [];
-  var objectIds = {};
+  var objectIds = Object.create(null);
   var objects = (model.objects || []).map(function(o){
     if (objectIds[o.id]) modelErrors.push('Duplicate object ID: ' + o.id);
     objectIds[o.id] = true;
@@ -374,6 +401,7 @@ function App(){
       d.confidence = d.confidence || 'low';
       d.status = d.status || 'pending';
       d._option = '';
+      d._lastChoice = '';
       d._action = '';
       d._value = '';
       d._reason = '';
@@ -382,6 +410,10 @@ function App(){
     });
     return o;
   });
+  if (!model.meta || typeof model.meta.review_id !== 'string' || !model.meta.review_id.trim() ||
+      !Number.isInteger(model.meta.revision) || model.meta.revision < 1) {
+    modelErrors.push('meta.review_id and a positive integer meta.revision are required');
+  }
   var briefLabels = { goal: 'Goal', deliverable: 'Deliverable', scope: 'Scope', boundary: 'Boundary' };
   Object.keys(briefLabels).forEach(function(key){
     if (!model.brief || !model.brief[key]) {
@@ -394,7 +426,7 @@ function App(){
     var evidenceIds = new Set(o.evidence.map(function(e){ return e.id; }));
     if (evidenceIds.size !== o.evidence.length) modelErrors.push(o.id + ' has duplicate evidence IDs');
     if (!o.id || !o.title || !o.evidence.length) modelErrors.push((o.id || 'object') + ' lacks an ID, title, or evidence');
-    if (!['fact','dimension','measure','routing'].includes(o.kind)) {
+    if (!['fact','dimension','measure','metric','routing'].includes(o.kind)) {
       modelErrors.push(o.id + ' has an invalid object kind');
     }
     o.decisions.forEach(function(d){
@@ -410,11 +442,11 @@ function App(){
       if (d.basis === 'missing' && d.confidence === 'high') {
         modelErrors.push(d._ref + ' cannot have high confidence while evidence is missing');
       }
-      var needsOptions = d.basis !== 'explicit' || d.confidence !== 'high';
+      var needsOptions = d.basis === 'inferred' || (d.basis === 'explicit' && d.confidence !== 'high');
       if (needsOptions && (d.options.length < 2 || d.options.length > 4)) {
         modelErrors.push(d._ref + ' must provide two to four options');
       }
-      if (!d.options.length && (d.value == null || d.value === '')) {
+      if (d.basis !== 'missing' && !d.options.length && (d.value == null || d.value === '')) {
         modelErrors.push(d._ref + ' lacks a current recommendation');
       }
       if (d.options.length) {
@@ -449,7 +481,7 @@ function App(){
       }
     });
   });
-  var visiting = {}, visited = {};
+  var visiting = Object.create(null), visited = Object.create(null);
   function visit(ref){
     if (visiting[ref]) { modelErrors.push('depends_on contains a cycle: ' + ref); return; }
     if (visited[ref] || !decisionMap[ref]) return;
@@ -469,14 +501,14 @@ function App(){
     objects: objects,
     sections: [
       { key: 'fact', label: 'Facts', guide: {
-        summary: 'A fact records a repeatable business event; grain states exactly what one record represents.',
-        evidence: 'Use array elements, primary or unique keys, and explicit interface semantics; inspect parent and one-to-many detail separately.',
+        summary: 'A fact records an event, a snapshot, or a factless occurrence; grain states its business meaning and time.',
+        evidence: 'Combine source shape, key scope, time, and business definitions; arrays and unique keys alone do not establish analytical grain.',
         yagni: 'Split a fact only for an independent event, independent aggregation, or real one-to-many detail—not hypothetical future analysis.',
         example: 'Separate order headers and lines when the source is one-to-many; order status alone is rarely a fact.'
       }},
       { key: 'dimension', label: 'Dimensions', guide: {
         summary: 'A dimension supplies who, what, or where context and needs a stable business key and authoritative source.',
-        evidence: 'Use a conformed dimension only for consistent cross-fact identity; snowflake only an independently maintained or reused parent.',
+        evidence: 'A local dimension need not be conformed. Reuse requires matching meaning, identity scope, and historical interpretation; key spelling alone is insufficient.',
         yagni: 'Otherwise keep an attribute; leave a transaction-only identifier degenerate and do not split for speculative reuse.',
         example: 'A customer shared across facts is a dimension; an order number appearing only on orders is usually degenerate.'
       }},
@@ -486,6 +518,12 @@ function App(){
         yagni: 'Prefer recomputable base measures and create none without an analysis use and source evidence.',
         example: 'Same-currency order amounts add; account balances do not add across dates.'
       }},
+      { key: 'metric', label: 'Metrics', guide: {
+        summary: 'A metric is a named business calculation, usually over measures.',
+        evidence: 'Declare the formula, source measures, filters, time window, and aggregation scope.',
+        yagni: 'Define metrics needed by a current question; a numeric field alone is not a metric.',
+        example: 'Gross order total sums distinct order amounts; recognized revenue needs its own business definition.'
+      }},
       { key: 'routing', label: 'Routing and Boundaries', guide: {
         summary: 'Choose the smallest entry point that supplies evidence for the required fact, dimension, measure, time, and scope.',
         evidence: 'Create a route only when source capability and output fields directly support the answer.',
@@ -493,7 +531,7 @@ function App(){
         example: 'A list endpoint may support trends without supporting a real-time balance.'
       }}
     ],
-    expanded: { fact: true, dimension: false, measure: false, routing: false },
+    expanded: { fact: true, dimension: false, measure: false, metric: false, routing: false },
     guideOpen: '',
     q: '',
     copied: false,
@@ -534,8 +572,38 @@ function App(){
     selectedOption: function(d){
       return d.options.find(function(opt){ return opt.id === d._option; });
     },
-    isResolved: function(d){
-      return (d._action === 'confirm' || d._action === 'select') && !this.validationError(d);
+    localResolved: function(d){
+      return (d._action === 'confirm' || d._action === 'select') && !this.choiceError(d);
+    },
+    conflictRefs: function(d){
+      var self = this;
+      if (!this.localResolved(d)) return [];
+      return d.relations.filter(function(r){
+        var target = self.findDecision(r.target);
+        return r.type === 'conflicts_with' && target && self.localResolved(target);
+      }).map(function(r){ return r.target; });
+    },
+    isResolved: function(d, ancestors){
+      ancestors = ancestors || [];
+      if (!d || ancestors.includes(d._ref) || !this.localResolved(d) || this.conflictRefs(d).length) return false;
+      var self = this;
+      return d.relations.every(function(r){
+        return r.type !== 'depends_on' || self.isResolved(self.findDecision(r.target), ancestors.concat(d._ref));
+      });
+    },
+    invalidateDependents: function(ref){
+      var self = this, seen = new Set([ref]), queue = [ref];
+      while (queue.length) {
+        var changed = queue.shift();
+        this.allDecisions().forEach(function(d){
+          if (!seen.has(d._ref) && d.relations.some(function(r){
+            return r.type === 'depends_on' && r.target === changed;
+          })) {
+            seen.add(d._ref); queue.push(d._ref);
+            d._action = ''; d._option = ''; d._lastChoice = ''; d._value = ''; d._reason = '';
+          }
+        });
+      }
     },
     isBlocked: function(d){
       var self = this;
@@ -599,16 +667,24 @@ function App(){
       return Array.isArray(value) ? value.join(', ') : String(value == null ? '' : value);
     },
     choose: function(d, opt){
+      if (d._action !== 'select' || d._lastChoice !== opt.id) this.invalidateDependents(d._ref);
+      d._lastChoice = opt.id;
       d._action = 'select';
       d._option = opt.id;
       if (opt.recommended) d._reason = '';
     },
     setAction: function(d, action){
+      if (d._action !== action) this.invalidateDependents(d._ref);
       d._action = action;
-      if (action !== 'select') d._option = '';
+      if (action !== 'select') { d._option = ''; d._lastChoice = ''; }
     },
-    validationError: function(d){
+    choiceError: function(d){
       if (!d._action) return '';
+      if (!['confirm','select','correct','supplement','reject'].includes(d._action)) return 'Unknown feedback action.';
+      if (d._action === 'confirm' && d.options.length) return 'Select an option; this proposal cannot be confirmed without a choice.';
+      if ((d._action === 'confirm' || d._action === 'select') && d.basis === 'missing') {
+        return 'Evidence is missing. Add evidence or revise scope before approval.';
+      }
       if (d._action === 'select') {
         var opt = this.selectedOption(d);
         if (!opt) return 'Select an option.';
@@ -620,6 +696,12 @@ function App(){
       if (d._action === 'supplement' && !d._value.trim()) return 'Enter new evidence or a constraint.';
       if (d._action === 'reject' && !d._reason.trim()) return 'Explain why the question is rejected.';
       return '';
+    },
+    validationError: function(d){
+      var error = this.choiceError(d);
+      if (error) return error;
+      var conflicts = this.conflictRefs(d);
+      return conflicts.length ? 'Conflicting accepted proposal: ' + conflicts.join(', ') + '. Revise the proposal or feedback.' : '';
     },
     bulkConfirm: function(){
       var self = this, changed = true;
@@ -635,7 +717,7 @@ function App(){
       }
     },
     serializeDecision: function(d){
-      var out = { id: d._ref, action: d._action };
+      var out = { id: d._ref, proposal_fingerprint: proposalFingerprint(d._ref), action: d._action };
       if (d._action === 'select') out.option = d._option;
       if (d._action === 'correct' || d._action === 'supplement') out.value = d._value;
       if (d._reason) out.reason = d._reason;
@@ -647,7 +729,8 @@ function App(){
       var decisions = this.allDecisions().filter(function(d){ return !!d._action; }).map(function(d){
         return self.serializeDecision(d);
       });
-      var text = JSON.stringify({ decisions: decisions, approved: !!approve });
+      var text = JSON.stringify({ review_id: this.meta.review_id, revision: this.meta.revision,
+        model_fingerprint: modelFingerprint, decisions: decisions, approved: !!approve });
       this.io = { show: true, mode: 'export', text: text, approved: !!approve };
       this.copied = false;
       var self = this;
@@ -679,19 +762,39 @@ function App(){
     },
     applyImport: function(){
       try {
-        var data = JSON.parse(this.io.text);
-        var self = this;
-        (data.decisions || []).forEach(function(v){
+        var data = JSON.parse(this.io.text), self = this, seen = new Set(), stale = [];
+        if (data.review_id !== this.meta.review_id || !Number.isInteger(data.revision) ||
+            typeof data.model_fingerprint !== 'string' || !Array.isArray(data.decisions)) {
+          throw new Error('Feedback must identify this review, its revision, and proposal fingerprints.');
+        }
+        var restored = data.decisions.map(function(v){
           var d = self.findDecision(v.id);
-          if (!d || !['confirm','select','correct','supplement','reject'].includes(v.action)) return;
-          d._action = v.action;
-          d._option = v.option || '';
-          d._value = v.value || '';
-          d._reason = v.reason || '';
+          if (!d || seen.has(v.id)) throw new Error('Unknown or duplicate decision: ' + v.id);
+          seen.add(v.id);
+          if (typeof v.proposal_fingerprint !== 'string') throw new Error('Missing proposal fingerprint: ' + v.id);
+          if (v.proposal_fingerprint !== proposalFingerprint(v.id)) { stale.push(v.id); return null; }
+          if (!['confirm','select','correct','supplement','reject'].includes(v.action) ||
+              ['option','value','reason'].some(function(key){ return v[key] != null && typeof v[key] !== 'string'; })) {
+            throw new Error('Invalid feedback action or field type: ' + v.id);
+          }
+          var candidate = Object.assign({}, d, { _action: v.action, _option: v.option || '',
+            _value: v.value || '', _reason: v.reason || '' });
+          var error = self.choiceError(candidate);
+          if (error) throw new Error(v.id + ': ' + error);
+          return candidate;
+        }).filter(Boolean);
+        // Replace local feedback atomically after validation. Approval still requires the user.
+        this.allDecisions().forEach(function(d){
+          d._action = ''; d._option = ''; d._lastChoice = ''; d._value = ''; d._reason = '';
+        });
+        restored.forEach(function(v){
+          var d = self.findDecision(v._ref);
+          d._action = v._action; d._option = v._option; d._lastChoice = v._option; d._value = v._value; d._reason = v._reason;
         });
         this.io.show = false;
+        if (stale.length) alert('Changed proposals were not restored: ' + stale.join(', ') + '. Unchanged feedback was retained.');
       } catch (e) {
-        alert('JSON parsing failed: ' + e.message);
+        alert('Feedback import failed: ' + e.message);
       }
     }
   };

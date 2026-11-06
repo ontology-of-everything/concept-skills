@@ -1,0 +1,6 @@
+interface:
+  display_name: C4 Software Architecture Model
+  short_description: C4 concepts, definitions, principles, and common mistakes.
+  default_prompt: $architect-4c
+policy:
+  allow_implicit_invocation: false

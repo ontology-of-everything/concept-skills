@@ -88,7 +88,8 @@ npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
 | [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
-| [4R Architect](skills/en/architect-4r/SKILL.md) | Explain system structure and behavior through diagrams and text. | 0.1.0 |
+| [4R System Modeling Framework](skills/en/architect-4r/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.3.0 |
+| [C4 Software Architecture Model](skills/en/architect-4c/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
 
 <!-- skill-catalog:end -->
 

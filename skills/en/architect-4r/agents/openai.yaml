@@ -1,0 +1,6 @@
+interface:
+  display_name: 4R System Modeling Framework
+  short_description: Model systems with 4R and diagram each R in Mermaid.
+  default_prompt: $architect-4r
+policy:
+  allow_implicit_invocation: false

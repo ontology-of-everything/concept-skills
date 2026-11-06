@@ -146,7 +146,7 @@ padding:9px;border:1px solid var(--line);border-radius:8px;resize:vertical}
       <div class="title-row">
         <div>
           <h1>{{ meta.title || '语义决策工作台 · Semantic Decision Review' }}</h1>
-          <div class="sub">{{ meta.generated_at }} · 所有决定均需显式确认</div>
+          <div class="sub">{{ meta.generated_at }} · 只确认未决选择，保留有效旧反馈</div>
         </div>
         <span class="iteration">第 {{ meta.iteration || 1 }} 轮</span>
       </div>
@@ -335,7 +335,7 @@ padding:9px;border:1px solid var(--line);border-radius:8px;resize:vertical}
       <div v-show="io.mode==='import'">
         <h3>导入上轮反馈</h3>
         <div class="hint">粘贴上轮 JSON 或选择 decisions.json；只回填显式行动。</div>
-        <textarea v-model="io.text" placeholder='{"decisions":[...],"approved":false}'></textarea>
+        <textarea v-model="io.text" placeholder='粘贴导出的反馈，须含 review_id 与提案指纹。'></textarea>
         <div class="row">
           <input type="file" accept=".json,application/json" @change="importFile($event)">
           <button @click="io.show=false">取消</button>
@@ -351,9 +351,36 @@ var pn=Object.defineProperty,hn=(e,t,n)=>t in e?pn(e,t,{enumerable:!0,configurab
 <script>
 function App(){
   var model = JSON.parse(document.getElementById('model').textContent);
-  var decisionMap = {};
+  // Fingerprints detect stale proposals; they are not authentication tokens.
+  function fingerprint(value){
+    var text = JSON.stringify(value), hash = 14695981039346656037n;
+    for (var i = 0; i < text.length; i++) {
+      hash = BigInt.asUintN(64, (hash ^ BigInt(text.charCodeAt(i))) * 1099511628211n);
+    }
+    return hash.toString(16).padStart(16, '0');
+  }
+  var rawModel = JSON.parse(JSON.stringify(model));
+  var rawDecisions = Object.create(null), rawObjects = Object.create(null);
+  (rawModel.objects || []).forEach(function(o){
+    (o.decisions || []).forEach(function(d){
+      var ref = o.id + '#' + d.id;
+      rawDecisions[ref] = d;
+      rawObjects[ref] = { id: o.id, kind: o.kind, title: o.title, evidence: o.evidence };
+    });
+  });
+  function proposalFingerprint(ref, ancestors){
+    ancestors = ancestors || [];
+    if (!rawDecisions[ref] || ancestors.includes(ref)) return 'unresolved:' + ref;
+    var d = rawDecisions[ref];
+    var dependencies = (d.relations || []).filter(function(r){ return r.type === 'depends_on'; })
+      .map(function(r){ return proposalFingerprint(r.target, ancestors.concat(ref)); });
+    return fingerprint({ brief: rawModel.brief, constraints: rawModel.constraints,
+      object: rawObjects[ref], decision: d, dependencies: dependencies });
+  }
+  var modelFingerprint = fingerprint(rawModel);
+  var decisionMap = Object.create(null);
   var modelErrors = [];
-  var objectIds = {};
+  var objectIds = Object.create(null);
   var objects = (model.objects || []).map(function(o){
     if (objectIds[o.id]) modelErrors.push('对象 ID 重复：' + o.id);
     objectIds[o.id] = true;
@@ -374,6 +401,7 @@ function App(){
       d.confidence = d.confidence || 'low';
       d.status = d.status || 'pending';
       d._option = '';
+      d._lastChoice = '';
       d._action = '';
       d._value = '';
       d._reason = '';
@@ -382,6 +410,10 @@ function App(){
     });
     return o;
   });
+  if (!model.meta || typeof model.meta.review_id !== 'string' || !model.meta.review_id.trim() ||
+      !Number.isInteger(model.meta.revision) || model.meta.revision < 1) {
+    modelErrors.push('须填写 meta.review_id 与正整数 meta.revision');
+  }
   var briefLabels = { goal: '目标', deliverable: '交付物', scope: '范围', boundary: '边界' };
   Object.keys(briefLabels).forEach(function(key){
     if (!model.brief || !model.brief[key]) {
@@ -394,7 +426,7 @@ function App(){
     var evidenceIds = new Set(o.evidence.map(function(e){ return e.id; }));
     if (evidenceIds.size !== o.evidence.length) modelErrors.push(o.id + ' 的证据 ID 重复');
     if (!o.id || !o.title || !o.evidence.length) modelErrors.push((o.id || 'object') + ' 缺少 ID、标题或证据');
-    if (!['fact','dimension','measure','routing'].includes(o.kind)) {
+    if (!['fact','dimension','measure','metric','routing'].includes(o.kind)) {
       modelErrors.push(o.id + ' 的对象类型（kind）非法');
     }
     o.decisions.forEach(function(d){
@@ -410,11 +442,11 @@ function App(){
       if (d.basis === 'missing' && d.confidence === 'high') {
         modelErrors.push(d._ref + ' 待补证时不能标为高置信');
       }
-      var needsOptions = d.basis !== 'explicit' || d.confidence !== 'high';
+      var needsOptions = d.basis === 'inferred' || (d.basis === 'explicit' && d.confidence !== 'high');
       if (needsOptions && (d.options.length < 2 || d.options.length > 4)) {
         modelErrors.push(d._ref + ' 必须提供 2–4 个候选');
       }
-      if (!d.options.length && (d.value == null || d.value === '')) {
+      if (d.basis !== 'missing' && !d.options.length && (d.value == null || d.value === '')) {
         modelErrors.push(d._ref + ' 缺少当前建议值');
       }
       if (d.options.length) {
@@ -449,7 +481,7 @@ function App(){
       }
     });
   });
-  var visiting = {}, visited = {};
+  var visiting = Object.create(null), visited = Object.create(null);
   function visit(ref){
     if (visiting[ref]) { modelErrors.push('依赖关系（depends_on）存在循环：' + ref); return; }
     if (visited[ref] || !decisionMap[ref]) return;
@@ -469,14 +501,14 @@ function App(){
     objects: objects,
     sections: [
       { key: 'fact', label: '事实', guide: {
-        summary: '事实记录可重复发生的业务事件；粒度（grain）说明一条记录究竟代表什么。',
-        evidence: '只依据数组元素、表主键或唯一键、明确的接口语义判断；父记录与一对多明细应分别核对。',
+        summary: '事实记录事件、快照或无度量的发生记录；粒度说明一条记录的业务含义与时间。',
+        evidence: '综合来源结构、键范围、时间与业务定义；数组和唯一键本身不能确立分析粒度。',
         yagni: '只有存在独立事件、需要独立聚合或与父记录一对多时才拆新事实，不因“以后可能分析”提前拆分。',
         example: '订单头与订单行应按真实一对多关系分开；把订单状态单独建成事实通常是误判。'
       }},
       { key: 'dimension', label: '维度', guide: {
         summary: '维度描述事实的“谁、什么、哪里”等分析上下文，需要稳定业务标识（business key）和可信来源。',
-        evidence: '跨事实身份与口径一致才做共享维度（conformed）；上级实体可独立维护或复用才拆层级维度（snowflake）。',
+        evidence: '本地维度不必强称一致性维度；复用须匹配含义、身份范围与历史解释，键名相同并不足够。',
         yagni: '否则保留为属性；只有交易编号且无独立描述或查询来源时留在事实中（degenerate），不为潜在复用提前拆维。',
         example: '多类事实共享的客户适合维度；只随订单出现的订单号不必建订单维度，枚举值仍留在契约层。'
       }},
@@ -486,6 +518,12 @@ function App(){
         yagni: '优先保留可重算的基础量；没有明确分析用途或来源证据时不要预建度量。',
         example: '同币种订单金额可相加；账户余额不可按日期求和。'
       }},
+      { key: 'metric', label: '指标', guide: {
+        summary: '指标是具名的业务计算，通常基于度量。',
+        evidence: '声明公式、来源度量、筛选、时间窗口与聚合范围。',
+        yagni: '只定义当前问题需要的指标；数字字段本身不是指标。',
+        example: '订单总额对唯一订单金额求和；确认收入需要独立的业务定义。'
+      }},
       { key: 'routing', label: '路由与边界', guide: {
         summary: '按问题涉及的事实、维度、度量、时间和范围，选择能直接提供所需证据的最小入口（entry point）。',
         evidence: '只有来源能力明确且输出字段足以回答时才建立路由；名称相似或相邻接口都不是充分依据。',
@@ -493,7 +531,7 @@ function App(){
         example: '列表接口可支持趋势分析，不代表它也能回答实时余额。'
       }}
     ],
-    expanded: { fact: true, dimension: false, measure: false, routing: false },
+    expanded: { fact: true, dimension: false, measure: false, metric: false, routing: false },
     guideOpen: '',
     q: '',
     copied: false,
@@ -534,8 +572,38 @@ function App(){
     selectedOption: function(d){
       return d.options.find(function(opt){ return opt.id === d._option; });
     },
-    isResolved: function(d){
-      return (d._action === 'confirm' || d._action === 'select') && !this.validationError(d);
+    localResolved: function(d){
+      return (d._action === 'confirm' || d._action === 'select') && !this.choiceError(d);
+    },
+    conflictRefs: function(d){
+      var self = this;
+      if (!this.localResolved(d)) return [];
+      return d.relations.filter(function(r){
+        var target = self.findDecision(r.target);
+        return r.type === 'conflicts_with' && target && self.localResolved(target);
+      }).map(function(r){ return r.target; });
+    },
+    isResolved: function(d, ancestors){
+      ancestors = ancestors || [];
+      if (!d || ancestors.includes(d._ref) || !this.localResolved(d) || this.conflictRefs(d).length) return false;
+      var self = this;
+      return d.relations.every(function(r){
+        return r.type !== 'depends_on' || self.isResolved(self.findDecision(r.target), ancestors.concat(d._ref));
+      });
+    },
+    invalidateDependents: function(ref){
+      var self = this, seen = new Set([ref]), queue = [ref];
+      while (queue.length) {
+        var changed = queue.shift();
+        this.allDecisions().forEach(function(d){
+          if (!seen.has(d._ref) && d.relations.some(function(r){
+            return r.type === 'depends_on' && r.target === changed;
+          })) {
+            seen.add(d._ref); queue.push(d._ref);
+            d._action = ''; d._option = ''; d._lastChoice = ''; d._value = ''; d._reason = '';
+          }
+        });
+      }
     },
     isBlocked: function(d){
       var self = this;
@@ -599,16 +667,24 @@ function App(){
       return Array.isArray(value) ? value.join(', ') : String(value == null ? '' : value);
     },
     choose: function(d, opt){
+      if (d._action !== 'select' || d._lastChoice !== opt.id) this.invalidateDependents(d._ref);
+      d._lastChoice = opt.id;
       d._action = 'select';
       d._option = opt.id;
       if (opt.recommended) d._reason = '';
     },
     setAction: function(d, action){
+      if (d._action !== action) this.invalidateDependents(d._ref);
       d._action = action;
-      if (action !== 'select') d._option = '';
+      if (action !== 'select') { d._option = ''; d._lastChoice = ''; }
     },
-    validationError: function(d){
+    choiceError: function(d){
       if (!d._action) return '';
+      if (!['confirm','select','correct','supplement','reject'].includes(d._action)) return '未知反馈动作。';
+      if (d._action === 'confirm' && d.options.length) return '请选择候选；有候选的提案不能跳过选择直接确认。';
+      if ((d._action === 'confirm' || d._action === 'select') && d.basis === 'missing') {
+        return '证据缺失；批准前须补证或修订范围。';
+      }
       if (d._action === 'select') {
         var opt = this.selectedOption(d);
         if (!opt) return '请选择一个方案。';
@@ -620,6 +696,12 @@ function App(){
       if (d._action === 'supplement' && !d._value.trim()) return '请填写新增证据或约束。';
       if (d._action === 'reject' && !d._reason.trim()) return '拒绝问题必须说明理由。';
       return '';
+    },
+    validationError: function(d){
+      var error = this.choiceError(d);
+      if (error) return error;
+      var conflicts = this.conflictRefs(d);
+      return conflicts.length ? '已接受的提案互相冲突：' + conflicts.join(', ') + '。请修订提案或反馈。' : '';
     },
     bulkConfirm: function(){
       var self = this, changed = true;
@@ -635,7 +717,7 @@ function App(){
       }
     },
     serializeDecision: function(d){
-      var out = { id: d._ref, action: d._action };
+      var out = { id: d._ref, proposal_fingerprint: proposalFingerprint(d._ref), action: d._action };
       if (d._action === 'select') out.option = d._option;
       if (d._action === 'correct' || d._action === 'supplement') out.value = d._value;
       if (d._reason) out.reason = d._reason;
@@ -647,7 +729,8 @@ function App(){
       var decisions = this.allDecisions().filter(function(d){ return !!d._action; }).map(function(d){
         return self.serializeDecision(d);
       });
-      var text = JSON.stringify({ decisions: decisions, approved: !!approve });
+      var text = JSON.stringify({ review_id: this.meta.review_id, revision: this.meta.revision,
+        model_fingerprint: modelFingerprint, decisions: decisions, approved: !!approve });
       this.io = { show: true, mode: 'export', text: text, approved: !!approve };
       this.copied = false;
       var self = this;
@@ -679,19 +762,39 @@ function App(){
     },
     applyImport: function(){
       try {
-        var data = JSON.parse(this.io.text);
-        var self = this;
-        (data.decisions || []).forEach(function(v){
+        var data = JSON.parse(this.io.text), self = this, seen = new Set(), stale = [];
+        if (data.review_id !== this.meta.review_id || !Number.isInteger(data.revision) ||
+            typeof data.model_fingerprint !== 'string' || !Array.isArray(data.decisions)) {
+          throw new Error('反馈须标识本次评审、版本与提案指纹。');
+        }
+        var restored = data.decisions.map(function(v){
           var d = self.findDecision(v.id);
-          if (!d || !['confirm','select','correct','supplement','reject'].includes(v.action)) return;
-          d._action = v.action;
-          d._option = v.option || '';
-          d._value = v.value || '';
-          d._reason = v.reason || '';
+          if (!d || seen.has(v.id)) throw new Error('未知或重复的决定：' + v.id);
+          seen.add(v.id);
+          if (typeof v.proposal_fingerprint !== 'string') throw new Error('缺少提案指纹：' + v.id);
+          if (v.proposal_fingerprint !== proposalFingerprint(v.id)) { stale.push(v.id); return null; }
+          if (!['confirm','select','correct','supplement','reject'].includes(v.action) ||
+              ['option','value','reason'].some(function(key){ return v[key] != null && typeof v[key] !== 'string'; })) {
+            throw new Error('反馈动作或字段类型无效：' + v.id);
+          }
+          var candidate = Object.assign({}, d, { _action: v.action, _option: v.option || '',
+            _value: v.value || '', _reason: v.reason || '' });
+          var error = self.choiceError(candidate);
+          if (error) throw new Error(v.id + ': ' + error);
+          return candidate;
+        }).filter(Boolean);
+        // Replace local feedback atomically after validation. Approval still requires the user.
+        this.allDecisions().forEach(function(d){
+          d._action = ''; d._option = ''; d._lastChoice = ''; d._value = ''; d._reason = '';
+        });
+        restored.forEach(function(v){
+          var d = self.findDecision(v._ref);
+          d._action = v._action; d._option = v._option; d._lastChoice = v._option; d._value = v._value; d._reason = v._reason;
         });
         this.io.show = false;
+        if (stale.length) alert('已变提案的反馈未恢复：' + stale.join(', ') + '。未变提案的反馈已保留。');
       } catch (e) {
-        alert('JSON 解析失败: ' + e.message);
+        alert('导入反馈失败：' + e.message);
       }
     }
   };

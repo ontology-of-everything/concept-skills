@@ -88,7 +88,8 @@ npx --yes skills add . --skill architect-4r --agent codex --copy --yes
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |
 | [个人知识架构师](skills/zh-CN/personal-knowledge-architect-cn/SKILL.md) | 从原文萃取、关联、组织和复用知识。 | 0.4.0 |
 | [读它，重构它，化为己有](skills/zh-CN/read-it-reframe-it-own-it-cn/SKILL.md) | 围绕学习目标与关键框架建立并修正理解。 | 0.2.0 |
-| [4R 架构师](skills/zh-CN/architect-4r-cn/SKILL.md) | 用图文说明系统的组成、联系与运行方式。 | 0.1.0 |
+| [4R 系统建模框架](skills/zh-CN/architect-4r-cn/SKILL.md) | 软件架构模型的核心概念、定义、原则与常见误用。 | 0.3.0 |
+| [C4 软件架构模型](skills/zh-CN/architect-4c-cn/SKILL.md) | 软件架构模型的核心概念、定义、原则与常见误用。 | 0.1.0 |
 
 <!-- skill-catalog:end -->
 

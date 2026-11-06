@@ -1,29 +1,23 @@
-# Phase 1 · Ingest（物料归一 + 角色判定）
+# Phase 1：清单与粒度
 
-输入：接口契约原文。产出：**操作清单**——每个 operation 一行 `name / method / safety(read|write) / inputs[] / outputs[] / doc`，并判定角色。
+每个来源操作或表清点一次：标识、版本和定位、输入输出、读/写/未知、分页、错误、
+时间字段、键与证据缺口。阅读实际契约；`get` 等名称或 HTTP 动词只是副作用线索。
 
-## §1 归一规则（按物料类型）
-
-| 物料 | 抽取 | grain 线索 |
+| 证据 | 能说明什么 | 单独不能说明什么 |
 | --- | --- | --- |
-| **REST/OpenAPI** | path+method=op；`parameters`/`requestBody`=inputs；`responses.2xx.schema`=outputs | 响应 `array` → 一行=元素；单对象 → 一行=资源时点 |
-| **CLI** | 子命令=op；flags=inputs；`--output`/示例 JSON=outputs；`list/describe/show`=读，`create/update/delete/pay`=写 | `list*`→明细事实；`show*/get*`→快照 |
-| **表/DDL/CSV** | 表=事实或维度；列=attribute/measure；PK=business_key 或 degenerate；FK=维度引用 | 唯一键组合=grain |
+| API/CLI 响应数组 | 候选记录形状与分页边界 | 业务事件、唯一性、历史或可加性 |
+| 表键/DDL | 声明的唯一约束和结构关系 | 度量粒度或身份的业务含义 |
+| 业务定义 | 事件/快照含义与分析目的 | 未说明的可用字段或来源保证 |
 
-- 写操作标 `safety: write`；若语义层定位只读，则归 `evidence_boundary`，不建模为事实。
-- 证据缺口 → `TODO(verify): <来源>`，列入待确认，不猜。
+支持的角色为事实候选、维度/来源查询、命令/工具、混合或分析范围外；证据不足则标未决。
+事实可描述事件、周期快照、累积快照或无度量的发生记录。维度提供描述性上下文，不只是代码翻译。
+只有独立含义有证据时才拆混合响应。
 
-## §2 角色判定
+用业务语言声明粒度，包含相关事件/快照时间与唯一范围。区分一订单、一订单行和一订单观察版本。
+核查空键、重复键和修订；不能从当前状态接口推断历史序列。缺历史支持的问题留在证据边界之外。
 
-| 角色 | 判定 |
-| --- | --- |
-| **fact** | 度量某业务过程/事件（`list*` 明细或可聚合快照） |
-| **dimension-lookup** | 翻译/枚举 code 的字典 |
+退出条件：覆盖全部所供材料，未决角色和副作用有明确缺口。缺口只阻塞依赖它的决定，
+不阻塞独立清点。建模不要求执行写操作或获取生产数据。
 
-## §3 退出条件
-
-- [ ] 每个 op 在清单中且有 `safety` 标记
-- [ ] 每个 op 有角色（fact / dimension-lookup / 归 boundary）
-- [ ] 证据缺口均已标 `TODO(verify)`
-
-满足 → 进 Phase 2（`review.md`）。
+来源：[Kimball 粒度定义](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)。
+清单角色和证据记录是本仓库约定。

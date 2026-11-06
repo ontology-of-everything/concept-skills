@@ -36,10 +36,12 @@
     },
     {
       "title": "Software Architecture",
-      "description": "Explain system structure and behavior through diagrams and text.",
+      "description": "Core concepts, definitions, principles, and common mistakes in software architecture models.",
       "skills": [
         "architect-4r",
-        "architect-4r-cn"
+        "architect-4r-cn",
+        "architect-4c",
+        "architect-4c-cn"
       ]
     }
   ]
