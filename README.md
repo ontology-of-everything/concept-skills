@@ -73,7 +73,7 @@ See the [map format](skills/en/concept-design/references/map-format.md).
 
 4R architecture documentation, data semantics, personal knowledge management, and learning have separate skills; each has English and Chinese editions.
 
-`architect-4r` explains Li Yunhua's Rank, Role, Relation, and Rule from discussion context or source code, with diagrams, a payment example, and common mistakes. The Chinese edition is `architect-4r-cn`.
+`architect-4r` uses Li Yunhua's 4R method to describe existing architecture from code or discussion context. Select views and key scenarios, then see the architecture and how its roles work together. The Chinese edition is `architect-4r-cn`.
 
 ```sh
 npx --yes skills add . --skill architect-4r --agent codex --copy --yes
@@ -88,7 +88,7 @@ npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
 | [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
-| [4R System Modeling Framework](skills/en/architect-4r/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.3.0 |
+| [4R System Modeling Framework](skills/en/architect-4r/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.4.0 |
 | [C4 Software Architecture Model](skills/en/architect-4c/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
 
 <!-- skill-catalog:end -->

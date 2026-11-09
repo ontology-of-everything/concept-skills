@@ -263,9 +263,9 @@ skills:
   display_name_zh: 4R 系统建模框架
   display_title_zh: 4R 系统建模框架
   domain: software-architecture
-  summary: Use only when explicitly invoked. Model systems with Li Yunhua's 4R method and create separate Mermaid diagrams for Rank, Role, Relation, and Rule, with templates and checks.
-  summary_zh: 仅在显式调用时使用。基于李运华的 4R 方法梳理系统层级、角色、联系与协作规则，为每个 R 分别绘制 Mermaid 图，并提供模板与检查项。
-  version: 0.3.0
+  summary: Use only when explicitly invoked. Describe existing software architecture from code or context using Li Yunhua's 4R method. Align on views, roles, and key scenarios, then draw architecture and scenario diagrams.
+  summary_zh: 仅在显式调用时使用。用李运华的 4R 方法从代码或上下文梳理现有架构。对齐视图、角色和关键场景，绘制架构图和场景图。
+  version: 0.4.0
   agents:
   - cursor
   - claude-code
@@ -296,9 +296,9 @@ skills:
   display_name_zh: 4R 系统建模框架
   display_title_zh: 4R 系统建模框架
   domain: software-architecture
-  summary: 仅在显式调用时使用。基于李运华的 4R 方法梳理系统层级、角色、联系与协作规则，为每个 R 分别绘制 Mermaid 图，并提供模板与检查项。
-  summary_zh: 仅在显式调用时使用。基于李运华的 4R 方法梳理系统层级、角色、联系与协作规则，为每个 R 分别绘制 Mermaid 图，并提供模板与检查项。
-  version: 0.3.0
+  summary: 仅在显式调用时使用。用李运华的 4R 方法从代码或上下文梳理现有架构。对齐视图、角色和关键场景，绘制架构图和场景图。
+  summary_zh: 仅在显式调用时使用。用李运华的 4R 方法从代码或上下文梳理现有架构。对齐视图、角色和关键场景，绘制架构图和场景图。
+  version: 0.4.0
   agents:
   - cursor
   - claude-code

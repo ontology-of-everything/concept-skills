@@ -73,7 +73,7 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 
 4R 架构文档、数据语义、个人知识管理与学习分别提供独立技能；每项能力有中英文版本。
 
-`architect-4r-cn` 基于李运华的 Rank、Role、Relation、Rule，从讨论或源码中总结系统模型，包含图文、支付示例与常见误用。英文版为 `architect-4r`。
+`architect-4r-cn` 用李运华的 4R 方法从代码或讨论中梳理现有架构。选定视图和关键场景后，用架构图和场景图说明角色如何协作。英文版为 `architect-4r`。
 
 ```sh
 npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
@@ -88,7 +88,7 @@ npx --yes skills add . --skill architect-4r --agent codex --copy --yes
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |
 | [个人知识架构师](skills/zh-CN/personal-knowledge-architect-cn/SKILL.md) | 从原文萃取、关联、组织和复用知识。 | 0.4.0 |
 | [读它，重构它，化为己有](skills/zh-CN/read-it-reframe-it-own-it-cn/SKILL.md) | 围绕学习目标与关键框架建立并修正理解。 | 0.2.0 |
-| [4R 系统建模框架](skills/zh-CN/architect-4r-cn/SKILL.md) | 软件架构模型的核心概念、定义、原则与常见误用。 | 0.3.0 |
+| [4R 系统建模框架](skills/zh-CN/architect-4r-cn/SKILL.md) | 软件架构模型的核心概念、定义、原则与常见误用。 | 0.4.0 |
 | [C4 软件架构模型](skills/zh-CN/architect-4c-cn/SKILL.md) | 软件架构模型的核心概念、定义、原则与常见误用。 | 0.1.0 |
 
 <!-- skill-catalog:end -->
