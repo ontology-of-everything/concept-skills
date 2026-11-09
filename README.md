@@ -97,6 +97,8 @@ npx --yes skills add . --skill agent-dx-cli-cn --agent codex --copy --yes
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
 | [4R System Modeling Framework](skills/en/architect-4r/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.4.0 |
 | [C4 Software Architecture Model](skills/en/architect-4c/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
+| [Feature-first frontend architecture](skills/en/architect-frontend-feature-first/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
+| [Feature-Sliced Design for frontends](skills/en/architect-frontend-fsd/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
 | [Agent DX CLI](skills/en/agent-dx-cli/SKILL.md) | Predictable, defensible CLI design, review, and refactoring. | 0.4.2 |
 
 <!-- skill-catalog:end -->

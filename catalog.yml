@@ -389,6 +389,130 @@ skills:
     - software-architecture
     - c4
     - system-modeling
+- id: architect-frontend-feature-first
+  path: skills/en/architect-frontend-feature-first
+  display_name: Feature-first frontend architecture
+  display_title: Feature-first frontend architecture
+  display_name_zh: 功能优先前端架构
+  display_title_zh: 功能优先前端架构
+  domain: software-architecture
+  summary: Explain feature-first frontend architecture. Define capability ownership, layers as needed, source dependencies, and cross-feature collaboration.
+  summary_zh: 解释功能优先前端架构。按业务能力确定归属，按需分层，明确源码依赖和跨功能协作。
+  version: 0.1.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: architect-frontend-feature-first-cn
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - software-architecture
+    - frontend
+    - feature-first
+- id: architect-frontend-feature-first-cn
+  path: skills/zh-CN/architect-frontend-feature-first-cn
+  display_name: 功能优先前端架构
+  display_title: 功能优先前端架构
+  display_name_zh: 功能优先前端架构
+  display_title_zh: 功能优先前端架构
+  domain: software-architecture
+  summary: 解释功能优先前端架构。按业务能力确定归属，按需分层，明确源码依赖和跨功能协作。
+  summary_zh: 解释功能优先前端架构。按业务能力确定归属，按需分层，明确源码依赖和跨功能协作。
+  version: 0.1.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: architect-frontend-feature-first
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - software-architecture
+    - frontend
+    - feature-first
+- id: architect-frontend-fsd
+  path: skills/en/architect-frontend-fsd
+  display_name: Feature-Sliced Design for frontends
+  display_title: Feature-Sliced Design for frontends
+  display_name_zh: 前端 Feature-Sliced Design
+  display_title_zh: 前端 Feature-Sliced Design
+  domain: software-architecture
+  summary: Explain Feature-Sliced Design (FSD) for frontends, including layers, slices, segments, public APIs, and dependency boundaries.
+  summary_zh: 解释前端 Feature-Sliced Design（FSD）的层、切片、段、公开 API 与依赖边界。
+  version: 0.1.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: architect-frontend-fsd-cn
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - software-architecture
+    - frontend
+    - feature-sliced-design
+- id: architect-frontend-fsd-cn
+  path: skills/zh-CN/architect-frontend-fsd-cn
+  display_name: 前端 Feature-Sliced Design
+  display_title: 前端 Feature-Sliced Design
+  display_name_zh: 前端 Feature-Sliced Design
+  display_title_zh: 前端 Feature-Sliced Design
+  domain: software-architecture
+  summary: 解释前端 Feature-Sliced Design（FSD）的层、切片、段、公开 API 与依赖边界。
+  summary_zh: 解释前端 Feature-Sliced Design（FSD）的层、切片、段、公开 API 与依赖边界。
+  version: 0.1.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: architect-frontend-fsd
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - software-architecture
+    - frontend
+    - feature-sliced-design
 - id: agent-dx-cli
   path: skills/en/agent-dx-cli
   display_name: Agent DX CLI
