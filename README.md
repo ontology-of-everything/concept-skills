@@ -23,7 +23,7 @@ The synchronization holds the coordination; Comment need not depend on Notificat
 Locate functionality, change concepts independently, and read coordination rules directly.
 Before adding a feature, consider reusing concepts or changing a few synchronizations, then check that existing behavior is preserved.
 The goal is more modular, transparent, and understandable software.
-See [references](skills/en/concept-design/references/sources.md) for the concept and synchronization methods used by this skill.
+See [references](skills/en/concept-design/references/shared/learning/sources.md) for the concept and synchronization methods used by this skill.
 
 ## Get started
 
@@ -47,7 +47,7 @@ Also supports settle, prd, guard, refine, and explain; Chinese uses `$concept-de
 
 ## What concept-lint checks
 
-Read-only, with no third-party dependencies. Checks the skill's local [CONCEPT/SYNCS notation](skills/en/concept-design/references/spec-format.md):
+Read-only, with no third-party dependencies. Checks the skill's local [CONCEPT/SYNCS notation](skills/en/concept-design/references/shared/model/spec-format.md):
 
 ```sh
 python3 skills/en/concept-design/scripts/concept_lint.py CONCEPT.md SYNCS.md --json
@@ -67,7 +67,7 @@ python3 skills/en/concept-design/scripts/concept_map.py <project-root> --output 
 ```
 
 Use `--scope RELPATH` to narrow the view or `--check` to compare without writing. Existing documents retain text outside the generated region.
-See the [map format](skills/en/concept-design/references/map-format.md).
+See the [map format](skills/en/concept-design/references/shared/artifacts/map-format.md).
 
 ## Repository skills
 

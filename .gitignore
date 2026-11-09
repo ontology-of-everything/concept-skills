@@ -56,3 +56,8 @@ __pycache__/
 
 # Private maintainer QA; never commit or publish
 /qa/
+
+# The build mode ships its workflow as source documentation.
+!/skills/*/*/references/modes/build/
+/skills/*/*/references/modes/build/*
+!/skills/*/*/references/modes/build/workflow.md

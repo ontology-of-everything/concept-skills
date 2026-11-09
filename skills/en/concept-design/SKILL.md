@@ -65,14 +65,14 @@ Continue already authorized work when it crosses modes.
 
 | Mode | Read when needed | Result |
 | --- | --- | --- |
-| `design` | [Design](references/design.md) | Concepts, composition, and decisions |
-| `settle` | [Settle](references/settle.md) | Discussion consolidated with decision status |
-| `prd` | [Specifications](references/prd.md) | Confirmed model and acceptance recorded |
-| `build` | [Implementation](references/build.md) | Scoped implementation, structural review, or refactoring |
-| `review` | [Review](references/review.md) | Read-only findings with evidence |
-| `guard` | [Maintenance](references/guard/workflow.md) | Coverage, backfill, drift, pipeline, or a concept and synchronization diagram |
-| `refine` | [Refinement](references/refine.md) | A proposal or authorized design correction |
-| `explain` | [Explanation](references/explain/workflow.md) | A source-backed view of behavior |
+| `design` | [Design](references/modes/design/workflow.md) | Concepts, composition, and decisions |
+| `settle` | [Settle](references/modes/settle/workflow.md) | Discussion consolidated with decision status |
+| `prd` | [Specifications](references/modes/prd/workflow.md) | Confirmed model and acceptance recorded |
+| `build` | [Implementation](references/modes/build/workflow.md) | Scoped implementation, structural review, or refactoring |
+| `review` | [Review](references/modes/review/workflow.md) | Read-only findings with evidence |
+| `guard` | [Maintenance](references/modes/guard/workflow.md) | Coverage, backfill, drift, pipeline, or a concept and synchronization diagram |
+| `refine` | [Refinement](references/modes/refine/workflow.md) | A proposal or authorized design correction |
+| `explain` | [Explanation](references/modes/explain/workflow.md) | A source-backed view of behavior |
 
 Review, audit, drift, and plan-only requests MUST remain read-only.
 Other modes write only within the requested scope.
@@ -82,11 +82,11 @@ MUST NOT change a specification to conceal a code defect.
 ## Specifications and checks
 
 Diagrams MUST use Mermaid code blocks in Markdown.
-Use the [CONCEPT/SYNCS format](references/spec-format.md) when writing or comparing specifications.
+Use the [CONCEPT/SYNCS format](references/shared/model/spec-format.md) when writing or comparing specifications.
 
 ```sh
 python3 <skill-directory>/scripts/concept_lint.py <CONCEPT.md-or-SYNCS.md> [more-files] --json
 ```
 
 A syntax result does not establish purpose fulfillment, contract conformance, or runtime correctness.
-[References](references/sources.md).
+[References](references/shared/learning/sources.md).

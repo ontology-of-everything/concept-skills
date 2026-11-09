@@ -1,0 +1,13 @@
+# 设计
+
+1. 明确受益者、应用目的、范围、现状与必需结果。
+   有既有系统时检查入口、状态归属、失败路径和测试。
+   保留有要求的安全、时限与可靠性边界。
+2. 在[决策记录](../../shared/artifacts/decisions.md)中提出概念与场景。
+3. 检查全部八项[资格判据](../../shared/model/criteria.md)。
+   按[规格格式](../../shared/model/spec-format.md)写契约及其执行约束。
+4. 设计规则并检查[组合与子集](../../shared/model/composition.md)。
+
+交付概念契约、规则、同步图、排除与未决。
+必需响应 MUST 覆盖已声明的成功与拒绝分支。
+需要完整推演时读[示例](../../shared/learning/examples.md)。

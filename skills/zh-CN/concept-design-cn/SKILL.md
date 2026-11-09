@@ -65,14 +65,14 @@ $concept-design-cn guard [audit|concept|drift|pipeline|sync|map] [范围]
 
 | 模式 | 按需读取 | 产出 |
 | --- | --- | --- |
-| `design` | [设计](references/design.md) | 概念、组合与决策 |
-| `settle` | [整理](references/settle.md) | 带确认状态的讨论结论 |
-| `prd` | [规格](references/prd.md) | 记录确认模型与验收 |
-| `build` | [实现](references/build.md) | 范围内实现、结构审查或重构 |
-| `review` | [审查](references/review.md) | 带证据的只读发现 |
-| `guard` | [维护](references/guard/workflow.md) | 覆盖、回填、漂移、管道或概念与同步关系图 |
-| `refine` | [精炼](references/refine.md) | 修正建议或授权修复 |
-| `explain` | [图解](references/explain/workflow.md) | 有源码依据的行为解释 |
+| `design` | [设计](references/modes/design/workflow.md) | 概念、组合与决策 |
+| `settle` | [整理](references/modes/settle/workflow.md) | 带确认状态的讨论结论 |
+| `prd` | [规格](references/modes/prd/workflow.md) | 记录确认模型与验收 |
+| `build` | [实现](references/modes/build/workflow.md) | 范围内实现、结构审查或重构 |
+| `review` | [审查](references/modes/review/workflow.md) | 带证据的只读发现 |
+| `guard` | [维护](references/modes/guard/workflow.md) | 覆盖、回填、漂移、管道或概念与同步关系图 |
+| `refine` | [精炼](references/modes/refine/workflow.md) | 修正建议或授权修复 |
+| `explain` | [图解](references/modes/explain/workflow.md) | 有源码依据的行为解释 |
 
 审查、审计、漂移和仅规划请求 MUST 保持只读。
 其他模式只在本次范围内写入。
@@ -82,11 +82,11 @@ MUST NOT 改规格掩盖代码缺陷。
 ## 规格与检查
 
 图 MUST 使用 Markdown 中的 Mermaid 代码块。
-编写或比较规格时使用 [CONCEPT/SYNCS 格式](references/spec-format.md)。
+编写或比较规格时使用 [CONCEPT/SYNCS 格式](references/shared/model/spec-format.md)。
 
 ```sh
 python3 <技能目录>/scripts/concept_lint.py <CONCEPT.md或SYNCS.md> [其他文件] --json
 ```
 
 语法结果不证明目的达成、契约符合性或运行时正确性。
-[参考资料](references/sources.md)。
+[参考资料](references/shared/learning/sources.md)。

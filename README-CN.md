@@ -23,7 +23,7 @@
 功能更容易定位，概念可以单独修改，协作规则直接可读。
 新增功能时，先检查能否复用概念或增改少量同步规则，再验证已有行为是否保持。
 目标是更模块化、更透明、更容易理解的软件。
-本技能采用的概念与同步方法见[参考资料](skills/zh-CN/concept-design-cn/references/sources.md)。
+本技能采用的概念与同步方法见[参考资料](skills/zh-CN/concept-design-cn/references/shared/learning/sources.md)。
 
 ## 开始使用
 
@@ -47,7 +47,7 @@ $concept-design-cn guard map src 生成概念与同步关系图。
 
 ## concept-lint 检查什么
 
-只读、零第三方依赖，检查本技能的 [CONCEPT/SYNCS 记法](skills/zh-CN/concept-design-cn/references/spec-format.md)：
+只读、零第三方依赖，检查本技能的 [CONCEPT/SYNCS 记法](skills/zh-CN/concept-design-cn/references/shared/model/spec-format.md)：
 
 ```sh
 python3 skills/zh-CN/concept-design-cn/scripts/concept_lint.py CONCEPT.md SYNCS.md --json
@@ -67,7 +67,7 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 ```
 
 `--scope RELPATH` 缩小显示范围，`--check` 只读检查更新，已有文档只替换生成区。
-具体约定见[图格式](skills/zh-CN/concept-design-cn/references/map-format.md)。
+具体约定见[图格式](skills/zh-CN/concept-design-cn/references/shared/artifacts/map-format.md)。
 
 ## 仓库技能
 
