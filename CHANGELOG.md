@@ -1,9 +1,7 @@
 # Changelog
 
-## 3.1.1 - 2026-11-05
+## 3.2.0 - 2026-11-09
 
-Simplify Concept design and synchronize both language editions. Keep one CONCEPT/SYNCS specification contract, add default execution-constraint templates, and align design, PRD, implementation, backfill, and review guidance. Add a four-scenario index with complete interfaces, acceptance checks, and counterexamples. Use Markdown specification fences, clarify per-flow correlation and partial failures, and remove obsolete provenance and duplicated guidance. Preserve the structural checker and diagram generator behavior.
-
-Concept design: `2.0.3` (`concept-design`, `concept-design-cn`).
-
-Validation: localization, links, catalog, repository hygiene, 14 specification examples, 111 checker regressions, and 24 map tests.
+- Concept Design 2.1.0 organizes both editions around eight workflow entry points and shared references. Engineering guidance adds a UseCase entry, named Mediators, and criteria for splitting synchronization rules. The CONCEPT/SYNCS syntax and CLI behavior are preserved. (by @AgenticWeb4)
+- Add the bilingual C4 modeling skill and refine 4R views, roles, scenarios, and diagrams. (by @AgenticWeb4)
+- Refine Data Knowledge Architect and Personal Knowledge Architect guidance, examples, and review materials. (by @AgenticWeb4)

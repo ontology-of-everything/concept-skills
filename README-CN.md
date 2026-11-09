@@ -84,7 +84,7 @@ npx --yes skills add . --skill architect-4r --agent codex --copy --yes
 
 | 技能 | 用途 | 版本 |
 | --- | --- | --- |
-| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 2.0.3 |
+| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 2.1.0 |
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |
 | [个人知识架构师](skills/zh-CN/personal-knowledge-architect-cn/SKILL.md) | 从原文萃取、关联、组织和复用知识。 | 0.4.0 |
 | [读它，重构它，化为己有](skills/zh-CN/read-it-reframe-it-own-it-cn/SKILL.md) | 围绕学习目标与关键框架建立并修正理解。 | 0.2.0 |
