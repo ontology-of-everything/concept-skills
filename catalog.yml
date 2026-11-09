@@ -25,6 +25,11 @@ domains:
     name_zh: 软件架构
     description: Core concepts, definitions, principles, and common mistakes in software architecture models.
     description_zh: 软件架构模型的核心概念、定义、原则与常见误用。
+  engineering:
+    name: Agent CLI engineering
+    name_zh: 面向智能体的 CLI 工程
+    description: Predictable, defensible CLI design, review, and refactoring.
+    description_zh: 以可预测性、纵深防御和上下文效率指导 CLI 设计、审查与重构。
 skills:
 - id: concept-design
   path: skills/en/concept-design
@@ -384,3 +389,71 @@ skills:
     - software-architecture
     - c4
     - system-modeling
+- id: agent-dx-cli
+  path: skills/en/agent-dx-cli
+  display_name: Agent DX CLI
+  display_name_zh: 面向智能体的 CLI 工程
+  domain: engineering
+  subdomains:
+  - cli
+  - agent-dx
+  - api
+  - review
+  - refactoring
+  summary: Designs, reviews, and refactors CLIs for AI agents. Use when building Agent DX CLIs or checking existing CLI contracts. Checks predictability, defense in depth, and context efficiency with evidence scores.
+  summary_zh: 设计、审查和重构面向 AI Agent 的 CLI。检查可预测性、纵深防御和上下文效率，并用实际证据评分。用于开发 Agent DX CLI 或检视现有 CLI。
+  version: 0.4.2
+  agents:
+  - codex
+  compatibility: Repository access and project-specific build tools; real service validation needs an isolated authorized environment.
+  marketplaces:
+  - clawhub
+  clawhub_url: https://clawhub.ai/agenticweb4/agent-dx-cli
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  distribution: direct-skill
+  language: en
+  translation_of: agent-dx-cli-cn
+  clawhub:
+    categories:
+    - development
+    - agents
+    topics:
+    - cli-engineering
+    - agent-dx
+    - cli-contracts
+    - code-review
+    - refactoring
+- id: agent-dx-cli-cn
+  path: skills/zh-CN/agent-dx-cli-cn
+  display_name: 面向智能体的 CLI 工程
+  display_name_zh: 面向智能体的 CLI 工程
+  domain: engineering
+  subdomains:
+  - cli
+  - agent-dx
+  - api
+  - review
+  - refactoring
+  summary: 设计、审查和重构面向 AI Agent 的 CLI。检查可预测性、纵深防御和上下文效率，并用实际证据评分。用于开发 Agent DX CLI 或检视现有 CLI。
+  summary_zh: 设计、审查和重构面向 AI Agent 的 CLI。检查可预测性、纵深防御和上下文效率，并用实际证据评分。用于开发 Agent DX CLI 或检视现有 CLI。
+  version: 0.4.2
+  agents:
+  - codex
+  compatibility: Repository access and project-specific build tools; real service validation needs an isolated authorized environment.
+  marketplaces:
+  - clawhub
+  clawhub_url: https://clawhub.ai/agenticweb4/agent-dx-cli-cn
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  distribution: direct-skill
+  language: zh-CN
+  translation_of: agent-dx-cli
+  clawhub:
+    categories:
+    - development
+    - agents
+    topics:
+    - cli-engineering
+    - agent-dx
+    - cli-contracts
+    - code-review
+    - refactoring

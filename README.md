@@ -71,13 +71,20 @@ See the [map format](skills/en/concept-design/references/shared/artifacts/map-fo
 
 ## Repository skills
 
-4R architecture documentation, data semantics, personal knowledge management, and learning have separate skills; each has English and Chinese editions.
+4R architecture documentation, data semantics, personal knowledge management, learning, and Agent CLI engineering have separate skills; each has English and Chinese editions.
 
 `architect-4r` uses Li Yunhua's 4R method to describe existing architecture from code or discussion context. Select views and key scenarios, then see the architecture and how its roles work together. The Chinese edition is `architect-4r-cn`.
 
 ```sh
 npx --yes skills add . --skill architect-4r --agent codex --copy --yes
 npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
+```
+
+`agent-dx-cli` designs, reviews, and refactors CLIs for agents with evidence scores. The Chinese edition is `agent-dx-cli-cn`.
+
+```sh
+npx --yes skills add . --skill agent-dx-cli --agent codex --copy --yes
+npx --yes skills add . --skill agent-dx-cli-cn --agent codex --copy --yes
 ```
 
 <!-- skill-catalog:start -->
@@ -90,6 +97,7 @@ npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
 | [4R System Modeling Framework](skills/en/architect-4r/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.4.0 |
 | [C4 Software Architecture Model](skills/en/architect-4c/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
+| [Agent DX CLI](skills/en/agent-dx-cli/SKILL.md) | Predictable, defensible CLI design, review, and refactoring. | 0.4.2 |
 
 <!-- skill-catalog:end -->
 

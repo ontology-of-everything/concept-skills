@@ -1,14 +1,14 @@
 # concept-skills
 
-Concept design, semantic modeling, knowledge organization and visual teaching.
+Concept design, semantic modeling, knowledge organization, visual teaching, and Agent DX tooling.
 
 ## Repository ownership
 
 | Repository | Owns |
 | --- | --- |
-| `concept-skills` | Software concepts, semantic modeling, knowledge organization, and visual learning. |
+| `concept-skills` | Software concepts, semantic modeling, knowledge organization, visual learning, and Agent DX tooling. |
 | `cloud-concept-skills` | Huawei Cloud operations, billing, controlled provisioning, and account onboarding. |
-| `myoffice-skills` | Office workflows, presentations, source notes, repository guidance, and Agent DX tooling. |
+| `myoffice-skills` | Office workflows, presentations, source notes, and repository guidance. |
 
 ## Directory contract
 

@@ -43,6 +43,14 @@
         "architect-4c",
         "architect-4c-cn"
       ]
+    },
+    {
+      "title": "Agent CLI engineering",
+      "description": "Predictable, defensible CLI design, review, and refactoring.",
+      "skills": [
+        "agent-dx-cli",
+        "agent-dx-cli-cn"
+      ]
     }
   ]
 }
