@@ -4,7 +4,7 @@ description: "Use only when explicitly invoked. Design, specify, implement, revi
 metadata:
   language: en
   translation_of: concept-design-cn
-  version: "2.2.0"
+  version: "2.2.1"
 ---
 
 # Concept design
@@ -44,7 +44,5 @@ Use Mermaid in Markdown for diagrams; passing syntax checks does not establish p
 
 ## References
 
-- [Beyond Objects §12–13](https://arxiv.org/html/2606.27258v1#S12): concept and synchronization specifications.
-- [WYSIWID v2](https://arxiv.org/html/2508.14511v2#S4): engineering execution, flows, and firing consistency.
-- [Concept criteria](https://essenceofsoftware.com/tutorials/concept-basics/criteria/): concept criteria.
-- [Design Moves for Software](https://essenceofsoftware.com/posts/design-moves/): split/merge, unify/specialize, and tighten/loosen.
+- Concepts and synchronizations: Daniel Jackson, Beyond Objects.
+- Engineering execution: Meng and Jackson, WYSIWID.

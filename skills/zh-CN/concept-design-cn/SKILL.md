@@ -4,7 +4,7 @@ description: "仅在显式调用时使用。用 Daniel Jackson 的概念与同�
 metadata:
   language: zh-CN
   translation_of: concept-design
-  version: "2.2.0"
+  version: "2.2.1"
 ---
 
 # 概念设计
@@ -44,7 +44,5 @@ metadata:
 
 ## 参考资料
 
-- [Beyond Objects §12–13](https://arxiv.org/html/2606.27258v1#S12)：概念与同步规格。
-- [WYSIWID v2](https://arxiv.org/html/2508.14511v2#S4)：工程执行、flow 与触发一致性。
-- [Concept criteria](https://essenceofsoftware.com/tutorials/concept-basics/criteria/)：概念判据。
-- [Design Moves for Software](https://essenceofsoftware.com/posts/design-moves/)：拆分/合并、统一/特化、收紧/放松。
+- 概念与同步：Daniel Jackson，Beyond Objects。
+- 工程执行：Meng 与 Jackson，WYSIWID。
