@@ -4,12 +4,17 @@ description: "仅在显式调用时使用。用 Daniel Jackson 的概念与同�
 metadata:
   language: zh-CN
   translation_of: concept-design
-  version: "2.3.0"
+  version: "2.4.0"
 ---
 
 # 概念设计
 
-采用 Daniel Jackson 的概念与同步方法：从用户需要出发，以独立概念定义行为，以外部同步规则组织协作。
+Daniel Jackson 概念设计的方法概括：**应用 = 概念（Concepts）+ 同步规则（Synchronizations）**。
+
+> “With the concepts in hand, we now associate their actions through synchronizations:”
+> — Daniel Jackson, [Concept composition and sync](https://essenceofsoftware.com/tutorials/concept-basics/sync/#composing-concepts-with-syncs) (2022-09-14)
+
+从用户需要出发。概念定义独立行为；外部同步规则组合这些行为，规定哪些动作完成后，在什么条件下触发后续动作。
 
 ## 核心约束
 

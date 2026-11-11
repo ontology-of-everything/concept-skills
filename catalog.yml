@@ -40,7 +40,7 @@ skills:
   domain: concept-design
   summary: Use only when explicitly invoked. Design, specify, implement, review, refactor, or explain software with Daniel Jackson's concepts and synchronizations. Check CONCEPT.md/SYNCS.md structure and generate Mermaid relationship diagrams.
   summary_zh: 仅在显式调用时使用。用 Daniel Jackson 的概念与同步方法设计、实现、审查和重构软件，编写规格并解释软件行为。检查 CONCEPT.md/SYNCS.md 结构，生成 Mermaid 关系图。
-  version: 2.3.0
+  version: 2.4.0
   agents:
   - cursor
   - claude-code
@@ -74,7 +74,7 @@ skills:
   domain: concept-design
   summary: 仅在显式调用时使用。用 Daniel Jackson 的概念与同步方法设计、实现、审查和重构软件，编写规格并解释软件行为。检查 CONCEPT.md/SYNCS.md 结构，生成 Mermaid 关系图。
   summary_zh: 仅在显式调用时使用。用 Daniel Jackson 的概念与同步方法设计、实现、审查和重构软件，编写规格并解释软件行为。检查 CONCEPT.md/SYNCS.md 结构，生成 Mermaid 关系图。
-  version: 2.3.0
+  version: 2.4.0
   agents:
   - cursor
   - claude-code

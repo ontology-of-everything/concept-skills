@@ -1,11 +1,8 @@
 # Changelog
 
-## 3.5.0 - 2026-11-11
+## 3.6.0 - 2026-11-11
 
-### Features
-- Include bilingual Feature-First and Feature-Sliced Design architecture skills added since v3.3.0.
-- Release Concept design 2.3.0 in English and Chinese, including the concise modes and specification references introduced in 2.2.x.
-
-### Fixes
-- Distinguish the composition architecture layer from synchronization rules and standardize directory examples on `composition/`.
-- Correct repository ownership guidance to reference handy-skills.
+### Documentation
+- Release Concept design 2.4.0 in English and Chinese.
+- Summarize the method as Application = Concepts + Synchronizations at the shared entry point for all modes.
+- Add Daniel Jackson's original sentence and tutorial source, clearly distinguishing the summary formula from the direct quotation.

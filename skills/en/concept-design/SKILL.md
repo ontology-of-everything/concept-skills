@@ -4,12 +4,17 @@ description: "Use only when explicitly invoked. Design, specify, implement, revi
 metadata:
   language: en
   translation_of: concept-design-cn
-  version: "2.3.0"
+  version: "2.4.0"
 ---
 
 # Concept design
 
-Use Daniel Jackson's concepts and synchronizations: start from user needs, define behavior with independent concepts, and coordinate them through external synchronization rules.
+Summary of Daniel Jackson's concept design: **Application = Concepts + Synchronizations**.
+
+> “With the concepts in hand, we now associate their actions through synchronizations:”
+> — Daniel Jackson, [Concept composition and sync](https://essenceofsoftware.com/tutorials/concept-basics/sync/#composing-concepts-with-syncs) (2022-09-14)
+
+Start from user needs. Concepts define independent behavior; external synchronization rules compose that behavior by specifying which action completions, under which conditions, trigger subsequent actions.
 
 ## Core constraints
 
