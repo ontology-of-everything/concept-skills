@@ -1,6 +1,8 @@
 # Changelog
 
-## 3.3.0 - 2026-11-09
+## 3.4.0 - 2026-11-11
 
-- Add Agent DX CLI 0.4.2 in English and Chinese. It uses executable evidence to design, review, and refactor agent-facing CLI contracts, with checks for predictability, defense in depth, and context efficiency.
-- Add both editions to the catalog and support explicit invocation in Codex.
+- Release Concept design 2.2.0 in English and Chinese with flat mode/reference directories and a concise entry point.
+- Separate readable specifications, precise notation, and tool encoding; align engineering constraints and localized references.
+- Add `guard claude` with a five-rule CLAUDE.md template for design, implementation, and engineering consistency.
+- Update package checks for mode routing and localized resources; preserve checker and diagram CLI behavior.

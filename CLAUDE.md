@@ -54,7 +54,7 @@ Use these terms consistently in both locales. Preserve syntax, file names, quote
 | model | 模型 | The design's concepts, behavior, and composition. |
 | specification | 规格 | The written expression of a model. |
 | contract | 契约 | Allowed behavior that an implementation must preserve. |
-| specification conventions | 规格约定 | This repository's notation and interpretation rules in spec-format.md. |
+| specification conventions | 规格约定 | This repository's notation and interpretation rules in spec-notation.md. |
 | concept | 概念 | An independent software behavior with its own purpose, state, and actions. |
 | concept instance | 概念实例 | A particular instance that owns its state. |
 | operational principle, OP | 运作原理，OP | A representative history that explains how a concept fulfills its purpose. |
@@ -79,8 +79,8 @@ The personal-knowledge skill uses concept for a reusable method and states that 
 - Concept Design has one entry per language: `concept-design` and `concept-design-cn`. The former eight workflows
   are combined here; the other seven entries are retired, not aliases. The other three capability families remain separate.
 - Maintain core definitions and principles in `concept-design/SKILL.md`; keep specification conventions in
-  `references/shared/model/spec-format.md`. Link directly to each `references/modes/<mode>/workflow.md`.
-  Keep mode-specific references beside their workflow and cross-mode references in `references/shared/`.
+  `references/spec-notation.md`. Link directly to each `modes/<mode>.md`.
+  Keep supporting material in `references/`; name files by their content and responsibility.
   There are no shared skill dependencies or generated cross-package copies.
 - The modes are prompt selectors, not shell commands. `scripts/concept_lint.py` is the actual read-only
   concept-lint CLI. It checks local specification structure, when/then records, and rule-name uniqueness
@@ -89,7 +89,7 @@ The personal-knowledge skill uses concept for a reusable method and states that 
 - Keep decision-record status values and format examples consistent with the checker. Public checks
   run packaged examples and representative failing inputs.
 - `guard map` generates the local Concept and Synchronization Diagram, not Jackson's purpose-dependence diagram.
-  Keep `references/shared/artifacts/map-format.md` and `scripts/concept_map.py` aligned. Version 1 emits one Markdown document;
+  Keep `references/diagram-contract.md` and `scripts/concept_map.py` aligned. Version 1 emits one Markdown document;
   it shares lexical handling with concept-lint and never fills unknown references by inference.
 - Diagrams use Mermaid in Markdown. Keep explanation views concise and use the map generator for concept/synchronization diagrams.
 - Author locale packages directly under `skills/` and register them in `catalog.yml`; keep QA and generated artifacts local.

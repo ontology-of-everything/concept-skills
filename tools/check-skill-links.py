@@ -7,7 +7,7 @@ from urllib.parse import unquote, urlsplit
 
 
 LINK = re.compile(r"\[[^\]\n]+\]\(([^\s()]+)(?:\s+\"[^\"]*\")?\)")
-RESOURCE = re.compile(r"`((?:references|assets|runtime)/[^`\s]+)`")
+RESOURCE = re.compile(r"`((?:modes|references|assets|runtime)/[^`\s]+)`")
 
 
 def prose(text):

@@ -4,89 +4,47 @@ description: "仅在显式调用时使用。用 Daniel Jackson 的概念与同�
 metadata:
   language: zh-CN
   translation_of: concept-design
-  version: "2.1.0"
+  version: "2.2.0"
 ---
 
 # 概念设计
 
-用概念定义独立功能，用同步规则定义概念之间的协作。
-先写明用户需要的行为，再选择实现。
-理解或修改行为时，定位对应概念和规则。
+采用 Daniel Jackson 的概念与同步方法：从用户需要出发，以独立概念定义行为，以外部同步规则组织协作。
 
-本技能参考 Meng 与 Jackson 的 WYSIWID 方法。
+## 核心约束
 
-## 从需要出发
+- 概念围绕一个目的拥有状态与动作；概念之间不互调、不互读状态，外部身份不携带另一概念的内部结构。
+- 运作原理（OP）以代表性过程说明目的如何达成，不代替完整契约或进展保证。
+- 组合可限制行为，但须保持各概念契约。分别检查契约、OP、目的与应用场景。
+- 每项定义只有一处权威来源。区分已确认、建议、推断和未决；以证据、前提和反例检验决定，保留未决与未验证事项。
+- 比较备选，包含不改或删减；反复失败时重查前提。重构保持行为，有意改变须明确说明。
 
-- 明确受益者及其需要的可观察结果。
-- 概念为一个目的提供独立行为。
-- 状态与动作定义允许的行为。
-- 运作原理（OP）用一段代表性历史说明行为如何达成目的。
-- OP 不覆盖全部行为，也不保证进展。
-- 每个概念实例拥有自己的状态。
-- 概念 MUST NOT 互调或互读状态。
-- 外部身份不假定另一概念的字段。
-- 应用协调放在概念之外的同步规则中。
-- 组合 MAY 限制行为，但 MUST 保持各概念契约。
+## 选择模式
 
-## 检验论证
+按请求选择模式，只读取该模式及当前步骤所需参考材料。意图不清时先只读检查，跨模式沿用已有授权。
 
-- 说明主张、证据及其所需前提。
-- 寻找能使主张不成立的场景。
-- 比较备选，包含不改。
-- 多次修复在同一前提下失败时，重新检验该前提。
-- 检查契约能否支持 OP。
-- 检查 OP 能否达成目的。
-- 应用场景与概念正确性分别检查。
-- 所需时限、失败与一致性前提须明确。
-- 缺少的决定保留未决；未执行的测试保留未验证。
+| 模式 | 用途 |
+| --- | --- |
+| [design](modes/design.md) | 设计概念与同步 |
+| [settle](modes/settle.md) | 整理讨论与决定 |
+| [prd](modes/prd.md) | 编写 PRD、规格与验收 |
+| [build](modes/build.md) | 按确认规格实现或重构 |
+| [review](modes/review.md) | 审查设计与实现 |
+| [guard](modes/guard.md) | 审计、回填、漂移检查、管道规格与关系图 |
+| [refine](modes/refine.md) | 比较改进方案并按授权修正 |
+| [explain](modes/explain.md) | 依据规格与源码解释行为 |
 
-## 每项决定只定义一次
+审查、审计、漂移及仅规划请求保持只读；其他修改限于授权范围。不得改规格掩盖实现缺陷。
 
-- 区分 `confirmed`（已确认）、`proposed`（建议）、`inferred`（推断）、`open`（未决）。
-- 建议或推断 MUST NOT 经转录变成确认需求。
-- 每个模型元素只有一处权威定义。
-- 沿用已确认决定，直到需求或证据支持重新评估。
-- 增加机制前，检查能否删除规则或职责而保持所需行为。
-- 重构保持行为，有意重新设计须另行说明。
+## 表达与验证
 
-## 选择工作
+默认使用[阅读版](references/spec-reading.md)，需要精确表达时展开[规格记法](references/spec-notation.md)。
+运行检查器或生成关系图时读取[工具编码](references/tool-encoding.md)，未支持的内容报告未检查。
+图使用 Markdown Mermaid；语法通过不代表目的达成、契约符合或运行正确。
 
-以下为提示词选择器，不是已安装的 shell 命令：
+## 参考资料
 
-```text
-$concept-design-cn [design|settle|prd|build|review|guard|refine|explain] [范围与请求]
-$concept-design-cn guard [audit|concept|drift|pipeline|sync|map] [范围]
-```
-
-未指明模式时按请求判断。
-意图不清时先只读检查，再询问阻碍工作的取舍。
-只读当前工作所需流程。
-跨模式沿用已有授权。
-
-| 模式 | 按需读取 | 产出 |
-| --- | --- | --- |
-| `design` | [设计](references/modes/design/workflow.md) | 概念、组合与决策 |
-| `settle` | [整理](references/modes/settle/workflow.md) | 带确认状态的讨论结论 |
-| `prd` | [规格](references/modes/prd/workflow.md) | 记录确认模型与验收 |
-| `build` | [实现](references/modes/build/workflow.md) | 范围内实现、结构审查或重构 |
-| `review` | [审查](references/modes/review/workflow.md) | 带证据的只读发现 |
-| `guard` | [维护](references/modes/guard/workflow.md) | 覆盖、回填、漂移、管道或概念与同步关系图 |
-| `refine` | [精炼](references/modes/refine/workflow.md) | 修正建议或授权修复 |
-| `explain` | [图解](references/modes/explain/workflow.md) | 有源码依据的行为解释 |
-
-审查、审计、漂移和仅规划请求 MUST 保持只读。
-其他模式只在本次范围内写入。
-回填 MUST 区分观察行为、推断目的、缺陷与确认需求。
-MUST NOT 改规格掩盖代码缺陷。
-
-## 规格与检查
-
-图 MUST 使用 Markdown 中的 Mermaid 代码块。
-编写或比较规格时使用 [CONCEPT/SYNCS 格式](references/shared/model/spec-format.md)。
-
-```sh
-python3 <技能目录>/scripts/concept_lint.py <CONCEPT.md或SYNCS.md> [其他文件] --json
-```
-
-语法结果不证明目的达成、契约符合性或运行时正确性。
-[参考资料](references/shared/learning/sources.md)。
+- [Beyond Objects §12–13](https://arxiv.org/html/2606.27258v1#S12)：概念与同步规格。
+- [WYSIWID v2](https://arxiv.org/html/2508.14511v2#S4)：工程执行、flow 与触发一致性。
+- [Concept criteria](https://essenceofsoftware.com/tutorials/concept-basics/criteria/)：概念判据。
+- [Design Moves for Software](https://essenceofsoftware.com/posts/design-moves/)：拆分/合并、统一/特化、收紧/放松。

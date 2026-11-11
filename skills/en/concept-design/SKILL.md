@@ -4,89 +4,47 @@ description: "Use only when explicitly invoked. Design, specify, implement, revi
 metadata:
   language: en
   translation_of: concept-design-cn
-  version: "2.1.0"
+  version: "2.2.0"
 ---
 
 # Concept design
 
-Define independent functionality with concepts and coordinate them with synchronization rules.
-Specify the behavior users need before choosing an implementation.
-When understanding or changing a behavior, locate its concepts and rules.
+Use Daniel Jackson's concepts and synchronizations: start from user needs, define behavior with independent concepts, and coordinate them through external synchronization rules.
 
-This skill adapts Meng and Jackson's WYSIWID method.
+## Core constraints
 
-## Start from the need
+- Each concept owns state and actions for one purpose; concepts do not invoke one another or read one another's state. External identities carry no internal structure from another concept.
+- The operational principle (OP) illustrates how the purpose is fulfilled through a representative history; it does not replace the full contract or guarantee progress.
+- Composition may restrict behavior but must preserve each concept's contract. Check contracts, OPs, purposes, and application scenarios separately.
+- Each definition has one authoritative source. Distinguish confirmed, proposed, inferred, and open statements; test decisions with evidence, assumptions, and counterexamples. Keep unresolved matters open and unexecuted checks unverified.
+- Compare alternatives, including no change or removal; revisit assumptions after repeated failures. Refactoring preserves behavior; state intentional changes explicitly.
 
-- Name the beneficiary and the observable result they need.
-- A concept provides independent behavior for one purpose.
-- Its state and actions define allowed behavior.
-- Its operational principle (OP) explains a representative history that fulfills the purpose.
-- An OP does not specify every behavior or guarantee progress.
-- Each concept instance owns its state.
-- Concepts MUST NOT invoke one another or read one another's state.
-- External identities carry no assumed fields from another concept.
-- Put application coordination in external synchronization rules.
-- Composition MAY restrict behavior but MUST preserve each concept's contract.
+## Choose a mode
 
-## Test the argument
+Select a mode from the request and read only that mode and references needed for the current step. Inspect read-only when intent is unclear; carry existing authorization across modes.
 
-- State the claim, its evidence, and the assumptions it needs.
-- Find a scenario that would make the claim false.
-- Compare alternatives, including no change.
-- If fixes fail under the same assumption, re-examine that assumption.
-- Check that the contract supports the OP.
-- Check that the OP serves the purpose.
-- Check application scenarios separately from concept correctness.
-- State required timing, failure, and consistency assumptions.
-- A missing decision stays open; an absent test stays unverified.
+| Mode | Purpose |
+| --- | --- |
+| [design](modes/design.md) | Design concepts and synchronizations |
+| [settle](modes/settle.md) | Consolidate discussions and decisions |
+| [prd](modes/prd.md) | Write the PRD, specifications, and acceptance criteria |
+| [build](modes/build.md) | Implement or refactor against confirmed specifications |
+| [review](modes/review.md) | Review design and implementation |
+| [guard](modes/guard.md) | Audit, reconstruct, check drift, specify pipelines, and generate diagrams |
+| [refine](modes/refine.md) | Compare improvements and apply authorized corrections |
+| [explain](modes/explain.md) | Explain behavior from specifications and source code |
 
-## Make each decision once
+Review, audit, drift, and plan-only requests remain read-only; other changes stay within authorized scope. Do not change specifications to conceal implementation defects.
 
-- Distinguish `confirmed`, `proposed`, `inferred`, and `open` statements.
-- A proposal or inference MUST NOT become a confirmed requirement by transcription.
-- Keep one authoritative definition of each model element.
-- Reuse confirmed decisions until requirements or evidence justify revisiting them.
-- Before adding a mechanism, check whether removing a rule or responsibility would preserve the required behavior.
-- Preserve behavior during refactoring; identify intentional redesign separately.
+## Expression and verification
 
-## Choose the work
+Use the [reading version](references/spec-reading.md) by default; expand the [specification notation](references/spec-notation.md) when precision is needed.
+Read the [tool encoding](references/tool-encoding.md) when running the checker or generating diagrams; report unsupported content as unchecked.
+Use Mermaid in Markdown for diagrams; passing syntax checks does not establish purpose fulfillment, contract conformance, or runtime correctness.
 
-These are prompt selectors, not installed shell commands:
+## References
 
-```text
-$concept-design [design|settle|prd|build|review|guard|refine|explain] [scope and request]
-$concept-design guard [audit|concept|drift|pipeline|sync|map] [scope]
-```
-
-Infer the mode from the request when omitted.
-If intent is unclear, inspect read-only before asking about a blocking choice.
-Read only the selected workflow.
-Continue already authorized work when it crosses modes.
-
-| Mode | Read when needed | Result |
-| --- | --- | --- |
-| `design` | [Design](references/modes/design/workflow.md) | Concepts, composition, and decisions |
-| `settle` | [Settle](references/modes/settle/workflow.md) | Discussion consolidated with decision status |
-| `prd` | [Specifications](references/modes/prd/workflow.md) | Confirmed model and acceptance recorded |
-| `build` | [Implementation](references/modes/build/workflow.md) | Scoped implementation, structural review, or refactoring |
-| `review` | [Review](references/modes/review/workflow.md) | Read-only findings with evidence |
-| `guard` | [Maintenance](references/modes/guard/workflow.md) | Coverage, backfill, drift, pipeline, or a concept and synchronization diagram |
-| `refine` | [Refinement](references/modes/refine/workflow.md) | A proposal or authorized design correction |
-| `explain` | [Explanation](references/modes/explain/workflow.md) | A source-backed view of behavior |
-
-Review, audit, drift, and plan-only requests MUST remain read-only.
-Other modes write only within the requested scope.
-A backfill MUST separate observed code, inferred purpose, defects, and confirmed requirements.
-MUST NOT change a specification to conceal a code defect.
-
-## Specifications and checks
-
-Diagrams MUST use Mermaid code blocks in Markdown.
-Use the [CONCEPT/SYNCS format](references/shared/model/spec-format.md) when writing or comparing specifications.
-
-```sh
-python3 <skill-directory>/scripts/concept_lint.py <CONCEPT.md-or-SYNCS.md> [more-files] --json
-```
-
-A syntax result does not establish purpose fulfillment, contract conformance, or runtime correctness.
-[References](references/shared/learning/sources.md).
+- [Beyond Objects §12–13](https://arxiv.org/html/2606.27258v1#S12): concept and synchronization specifications.
+- [WYSIWID v2](https://arxiv.org/html/2508.14511v2#S4): engineering execution, flows, and firing consistency.
+- [Concept criteria](https://essenceofsoftware.com/tutorials/concept-basics/criteria/): concept criteria.
+- [Design Moves for Software](https://essenceofsoftware.com/posts/design-moves/): split/merge, unify/specialize, and tighten/loosen.

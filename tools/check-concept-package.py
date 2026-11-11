@@ -35,11 +35,11 @@ def check_package(package):
     policy = yaml.safe_load((package / "agents/openai.yaml").read_text())
     require(policy["policy"]["allow_implicit_invocation"] is False, "concept must be explicit-only")
     for mode in MODES:
-        route = re.search(rf"^\|\s*`{mode}`\s*\|\s*\[[^\]]+\]\(([^)]+)\)", entry, re.M)
+        route = re.search(rf"^\|\s*\[{mode}\]\(([^)]+)\)\s*\|", entry, re.M)
         require(route is not None, f"missing mode route: {mode}")
         require((package / route[1]).is_file(), f"missing workflow: {mode}")
 
-    decision_text = (package / "references/shared/artifacts/decisions.md").read_text()
+    decision_text = (package / "references/decision-records.md").read_text()
     records = re.findall(r"```yaml\n(.*?)\n```", decision_text, re.S)
     require(len(records) == 1, "one decision-record shape is required")
     record = yaml.safe_load(records[0])
@@ -49,7 +49,7 @@ def check_package(package):
 
     checker = package / "scripts/concept_lint.py"
     samples = []
-    for name in ("shared/model/spec-format.md", "shared/learning/examples.md"):
+    for name in ("tool-encoding.md", "spec-examples.md"):
         text = (package / "references" / name).read_text()
         samples.extend(body for body in re.findall(r"```(?:text|markdown)\n(.*?)\n```", text, re.S)
                        if re.match(r"# (concept|app) ", body))

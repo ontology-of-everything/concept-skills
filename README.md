@@ -7,7 +7,7 @@ When the connections are scattered, the effects of a change are hard to see.
 
 `concept-design` supports software design and AI coding with Daniel Jackson's concepts and synchronizations.
 Start from a user's need, define independent modules and explicit coordination rules, then use them for specifications, implementation, review, and Mermaid maps.
-Adapts ideas from WYSIWID (Meng & Jackson, MIT).
+Specifications follow Beyond Objects (Daniel Jackson); engineering execution draws on WYSIWID (Meng & Jackson).
 
 ## 🧩 How it works
 
@@ -23,7 +23,7 @@ The synchronization holds the coordination; Comment need not depend on Notificat
 Locate functionality, change concepts independently, and read coordination rules directly.
 Before adding a feature, consider reusing concepts or changing a few synchronizations, then check that existing behavior is preserved.
 The goal is more modular, transparent, and understandable software.
-See [references](skills/en/concept-design/references/shared/learning/sources.md) for the concept and synchronization methods used by this skill.
+See [references](skills/en/concept-design/SKILL.md#references) for the concept and synchronization methods used by this skill.
 
 ## Get started
 
@@ -47,7 +47,7 @@ Also supports settle, prd, guard, refine, and explain; Chinese uses `$concept-de
 
 ## What concept-lint checks
 
-Read-only, with no third-party dependencies. Checks the skill's local [CONCEPT/SYNCS notation](skills/en/concept-design/references/shared/model/spec-format.md):
+Read-only, with no third-party dependencies. Checks the skill's local [tool encoding](skills/en/concept-design/references/tool-encoding.md):
 
 ```sh
 python3 skills/en/concept-design/scripts/concept_lint.py CONCEPT.md SYNCS.md --json
@@ -67,7 +67,7 @@ python3 skills/en/concept-design/scripts/concept_map.py <project-root> --output 
 ```
 
 Use `--scope RELPATH` to narrow the view or `--check` to compare without writing. Existing documents retain text outside the generated region.
-See the [map format](skills/en/concept-design/references/shared/artifacts/map-format.md).
+See the [map format](skills/en/concept-design/references/diagram-contract.md).
 
 ## Repository skills
 
@@ -91,7 +91,7 @@ npx --yes skills add . --skill agent-dx-cli-cn --agent codex --copy --yes
 
 | Skill | Purpose | Version |
 | --- | --- | --- |
-| [Concept design](skills/en/concept-design/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 2.1.0 |
+| [Concept design](skills/en/concept-design/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 2.2.0 |
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
 | [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |

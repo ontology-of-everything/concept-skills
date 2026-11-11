@@ -67,9 +67,9 @@ for base in bases:
         expected_pair = cn if name == base else base
         if catalog_by_id.get(name, {}).get("translation_of") != expected_pair:
             fail(f"catalog translation is not reciprocal: {name}")
-    en_resources = {str(p.relative_to(en_dir)) for folder in ("references", "assets")
+    en_resources = {str(p.relative_to(en_dir)) for folder in ("modes", "references", "assets")
                     for p in (en_dir / folder).rglob("*") if p.is_file()}
-    cn_resources = {str(p.relative_to(cn_dir)) for folder in ("references", "assets")
+    cn_resources = {str(p.relative_to(cn_dir)) for folder in ("modes", "references", "assets")
                     for p in (cn_dir / folder).rglob("*") if p.is_file()}
     if en_resources != cn_resources:
         fail(f"localized resource inventories differ: {base}: {sorted(en_resources ^ cn_resources)}")

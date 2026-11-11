@@ -7,7 +7,7 @@
 
 `concept-design` 用 Daniel Jackson 的概念与同步方法支持软件设计与 AI 编程。
 从用户需要出发，划分独立模块、写明协作规则，再用于规格、实现、审查与 Mermaid 关系图。
-借鉴 Meng 与 Jackson（MIT）的 WYSIWID。
+规格采用 Daniel Jackson 的 Beyond Objects，工程执行参考 Meng 与 Jackson 的 WYSIWID。
 
 ## 🧩 怎么工作
 
@@ -23,7 +23,7 @@
 功能更容易定位，概念可以单独修改，协作规则直接可读。
 新增功能时，先检查能否复用概念或增改少量同步规则，再验证已有行为是否保持。
 目标是更模块化、更透明、更容易理解的软件。
-本技能采用的概念与同步方法见[参考资料](skills/zh-CN/concept-design-cn/references/shared/learning/sources.md)。
+本技能采用的概念与同步方法见[参考资料](skills/zh-CN/concept-design-cn/SKILL.md#参考资料)。
 
 ## 开始使用
 
@@ -47,7 +47,7 @@ $concept-design-cn guard map src 生成概念与同步关系图。
 
 ## concept-lint 检查什么
 
-只读、零第三方依赖，检查本技能的 [CONCEPT/SYNCS 记法](skills/zh-CN/concept-design-cn/references/shared/model/spec-format.md)：
+只读、零第三方依赖，检查本技能的 [工具编码](skills/zh-CN/concept-design-cn/references/tool-encoding.md)：
 
 ```sh
 python3 skills/zh-CN/concept-design-cn/scripts/concept_lint.py CONCEPT.md SYNCS.md --json
@@ -67,7 +67,7 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 ```
 
 `--scope RELPATH` 缩小显示范围，`--check` 只读检查更新，已有文档只替换生成区。
-具体约定见[图格式](skills/zh-CN/concept-design-cn/references/shared/artifacts/map-format.md)。
+具体约定见[图格式](skills/zh-CN/concept-design-cn/references/diagram-contract.md)。
 
 ## 仓库技能
 
@@ -91,7 +91,7 @@ npx --yes skills add . --skill agent-dx-cli --agent codex --copy --yes
 
 | 技能 | 用途 | 版本 |
 | --- | --- | --- |
-| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 2.1.0 |
+| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 2.2.0 |
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |
 | [个人知识架构师](skills/zh-CN/personal-knowledge-architect-cn/SKILL.md) | 从原文萃取、关联、组织和复用知识。 | 0.4.0 |
 | [读它，重构它，化为己有](skills/zh-CN/read-it-reframe-it-own-it-cn/SKILL.md) | 围绕学习目标与关键框架建立并修正理解。 | 0.2.0 |
