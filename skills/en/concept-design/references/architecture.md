@@ -18,12 +18,14 @@ Existing confirmed conventions take precedence.
 
 ## Ownership and shape
 
+**Composition** names the architectural layer that combines independent concepts into business capabilities; use `composition/` for this layer. **Synchronization** names a composition rule that matches action completions and invokes subsequent actions when its conditions hold.
+
 ```text
 apps/server/
   src/
     bootstrap/                    # construction and final assembly
     adapters/http/                # protocol conversion
-    compositions/booking/
+    composition/booking/
       reserve/
         MakeReservationUseCase
         SYNCS.md
@@ -60,7 +62,7 @@ Do not create empty layers, per-rule build modules, or another domain/applicatio
 | Composition | MAY own execution records; MUST NOT duplicate concept business facts. |
 | Protocol adapter | Converts protocol input/output through composition entries; MUST NOT import concept implementations. |
 | Bootstrap | Production construction and assembly entry. Scoped test fixtures/test assembly MAY also construct concepts and fake ports. |
-| Technical library | MUST NOT depend on concepts/compositions or hide business state/coordination. |
+| Technical library | MUST NOT depend on concepts/composition or hide business state/coordination. |
 
 Business code MUST NOT resolve dependencies from a container.
 Separate business exports from construction entries and restrict production construction access to bootstrap.
@@ -74,7 +76,7 @@ These are file organization conventions; use the project's source roots and exis
 | Content | Authoritative location |
 | --- | --- |
 | Concept | `CONCEPT.md` beside its module; before modules exist, `docs/prd/concepts/<name>/CONCEPT.md`. |
-| Synchronizations | `SYNCS.md` beside the rules under `apps/<app>/src/compositions/<group>/`; before modules exist, `docs/prd/compositions/<group>/SYNCS.md`. |
+| Synchronizations | `SYNCS.md` beside the rules under `apps/<app>/src/composition/<group>/`; before modules exist, `docs/prd/composition/<group>/SYNCS.md`. |
 | Acceptance | Overall PRD or an existing acceptance file, linked to the checked contract or scenario. |
 
 Index all CONCEPT and SYNCS files in the overall PRD.
@@ -83,8 +85,6 @@ Files and `// flow:` groups do not create runtime flow identities or require sep
 Use the conventions below for instances, bindings, entry contracts, and rule identities.
 
 ## Composition groups and identities
-
-Synchronization acts as a mediator, matching action completions and invoking subsequent actions when the conditions hold.
 
 Group rules by business responsibility. Groups may span contexts, and their boundaries are independent of concepts, endpoints, and flows.
 Keep one [SYNCS.md](spec-notation.md#syncs) beside each group. Index every group and define each rule once.

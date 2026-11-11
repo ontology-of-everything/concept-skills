@@ -8,7 +8,7 @@ Concept design, semantic modeling, knowledge organization, visual teaching, and 
 | --- | --- |
 | `concept-skills` | Software concepts, semantic modeling, knowledge organization, visual learning, and Agent DX tooling. |
 | `cloud-concept-skills` | Huawei Cloud operations, billing, controlled provisioning, and account onboarding. |
-| `myoffice-skills` | Office workflows, presentations, source notes, and repository guidance. |
+| `handy-skills` | Office workflows, source notes, and Agent DX tooling. |
 
 ## Directory contract
 

@@ -18,12 +18,14 @@
 
 ## 归属与形状
 
+**Composition（组合）**表达架构职责：通过独立概念组合出业务能力，组合层目录用 `composition/`。**Synchronization（同步）**表达组合规则：匹配动作完成记录，在条件满足时触发后续动作。
+
 ```text
 apps/server/
   src/
     bootstrap/                    # 构造与最终装配
     adapters/http/                # 协议转换
-    compositions/booking/
+    composition/booking/
       reserve/
         MakeReservationUseCase
         SYNCS.md
@@ -74,7 +76,7 @@ deploy/                           # 环境与部署
 | 内容 | 权威位置 |
 | --- | --- |
 | 概念 | 模块旁 `CONCEPT.md`；模块未建时 `docs/prd/concepts/<name>/CONCEPT.md`。 |
-| 同步 | `apps/<app>/src/compositions/<group>/` 规则旁 `SYNCS.md`；模块未建时 `docs/prd/compositions/<group>/SYNCS.md`。 |
+| 同步 | `apps/<app>/src/composition/<group>/` 规则旁 `SYNCS.md`；模块未建时 `docs/prd/composition/<group>/SYNCS.md`。 |
 | 验收 | 总体 PRD 或已有验收文件，关联所检查的契约或场景。 |
 
 总体 PRD 索引全部 CONCEPT 与 SYNCS。
@@ -83,8 +85,6 @@ deploy/                           # 环境与部署
 实例、绑定、入口契约与规则身份遵循下述约定。
 
 ## 组合分组与身份
-
-同步作为中介，匹配动作完成记录，在条件满足时发起后续动作。
 
 按业务职责分组。分组可跨上下文，粒度独立于概念、接口和 flow。
 每组共置一份 [SYNCS.md](spec-notation.md#syncs)。索引列全分组，每条规则只定义一次。

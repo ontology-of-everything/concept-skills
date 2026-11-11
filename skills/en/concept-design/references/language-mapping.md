@@ -10,7 +10,7 @@ apps/server/
   Cargo.toml
   src/{main.rs,lib.rs,bootstrap.rs}
   src/adapters/http.rs
-  src/compositions/booking/reserve/
+  src/composition/booking/reserve/
     make_reservation_use_case.rs
     SYNCS.md
     reserve_mediator.rs
@@ -54,13 +54,13 @@ apps/server/
     ServerApplication.java
     bootstrap/ServerConfiguration.java
     adapters/http/BookingController.java
-    compositions/booking/reserve/
+    composition/booking/reserve/
       MakeReservationUseCase.java
       SYNCS.md
       ReserveMediator.java
       SuccessReplyMediator.java
       ConflictReplyMediator.java
-  src/test/java/com/example/server/{architecture,compositions,adapters}/
+  src/test/java/com/example/server/{architecture,composition,adapters}/
 modules/booking/concepts/reserving/
   CONCEPT.md
   build.gradle.kts                  # project :booking-reserving
@@ -100,13 +100,13 @@ apps/server/
   tsconfig.json
   src/{main.ts,bootstrap.ts}
   src/adapters/http/booking.routes.ts
-  src/compositions/booking/reserve/
+  src/composition/booking/reserve/
     make-reservation.use-case.ts
     SYNCS.md
     reserve.mediator.ts
     success-reply.mediator.ts
     conflict-reply.mediator.ts
-  tests/{architecture,compositions,adapters}/
+  tests/{architecture,composition,adapters}/
 modules/booking/concepts/reserving/
   CONCEPT.md
   package.json                      # @booking/reserving
