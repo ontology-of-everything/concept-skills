@@ -100,7 +100,7 @@ Each skill has an English name and a `-cn` edition. Install with the command abo
 
 ## Maintenance and license
 
-The former eight concept-design workflows share one entry per language. concept-design version: **2.4.0**. Repository version: **3.6.0**.
+The former eight concept-design workflows share one entry per language. concept-design version: **2.4.0**. Repository version: **3.7.0**.
 Old ClawHub entries redirect to the matching language edition where possible; the rest are retired or already unavailable. Preserve project specifications, code, and user configuration during migration.
 
 Run `./tools/validate-all.sh` to check public packages.

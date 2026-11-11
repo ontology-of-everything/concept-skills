@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.7.0 - 2026-11-12
+
+### Documentation
+- Name each skill's scope in the README and correct the published concept-design and repository versions. (by @AgenticWeb4)
+
 ## 3.6.0 - 2026-11-11
 
 ### Documentation
