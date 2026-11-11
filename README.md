@@ -9,7 +9,7 @@ When the connections are scattered, the effects of a change are hard to see.
 Start from a user's need, define independent modules and explicit coordination rules, then use them for specifications, implementation, review, and Mermaid maps.
 Specifications follow Beyond Objects (Daniel Jackson); engineering execution draws on WYSIWID (Meng & Jackson).
 
-## 🧩 How it works
+## How it works
 
 - **Concepts** provide independent functionality with their own state and actions; concepts do not call one another or read one another's state.
 - **Synchronizations** make coordination explicit: what happened, which conditions hold, and which actions follow.
@@ -18,23 +18,21 @@ Specifications follow Beyond Objects (Daniel Jackson); engineering execution dra
 For example: comment created → query the post's author → send a notification.
 The synchronization holds the coordination; Comment need not depend on Notification.
 
-## ✨ What it helps with
+## What it helps with
 
-Locate functionality, change concepts independently, and read coordination rules directly.
-Before adding a feature, consider reusing concepts or changing a few synchronizations, then check that existing behavior is preserved.
-The goal is more modular, transparent, and understandable software.
-See [references](skills/en/concept-design/SKILL.md#references) for the concept and synchronization methods used by this skill.
+Locate a function, change a concept on its own, and read the coordination rules.
+Before adding a feature, reuse a concept or change a few synchronizations, then check that existing behavior still holds.
+Methods: [references](skills/en/concept-design/SKILL.md#references).
 
 ## Get started
 
-From this repository, install one language edition:
+Install from this repository, one language at a time. `--agent claude-code` or `--agent cursor` selects another agent.
 
 ```sh
 npx --yes skills add . --skill concept-design --agent codex --copy --yes
-npx --yes skills add . --skill concept-design-cn --agent codex --copy --yes
 ```
 
-Invoke explicitly; only the workflow needed for the task is read:
+Chinese: the same command with `concept-design-cn`. Invoke by name. The skill reads only the workflow the task needs.
 
 ```text
 $concept-design design Define concepts and synchronizations for reservations.
@@ -71,21 +69,18 @@ See the [map format](skills/en/concept-design/references/diagram-contract.md).
 
 ## Repository skills
 
-4R architecture documentation, data semantics, personal knowledge management, learning, and Agent CLI engineering have separate skills; each has English and Chinese editions.
+Each skill has an English name and a `-cn` edition. Install with the command above and the skill name. The table below uses one purpose line per domain. These lines name the skill:
 
-`architect-4r` uses Li Yunhua's 4R method to describe existing architecture from code or discussion context. Select views and key scenarios, then see the architecture and how its roles work together. The Chinese edition is `architect-4r-cn`.
-
-```sh
-npx --yes skills add . --skill architect-4r --agent codex --copy --yes
-npx --yes skills add . --skill architect-4r-cn --agent codex --copy --yes
-```
-
-`agent-dx-cli` designs, reviews, and refactors CLIs for agents with evidence scores. The Chinese edition is `agent-dx-cli-cn`.
-
-```sh
-npx --yes skills add . --skill agent-dx-cli --agent codex --copy --yes
-npx --yes skills add . --skill agent-dx-cli-cn --agent codex --copy --yes
-```
+| Skill | What it covers |
+| --- | --- |
+| `data-knowledge-architect` | Business meaning of data, facts, dimensions, and relations. |
+| `personal-knowledge-architect` | Methods, scenarios, and entities extracted from source text. |
+| `read-it-reframe-it-own-it` | A knowledge tree under one learning goal and one framework. |
+| `architect-4r` | Existing architecture from code or discussion, using Li Yunhua's 4R method. |
+| `architect-4c` | Simon Brown's C4 model: levels, principles, and common mistakes. |
+| `architect-frontend-feature-first` | Feature-first frontends: capability ownership and cross-feature boundaries. |
+| `architect-frontend-fsd` | Feature-Sliced Design: layers, slices, segments, public APIs, and dependency boundaries. |
+| `agent-dx-cli` | Design, review, and refactor CLIs for agents, scored from executable evidence. |
 
 <!-- skill-catalog:start -->
 
@@ -105,7 +100,7 @@ npx --yes skills add . --skill agent-dx-cli-cn --agent codex --copy --yes
 
 ## Maintenance and license
 
-The former eight concept-design workflows share one entry per language. Current concept-design version: **2.0.3**. Repository version: **3.1.1**.
+The former eight concept-design workflows share one entry per language. concept-design version: **2.4.0**. Repository version: **3.6.0**.
 Old ClawHub entries redirect to the matching language edition where possible; the rest are retired or already unavailable. Preserve project specifications, code, and user configuration during migration.
 
 Run `./tools/validate-all.sh` to check public packages.
