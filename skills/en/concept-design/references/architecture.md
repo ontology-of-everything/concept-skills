@@ -50,8 +50,9 @@ deploy/                           # environment and deployment
 
 Context directories separate models and language; a concept is not a DDD aggregate.
 Use native source roots from [language mapping](language-mapping.md).
-Small concepts MAY remain flat.
+Each concept MUST have its own package or module, for example under `concepts/<concept>/`. Small concepts MAY use a flat layout within their own source root.
 Do not create empty layers, per-rule build modules, or another domain/application/adapters stack inside each composition group.
+When implementing or refactoring, remove empty placeholder packages in scope, such as an empty `internal/`.
 
 | Owner | Constraint |
 | --- | --- |
@@ -113,6 +114,7 @@ For requested product subsets, check purpose, dependencies, entries, rules, reso
 
 Architecture checks MUST inspect actual dependencies in all relevant source/build units and supported configurations.
 Cover concept independence, public business API access, inner dependencies, protocol entries, construction access, libraries, cycles, specification ownership, and unique rule identities.
+Verify that every concept in scope has its own package or module and that no empty placeholder packages remain in scope.
 Run changed boundary checks in normal checks or CI.
 An empty match, omitted module, or unresolved dependency is a gap, not a pass.
 Each violation reports rule, source, target, and location and fails the check.
