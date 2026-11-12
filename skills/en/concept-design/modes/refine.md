@@ -5,7 +5,7 @@
 2. Compare moves against the cause, including no change.
 3. Record alternatives, benefit, cost, contract effects, and behavioral differences.
    Specify confirmed new behavior before implementing it.
-4. For authorized repair, verify invariants, purpose, affected scenarios, and failure paths.
+4. For authorized code repairs, follow [build](build.md). Verify invariants, purpose, affected scenarios, and failure paths.
    Report preserved and intentionally changed behavior, regressions, and unknowns.
 
 | Move | Choice and tradeoff |

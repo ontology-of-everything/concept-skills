@@ -4,7 +4,7 @@ Inputs: confirmed specifications, project conventions, scoped source/manifests/t
 A review/plan MUST NOT edit files.
 
 1. Identify scoped actions, queries, result cases, invariants, rules, execution constraints, and extra observable behavior.
-2. Apply [architecture constraints](../references/architecture.md) and the target section of [language mapping](../references/language-mapping.md).
+2. Before editing, compare the source tree, build manifests, and confirmed persistence conventions against the [architecture constraints](../references/architecture.md) and target [language mapping](../references/language-mapping.md).
 3. Implement or refactor within scope while preserving confirmed behavior and stable identities.
    Update moved specifications, exports, dependencies, and PRD indexes.
 4. Use [execution and recovery](../references/execution.md) for rule execution and applicable migration.

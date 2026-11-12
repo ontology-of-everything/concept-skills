@@ -2,9 +2,8 @@
 
 This layout is a repository choice, not Jackson's prescribed implementation.
 New projects SHOULD use a modular monolith.
-Each concept builds and tests independently; composition and protocol adapters build with server and have separate behavior tests.
-Assemble in one process.
-Existing confirmed conventions take precedence.
+Test each concept independently. Composition and protocol adapters build with the server and have separate behavior tests. Assemble in one process.
+Use confirmed project conventions for build layout, names, and persistence technology. Record any explicitly confirmed exception to the requirements below and its scope.
 
 ## Architecture requirements
 
@@ -50,16 +49,16 @@ deploy/                           # environment and deployment
 
 Context directories separate models and language; a concept is not a DDD aggregate.
 Use native source roots from [language mapping](language-mapping.md).
-Each concept MUST have its own package or module, for example under `concepts/<concept>/`. Small concepts MAY use a flat layout within their own source root.
+Each concept MUST have its own source package or module, by default under `concepts/<concept>/`. A separate build unit is optional. Keep small concepts flat within their boundary and add layers only when they have an implementation.
 Do not create empty layers, per-rule build modules, or another domain/application/adapters stack inside each composition group.
 When implementing or refactoring, remove empty placeholder packages in scope, such as an empty `internal/`.
 
 | Owner | Constraint |
 | --- | --- |
 | Concept | Use generic or opaque external identities. |
-| Domain | MUST enforce invariants without dependencies on application, adapters, HTTP, or ORM. |
-| Application | Uses domain behavior; declares needed ports. A domain-specific port may belong in domain. |
-| Adapter | Implements an inner port. Avoid duplicate repositories/readers for the same responsibility. |
+| Domain | Owns business state transitions and invariants. Use aggregates when state must change consistently. Domain code MUST be independent of application, adapters, and framework or persistence types. |
+| Application | Orchestrates actions and queries through domain behavior and inner ports. Expose command and query contracts separately when callers need different capabilities. Keep business contracts and implementations independent of framework and persistence types. |
+| Adapter | Implements an inner port. Keep SQL, mappers, and database records here. Use a repository for aggregate persistence and a query port for projections when needed. Avoid duplicate ports for the same responsibility. |
 | Composition | MAY own execution records; MUST NOT duplicate concept business facts. |
 | Protocol adapter | Converts protocol input/output through composition entries; MUST NOT import concept implementations. |
 | Bootstrap | Production construction and assembly entry. Scoped test fixtures/test assembly MAY also construct concepts and fake ports. |
@@ -114,7 +113,7 @@ For requested product subsets, check purpose, dependencies, entries, rules, reso
 
 Architecture checks MUST inspect actual dependencies in all relevant source/build units and supported configurations.
 Cover concept independence, public business API access, inner dependencies, protocol entries, construction access, libraries, cycles, specification ownership, and unique rule identities.
-Verify that every concept in scope has its own package or module and that no empty placeholder packages remain in scope.
+Map each scoped concept to its actual source path and package or module. Check for shared or missing boundaries, empty placeholders, and leaks of framework or persistence types into business code or its public contracts. Check the active persistence adapter against confirmed project conventions.
 Run changed boundary checks in normal checks or CI.
 An empty match, omitted module, or unresolved dependency is a gap, not a pass.
 Each violation reports rule, source, target, and location and fails the check.

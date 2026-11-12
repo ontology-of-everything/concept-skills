@@ -33,7 +33,7 @@
 解析外部入口签名；Requesting 无需虚构 CONCEPT。
 同步图可只放总体 PRD。
 
-按[架构约束](architecture.md)另查确认架构。
+单独检查[工程架构](architecture.md#审查与验证)，缺少行为规格时也执行此检查。
 
 ## 判定与报告
 

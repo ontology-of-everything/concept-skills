@@ -33,7 +33,7 @@ Check rule cases, query cardinality, arguments, correlation, failure, replay, an
 Resolve external-entry signatures; Requesting needs no synthetic CONCEPT.
 A sync diagram may live in the overall PRD alone.
 
-Check confirmed architecture separately under [architecture constraints](architecture.md).
+Check [engineering architecture](architecture.md#review-and-verification) separately, including when behavior specifications are missing.
 
 ## Judgment and report
 

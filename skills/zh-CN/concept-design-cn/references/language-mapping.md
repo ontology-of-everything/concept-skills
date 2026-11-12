@@ -64,16 +64,16 @@ apps/server/
 modules/booking/concepts/reserving/
   CONCEPT.md
   build.gradle.kts                  # project :booking-reserving
-  src/main/java/com/example/booking/reserving/
-    domain/Reservation.java
+  src/main/java/com/example/booking/concepts/reserving/
+    api/{ReservingCommands,ReservingQueries}.java
+    domain/{Reservation,ReservationRepository}.java
     application/Reserving.java
-    application/ports/ReservationRepository.java
     adapters/persistence/PostgresReservationRepository.java
     assembly/ReservingFactory.java
-  src/test/java/com/example/booking/reserving/ReservingContractTest.java
+  src/test/java/com/example/booking/concepts/reserving/ReservingContractTest.java
 ```
 
-每个概念是 Gradle 项目或 Maven 模块；组合和协议默认是 server 内的包。
+每个概念拥有独立的 Java 包。概念可随 server 构建，也可采用上例中的独立 Gradle 项目或 Maven 模块。组合和协议适配器默认归 server。
 显式声明项目与依赖。
 公开签名暴露依赖类型时才用 Gradle `api`，否则用 `implementation`。
 使用构造器注入。

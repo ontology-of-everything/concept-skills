@@ -64,16 +64,16 @@ apps/server/
 modules/booking/concepts/reserving/
   CONCEPT.md
   build.gradle.kts                  # project :booking-reserving
-  src/main/java/com/example/booking/reserving/
-    domain/Reservation.java
+  src/main/java/com/example/booking/concepts/reserving/
+    api/{ReservingCommands,ReservingQueries}.java
+    domain/{Reservation,ReservationRepository}.java
     application/Reserving.java
-    application/ports/ReservationRepository.java
     adapters/persistence/PostgresReservationRepository.java
     assembly/ReservingFactory.java
-  src/test/java/com/example/booking/reserving/ReservingContractTest.java
+  src/test/java/com/example/booking/concepts/reserving/ReservingContractTest.java
 ```
 
-Each concept is a Gradle project or Maven module; composition/protocol default to server packages.
+Each concept owns a Java package. It may live in the server build or in a separate Gradle project or Maven module as shown above. Composition and protocol adapters default to server packages.
 Declare projects and dependencies explicitly.
 Use Gradle `api` only when public signatures expose dependency types; otherwise use `implementation`.
 Use constructor injection.
