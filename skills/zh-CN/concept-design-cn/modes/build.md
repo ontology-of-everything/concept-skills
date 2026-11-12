@@ -4,7 +4,7 @@
 审查/规划 MUST NOT 修改文件。
 
 1. 定位范围内动作、查询、结果分支、不变量、规则、执行约束和额外可观察行为。
-2. 修改前，对照[架构约束](../references/architecture.md)和目标[语言映射](../references/language-mapping.md)，核查源码树、构建清单和已确认的持久化约定。
+2. 修改前，对照[架构约束](../references/architecture.md)，核查源码树、构建清单和已确认的持久化约定。
 3. 在范围内实现或重构，保留确认行为和稳定身份。
    更新移动后的规格、导出、依赖和 PRD 索引。
 4. 按[执行与恢复](../references/execution.md)实现规则和适用迁移。

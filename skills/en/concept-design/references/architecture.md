@@ -34,13 +34,13 @@ apps/server/
   tests/                          # architecture, composition, protocol
 modules/<context>/concepts/<concept>/
   CONCEPT.md
-  <build manifest>
+  <build manifest>                # only for a separate build unit
   src/
     <business exports>
     <assembly entry>
-    domain/                       # state and invariants
-    application/                  # actions and queries
-      ports/                      # contracts needed by inner code
+    domain/                       # state, invariants, aggregate repository contracts
+    application/                  # actions, queries, and their ports
+      ports/                      # optional subpackage
     adapters/                     # port implementations
   tests/
 libraries/<technical capability>/ # optional independent build/tests
@@ -48,7 +48,7 @@ deploy/                           # environment and deployment
 ```
 
 Context directories separate models and language; a concept is not a DDD aggregate.
-Use native source roots from [language mapping](language-mapping.md).
+Use language-native source roots. In Java, a concept package may use `api/` for public contracts, `domain/` for domain behavior, `application/` for use cases, and `infrastructure/` for adapters and internal assembly.
 Each concept MUST have its own source package or module, by default under `concepts/<concept>/`. A separate build unit is optional. Keep small concepts flat within their boundary and add layers only when they have an implementation.
 Do not create empty layers, per-rule build modules, or another domain/application/adapters stack inside each composition group.
 When implementing or refactoring, remove empty placeholder packages in scope, such as an empty `internal/`.
@@ -65,7 +65,7 @@ When implementing or refactoring, remove empty placeholder packages in scope, su
 | Technical library | MUST NOT depend on concepts/composition or hide business state/coordination. |
 
 Business code MUST NOT resolve dependencies from a container.
-Separate business exports from construction entries and restrict production construction access to bootstrap.
+Keep business exports separate from assembly entries. Bootstrap owns final application assembly and may delegate internal construction to concept factories or framework configuration.
 Keep value types with their model until shared meaning, constraints, ownership, and change responsibility are established.
 Shared database facilities and migrations MUST preserve state ownership.
 
@@ -114,6 +114,11 @@ For requested product subsets, check purpose, dependencies, entries, rules, reso
 Architecture checks MUST inspect actual dependencies in all relevant source/build units and supported configurations.
 Cover concept independence, public business API access, inner dependencies, protocol entries, construction access, libraries, cycles, specification ownership, and unique rule identities.
 Map each scoped concept to its actual source path and package or module. Check for shared or missing boundaries, empty placeholders, and leaks of framework or persistence types into business code or its public contracts. Check the active persistence adapter against confirmed project conventions.
+
+- Rust: use `cargo metadata` for build dependencies and inspect source for boundaries within a crate.
+- Java: check subpackage visibility and external access to internal types. With Spring Modulith, verify which concept modules are actually discovered.
+- TypeScript: check resolved source imports, including relative paths, aliases, and type-only imports.
+
 Run changed boundary checks in normal checks or CI.
 An empty match, omitted module, or unresolved dependency is a gap, not a pass.
 Each violation reports rule, source, target, and location and fails the check.

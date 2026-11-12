@@ -34,13 +34,13 @@ apps/server/
   tests/                          # 架构、组合、协议
 modules/<context>/concepts/<concept>/
   CONCEPT.md
-  <build manifest>
+  <build manifest>                # 独立构建时才需要
   src/
     <business exports>
     <assembly entry>
-    domain/                       # 状态与不变量
-    application/                  # 动作与查询
-      ports/                      # 内部代码所需契约
+    domain/                       # 状态、不变量与聚合仓储契约
+    application/                  # 动作、查询及其端口
+      ports/                      # 按需设置子包
     adapters/                     # 端口实现
   tests/
 libraries/<technical capability>/ # 按需独立构建与测试
@@ -48,7 +48,7 @@ deploy/                           # 环境与部署
 ```
 
 上下文目录划分模型与语言；概念不等于 DDD 聚合。
-源码根目录采用[语言映射](language-mapping.md)。
+采用语言原生的源码根目录。Java 概念包可用 `api/` 放公开契约、`domain/` 放领域行为、`application/` 放用例、`infrastructure/` 放适配器与内部装配。
 每个概念 MUST 拥有独立源码包或模块，默认放在 `concepts/<concept>/` 下。按需拆分构建单元。小概念可在自己的边界内平铺，有实际实现时才增加分层。
 不建空层，不为每条规则拆构建模块，不在每个组合分组内再套 domain/application/adapters。
 实现或重构时，删除改动范围内的空占位包，如空的 `internal/`。
@@ -65,7 +65,7 @@ deploy/                           # 环境与部署
 | 技术库 | MUST NOT 依赖概念或组合，也不得隐藏业务状态或协调。 |
 
 业务代码 MUST NOT 从容器查找依赖。
-业务导出与构造入口分开，生产构造访问限制在 bootstrap。
+业务导出与装配入口分开。bootstrap 负责应用最终装配，可将内部组件的构造委托给概念工厂或框架配置。
 值类型留在所属模型，直到共享语义、约束、归属和变更责任明确。
 共享数据库设施与迁移 MUST 保持状态归属。
 
@@ -114,6 +114,11 @@ deploy/                           # 环境与部署
 架构检查 MUST 检查所有相关源码/构建单元及支持配置中的实际依赖。
 覆盖概念独立、公开业务 API 访问、依赖向内、协议入口、构造访问、技术库、环、规格归属和规则身份唯一。
 将范围内的概念映射到实际源码路径及所属包或模块。检查边界共用或缺失、空占位包，以及框架或持久化类型渗入业务代码或其公开契约的情况。对照已确认的项目约定检查实际启用的持久化适配器。
+
+- Rust：用 `cargo metadata` 检查构建依赖，并检查源码以验证 crate 内部边界。
+- Java：检查子包可见性以及外部对内部类型的访问。使用 Spring Modulith 时，核对实际发现的概念模块。
+- TypeScript：检查已解析的源码导入，覆盖相对路径、别名和仅类型导入。
+
 受影响的边界检查接入常规检查或 CI。
 空匹配、漏模块、未解析依赖是缺口，不是通过。
 每条违规报告规则、来源、目标和位置，并使检查失败。
