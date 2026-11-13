@@ -4,4 +4,4 @@
 
 - 发布概念设计 2.5.0 中英文版。
 - 固定工程目录、单复数命名、Facade → Synchronization 调用链与向内依赖；概念端口实现统一使用 adapters。
-- 明确 API、领域、适配器与装配边界，同步项目规则生成，删除重复执行说明。
+- 统一 Java/Spring Configuration 与 Properties 命名，明确 API、领域、适配器与装配边界，同步项目规则生成，删除重复执行说明。

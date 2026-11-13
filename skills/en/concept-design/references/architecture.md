@@ -16,7 +16,7 @@ Only explicitly confirmed exceptions may override this layout; record their scop
     api/                             # public commands, queries, business values
     application/                     # action/query implementations and inner ports
     domain/                          # state, invariants, behavior, repository contracts
-    adapters/                  # port implementations, persistence, inner assembly
+    adapters/                        # port implementations, persistence, inner assembly
   bootstrap/                         # final assembly, controlled startup entries
 ```
 
@@ -26,6 +26,8 @@ Only explicitly confirmed exceptions may override this layout; record their scop
 - Name facades `<BusinessScope>Facade` and synchronizations `<BusinessAction>Synchronization`; do not add `UseCase` or `Mediator` intermediate layers. Functional implementations preserve equivalent roles and visibility.
 - Use singular business subjects in type names; use plurals for list operations and collection variables, such as `ReadBookingsSynchronization` and `bookings`. REST paths follow interface contracts.
 - Give each concept its own source package or module. Create layers only for actual responsibilities and remove scoped empty placeholders. Do not nest domain layers inside composition groups or create a build unit per rule.
+
+For Java/Spring explicit assembly, use `<Concept>Configuration` in `concepts/<concept>/adapters/`, `<BusinessScope>Configuration` in `compositions/<group>/`, and `<Application>Configuration` in `bootstrap/`. Create these only when needed; construct and wire components without business operations or decisions. Bind configuration values in `<Capability>Properties` at the consumer boundary, separate from assembly. Other languages preserve these responsibilities using native assembly conventions.
 
 ## Layer responsibilities and dependencies
 

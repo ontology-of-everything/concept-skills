@@ -16,7 +16,7 @@
     api/                             # 公开命令、查询与业务值类型
     application/                     # 动作、查询实现及内部端口
     domain/                          # 状态、不变量、领域行为、仓储契约
-    adapters/                  # 端口实现、持久化、内部装配
+    adapters/                        # 端口实现、持久化、内部装配
   bootstrap/                         # 最终装配、受控启动入口
 ```
 
@@ -26,6 +26,8 @@
 - 门面用 `<BusinessScope>Facade`，同步用 `<BusinessAction>Synchronization`；不增设 `UseCase` 或 `Mediator` 中间层。函数式实现保持同等角色与可见性。
 - 类型的业务主体用单数；列表动作与集合变量按语义用复数，如 `ReadBookingsSynchronization`、`bookings`。REST 路径由接口契约定义。
 - 每个概念独占源码包或模块。只建有职责的层，删除范围内空占位包；组合分组内不再套领域分层，不为每条规则拆构建单元。
+
+Java/Spring 显式装配统一命名：概念内用 `concepts/<concept>/adapters/<Concept>Configuration`，组合内用 `compositions/<group>/<BusinessScope>Configuration`，最终装配用 `bootstrap/<Application>Configuration`。按需建立，只构造、注入和连接组件，不执行业务操作或判断。配置值绑定用 `<Capability>Properties`，放在使用方边界，与装配分开；其他语言保持职责一致，采用原生装配方式。
 
 ## 分层职责与依赖
 
