@@ -6,6 +6,8 @@
       "title": "Concept design",
       "description": "Define independent functionality with concepts and coordinate them with synchronization rules.",
       "skills": [
+        "concept-model",
+        "concept-model-cn",
         "concept-design",
         "concept-design-cn"
       ]

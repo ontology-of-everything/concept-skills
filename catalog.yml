@@ -31,6 +31,70 @@ domains:
     description: Predictable, defensible CLI design, review, and refactoring.
     description_zh: 以可预测性、纵深防御和上下文效率指导 CLI 设计、审查与重构。
 skills:
+- id: concept-model
+  path: skills/en/concept-model
+  display_name: Concept Modeling Principles
+  display_title: Concept Modeling Principles
+  display_name_zh: 概念建模原则
+  display_title_zh: 概念建模原则
+  domain: concept-design
+  summary: Guide new development and maintenance with concise concept principles.
+    Use for state and behavior ownership, concept boundaries, or cross-concept collaboration;
+    complements ub-mode.
+  summary_zh: 以简短概念原则指导新功能开发与既有系统维护。涉及状态与行为归属、概念边界或跨概念协作时使用，可作为 ub-mode 的补充。
+  version: 1.0.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: en
+  translation_of: concept-model-cn
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - concept-design
+    - software-architecture
+    - synchronizations
+- id: concept-model-cn
+  path: skills/zh-CN/concept-model-cn
+  display_name: 概念建模原则
+  display_title: 概念建模原则
+  display_name_zh: 概念建模原则
+  display_title_zh: 概念建模原则
+  domain: concept-design
+  summary: 以简短概念原则指导新功能开发与既有系统维护。涉及状态与行为归属、概念边界或跨概念协作时使用，可作为 ub-mode 的补充。
+  summary_zh: 以简短概念原则指导新功能开发与既有系统维护。涉及状态与行为归属、概念边界或跨概念协作时使用，可作为 ub-mode 的补充。
+  version: 1.0.0
+  agents:
+  - cursor
+  - claude-code
+  - codex
+  - openclaw
+  marketplaces:
+  - skills-sh
+  - skillsmp
+  - clawhub
+  distribution: direct-skill
+  clawhub_license: MIT-0 on ClawHub; repository source remains Apache-2.0
+  language: zh-CN
+  translation_of: concept-model
+  clawhub:
+    categories:
+    - development
+    - knowledge
+    topics:
+    - concept-design
+    - software-architecture
+    - synchronizations
 - id: concept-design
   path: skills/en/concept-design
   display_name: Concept design

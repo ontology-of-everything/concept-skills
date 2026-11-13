@@ -1,7 +1,6 @@
 # Changelog
 
-## 3.8.1 - 2026-11-13
+## 3.9.0 - 2026-11-13
 
-- Release Concept design 2.5.1 in English and Chinese.
-- Consolidate explanation guidance and diagram documentation, reducing references from 16 to 14 per edition and updating all links.
-- Simplify architecture and execution guidance; clarify trust boundaries, binding scope, recovery requirements, and evidence gaps.
+- Add Concept Modeling Principles 1.0.0 in English and Chinese for everyday development and maintenance.
+- Provide 15 concise principles covering purpose, independence, composition, implementation, and maintenance.
