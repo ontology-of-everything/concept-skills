@@ -6,4 +6,4 @@ Being **purposive** means serving a purpose that users understand and that bring
 
 **Familiarity** lets users draw on prior experience, while allowing new concepts. **Reusability** often follows from **independence**, **purpose**, and complete functionality; prior instances of reuse are not required. **Most designs adapt, extend, and combine existing design ideas.**
 
-These eight criteria identify concepts. Classes, interface widgets, features, and individual user stories do not qualify merely by their form.
+These eight [criteria from Jackson](https://essenceofsoftware.com/tutorials/concept-basics/criteria/) identify concepts. Classes, interface widgets, features, and individual user stories do not qualify merely by their form.

@@ -1,31 +1,22 @@
 # Reconstruct specifications
 
-Inspect actual code and write an evidenced candidate baseline using [specification notation](spec-notation.md).
-Label each claim's evidence and confirmation status.
-MUST separate observed behavior, inferred purpose, known defects, desired repairs, and confirmed requirements.
-State which consumers may rely on the reconstructed contract.
-Record evidenced [execution constraints](execution.md#execution-constraints); unknown policies remain open.
+Reconstruct an evidenced candidate baseline from actual code, then establish which consumers may rely on it. Observed behavior does not automatically become a requirement: distinguish **observations, inferred purpose, known defects, desired repairs, and confirmed requirements**, with evidence and confirmation status for each.
 
 ## Concept
 
-Inspect exports, callers, persistence, result cases, invariants, and tests.
-Write evidenced types, cardinality, initial state, actions/results, and applicable queries.
-Private helpers/caches need no entry without observable effects.
-List required syncs separately.
-Record coupling as an observed defect in decisions/drift, not as a permitted concept dependency.
+Inspect exports, callers, persistence, result cases, invariants, and tests. Record types, cardinalities, initial state, action results, and queries using the [specification notation](spec-notation.md). Omit private helpers and caches without observable effects. List required synchronizations separately; record coupling as a defect, not a permitted concept dependency.
 
 ## Synchronization
 
-Start from application purpose/scenarios and trace handlers, registrations, mediators, and adapters to public actions.
-Transcribing direct concept calls/private SQL does not make them valid rules.
-Pure data transformation belongs in [PIPELINE](pipeline-spec.md).
-Resolve entry completions, result cases, bindings, calls, response obligations, occurrence/object/request correlation, partial completion, replay, and loops.
-All groups reference one application-level instance/type/entry declaration; repeated includes MUST NOT create per-file instances.
-Use [architecture naming/ownership](architecture.md) when mapping code.
+Trace application purposes and scenarios through handlers, registrations, mediators, and adapters to public actions; map implementations using [engineering architecture](architecture.md). Transcribing direct calls or private SQL does not make valid rules. Put pure data transformation in [PIPELINE](pipeline-spec.md).
 
-Check all includes, signatures, and call arguments.
-Preserve zero/many query behavior and request isolation.
-Each reachable result needs its declared response/retry/compensation/ignore policy.
-Loops terminate or continue under explicit control; a depth cap is optional.
-Diagrams preserve conjunctions, multiple targets, and query reads.
-Report rule count, scenario coverage, boundary findings, and unknowns.
+Check entry completions, result cases, bindings, calls, and request/object/occurrence correlation. All groups reference one application-level instance, type, and entry declaration; repeated includes create no new instances.
+
+Complete reconstruction covers:
+
+- All includes, signatures, and call arguments; zero/many query behavior and request isolation.
+- Response, retry, compensation, or ignore policies for every reachable result; unsupported policies remain open.
+- Partial completion, replay, and loops. Loops terminate or continue under explicit control; depth caps are optional.
+- Evidenced [execution constraints](execution.md#execution-constraints) and diagrams preserving conjunctions, multiple targets, and query reads.
+
+Report rule count, scenario coverage, boundary findings, and unknowns, identifying candidate claims that still need confirmation.

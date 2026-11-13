@@ -1,5 +1,15 @@
 # Concept and Synchronization Diagram, version 1
 
+## Usage
+
+Generate `ARCHITECTURE.md` with Mermaid from local CONCEPT/SYNCS in the [tool encoding](tool-encoding.md). Native notation is unsupported; version 1 excludes PIPELINE, PRD, and source code.
+
+```sh
+python3 <skill-directory>/scripts/concept_map.py <root> --output <root>/ARCHITECTURE.md
+```
+
+Report output location, scope, exit status, and gaps. Scope options follow; writing and check rules appear below.
+
 ## Scan and scope
 
 Scan `**/CONCEPT.md` and `**/SYNCS.md` beneath the root.

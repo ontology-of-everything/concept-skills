@@ -4,19 +4,33 @@ Use the reading version by default. Explain behavior with business language, sma
 
 ## Writing principles
 
-- **Purpose explains value.** Say why the functionality is needed, rather than substituting an action name for its purpose.
-- **The operational principle shows fulfillment of purpose.** Connect actions to user value through a representative scenario, not an inventory of operations.
-- **State supports behavior.** Include only necessary identities, relations, and values, with initial conditions and relevant constraints.
-- **Actions specify change.** Separate inputs, firing conditions, results, and unchanged state. A true condition does not guarantee occurrence.
-- **Queries are read-only.** State returned values and binding cardinality; an empty result is not automatically an error.
-- **Synchronizations specify coordination.** Identify triggers, queries or conditions, subsequent actions, and identity mappings.
-- **Examples explain rules.** Use concrete individuals and values from the business context; label teaching assumptions when no confirmed scenario exists. Examples do not replace general rules.
-- **Diagrams explain difficulties.** Show state change, identity flow, or causality only where useful, without duplicating a whole table or adding semantics.
-- **Keep unknowns open.** Do not invent requirements to fill a layout.
+Start with user value, then show how a representative scenario delivers it. Preserve necessary state, action conditions and results, query cardinality, and synchronization relations under the [specification notation](spec-notation.md). Remove repetition; add only what understanding or acceptance requires.
 
-Deliver business specifications without copying these writing principles or review commentary. The following example uses teaching assumptions.
+Explain as you would to a colleague who knows the business: state conclusions and reasons directly, using concrete individuals to resolve ambiguity. Let principles replace repetitive instructions. Use formulas only for precise relationships and diagrams or tables only to clarify difficulties. Examples do not replace rules; label teaching assumptions and open requirements.
+
+Deliver business specifications without copying these writing principles or review commentary.
+
+## Views and evidence
+
+| Question | Evidence to retain |
+| --- | --- |
+| Why is this needed? | Purpose, scenario, OP assumptions, and result |
+| How does state change? | Inputs, conditions, before/after state, unchanged information, and outputs |
+| How is data related? | Named relations, types, cardinalities, and instances |
+| How do concepts work together? | Instances, type bindings, and synchronization relations from the [map format](diagram-contract.md) |
+| Why are actions ordered? | Source-backed order; show only calls when only calls are established |
+| What can be removed? | Requirement-backed purpose dependencies and viable subsets |
+| What does the UI do? | Controls to actions, display regions to queries |
+| How do implementations or proposals differ? | Source locations, evidence, and behavioral impact |
+
+Returned errors are not automatically states.
+Concepts and files need not correspond one-to-one; shared instances do not establish shared storage.
+Omit UI views when no UI exists; label unverified queries.
+Source excerpts MUST preserve actual text and line numbers; label pseudocode illustrative.
 
 ## Concept example
+
+The following example uses teaching assumptions.
 
 ### Todo [Owner]
 

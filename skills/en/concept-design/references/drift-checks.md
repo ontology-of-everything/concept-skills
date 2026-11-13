@@ -1,10 +1,6 @@
 # Drift and severity
 
-Compare applicable confirmed contracts with current implementation without repairs.
-Read specifications, PRD/staged indexes, rules, code, schema/migrations, and tests.
-Inspect definitions after searching; ancestor coverage needs content evidence.
-Missing/unscanned code stays unverified.
-Use [specification notation](spec-notation.md) for syntax and behavior.
+Compare confirmed contracts with implementation without repairs. Establish versions and coverage, then read specifications, PRD/staged indexes, rules, code, schemas/migrations, and tests. Verify search results against definitions; assess parent-specification coverage by content. Missing or unscanned code stays unverified. See [specification notation](spec-notation.md) for syntax and behavior.
 
 ## Classification
 
@@ -25,7 +21,7 @@ Use [specification notation](spec-notation.md) for syntax and behavior.
 | PIPELINE missing stage/source or changed data contract | Medium |
 | PIPELINE contradictory invariant/private access | High |
 | Existing map contradicts rules | Medium |
-| Unresolved action/query/signature/result/type binding | High |
+| Unresolved action/query/signature/result/type binding | Verification gap; grade by impact once a violation is established |
 | Internal concept lacks specification/index explanation | Medium |
 
 Check pipeline order, contracts, triggers, quality, and public interfaces.
@@ -37,7 +33,6 @@ Check [engineering architecture](architecture.md#review-and-verification) separa
 
 ## Judgment and report
 
-Establish baseline confirmation and coverage first.
 Undeclared behavior against a partial model is a coverage gap unless an applicable contract or explicit exclusion proves drift.
 Private helpers/caches, naming maps, behavior-preserving Result/async wrappers, and legacy headings alone are not drift.
 Recorded exceptions retain their scope/consequences; documenting calls does not restore independence.

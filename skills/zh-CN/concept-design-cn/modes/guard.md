@@ -9,7 +9,7 @@
 | `concept` / `sync` | [重建规格](../references/spec-reconstruction.md) |
 | `drift` | [只读契约对比](../references/drift-checks.md) |
 | `pipeline` | [数据转换规格](../references/pipeline-spec.md) |
-| `map` | [概念与同步关系图](../references/diagram-generation.md)：从 CONCEPT/SYNCS 生成一份 ARCHITECTURE.md |
+| `map` | [概念与同步关系图](../references/diagram-contract.md#使用)：从 CONCEPT/SYNCS 生成一份 ARCHITECTURE.md |
 | `claude` | [校准 CLAUDE.md](../references/claude-rules.md) |
 
 CONCEPT 与概念所属 PIPELINE 放概念旁。

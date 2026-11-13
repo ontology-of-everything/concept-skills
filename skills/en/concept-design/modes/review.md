@@ -9,7 +9,7 @@ Record scope, versions, contract confirmation/coverage, and unknowns before judg
 3. Trace required success and refusal through rules and actual composition/adapters.
    Compare matching, binding sources/cardinality, occurrence/object/request isolation, and outcomes against the [execution constraints and shared checks](../references/execution.md#execution-constraints).
 4. Check joint effects for hidden ordering, misplaced invariant checks, stale authorization, and forbidden replay effects.
-   Inspect state commit → completion → dispatch crash windows when durability is required.
+   Check the [recovery protocol](../references/execution.md#atomicity-and-recovery) against declared recovery requirements.
 5. Check required progress, loops, missing coordination, lost user control, and distorted concept purpose against concrete scenarios.
    Coordination state with independent business purpose/lifecycle may require a concept.
 6. For each requested subset, check requirement-backed dependencies, entries, rules, resources, and build support.

@@ -86,7 +86,7 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 
 | 技能 | 用途 | 版本 |
 | --- | --- | --- |
-| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 2.5.0 |
+| [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 2.5.1 |
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |
 | [个人知识架构师](skills/zh-CN/personal-knowledge-architect-cn/SKILL.md) | 从原文萃取、关联、组织和复用知识。 | 0.4.0 |
 | [读它，重构它，化为己有](skills/zh-CN/read-it-reframe-it-own-it-cn/SKILL.md) | 围绕学习目标与关键框架建立并修正理解。 | 0.2.0 |
@@ -100,7 +100,7 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 
 ## 维护与许可
 
-原八项概念设计流程共用一个入口，每种语言一份。概念设计版本为 **2.5.0**，仓库版本为 **3.8.0**。
+原八项概念设计流程共用一个入口，每种语言一份。概念设计版本为 **2.5.1**，仓库版本为 **3.8.1**。
 ClawHub 旧入口能合并的已跳转，其余已下线或原本不可用；迁移时保留项目规格、源码和用户配置。
 
 运行 `./tools/validate-all.sh` 检查公开安装包。

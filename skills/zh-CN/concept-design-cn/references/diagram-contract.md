@@ -1,5 +1,15 @@
 # 概念与同步关系图，版本 1
 
+## 使用
+
+从本地 CONCEPT/SYNCS 生成含 Mermaid 的 `ARCHITECTURE.md`，输入采用[工具编码](tool-encoding.md)。原生记法不受支持；版本 1 不读取 PIPELINE、PRD 或源码。
+
+```sh
+python3 <skill-directory>/scripts/concept_map.py <root> --output <root>/ARCHITECTURE.md
+```
+
+报告输出位置、范围、退出状态与缺口。范围选项见下节，写入与检查规则见后文。
+
 ## 扫描与范围
 
 扫描根目录下 `**/CONCEPT.md` 与 `**/SYNCS.md`。

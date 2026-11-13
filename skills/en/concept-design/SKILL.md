@@ -4,7 +4,7 @@ description: "Use only when explicitly invoked. Design, specify, implement, revi
 metadata:
   language: en
   translation_of: concept-design-cn
-  version: "2.5.0"
+  version: "2.5.1"
 ---
 
 # Concept design

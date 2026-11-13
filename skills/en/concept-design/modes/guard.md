@@ -9,7 +9,7 @@ Without a backfill target, discover candidates only.
 | `concept` / `sync` | [Reconstruct specifications](../references/spec-reconstruction.md) |
 | `drift` | [Read-only contract comparison](../references/drift-checks.md) |
 | `pipeline` | [Data transformation specification](../references/pipeline-spec.md) |
-| `map` | [Concept and Synchronization Diagram](../references/diagram-generation.md): generate one ARCHITECTURE.md from CONCEPT/SYNCS |
+| `map` | [Concept and Synchronization Diagram](../references/diagram-contract.md#usage): generate one ARCHITECTURE.md from CONCEPT/SYNCS |
 | `claude` | [Align CLAUDE.md](../references/claude-rules.md) |
 
 Colocate CONCEPT and concept-owned PIPELINE with their concept.

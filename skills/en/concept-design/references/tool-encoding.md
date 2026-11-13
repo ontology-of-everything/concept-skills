@@ -75,7 +75,7 @@ then { Target/accept: [item: ?item; owner: ?owner] }
 | Patterns | Omissions are wildcards; `[]` is not success. MUST distinguish cases affecting later effects. |
 | `where` | Optional. Read, filter, compute, bind rows; omission retains input bindings. |
 | `then` | Required and nonempty. MUST call per binding row with all required named inputs and no outputs. |
-| `?name` | One value per rule. Calls use constants or bound values. |
+| `?name` | Within each binding row, the same variable has the same value. Calls use constants or bound values. |
 
 [Synchronization scenarios](spec-examples.md#synchronization-scenarios).
 

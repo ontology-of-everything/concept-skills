@@ -1,7 +1,7 @@
 # Changelog
 
-## 3.8.0 - 2026-11-13
+## 3.8.1 - 2026-11-13
 
-- Release Concept design 2.5.0 in English and Chinese.
-- Fix engineering directories, singular/plural naming, the Facade → Synchronization call chain, and inward dependencies; use adapters for concept port implementations.
-- Standardize Java/Spring Configuration and Properties names; clarify API, domain, adapter and assembly boundaries; align project-rule generation and remove redundant execution guidance.
+- Release Concept design 2.5.1 in English and Chinese.
+- Consolidate explanation guidance and diagram documentation, reducing references from 16 to 14 per edition and updating all links.
+- Simplify architecture and execution guidance; clarify trust boundaries, binding scope, recovery requirements, and evidence gaps.

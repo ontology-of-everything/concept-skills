@@ -30,9 +30,9 @@ actions
 
 **Type parameters** represent individuals with identity, without importing the structure of other concepts.
 
-**State consists of relations.** `a set of Items with ...` organizes relations by individual type; it does not define classes or composite objects. State the necessary initial conditions and relational constraints.
+**State consists of relations.** `a set of Items with ...` organizes relations by individual type; it does not define classes or composite objects. Define initial conditions and invariants before actions; exclude illegal states through types and relational constraints where possible.
 
-**Actions use preconditions and postconditions.** Name inputs and results; omit the result part when there is no result. If `requires` does not hold, the action cannot occur. A true precondition does not guarantee occurrence or prescribe an error response. `ensures` constrains prior and subsequent state and results.
+**Actions use preconditions and postconditions.** Name inputs and results; omit absent results. `requires` permits occurrence; `ensures` constrains prior and subsequent state and results: **occurrence ⇒ precondition and postcondition hold**. The converse does not follow: a precondition neither guarantees execution nor prescribes a refusal response.
 
 **Queries are read-only and return sets of bindings.** List queries within `actions`, with an initial underscore. Zero, one, or many bindings depend on the query definition.
 
@@ -53,7 +53,7 @@ then
 
 **Name each rule.** A name identifies a causal rule for explanation and provenance.
 
-**`when` matches action occurrences.** Specify the triggering actions and relevant arguments. Arguments are bound by name; partial matching is allowed. Queries are not triggering actions.
+**`when` matches action occurrences.** This skill's execution encoding matches completion records, not invocation requests. Bind arguments by name; partial matching is allowed. Queries do not trigger rules.
 
 **`where` queries and binds.** Read public state, test conditions, and bind variables needed downstream. The same variable denotes the same value.
 

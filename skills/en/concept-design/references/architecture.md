@@ -25,43 +25,38 @@ Only explicitly confirmed exceptions may override this layout; record their scop
 - Java packages are lowercase with joined compound words, such as `operatorsession`; other languages encode the same business name using native naming conventions. Types and methods follow language conventions.
 - Name facades `<BusinessScope>Facade` and synchronizations `<BusinessAction>Synchronization`; do not add `UseCase` or `Mediator` intermediate layers. Functional implementations preserve equivalent roles and visibility.
 - Use singular business subjects in type names; use plurals for list operations and collection variables, such as `ReadBookingsSynchronization` and `bookings`. REST paths follow interface contracts.
-- Give each concept its own source package or module. Create layers only for actual responsibilities and remove scoped empty placeholders. Do not nest domain layers inside composition groups or create a build unit per rule.
+- Give each concept its own source package or module. Within authorized scope, prefer removal, consolidation, or reuse; add only structure needed to fulfill the contract. Do not nest domain layers inside composition groups or create a build unit per rule.
 
 For Java/Spring explicit assembly, use `<Concept>Configuration` in `concepts/<concept>/adapters/`, `<BusinessScope>Configuration` in `compositions/<group>/`, and `<Application>Configuration` in `bootstrap/`. Create these only when needed; construct and wire components without business operations or decisions. Bind configuration values in `<Capability>Properties` at the consumer boundary, separate from assembly. Other languages preserve these responsibilities using native assembly conventions.
 
 ## Layer responsibilities and dependencies
 
-Fix the business call chain to `Entry → Facade → Synchronization → Concept API`.
-Arrows denote business calls; adapters implement inner ports to keep source dependencies inward. Bootstrap may access assembly entries, not invoke synchronization implementations.
+Business calls follow `Entry → Facade → Synchronization → Concept API`. Use APIs for business access and dedicated entries for assembly. Adapters implement inner ports, keeping source dependencies inward.
 
-| Owner | Hard constraint |
+| Owner | Responsibility and boundary |
 | --- | --- |
-| Entry | Group controllers, filters, jobs, and similar entries by business module. Inbound entries handle protocol parsing, format validation, trusted context extraction, and response conversion; outbound adapters implement composition ports. Route business operations through Facade; do not invoke synchronizations or concept actions/queries. Keep shared protocol mechanisms in this layer. |
-| Facade | Expose application operations; each operation method forwards exactly once to its synchronization. Hold only synchronization collaborators; do not decide business conditions, open transactions, handle failures, or invoke concepts or external adapters. |
-| Synchronization | Map entry inputs to the declared root action; own cross-concept conditions, authorization rechecks, action order, transactions, and failure policies according to SYNCS. Access business capabilities only through concept APIs and required ports. Keep implementations inaccessible outside composition. |
-| Composition helper | Reuse named computations or execution mechanisms; keep business steps, order, and branches explicit in synchronizations. Do not invoke synchronizations or facades. |
-| Concept | Own its state and invariants. Forbid source dependencies, action/query calls, and state reads between concepts. Use generic or opaque external identities without another concept's internal structure. |
-| api | Expose only business contracts and values, separating commands and queries by caller capability. Do not depend on concept internal layers or expose protocol, framework, or persistence types. |
-| application | Implement the API using domain behavior and inner ports; organize concept-local actions and queries. Do not depend on adapters. |
-| domain | Own state transitions, invariants, and aggregate repository contracts. Do not depend on api, application, adapters, or framework/persistence types. A concept is not an aggregate. |
-| adapters | Implement inner ports; contain SQL, mappers, database records, and internal assembly. Persist aggregates through repositories and read projections through query ports. Define only one port per responsibility. |
-| Bootstrap | Own final construction and assembly, delegating to module factories or configuration as needed. Route business calls through Facade. Test assembly may construct concepts and fake ports. |
-| Technical library | Do not depend on concepts or composition, or hide business state or coordination. |
+| Entry | Group controllers, filters, and jobs by business module. Handle protocol parsing, format validation, trusted context, and response conversion; outbound adapters implement composition ports. Route business operations only through Facade; keep shared protocol mechanisms here. |
+| Facade | Expose application operations, holding only synchronization collaborators. Each operation forwards exactly once, without business branches, transactions, or failure handling. Use ordinary application types; concept API values may be reused. |
+| Synchronization | Connect root actions and explicitly organize cross-concept conditions, authorization rechecks, order, transactions, and failure policies from SYNCS. Access only concept APIs and required ports; keep implementations private to composition. |
+| Composition helper | Reuse computations or execution mechanisms; keep business steps and branches in synchronizations. Never invoke synchronizations or Facade. |
+| api | Expose business contracts and values, separating commands and queries by caller capability; depend on no concept internal layers. |
+| application | Implement the API with domain behavior and inner ports for local actions and queries; do not depend on adapters. |
+| domain | Own transitions, invariants, and aggregate repository contracts; depend on no other layers. A concept is not an aggregate. |
+| adapters | Implement concept ports; contain SQL, mappers, database records, and inner assembly. Repositories persist aggregates; query ports read projections. Define one port per responsibility. |
+| Bootstrap | Construct and assemble components, delegating to factories or configuration. Business calls still use Facade; test assembly may construct concepts and fake ports. |
+| Technical library | Provide technical capabilities without dependencies on concepts or composition, hidden business state, or coordination. |
 
-Concepts must not depend on Entry, composition, or Bootstrap. Composition must not depend on Entry, Bootstrap, or concept internals, including through helpers. Synchronizations must not call one another or call back into Facade.
-Composition defines its ports, implemented by Entry adapters; concept ports are implemented within that concept’s adapters.
-Facade uses ordinary application types and may reuse concept API values; protocol types must not cross business contracts.
-Keep api, application, and domain independent of framework and persistence types. Business code must not resolve dependencies from a container. Separate business exports from assembly entries.
-Composition may store execution records but must not duplicate concept business facts. Shared values, database facilities, and migrations must preserve explicit ownership.
+Three boundaries apply throughout:
+
+- **Independent concepts.** Each owns its state and invariants. Forbid inter-concept dependencies, action/query calls, and state reads, and dependencies on Entry, composition, or Bootstrap. Use type parameters or opaque external identities without importing another concept's internals.
+- **Coordination in composition.** Depend on neither Entry, Bootstrap, nor concept internals, including through helpers. Synchronizations never call one another or Facade. Composition defines ports implemented by Entry adapters; it may retain execution records, not copies of concept business facts.
+- **Separate business and technology.** Keep protocol types out of business contracts and api/application/domain independent of frameworks and persistence. Inject dependencies through assembly; business code never queries a container. Give shared values, database facilities, and migrations explicit owners.
 
 ## Synchronization boundaries
 
-Composition is the layer; Synchronization implements its rules. Group by business responsibility, potentially across contexts.
-Default to one implementation per named rule; map splits explicitly when triggers, transaction boundaries, or recovery boundaries are independent. Related operations may share an implementation, but each rule retains its own identity.
-Class length and method count do not determine boundaries; extract helpers when only implementation complexity grows.
+Composition is the layer; Synchronization implements rules. Group by business responsibility, possibly across contexts. Default to one implementation per rule; explicitly map splits for independent trigger, transaction, or recovery boundaries. Shared implementations retain each rule's identity. Class length and method count do not define boundaries; extract helpers for implementation complexity alone.
 
-Connect rules through action completions, never direct calls. Preserve same-flow matching, prerequisites, causal provenance, and atomic firing claims under [execution and recovery](execution.md). Apply declared transaction and recovery requirements; ordinary calls do not waive execution guarantees.
-Reconsider concept boundaries when process state gains an independent business purpose and lifecycle.
+Connect rules through completions, applying [execution and recovery](execution.md) for matching, causality, atomic claims, and applicable transactions and recovery. Reconsider concept boundaries when process state acquires an independent business purpose and lifecycle.
 
 ## Specification ownership
 
