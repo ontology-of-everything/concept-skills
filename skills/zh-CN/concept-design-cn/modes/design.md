@@ -7,6 +7,7 @@
 3. 检查全部八项[资格判据](../references/concept-criteria.md)。
    按[规格记法](../references/spec-notation.md)写契约及其执行约束。
 4. 设计规则并检查[组合与子集](../references/composition.md)。
+5. 涉及工程设计时，按[工程契约](../references/architecture.md)明确入口、规则实现、概念边界与依赖检查。
 
 交付概念契约、规则、同步图、排除与未决。
 必需响应 MUST 覆盖已声明的成功与拒绝分支。

@@ -1,132 +1,91 @@
 # Engineering architecture
 
-This layout is a repository choice, not Jackson's prescribed implementation.
-New projects SHOULD use a modular monolith.
-Test each concept independently. Composition and protocol adapters build with the server and have separate behavior tests. Assemble in one process.
-Use confirmed project conventions for build layout, names, and persistence technology. Record any explicitly confirmed exception to the requirements below and its scope.
+These are this skill's engineering conventions, not Jackson's prescribed implementation. Default new projects to a modular monolith assembled in one process.
+Use language-native source roots and confirmed build and persistence technology; fix directory roles, responsibilities, and dependencies as specified here.
+Only explicitly confirmed exceptions may override this layout; record their scope. Existing code is not an exception, and migration stays within authorized scope.
 
-## Architecture requirements
-
-1. **Make concepts self-contained.** Define each concept's state and actions around one purpose. Each concept owns its business state. See the [concept specification](spec-notation.md#concept).
-2. **Keep concepts independent.** Forbid source dependencies, action or query calls, and state reads between concepts.
-3. **Compose concepts through synchronizations.** Express each application decision in a named rule outside the concepts. Access concepts through public actions and queries. See the [synchronization specification](spec-notation.md#syncs).
-4. **Connect external entries through synchronizations.** Map external requests to root actions. Synchronizations invoke concept actions and trigger responses to the original requests.
-5. **Preserve causal scope.** Match completions only within the same flow. Subsequent invocations carry that flow and retain their causal provenance.
-6. **Specify failures and prerequisites.** Declare relevant failure branches. Invoke dependent actions only after their prerequisites are met.
-7. **Fire once per match.** Before dispatch, atomically claim the firing by rule identity, matched completion records, and binding row. See [rule execution](execution.md#rule-execution).
-
-## Ownership and shape
-
-**Composition** names the architectural layer that combines independent concepts into business capabilities; use `composition/` for this layer. **Synchronization** names a composition rule that matches action completions and invokes subsequent actions when its conditions hold.
+## Directories and naming
 
 ```text
-apps/server/
-  src/
-    bootstrap/                    # construction and final assembly
-    adapters/http/                # protocol conversion
-    composition/booking/
-      reserve/
-        MakeReservationUseCase
-        SYNCS.md
-        ReserveMediator          # sync reserve
-        SuccessReplyMediator     # sync accepted
-        ConflictReplyMediator    # sync rejected
-  tests/                          # architecture, composition, protocol
-modules/<context>/concepts/<concept>/
-  CONCEPT.md
-  <build manifest>                # only for a separate build unit
-  src/
-    <business exports>
-    <assembly entry>
-    domain/                       # state, invariants, aggregate repository contracts
-    application/                  # actions, queries, and their ports
-      ports/                      # optional subpackage
-    adapters/                     # port implementations
-  tests/
-libraries/<technical capability>/ # optional independent build/tests
-deploy/                           # environment and deployment
+<application source root>/
+  entry/<business module>/           # protocol entries and external adapters
+  compositions/<business group>/
+    <BusinessScope>Facade            # public business operations
+    <BusinessAction>Synchronization  # internal synchronization implementation
+  concepts/<concept>/
+    api/                             # public commands, queries, business values
+    application/                     # action/query implementations and inner ports
+    domain/                          # state, invariants, behavior, repository contracts
+    adapters/                  # port implementations, persistence, inner assembly
+  bootstrap/                         # final assembly, controlled startup entries
 ```
 
-Context directories separate models and language; a concept is not a DDD aggregate.
-Use language-native source roots. In Java, a concept package may use `api/` for public contracts, `domain/` for domain behavior, `application/` for use cases, and `infrastructure/` for adapters and internal assembly.
-Each concept MUST have its own source package or module, by default under `concepts/<concept>/`. A separate build unit is optional. Keep small concepts flat within their boundary and add layers only when they have an implementation.
-Do not create empty layers, per-rule build modules, or another domain/application/adapters stack inside each composition group.
-When implementing or refactoring, remove empty placeholder packages in scope, such as an empty `internal/`.
+- Fix layer names to `entry`, `compositions`, `concepts`, and `bootstrap`; use the concept layers shown above. Separate builds may relocate source roots while preserving roles and boundaries.
+- Use lowercase singular business module, composition group, and concept directory names. Keep the same word stem for the same business scope. Match composition groups to specification directories; entries, groups, and concepts need not correspond one-to-one.
+- Java packages are lowercase with joined compound words, such as `operatorsession`; other languages encode the same business name using native naming conventions. Types and methods follow language conventions.
+- Name facades `<BusinessScope>Facade` and synchronizations `<BusinessAction>Synchronization`; do not add `UseCase` or `Mediator` intermediate layers. Functional implementations preserve equivalent roles and visibility.
+- Use singular business subjects in type names; use plurals for list operations and collection variables, such as `ReadBookingsSynchronization` and `bookings`. REST paths follow interface contracts.
+- Give each concept its own source package or module. Create layers only for actual responsibilities and remove scoped empty placeholders. Do not nest domain layers inside composition groups or create a build unit per rule.
 
-| Owner | Constraint |
+## Layer responsibilities and dependencies
+
+Fix the business call chain to `Entry → Facade → Synchronization → Concept API`.
+Arrows denote business calls; adapters implement inner ports to keep source dependencies inward. Bootstrap may access assembly entries, not invoke synchronization implementations.
+
+| Owner | Hard constraint |
 | --- | --- |
-| Concept | Use generic or opaque external identities. |
-| Domain | Owns business state transitions and invariants. Use aggregates when state must change consistently. Domain code MUST be independent of application, adapters, and framework or persistence types. |
-| Application | Orchestrates actions and queries through domain behavior and inner ports. Expose command and query contracts separately when callers need different capabilities. Keep business contracts and implementations independent of framework and persistence types. |
-| Adapter | Implements an inner port. Keep SQL, mappers, and database records here. Use a repository for aggregate persistence and a query port for projections when needed. Avoid duplicate ports for the same responsibility. |
-| Composition | MAY own execution records; MUST NOT duplicate concept business facts. |
-| Protocol adapter | Converts protocol input/output through composition entries; MUST NOT import concept implementations. |
-| Bootstrap | Production construction and assembly entry. Scoped test fixtures/test assembly MAY also construct concepts and fake ports. |
-| Technical library | MUST NOT depend on concepts/composition or hide business state/coordination. |
+| Entry | Group controllers, filters, jobs, and similar entries by business module. Inbound entries handle protocol parsing, format validation, trusted context extraction, and response conversion; outbound adapters implement composition ports. Route business operations through Facade; do not invoke synchronizations or concept actions/queries. Keep shared protocol mechanisms in this layer. |
+| Facade | Expose application operations; each operation method forwards exactly once to its synchronization. Hold only synchronization collaborators; do not decide business conditions, open transactions, handle failures, or invoke concepts or external adapters. |
+| Synchronization | Map entry inputs to the declared root action; own cross-concept conditions, authorization rechecks, action order, transactions, and failure policies according to SYNCS. Access business capabilities only through concept APIs and required ports. Keep implementations inaccessible outside composition. |
+| Composition helper | Reuse named computations or execution mechanisms; keep business steps, order, and branches explicit in synchronizations. Do not invoke synchronizations or facades. |
+| Concept | Own its state and invariants. Forbid source dependencies, action/query calls, and state reads between concepts. Use generic or opaque external identities without another concept's internal structure. |
+| api | Expose only business contracts and values, separating commands and queries by caller capability. Do not depend on concept internal layers or expose protocol, framework, or persistence types. |
+| application | Implement the API using domain behavior and inner ports; organize concept-local actions and queries. Do not depend on adapters. |
+| domain | Own state transitions, invariants, and aggregate repository contracts. Do not depend on api, application, adapters, or framework/persistence types. A concept is not an aggregate. |
+| adapters | Implement inner ports; contain SQL, mappers, database records, and internal assembly. Persist aggregates through repositories and read projections through query ports. Define only one port per responsibility. |
+| Bootstrap | Own final construction and assembly, delegating to module factories or configuration as needed. Route business calls through Facade. Test assembly may construct concepts and fake ports. |
+| Technical library | Do not depend on concepts or composition, or hide business state or coordination. |
 
-Business code MUST NOT resolve dependencies from a container.
-Keep business exports separate from assembly entries. Bootstrap owns final application assembly and may delegate internal construction to concept factories or framework configuration.
-Keep value types with their model until shared meaning, constraints, ownership, and change responsibility are established.
-Shared database facilities and migrations MUST preserve state ownership.
+Concepts must not depend on Entry, composition, or Bootstrap. Composition must not depend on Entry, Bootstrap, or concept internals, including through helpers. Synchronizations must not call one another or call back into Facade.
+Composition defines its ports, implemented by Entry adapters; concept ports are implemented within that concept’s adapters.
+Facade uses ordinary application types and may reuse concept API values; protocol types must not cross business contracts.
+Keep api, application, and domain independent of framework and persistence types. Business code must not resolve dependencies from a container. Separate business exports from assembly entries.
+Composition may store execution records but must not duplicate concept business facts. Shared values, database facilities, and migrations must preserve explicit ownership.
+
+## Synchronization boundaries
+
+Composition is the layer; Synchronization implements its rules. Group by business responsibility, potentially across contexts.
+Default to one implementation per named rule; map splits explicitly when triggers, transaction boundaries, or recovery boundaries are independent. Related operations may share an implementation, but each rule retains its own identity.
+Class length and method count do not determine boundaries; extract helpers when only implementation complexity grows.
+
+Connect rules through action completions, never direct calls. Preserve same-flow matching, prerequisites, causal provenance, and atomic firing claims under [execution and recovery](execution.md). Apply declared transaction and recovery requirements; ordinary calls do not waive execution guarantees.
+Reconsider concept boundaries when process state gains an independent business purpose and lifecycle.
 
 ## Specification ownership
 
-These are file organization conventions; use the project's source roots and existing groups.
-
 | Content | Authoritative location |
 | --- | --- |
-| Concept | `CONCEPT.md` beside its module; before modules exist, `docs/prd/concepts/<name>/CONCEPT.md`. |
-| Synchronizations | `SYNCS.md` beside the rules under `apps/<app>/src/composition/<group>/`; before modules exist, `docs/prd/composition/<group>/SYNCS.md`. |
-| Acceptance | Overall PRD or an existing acceptance file, linked to the checked contract or scenario. |
+| Concept | `CONCEPT.md` beside the concept module; before modules exist, `docs/prd/concepts/<name>/CONCEPT.md`. |
+| Synchronizations | `SYNCS.md` beside rules in `compositions/<group>/`; before modules exist, `docs/prd/compositions/<group>/SYNCS.md`. |
+| Acceptance | Overall PRD or an existing acceptance file, linked to contracts or scenarios. |
 
-Index all CONCEPT and SYNCS files in the overall PRD.
-Preserve confirmed legacy locations, including `docs/prd/SYNCS.md`, unless a move is authorized.
-Files and `// flow:` groups do not create runtime flow identities or require separate builds.
-Use the conventions below for instances, bindings, entry contracts, and rule identities.
-
-## Composition groups and identities
-
-Group rules by business responsibility. Groups may span contexts, and their boundaries are independent of concepts, endpoints, and flows.
-Keep one [SYNCS.md](spec-notation.md#syncs) beside each group. Index every group and define each rule once.
-Declare application instance identities, type bindings, and shared entry contracts once. Groups reference those declarations.
-Repeated includes MUST resolve to the same declared instances, and bootstrap MUST preserve that mapping.
-A single operation MAY use an `<Operation>UseCase` as its entry. Multiple operations MAY share a `<BusinessScope>Facade`.
-
-New implementations SHOULD use `<BusinessEffect>Mediator`, such as `ReserveMediator`. Include the trigger when it clarifies or distinguishes the rule.
-Preserve confirmed names and map native code names explicitly.
-Rule identity MUST be unique within the application and stable across specifications, tests, and runtime records. A file move MUST NOT change persisted rule identity.
-Default to one rule per file. Small related rules MAY share a file while retaining separate identities.
-
-### Splitting synchronizations
-
-- Split into named synchronizations when triggers, business effects, or failure policies can change independently.
-- When one effect needs several prerequisite results, match all of them from the same flow in one `when` clause.
-- Extract helper functions within the rule when only the implementation grows complex. Preserve rule identity and firing boundaries. Group rules separately when they form a distinct business responsibility.
-
-Connect rules through action completions. Rules MUST NOT call one another directly.
-Identify the process state required for long waits, timeouts, and compensation. Reconsider concept boundaries if that state gains an independent business purpose and lifecycle.
+Index all specifications in the overall PRD. Preserve a single authoritative source at other confirmed locations; do not move it without authorization.
+Declare instance identities, type bindings, and shared entry contracts once. Repeated includes resolve to the same declared instances, and assembly preserves that mapping.
+Rule identities are unique within the application and consistent across specifications, tests, and runtime records. Moves and renames must not change persisted identities.
+Maintain the rule-to-implementation and entry-method mapping in documentation. Code names express business meaning; comments explain constraints and reasons. Do not name code after specification IDs.
+Files and `// flow:` groups do not create runtime flows or require separate builds.
 
 ## Review and verification
 
-Use [execution and recovery](execution.md) for required migration.
-For requested product subsets, check purpose, dependencies, entries, rules, resources, build flags, and release ownership.
+Architecture checks must cover all relevant source/build units and supported configurations and run in normal checks or CI:
 
-Architecture checks MUST inspect actual dependencies in all relevant source/build units and supported configurations.
-Cover concept independence, public business API access, inner dependencies, protocol entries, construction access, libraries, cycles, specification ownership, and unique rule identities.
-Map each scoped concept to its actual source path and package or module. Check for shared or missing boundaries, empty placeholders, and leaks of framework or persistence types into business code or its public contracts. Check the active persistence adapter against confirmed project conventions.
+- Verify directories, singular/plural naming, module discovery, and rule mappings. Empty matches, omitted modules, and unresolved dependencies are gaps, not passes.
+- Check actual dependencies, visibility, and cycles: concept independence, API-only access, inward dependencies, port ownership, assembly access, and technical library boundaries.
+- Check that each Facade operation forwards exactly once, without branches, exception decisions, or other calls; prevent forbidden calls from synchronizations and helpers.
+- Check business contracts and concept api/application/domain for leaked protocol, framework, or persistence types; verify active adapters.
+- Fail each violation with its rule, source, target, and location. Use isolated counterexamples to verify rejection.
 
-- Rust: use `cargo metadata` for build dependencies and inspect source for boundaries within a crate.
-- Java: check subpackage visibility and external access to internal types. With Spring Modulith, verify which concept modules are actually discovered.
-- TypeScript: check resolved source imports, including relative paths, aliases, and type-only imports.
-
-Run changed boundary checks in normal checks or CI.
-An empty match, omitted module, or unresolved dependency is a gap, not a pass.
-Each violation reports rule, source, target, and location and fails the check.
-Use isolated violations to verify that the intended check fails.
-Report limits such as reflection, dynamic lookup, and cross-owner SQL; add targeted checks where needed.
-
-## Engineering basis
-
-[DDD](https://www.domainlanguage.com/ddd/reference/) informs model boundaries.
-[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and
-[Ports and Adapters](https://alistair.cockburn.us/hexagonal-architecture) inform dependency direction.
+For Rust, inspect the build graph and within-crate boundaries; for Java, subpackage visibility and discovered modules; for TypeScript, aliases and type-only imports.
+Test concepts, composition, protocols, and assembly separately. Verify conditions, transactions, failures, and concurrency through behavior tests; static checks are not behavioral evidence.
+For requested product subsets, also check purpose, entries, rules, resources, build flags, and release ownership.
+Report limits such as reflection, dynamic lookup, and cross-owner SQL; follow [execution and recovery](execution.md) for migration.

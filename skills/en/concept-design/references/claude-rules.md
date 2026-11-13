@@ -1,17 +1,14 @@
 # Align CLAUDE.md
 
-1. Compare confirmed design contracts, actual implementation, and applicable engineering conventions.
-2. Report conflicts before writing rules. MUST NOT treat implementation as the contract or change the contract to excuse defects.
-3. Use the five-rule template below in `CLAUDE.md`. Each MUST identify its source and check; reference authoritative definitions instead of copying them.
-4. Update only relevant rules; preserve unrelated content. Unresolved decisions remain open.
-5. Check the resulting rules against all three sources. Report unresolved conflicts and unexecuted checks; claim alignment only when supported by evidence.
-
-## Output template
+Compare confirmed contracts, actual code, and [engineering architecture](architecture.md); report conflicts before updating relevant rules. Do not treat existing code as the contract or change contracts to conceal defects.
+Replace repetition with the short principles below; preserve unrelated rules and open decisions. Link each rule to its project authority and actual check without copying specification bodies.
 
 ```markdown
-1. Before development, check confirmed design, existing implementation, and engineering conventions; report conflicts first.
-2. Implement state, actions, and invariants according to CONCEPT.md; concepts must not invoke one another or read one another's state.
-3. Implement cross-concept coordination according to SYNCS.md; inputs, conditions, and results must agree between code and specifications.
-4. For behavior changes, confirm and update the contract before changing code and tests; never change the contract to conceal defects.
-5. Link each constraint to its authoritative definition and check; verify design, implementation, and engineering conventions before completion. Never report unverified work as passed.
+1. Fix directories to entry/<module>, compositions/<group>, concepts/<concept>, bootstrap. Use lowercase singular business directories, match groups to specifications, and assign concept responsibilities to api/application/domain/adapters.
+2. Entry → Facade → Synchronization → Concept API. Each Facade operation forwards once; synchronizations explicitly organize business decisions. Synchronizations do not call one another or Facade; helpers do not call back into either.
+3. Concepts own their state and invariants; forbid dependencies, calls, and state reads between concepts. Business access uses api only; assembly uses dedicated entries. application depends on api/domain and inner ports; adapters implement ports. api/domain do not depend on other concept layers; keep these business layers framework-free.
+4. Implement CONCEPT.md/SYNCS.md; confirm contracts before behavior changes. Name Facade by business scope and Synchronization by business action; pluralize lists and collections by meaning. Preserve rule mappings and persisted identities.
+5. Architecture checks cover directories, naming, dependencies, visibility, and forwarding; behavior tests cover contracts and execution boundaries. Fix code on failure; never report unverified work as passed.
 ```
+
+Adapt names and check entry points to the project language and confirmed exceptions. Verify alignment with all three sources; report unresolved conflicts and unexecuted checks.

@@ -4,7 +4,7 @@ description: "Use only when explicitly invoked. Design, specify, implement, revi
 metadata:
   language: en
   translation_of: concept-design-cn
-  version: "2.4.0"
+  version: "2.5.0"
 ---
 
 # Concept design
@@ -23,6 +23,8 @@ Start from user needs. Concepts define independent behavior; external synchroniz
 - Composition may restrict behavior but must preserve each concept's contract. Check contracts, OPs, purposes, and application scenarios separately.
 - Each definition has one authoritative source. Distinguish confirmed, proposed, inferred, and open statements; test decisions with evidence, assumptions, and counterexamples. Keep unresolved matters open and unexecuted checks unverified.
 - Compare alternatives, including no change or removal; revisit assumptions after repeated failures. Refactoring preserves behavior; state intentional changes explicitly.
+
+For engineering design, implementation, review, or project rules, apply the [architecture contract](references/architecture.md) for directories, naming, responsibilities, and dependencies.
 
 ## Choose a mode
 

@@ -59,9 +59,9 @@ Use these terms consistently in both locales. Preserve syntax, file names, quote
 | concept instance | 概念实例 | A particular instance that owns its state. |
 | operational principle, OP | 运作原理，OP | A representative history that explains how a concept fulfills its purpose. |
 | composition | 组合 | Application-specific coordination outside concepts, organized into cohesive rule groups. |
-| synchronization rule | 同步规则 | External coordination of concept actions. Code may use a `<BusinessEffect>Mediator` name. |
+| synchronization rule | 同步规则 | External coordination of concept actions. Code uses a `<BusinessAction>Synchronization` name. |
 | port, adapter | 端口、适配器 | An inner contract for needed interaction, and its technical implementation. |
-| facade | 门面 | An optional stable application entry; coordination remains in named rules. |
+| facade | 门面 | The public application entry; each operation forwards once to a synchronization. |
 | action invocation | 动作调用 | A request to execute an action. |
 | action completion | 动作完成记录 | A declared result of an executed action. |
 | action occurrence | 动作发生记录 | An identified execution that connects invocation and completion. |

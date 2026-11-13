@@ -4,7 +4,7 @@ description: "仅在显式调用时使用。用 Daniel Jackson 的概念与同�
 metadata:
   language: zh-CN
   translation_of: concept-design
-  version: "2.4.0"
+  version: "2.5.0"
 ---
 
 # 概念设计
@@ -23,6 +23,8 @@ Daniel Jackson 概念设计的方法概括：**应用 = 概念（Concepts）+ �
 - 组合可限制行为，但须保持各概念契约。分别检查契约、OP、目的与应用场景。
 - 每项定义只有一处权威来源。区分已确认、建议、推断和未决；以证据、前提和反例检验决定，保留未决与未验证事项。
 - 比较备选，包含不改或删减；反复失败时重查前提。重构保持行为，有意改变须明确说明。
+
+涉及工程设计、实现、审查或项目规则时，按[工程契约](references/architecture.md)固定目录、命名、职责与依赖。
 
 ## 选择模式
 

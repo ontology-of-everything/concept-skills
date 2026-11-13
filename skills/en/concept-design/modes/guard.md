@@ -26,7 +26,7 @@ Skip dependency/generated/build trees; include single-file core modules.
 Inspect ancestor content before claiming coverage.
 Classify each module/flow as covered, staged, missing, support code, or unverified.
 Name its authoritative file and actual coverage, or evidence/skip gap.
-Report direct concept calls as coupling even through public APIs.
+Report calls between concepts as coupling even through public APIs.
 
 Report scope, measured counts, candidate locations, broken links, and migration work.
 Coverage percentages MUST enumerate their denominator.
