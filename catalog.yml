@@ -627,7 +627,7 @@ skills:
   - refactoring
   summary: Designs, reviews, and refactors CLIs for AI agents. Use when building Agent DX CLIs or checking existing CLI contracts. Checks predictability, defense in depth, and context efficiency with evidence scores.
   summary_zh: 设计、审查和重构面向 AI Agent 的 CLI。检查可预测性、纵深防御和上下文效率，并用实际证据评分。用于开发 Agent DX CLI 或检视现有 CLI。
-  version: 0.4.2
+  version: 0.4.3
   agents:
   - codex
   compatibility: Repository access and project-specific build tools; real service validation needs an isolated authorized environment.
@@ -661,7 +661,7 @@ skills:
   - refactoring
   summary: 设计、审查和重构面向 AI Agent 的 CLI。检查可预测性、纵深防御和上下文效率，并用实际证据评分。用于开发 Agent DX CLI 或检视现有 CLI。
   summary_zh: 设计、审查和重构面向 AI Agent 的 CLI。检查可预测性、纵深防御和上下文效率，并用实际证据评分。用于开发 Agent DX CLI 或检视现有 CLI。
-  version: 0.4.2
+  version: 0.4.3
   agents:
   - codex
   compatibility: Repository access and project-specific build tools; real service validation needs an isolated authorized environment.

@@ -96,7 +96,7 @@ Each skill has an English name and a `-cn` edition. Install with the command abo
 | [C4 Software Architecture Model](skills/en/architect-4c/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
 | [Feature-first frontend architecture](skills/en/architect-frontend-feature-first/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
 | [Feature-Sliced Design for frontends](skills/en/architect-frontend-fsd/SKILL.md) | Core concepts, definitions, principles, and common mistakes in software architecture models. | 0.1.0 |
-| [Agent DX CLI](skills/en/agent-dx-cli/SKILL.md) | Predictable, defensible CLI design, review, and refactoring. | 0.4.2 |
+| [Agent DX CLI](skills/en/agent-dx-cli/SKILL.md) | Predictable, defensible CLI design, review, and refactoring. | 0.4.3 |
 
 <!-- skill-catalog:end -->
 

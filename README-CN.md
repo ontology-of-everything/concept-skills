@@ -96,7 +96,7 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 | [C4 软件架构模型](skills/zh-CN/architect-4c-cn/SKILL.md) | 软件架构模型的核心概念、定义、原则与常见误用。 | 0.1.0 |
 | [功能优先前端架构](skills/zh-CN/architect-frontend-feature-first-cn/SKILL.md) | 软件架构模型的核心概念、定义、原则与常见误用。 | 0.1.0 |
 | [前端 Feature-Sliced Design](skills/zh-CN/architect-frontend-fsd-cn/SKILL.md) | 软件架构模型的核心概念、定义、原则与常见误用。 | 0.1.0 |
-| [面向智能体的 CLI 工程](skills/zh-CN/agent-dx-cli-cn/SKILL.md) | 以可预测性、纵深防御和上下文效率指导 CLI 设计、审查与重构。 | 0.4.2 |
+| [面向智能体的 CLI 工程](skills/zh-CN/agent-dx-cli-cn/SKILL.md) | 以可预测性、纵深防御和上下文效率指导 CLI 设计、审查与重构。 | 0.4.3 |
 
 <!-- skill-catalog:end -->
 

@@ -4,7 +4,7 @@ description: Designs, reviews, and refactors CLIs for AI agents. Use when buildi
 metadata:
   language: en
   translation_of: agent-dx-cli-cn
-  version: "0.4.2"
+  version: "0.4.3"
 ---
 
 # Agent DX CLI
@@ -32,7 +32,8 @@ Proceed when facts and authorization suffice. Clarify only ambiguity that change
 - Default to non-interactive execution. Optional interaction requires explicit selection and a TTY.
 - Treat agent input as untrusted. Enforce typed, field-specific constraints in the shared executor before business effects.
 - Treat server content as untrusted data even after sanitization; preserve provenance.
-- Schema, previews, quality reports, and confirmation flags do not grant permission. Declare actual preview effects and recheck authorization at execution.
+- Destructive operations must provide `--dry-run`. Declare the actual effects of previewing.
+- Schema, previews, quality reports, and confirmation flags do not grant permission. Recheck authorization at execution.
 - Return `unknown` for unresolved outcomes. Reconcile before safe replay; report completion only after the requested result is verified.
 
 ## Optional references

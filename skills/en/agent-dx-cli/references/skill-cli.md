@@ -95,7 +95,7 @@ Use the table above to select each reference's content.
 5. State applicable concurrency requirements. Distinguish accepted work from terminal success and the requested business outcome.
 6. For unknown writes, inspect receipts and current facts. Replay only when the original intent's contract supports safe replay.
 
-Do not invent a universal `--dry-run` flag. A preview does not grant permission or prove execution success.
+When documenting an existing CLI, verify that the target subcommand supports `--dry-run` before using it in examples. A preview does not grant permission or prove execution success.
 GWS asks for confirmation before writes. Adapt this constraint to the user's existing authorization.
 Preserve the target platform's metadata and invocation policy. OpenClaw fields are not universal skill requirements.
 Use short, active sentences. Use one action per sentence and one term per concept.
