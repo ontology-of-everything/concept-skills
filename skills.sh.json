@@ -3,6 +3,14 @@
   "notGrouped": "bottom",
   "groupings": [
     {
+      "title": "Code Maintenance",
+      "description": "Simplify Java / Spring Boot code while preserving behavior and useful boundaries.",
+      "skills": [
+        "simplify-java",
+        "simplify-java-cn"
+      ]
+    },
+    {
       "title": "Concept design",
       "description": "Define independent functionality with concepts and coordinate them with synchronization rules.",
       "skills": [

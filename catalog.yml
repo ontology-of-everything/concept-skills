@@ -1,5 +1,10 @@
 version: 1
 domains:
+  code-maintenance:
+    name: Code Maintenance
+    name_zh: 代码维护
+    description: Simplify Java / Spring Boot code while preserving behavior and useful boundaries.
+    description_zh: 保留行为与有用边界，简化 Java / Spring Boot 代码。
   concept-design:
     name: Concept design
     name_zh: 概念设计
@@ -31,6 +36,40 @@ domains:
     description: Predictable, defensible CLI design, review, and refactoring.
     description_zh: 以可预测性、纵深防御和上下文效率指导 CLI 设计、审查与重构。
 skills:
+- id: simplify-java
+  path: skills/en/simplify-java
+  display_name: Java Code Simplification
+  display_name_zh: Java 代码简化
+  domain: code-maintenance
+  summary: Simplify Java / Spring Boot code without changing behavior. Use for cleanup of working code, reduced nesting, clearer naming, and unnecessary complexity; use responsibility ownership, replaceable seams, and encapsulation value to guide decisions. Covers Java 21 and Spring Boot 4 without version migrations or full architecture redesign.
+  summary_zh: 在不改变行为的前提下简化 Java / Spring Boot 代码。用于已正常工作的代码清理、减少嵌套、改善命名和消除不必要的复杂度；以职责归属、可替换边界和封装价值辅助判断。覆盖 Java 21 与 Spring Boot 4，不执行版本迁移或全面架构重设计。
+  version: 0.1.0
+  agents: [cursor, claude-code, codex, openclaw]
+  marketplaces: [skills-sh, skillsmp, clawhub]
+  distribution: direct-skill
+  language: en
+  translation_of: simplify-java-cn
+  clawhub:
+    enabled: true
+    categories: [development]
+    topics: [java, spring-boot, code-simplification, refactoring]
+- id: simplify-java-cn
+  path: skills/zh-CN/simplify-java-cn
+  display_name: Java 代码简化
+  display_name_zh: Java 代码简化
+  domain: code-maintenance
+  summary: 在不改变行为的前提下简化 Java / Spring Boot 代码。用于已正常工作的代码清理、减少嵌套、改善命名和消除不必要的复杂度；以职责归属、可替换边界和封装价值辅助判断。覆盖 Java 21 与 Spring Boot 4，不执行版本迁移或全面架构重设计。
+  summary_zh: 在不改变行为的前提下简化 Java / Spring Boot 代码。用于已正常工作的代码清理、减少嵌套、改善命名和消除不必要的复杂度；以职责归属、可替换边界和封装价值辅助判断。覆盖 Java 21 与 Spring Boot 4，不执行版本迁移或全面架构重设计。
+  version: 0.1.0
+  agents: [cursor, claude-code, codex, openclaw]
+  marketplaces: [skills-sh, skillsmp, clawhub]
+  distribution: direct-skill
+  language: zh-CN
+  translation_of: simplify-java
+  clawhub:
+    enabled: true
+    categories: [development]
+    topics: [java, spring-boot, code-simplification, refactoring]
 - id: concept-model
   path: skills/en/concept-model
   display_name: Concept Modeling Principles

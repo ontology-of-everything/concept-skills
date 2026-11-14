@@ -86,6 +86,7 @@ Each skill has an English name and a `-cn` edition. Install with the command abo
 
 | Skill | Purpose | Version |
 | --- | --- | --- |
+| [Java Code Simplification](skills/en/simplify-java/SKILL.md) | Simplify Java / Spring Boot code while preserving behavior and useful boundaries. | 0.1.0 |
 | [Concept Modeling Principles](skills/en/concept-model/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 1.1.0 |
 | [Concept design](skills/en/concept-design/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 2.5.1 |
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
