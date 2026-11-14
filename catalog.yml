@@ -38,11 +38,9 @@ skills:
   display_name_zh: 概念建模原则
   display_title_zh: 概念建模原则
   domain: concept-design
-  summary: Guide new development and maintenance with concise concept principles.
-    Use for state and behavior ownership, concept boundaries, or cross-concept collaboration;
-    complements ub-mode.
-  summary_zh: 以简短概念原则指导新功能开发与既有系统维护。涉及状态与行为归属、概念边界或跨概念协作时使用，可作为 ub-mode 的补充。
-  version: 1.0.0
+  summary: Use when the user requests concept modeling, or when design and maintenance reveal unclear responsibilities, confused concept boundaries, or coupled cross-concept collaboration. Clarify concepts and synchronization rules; do not activate by default for routine implementation or local fixes.
+  summary_zh: 在用户要求概念建模，或设计与维护中出现职责归属不清、概念边界混乱、跨概念协作耦合时启用，辅助厘清概念及其同步规则；普通功能实现与局部修复不默认启用。
+  version: 1.1.0
   agents:
   - cursor
   - claude-code
@@ -71,9 +69,9 @@ skills:
   display_name_zh: 概念建模原则
   display_title_zh: 概念建模原则
   domain: concept-design
-  summary: 以简短概念原则指导新功能开发与既有系统维护。涉及状态与行为归属、概念边界或跨概念协作时使用，可作为 ub-mode 的补充。
-  summary_zh: 以简短概念原则指导新功能开发与既有系统维护。涉及状态与行为归属、概念边界或跨概念协作时使用，可作为 ub-mode 的补充。
-  version: 1.0.0
+  summary: 在用户要求概念建模，或设计与维护中出现职责归属不清、概念边界混乱、跨概念协作耦合时启用，辅助厘清概念及其同步规则；普通功能实现与局部修复不默认启用。
+  summary_zh: 在用户要求概念建模，或设计与维护中出现职责归属不清、概念边界混乱、跨概念协作耦合时启用，辅助厘清概念及其同步规则；普通功能实现与局部修复不默认启用。
+  version: 1.1.0
   agents:
   - cursor
   - claude-code

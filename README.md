@@ -86,7 +86,7 @@ Each skill has an English name and a `-cn` edition. Install with the command abo
 
 | Skill | Purpose | Version |
 | --- | --- | --- |
-| [Concept Modeling Principles](skills/en/concept-model/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 1.0.0 |
+| [Concept Modeling Principles](skills/en/concept-model/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 1.1.0 |
 | [Concept design](skills/en/concept-design/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 2.5.1 |
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
 | [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
