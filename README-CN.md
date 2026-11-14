@@ -86,7 +86,7 @@ python3 skills/zh-CN/concept-design-cn/scripts/concept_map.py <项目根> --outp
 
 | 技能 | 用途 | 版本 |
 | --- | --- | --- |
-| [Java 代码简化](skills/zh-CN/simplify-java-cn/SKILL.md) | 保留行为与有用边界，简化 Java / Spring Boot 代码。 | 0.1.0 |
+| [Java 代码简化](skills/zh-CN/simplify-java-cn/SKILL.md) | 保留行为与有用边界，简化 Java / Spring Boot 代码。 | 0.2.1 |
 | [概念建模原则](skills/zh-CN/concept-model-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 1.1.0 |
 | [概念设计](skills/zh-CN/concept-design-cn/SKILL.md) | 用概念定义独立功能，用同步规则定义概念之间的协作。 | 2.5.1 |
 | [数据知识架构师](skills/zh-CN/data-knowledge-architect-cn/SKILL.md) | 定义数据、事实、维度与关系的业务含义。 | 1.1.0 |

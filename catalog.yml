@@ -41,9 +41,9 @@ skills:
   display_name: Java Code Simplification
   display_name_zh: Java 代码简化
   domain: code-maintenance
-  summary: Simplify Java / Spring Boot code without changing behavior. Use for cleanup of working code, reduced nesting, clearer naming, and unnecessary complexity; use responsibility ownership, replaceable seams, and encapsulation value to guide decisions. Covers Java 21 and Spring Boot 4 without version migrations or full architecture redesign.
-  summary_zh: 在不改变行为的前提下简化 Java / Spring Boot 代码。用于已正常工作的代码清理、减少嵌套、改善命名和消除不必要的复杂度；以职责归属、可替换边界和封装价值辅助判断。覆盖 Java 21 与 Spring Boot 4，不执行版本迁移或全面架构重设计。
-  version: 0.1.0
+  summary: Use when Java / Spring Boot code works but is hard to follow. Clarify branches, names, and duplication without changing behavior. Understand why the code exists before deciding how to simplify it.
+  summary_zh: 代码能跑，但读起来费劲时使用。简化 Java / Spring Boot 代码，理清分支、命名与重复，保留原有行为；先弄清为什么这样写，再决定怎么改。
+  version: 0.2.1
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
@@ -58,9 +58,9 @@ skills:
   display_name: Java 代码简化
   display_name_zh: Java 代码简化
   domain: code-maintenance
-  summary: 在不改变行为的前提下简化 Java / Spring Boot 代码。用于已正常工作的代码清理、减少嵌套、改善命名和消除不必要的复杂度；以职责归属、可替换边界和封装价值辅助判断。覆盖 Java 21 与 Spring Boot 4，不执行版本迁移或全面架构重设计。
-  summary_zh: 在不改变行为的前提下简化 Java / Spring Boot 代码。用于已正常工作的代码清理、减少嵌套、改善命名和消除不必要的复杂度；以职责归属、可替换边界和封装价值辅助判断。覆盖 Java 21 与 Spring Boot 4，不执行版本迁移或全面架构重设计。
-  version: 0.1.0
+  summary: 代码能跑，但读起来费劲时使用。简化 Java / Spring Boot 代码，理清分支、命名与重复，保留原有行为；先弄清为什么这样写，再决定怎么改。
+  summary_zh: 代码能跑，但读起来费劲时使用。简化 Java / Spring Boot 代码，理清分支、命名与重复，保留原有行为；先弄清为什么这样写，再决定怎么改。
+  version: 0.2.1
   agents: [cursor, claude-code, codex, openclaw]
   marketplaces: [skills-sh, skillsmp, clawhub]
   distribution: direct-skill
