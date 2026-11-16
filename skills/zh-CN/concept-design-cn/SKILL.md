@@ -4,7 +4,7 @@ description: "仅在显式调用时使用。用 Daniel Jackson 的概念与同�
 metadata:
   language: zh-CN
   translation_of: concept-design
-  version: "2.5.1"
+  version: "2.5.2"
 ---
 
 # 概念设计
