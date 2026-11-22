@@ -78,17 +78,20 @@ The personal-knowledge skill uses concept for a reusable method and states that 
 - Concept Design has one entry per language: `concept-design` and `concept-design-cn`. The former eight workflows
   are combined here; the other seven entries are retired, not aliases. The other three capability families remain separate.
 - Maintain core definitions and principles in `concept-design/SKILL.md`; keep specification conventions in
-  `references/spec-notation.md`. Link directly to each `modes/<mode>.md`.
+  `references/spec-notation.md`. Link directly to each `references/modes/<mode>.md`; guard workflows live under `references/modes/guard/`.
   Keep supporting material in `references/`; name files by their content and responsibility.
+  Example specifications are files under `assets/examples/`, named `<scenario>.concept.md` or `<scenario>.syncs.md`
+  so the map scanner's `CONCEPT.md`/`SYNCS.md` patterns never match them.
   There are no shared skill dependencies or generated cross-package copies.
 - The modes are prompt selectors, not shell commands. `scripts/concept_lint.py` is the actual read-only
   concept-lint CLI. It checks local specification structure, when/then records, and rule-name uniqueness
   across supplied files for one app. Unknown/legacy call notation returns `not_checked`/exit 3; only `format_checked` exits 0.
   Never report syntax checks as semantic proof.
-- Keep decision-record status values and format examples consistent with the checker. Public checks
-  run packaged examples and representative failing inputs.
+- Keep decision-record status values and format examples consistent with the checker. No automated gate covers
+  `scripts/`, the tool encoding or `assets/examples/`: after changing any of them, run `concept_lint.py` on every
+  example and expect `format_checked`, and keep the two locales' scripts byte-identical.
 - `guard map` generates the local Concept and Synchronization Diagram, not Jackson's purpose-dependence diagram.
-  Keep `references/diagram-contract.md` and `scripts/concept_map.py` aligned. Version 1 emits one Markdown document;
+  Keep `references/tool-diagram.md` and `scripts/concept_map.py` aligned. Version 1 emits one Markdown document;
   it shares lexical handling with concept-lint and never fills unknown references by inference.
 - Diagrams use Mermaid in Markdown. Keep explanation views concise and use the map generator for concept/synchronization diagrams.
 - Author locale packages directly under `skills/` and register them in `catalog.yml`; keep QA and generated artifacts local.
