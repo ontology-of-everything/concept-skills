@@ -1,13 +1,13 @@
 ---
 name: concept-model
-description: Use when the user requests concept modeling, or when design and maintenance reveal unclear responsibilities, confused concept boundaries, or coupled cross-concept collaboration. Clarify concepts and synchronization rules; do not activate by default for routine implementation or local fixes.
+description: Apply concept modeling principles to design, implementation, and maintenance by defining independent concepts around user purposes and coordinate their collaboration with synchronization rules.
 metadata:
   language: en
   translation_of: concept-model-cn
-  version: 1.1.0
+  version: 1.2.0
 ---
 
-# Concept modeling principles
+# Working with concept modeling
 
 Follow the structural pattern proposed by Daniel Jackson and Eagon Meng: build applications from concepts and synchronizations.
 Concepts are fully independent services; synchronizations are event-based rules that mediate between them.
@@ -33,7 +33,12 @@ Concepts are fully independent services; synchronizations are event-based rules 
 
 ## Engineering additions
 
-The following implementation and maintenance conventions belong to this skill; they are not presented as the authors’ original wording or distinctive principles.
+The following conventions belong to this skill; they are not presented as the authors’ original wording or distinctive principles.
+
+### Scope and separation
+
+- Reuse before modeling: reuse capabilities that have mature, replaceable implementations and carry no rules that differentiate this product; keep only a thin concept or entry contract for those with a user purpose, and leave pure technical mechanisms out of the model.
+- Concepts carry only this product's business rules and invariants; reused components stay behind ports and adapters, and their models stay out of concept state.
 
 ### Implementation
 
@@ -43,6 +48,5 @@ The following implementation and maintenance conventions belong to this skill; t
 
 ### Maintenance
 
-- Determine responsibility before adding structure.
+- Assign responsibility before adding structure; limit changes to what is needed.
 - Preserve behavior when refactoring; make intentional changes explicit.
-- Limit changes to what is needed; retain clear code.

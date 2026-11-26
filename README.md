@@ -87,8 +87,8 @@ Each skill has an English name and a `-cn` edition. Install with the command abo
 | Skill | Purpose | Version |
 | --- | --- | --- |
 | [Java Code Simplification](skills/en/simplify-java/SKILL.md) | Simplify Java / Spring Boot code while preserving behavior and useful boundaries. | 0.2.1 |
-| [Concept Modeling Principles](skills/en/concept-model/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 1.1.0 |
-| [Concept design](skills/en/concept-design/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 2.5.4 |
+| [Working with Concept Modeling](skills/en/concept-model/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 1.2.0 |
+| [Concept design](skills/en/concept-design/SKILL.md) | Define independent functionality with concepts and coordinate them with synchronization rules. | 2.6.0 |
 | [Data Knowledge Architect](skills/en/data-knowledge-architect/SKILL.md) | Model the business meaning of data, facts, dimensions, and relations. | 1.1.0 |
 | [Personal Knowledge Architect](skills/en/personal-knowledge-architect/SKILL.md) | Extract, connect, organize, and reuse knowledge from source material. | 0.4.0 |
 | [Read It. Reframe It. Own It.](skills/en/read-it-reframe-it-own-it/SKILL.md) | Build and revise understanding around a learning goal and a key framework. | 0.2.0 |
@@ -102,7 +102,7 @@ Each skill has an English name and a `-cn` edition. Install with the command abo
 
 ## Maintenance and license
 
-The former eight concept-design workflows share one entry per language. concept-design version: **2.5.4**. Repository version: **3.8.1**.
+The former eight concept-design workflows share one entry per language. concept-design version: **2.6.0**. Repository version: **3.10.0**.
 Old ClawHub entries redirect to the matching language edition where possible; the rest are retired or already unavailable. Preserve project specifications, code, and user configuration during migration.
 
 Run `./tools/validate-all.sh` to check public packages.

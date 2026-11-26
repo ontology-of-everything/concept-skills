@@ -72,14 +72,14 @@ skills:
     topics: [java, spring-boot, code-simplification, refactoring]
 - id: concept-model
   path: skills/en/concept-model
-  display_name: Concept Modeling Principles
-  display_title: Concept Modeling Principles
-  display_name_zh: 概念建模原则
-  display_title_zh: 概念建模原则
+  display_name: Working with Concept Modeling
+  display_title: Working with Concept Modeling
+  display_name_zh: 以概念建模的方式开展工作
+  display_title_zh: 以概念建模的方式开展工作
   domain: concept-design
-  summary: Use when the user requests concept modeling, or when design and maintenance reveal unclear responsibilities, confused concept boundaries, or coupled cross-concept collaboration. Clarify concepts and synchronization rules; do not activate by default for routine implementation or local fixes.
-  summary_zh: 在用户要求概念建模，或设计与维护中出现职责归属不清、概念边界混乱、跨概念协作耦合时启用，辅助厘清概念及其同步规则；普通功能实现与局部修复不默认启用。
-  version: 1.1.0
+  summary: Apply concept modeling principles to design, implementation, and maintenance by defining independent concepts around user purposes and coordinate their collaboration with synchronization rules.
+  summary_zh: 以概念建模原则开展设计、实现和维护：围绕用户目的划分独立概念，用同步规则协调概念之间的协作。
+  version: 1.2.0
   agents:
   - cursor
   - claude-code
@@ -103,14 +103,14 @@ skills:
     - synchronizations
 - id: concept-model-cn
   path: skills/zh-CN/concept-model-cn
-  display_name: 概念建模原则
-  display_title: 概念建模原则
-  display_name_zh: 概念建模原则
-  display_title_zh: 概念建模原则
+  display_name: 以概念建模的方式开展工作
+  display_title: 以概念建模的方式开展工作
+  display_name_zh: 以概念建模的方式开展工作
+  display_title_zh: 以概念建模的方式开展工作
   domain: concept-design
-  summary: 在用户要求概念建模，或设计与维护中出现职责归属不清、概念边界混乱、跨概念协作耦合时启用，辅助厘清概念及其同步规则；普通功能实现与局部修复不默认启用。
-  summary_zh: 在用户要求概念建模，或设计与维护中出现职责归属不清、概念边界混乱、跨概念协作耦合时启用，辅助厘清概念及其同步规则；普通功能实现与局部修复不默认启用。
-  version: 1.1.0
+  summary: 以概念建模原则开展设计、实现和维护：围绕用户目的划分独立概念，用同步规则协调概念之间的协作。
+  summary_zh: 以概念建模原则开展设计、实现和维护：围绕用户目的划分独立概念，用同步规则协调概念之间的协作。
+  version: 1.2.0
   agents:
   - cursor
   - claude-code
@@ -141,7 +141,7 @@ skills:
   domain: concept-design
   summary: Use only when explicitly invoked. Design, specify, implement, review, refactor, or explain software with Daniel Jackson's concepts and synchronizations. Check CONCEPT.md/SYNCS.md structure and generate Mermaid relationship diagrams.
   summary_zh: 仅在显式调用时使用。用 Daniel Jackson 的概念与同步方法设计、实现、审查和重构软件，编写规格并解释软件行为。检查 CONCEPT.md/SYNCS.md 结构，生成 Mermaid 关系图。
-  version: 2.5.4
+  version: 2.6.0
   agents:
   - cursor
   - claude-code
@@ -175,7 +175,7 @@ skills:
   domain: concept-design
   summary: 仅在显式调用时使用。用 Daniel Jackson 的概念与同步方法设计、实现、审查和重构软件，编写规格并解释软件行为。检查 CONCEPT.md/SYNCS.md 结构，生成 Mermaid 关系图。
   summary_zh: 仅在显式调用时使用。用 Daniel Jackson 的概念与同步方法设计、实现、审查和重构软件，编写规格并解释软件行为。检查 CONCEPT.md/SYNCS.md 结构，生成 Mermaid 关系图。
-  version: 2.5.4
+  version: 2.6.0
   agents:
   - cursor
   - claude-code
